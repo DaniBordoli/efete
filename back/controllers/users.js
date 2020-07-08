@@ -28,4 +28,15 @@ const userLogout = (req, res) => {
       res.sendStatus(200);
 }
 
-module.exports = { userRegister,userLogin,userLogout };
+
+const editProfileUser = (req, res) => {
+  let id = req.params.id;
+  User.findByIdAndUpdate(id, req.body, { new: true })
+  .then((userProfile) => {
+      res.status(200).send(userProfile);
+  });
+};
+
+module.exports = { userRegister,userLogin,userLogout , editProfileUser};
+
+

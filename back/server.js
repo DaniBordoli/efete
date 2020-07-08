@@ -1,16 +1,13 @@
 require("./config/db");
 const express = require("express");
 const app = express();
-const LocalStrategy = require('passport-local').Strategy;
 const path = require("path");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const passport = require("./config/passportLocal");
 const router = require("./routes/index");
-const {User}= require('./models/index')
 const cors = require("cors");
-
+const passport = require("./config/passportLocal");
 
 /* require("./config/facebookConfig"); */
 
@@ -36,36 +33,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-passport.use(
-  new LocalStrategy({usernameField:'username' ,passwordField:"password"},
-  function (username, password, done) {
-    User.findOne({username:username})
-    .then(user => {
-      if(!user){
-        return done(null,false,{message:'incorrect username'})
-      }
-      if (!user.validatePassword(password)) {
-        return done(null, false, { message: "Incorrect password." });
-      }
-      return done(null, user);
-    })
-    .catch(done)
-  })
-)
-
-
-passport.serializeUser(function(user, done) {
-  console.log("ENTRE A SEREALIZE:" , user)
-  done(null, user.id);
-});
-
-  
-passport.deserializeUser(function(id, done) {
-  console.log("ENTRE A DESEREALIZE:" , id)
-    User.findById(id).
-    then(user=>done(user))
-    .catch(err=>done(err))
-})
 
 
 app.use("/api", router);
