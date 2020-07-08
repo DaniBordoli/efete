@@ -18,14 +18,6 @@ var transactionSchema = new Schema({
     type: Number,
     required: true,
   },
-  originAccount: {
-    type: Number,
-    default: false,
-  },
-  destinationAccount: {
-    type: Number,
-    default: false,
-  },
   user: [
     {
       type: Schema.Types.ObjectId,
@@ -36,6 +28,18 @@ var transactionSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "agents",
+    },
+  ],
+  originAccount: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "accounts",
+    },
+  ],
+  destinationAccount: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "accounts",
     },
   ],
 });
