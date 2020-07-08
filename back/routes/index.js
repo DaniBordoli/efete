@@ -1,5 +1,9 @@
 const express = require("express");
-const { findAllUserTransactions } = require("../controllers/transactions");
 const router = express.Router();
+const userRouter = require("./users");
+const agentRouter = require("./agents");
 
-router.get("/transactions", findAllUserTransactions);
+router.use("/users", userRouter);
+router.use("/agents", agentRouter);
+
+module.exports = router;
