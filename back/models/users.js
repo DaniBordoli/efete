@@ -23,6 +23,7 @@ var userSchema = new Schema({
   },
   dniBack: {
     type: String,
+    default: "https://i.imgur.com/Z0869Hm.jpg",
   },
   dni: {
     type: Number,
@@ -35,7 +36,6 @@ var userSchema = new Schema({
   password: { type: String, required: true },
   profilePicture: {
     type: String,
-    required: true,
     default:
       "https://www.festivalclaca.cat/imgfv/b/500-5009697_no-profile-picture-icon-circle.png",
   },

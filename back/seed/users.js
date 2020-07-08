@@ -2,33 +2,36 @@ const User = require("../models/users");
 require("../config/db");
 
 const charmander = {
-  nombre: "Charmander",
-  tipo: "Fuego",
-  level: 6,
-  imgURI: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png",
-  email: "prueba@prueba.com",
-  password: "A123abcd",
-};
+  firstName: "Jesus",
+  lastName: 'Lombardo',
+  isVerified:true,
+  dni:23456782,
+  username: 'jesus@gmail.com',
+  password:'1234',
+
+}
 
 const bulbasaur = {
-  nombre: "Bulbasaur",
-  tipo: "Planta",
-  level: 5,
-  imgURI:
-    "https://vignette.wikia.nocookie.net/es.pokemon/images/4/43/Bulbasaur.png/revision/latest?cb=20170120032346",
-  email: "prueba2@prueba.com",
-  password: "A123abcd",
-};
+  firstName: "Juan",
+  lastName: 'Cor',
+  isVerified: true,
+  dni: 34456879,
+  username: 'juan@gmail.com',
+  password: '1234',
+
+}
 
 const squirtle = {
-  nombre: "Squirtle",
-  tipo: "Agua",
-  level: 6,
-  imgURI:
-    "https://vignette.wikia.nocookie.net/es.pokemon/images/e/e3/Squirtle.png/revision/latest?cb=20160309230820",
-  email: "prueba3@prueba.com",
-  password: "A123abcd",
-};
+  firstName: "Victoria",
+  lastName: 'Di Liscia',
+  isVerified: true,
+  dni: 40458289,
+  username: 'vico@gmail.com',
+  password: '1234',
+
+}
+
+
 
 User.insertMany([charmander, bulbasaur, squirtle]).then(() => {
   console.log("Ready to go!");
