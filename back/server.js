@@ -8,15 +8,14 @@ const session = require("express-session");
 const passport = require("./config/passportLocal");
 const router = require("./routes/index");
 const cors = require("cors");
-const conexion = require("./config/db");
 
-require("./config/facebookConfig");
+// require("./config/facebookConfig");
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("hola mundo");
-});
+// app.get("/", (req, res) => {
+//   res.send("hola mundo");
+// });
 
 app.use(
   session({
@@ -38,7 +37,7 @@ app.use(express.urlencoded());
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("localhost:1337/api", router);
+app.use("/api", router);
 
 //ERROR MIDDLEWARE
 app.use(function (err, req, res, next) {
