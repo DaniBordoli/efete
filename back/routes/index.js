@@ -1,5 +1,10 @@
 const express = require("express");
-const { findAllUserTransactions } = require("../controllers/transactions");
+const accountsRouter = require("./accounts")
 const router = express.Router();
 
-router.get("/transactions", findAllUserTransactions);
+
+
+router.use("/accounts",accountsRouter);
+
+
+module.exports = router;
