@@ -8,15 +8,14 @@ const session = require("express-session");
 const passport = require("./config/passportLocal");
 const router = require("./routes/index");
 const cors = require("cors");
-const conexion = require("./config/db");
 
-/* require("./config/facebookConfig"); */
+// require("./config/facebookConfig");
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("hola mundo");
-});
+// app.get("/", (req, res) => {
+//   res.send("hola mundo");
+// });
 
 app.use(
   session({
