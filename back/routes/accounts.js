@@ -6,6 +6,8 @@ const AccountsController = require("../controllers/accounts");
 
 router.get("/", AccountsController.findAll);
 router.post("/", AccountsController.createAccount);
+router.delete("/:id", AccountsController.deleteById)
+router.get("/:id", AccountsController.findById)
 
 
 

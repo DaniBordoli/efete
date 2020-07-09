@@ -19,6 +19,25 @@ const AccountsController = {
         .catch (err => {
             res.status (500).send(err)
         })
+    },
+    deleteById(req,res){
+        AccountsModel.deleteOne({_id: req.params.id})
+        .then (account => {
+            res.send (account);
+        })
+        .catch (err => {
+            res.status (500).send(err)
+        })
+    },
+    findById(req,res){
+        AccountsModel.findById(req.params.id)
+        .then (account => {
+            res.send (account);
+        })
+        .catch (err => {
+            res.status (500).send(err)
+        })
+            
     }
 }
 
