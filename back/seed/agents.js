@@ -13,8 +13,6 @@ const charmander = {
 
 }
 
-
-
 const bulbasaur = {
     name: 'Ypf',
     address: 'Libertador 1000',
@@ -37,10 +35,7 @@ const squirtle = {
 
 
 Agent.insertMany([charmander, bulbasaur, squirtle]).then(() => {
-    console.log("Ready to go!");
+  console.log("Ready to go!");
 
-    process.exit();
+  process.exit();
 });
-
-
-
