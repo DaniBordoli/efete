@@ -5,18 +5,16 @@ const path = require("path");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
-const passport = require("./config/passportLocal");
 const router = require("./routes/index");
 const cors = require("cors");
-const conexion = require("./config/db");
+const passport = require("./config/passportLocal");
+
 
 //require("./config/facebookConfig");
 
-app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("hola mundo");
-});
+
+app.use(cors());
 
 app.use(
   session({
@@ -26,15 +24,14 @@ app.use(
   })
 );
 
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "/public")));
-
 app.use(morgan("dev"));
 
 //Body Parser
 app.use(express.json());
 app.use(express.urlencoded());
 
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
