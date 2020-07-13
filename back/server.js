@@ -9,7 +9,11 @@ const router = require("./routes/index");
 const cors = require("cors");
 const passport = require("./config/passportLocal");
 
+<<<<<<< HEAD
+// require("./config/facebookConfig");
+=======
 /* require("./config/facebookConfig"); */
+>>>>>>> 84f5ca3dd06e0100fdf1d6bb29f2d38d63b4a16e
 
 app.use(cors());
 
@@ -32,9 +36,12 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 84f5ca3dd06e0100fdf1d6bb29f2d38d63b4a16e
 app.use("/api", router);
 
 //ERROR MIDDLEWARE
