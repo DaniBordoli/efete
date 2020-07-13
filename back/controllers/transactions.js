@@ -1,5 +1,10 @@
 const { Transaction, Agent } = require("../models/index");
 
+const findAllTransactions=(req,res ) =>{
+  Transaction.find()
+  .then(transactions=> res.send (transactions))
+  .catch(err => console.log(err))
+}
 
 const findAllUserTransactions = (req, res) => {
   Transaction.find({ user: req.user.id })
@@ -28,4 +33,4 @@ const findOneUserTransacion = (req, res) => {
     .then((transaction) => res.json(transaction));
 };
 
-module.exports = { findAllUserTransactions, findOneUserTransacion,findAllAgentTransactions };
+module.exports = { findAllUserTransactions, findOneUserTransacion,findAllAgentTransactions , findAllTransactions};

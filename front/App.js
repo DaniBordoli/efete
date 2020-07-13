@@ -1,23 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Test from './src/redux/Test'
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Provider } from 'react-redux';
+import Home from '../front/src/screens/home/home'
+import userHomeContainer from './src/screens/home/userHome/userHomeContainer'
+import store from './src/redux/store/index'
 
-export default function App() {
+const Stack = createStackNavigator()
+
+export default () =>{
   return (
-    <View style={styles.container}>
-      <Test/>
-      <Text style={{color:"white"}}>EFETE</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="User" >
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="User" component={userHomeContainer} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      </Provider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#6F76E4',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
