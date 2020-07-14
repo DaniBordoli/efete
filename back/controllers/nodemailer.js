@@ -1,37 +1,37 @@
 const nodemailer = require("nodemailer");
 
+const SendMail = function (user) {
+  var transporter = nodemailer.createTransport({
+    secure: false,
+    service: "gmail",
+    auth: {
+      user: "facu.efete@gmail.com",
+      pass: "Efete123<",
+    },
+    tls: { rejectUnauthorized: false },
+  });
 
-const SendMail = function(username){
-    console.log(username)
+ 
+  link = `http://localhost:1337/api/users/verify?id=${user._id}`
 
-    var transporter = nodemailer.createTransport({
-        secure:false,
-        service: 'gmail',
-        auth: {
-            user: 'facu.efete@gmail.com',
-            pass: 'Efete123<'
-        },
-        tls: {rejectUnauthorized: false }
-    });
+  var mailOptions = {
+    from: "facu.efete@gmail.com",
+    to: `${user.username}`,
+    subject: "Verificacion",
+    text: "Se registro",
+    html:
+      "Hello,<br> Please Click on the link to verify your email.<br><a href=" +
+      link +
+      ">Click here to verify</a>",
+  };
 
-var mailOptions = {
-    from: 'facu.efete@gmail.com',
-    to: `${username}`,
-    subject: 'Verificacion',
-    text: 'Se registro' ,
-    html: "<b>Hola, gracias por registrarte!</b><p><a href=\"http://www.yahoo.com\">Click Here</a></p>"
+  transporter.sendMail(mailOptions, function (error) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email enviado");
+    }
+  });
 };
 
-transporter.sendMail(mailOptions, function(error){
-    if (error){
-        console.log(error);
-    } else {
-        console.log("Email enviado");
-    }
-})
-}
-
-
-module.exports= SendMail
-
-
+module.exports = SendMail;
