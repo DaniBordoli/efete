@@ -19,7 +19,7 @@ router.get("/verify", function (req, res) {
         user.save().then(() => {
           console.log("email is verified");
 
-          res.redirect('http://localhost:19006')
+          res.redirect('http://localhost:19006/successRegister')
         });
       } else {
         console.log("email is not verified");

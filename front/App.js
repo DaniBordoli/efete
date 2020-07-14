@@ -9,6 +9,7 @@ import verifityEmail from "./src/screens/verifityEmail/verifityEmail";
 import successRegister from "./src/screens/verifityEmail/successRegister";
 import registerContainer from "./src/screens/register/registerContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmountContainer";
+import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
 import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
 
 const Stack = createStackNavigator();
@@ -17,14 +18,19 @@ export default () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Register">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Verificar" component={verifityEmail} />
           <Stack.Screen name="User" component={userHomeContainer} />
           <Stack.Screen name="successRegister" component={successRegister} />
           <Stack.Screen name="Register" component={registerContainer} />
           <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
-          <Stack.Screen name="selectOtherAmount" component={SelectOtherAmountContainer} />
+          <Stack.Screen
+            name="selectOtherAmount"
+            component={SelectOtherAmountContainer}
+          />
+
+          <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

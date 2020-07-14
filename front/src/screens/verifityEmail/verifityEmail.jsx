@@ -33,7 +33,6 @@ export default () => {
       <Text style={style.text4}>Para verificar tu Email</Text>
       <Text style={style.input} onPress={() => Linking.openURL('https://mail.google.com/')}>Ingrese Aqui</Text> 
       </View>
-      
     </View>
   )
 }
