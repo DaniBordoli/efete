@@ -5,8 +5,7 @@ import { Provider } from "react-redux";
 import Home from "../front/src/screens/home/home";
 import userHomeContainer from "./src/screens/home/userHome/userHomeContainer";
 import EditUserProfileContainer from "./src/screens/home/EditUserProfile/EditUserProfileContainer";
-import SelectAmountContainer from "./src/screens/selectAmount/SelectAmountContainer";
-import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer"
+import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
 import store from "./src/redux/store/index";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmount";
 import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
@@ -18,7 +17,7 @@ export default () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="EditAgentProfile">
+        <Stack.Navigator initialRouteName="selectOtherAmount">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="User" component={userHomeContainer} />
           <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
@@ -33,12 +32,9 @@ export default () => {
           <Stack.Screen
             name="EditAgentProfile"
             component={EditAgentContainer}
-            name="AddAccounts"
-            component={AddAccountsContainer}
           />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
-  )
-}
-
+  );
+};

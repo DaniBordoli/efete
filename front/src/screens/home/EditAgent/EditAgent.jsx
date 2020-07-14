@@ -1,38 +1,31 @@
 import React from "react";
 import { View, Text, TextInput, Button, Image } from "react-native";
-import { Icon } from "react-native-elements";
-import { style } from "./style";
 
-export default ({
-  handleSubmit,
-  handleChange,
-  firstName,
-  lastName,
-  username,
-  password,
-}) => {
+export default ({ handleSubmit, handleChange, name, address, CUIL }) => {
   return (
     <View>
-      <Text>Datos Personales</Text>
-      <Text>
-        {firstName} {lastName}
-      </Text>
-      <View></View>
+      <Text>Datos de tu Negocio</Text>
 
+      <Text>Nombre del Negocio:</Text>
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-        onChangeText={(e) => handleChange(e, "username")}
-        name="username"
-        defaultValue={username}
+        onChangeText={(e) => handleChange(e, "name")}
+        name="name"
+        defaultValue={name}
         required
       />
+
+      <Text>Direccion:</Text>
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-        onChangeText={(e) => handleChange(e, "password")}
-        name="password"
-        defaultValue={password}
+        onChangeText={(e) => handleChange(e, "address")}
+        name="address"
+        defaultValue={address}
         required
       />
+
+      <Text>CUIL:</Text>
+      <Text>{CUIL}</Text>
 
       <Button
         onPress={() => handleSubmit()}

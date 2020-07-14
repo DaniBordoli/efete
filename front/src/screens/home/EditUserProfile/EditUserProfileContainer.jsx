@@ -15,13 +15,6 @@ export default () => {
     id: "5f063aac7c500b6f49952348",
   });
 
-  const [inputs, setInput] = useState({
-    inputFirstName: false,
-    inputLastName: false,
-    inputUsername: false,
-    inputPassword: false,
-  });
-
   const dispatch = useDispatch();
 
   function handleChange(e, name) {
@@ -30,12 +23,7 @@ export default () => {
 
   // le harcodeo el id pero hay que traerlo con el useSelector del usuario logueado
   function handleSubmit() {
-    if (
-      user.firstName.length > 0 &&
-      user.lastName.length > 0 &&
-      user.username.length > 0 &&
-      user.password.length > 0
-    ) {
+    if (user.username.length > 0 && user.password.length > 0) {
       dispatch(editUser(user));
       Alert.alert(
         "Datos actualizados",
@@ -58,7 +46,6 @@ export default () => {
         lastName={user.lastName}
         username={user.username}
         password={user.password}
-        inputs={inputs}
       />
     </View>
   );

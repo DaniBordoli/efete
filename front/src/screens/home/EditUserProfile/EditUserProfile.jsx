@@ -14,11 +14,11 @@ export default ({
   return (
     <View>
       <Text>Datos Personales</Text>
-      <Text>
-        {firstName} {lastName}
-      </Text>
-      <View></View>
 
+      <Text>Nombre: {firstName}</Text>
+
+      <Text>Apellido: {lastName}</Text>
+      <Text>Mail:</Text>
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
         onChangeText={(e) => handleChange(e, "username")}
@@ -26,6 +26,7 @@ export default ({
         defaultValue={username}
         required
       />
+      <Text>Contraseña:</Text>
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
         onChangeText={(e) => handleChange(e, "password")}
