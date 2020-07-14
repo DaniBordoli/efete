@@ -1,6 +1,6 @@
 import React ,{useState} from "react";
 
-import { View, Text } from "react-native";
+import { View, Text, Linking } from "react-native";
 import {style} from './style'
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
@@ -30,8 +30,8 @@ export default () => {
       <Text style={style.text2}>¡Gracias por registrarte!</Text>
       <Text style={style.text3}>Te enviaremos un Email para que confirmes tu correo.</Text>
       <View style={{display:"flex",flexDirection:"row", justifyContent:'center' , marginTop:150}}>
-      <Text style={style.text4}>¿No recibiste el mail?</Text>
-      <Text style={style.input}>hacé clic acá</Text> 
+      <Text style={style.text4}>Para verificar tu Email</Text>
+      <Text style={style.input} onPress={() => Linking.openURL('https://mail.google.com/')}>Ingrese Aqui</Text> 
       </View>
       
     </View>

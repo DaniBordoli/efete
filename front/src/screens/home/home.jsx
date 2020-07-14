@@ -3,6 +3,6 @@ import { View, Text } from "react-native";
 
 export default () => (
   <View>
-    <Text> Prueba desde navegador</Text>
+    <Text> Prueba VERIFICAR</Text>
   </View>
 );

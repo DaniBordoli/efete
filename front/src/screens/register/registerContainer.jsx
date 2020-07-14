@@ -1,47 +1,49 @@
 import React, { useState } from "react";
-
+import { View } from "react-native";
+import { register } from "../../redux/store/actions/users";
 import Register from "./register";
+import { useDispatch } from "react-redux";
 
-export default () => {
+export default ({ navigation }) => {
+  const dispatch = useDispatch();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [dni, setDni] = useState("");
+  const [dni, setDni] = useState(0);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  function usernameChange(evt) {
-    const value = evt.target.value;
-    this.setState({ username: value });
+  function usernameChange(text) {
+    setUsername(text);
   }
-  function firstNameChange(evt) {
-    const value = evt.target.value;
-    this.setState({ name: value });
+  function firstNameChange(text) {
+    setFirstName(text);
   }
-  function lastNameChange(evt) {
-    const value = evt.target.value;
-    this.setState({ name: value });
+  function lastNameChange(text) {
+    setLastName(text);
   }
-  function dniChange(evt) {
-    const value = evt.target.value;
-    this.setState({ name: value });
+  function dniChange(text) {
+    setDni(Number(text));
   }
-  function passwordChange(evt) {
-    const value = evt.target.value;
-    this.setState({ password: value });
+  function passwordChange(text) {
+    setPassword(text);
   }
 
   function handleSubmit() {
-    this.props.registrandome(this.state);
+    dispatch(register(firstName, lastName, dni, password, username));
   }
 
   return (
-    <Register
-    usernameChange={usernameChange}
-    firstNameChange={firstNameChange}
-    lastNameChange={lastNameChange}
-    dniChange={dniChange}
-    passwordChange={passwordChange}
-    handleSubmit={handleSubmit}
-    />
+    <View>
+      <Register
+        usernameChange={usernameChange}
+        firstNameChange={firstNameChange}
+        lastNameChange={lastNameChange}
+        dniChange={dniChange}
+        passwordChange={passwordChange}
+        handleSubmit={handleSubmit}
+        navigation={navigation}
+      />
+    </View>
   );
 };
