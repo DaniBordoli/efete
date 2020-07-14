@@ -13,3 +13,5 @@ export const getTransactions = () => (dispatch) => {
     .get("http://localhost:1337/api/transactions")
     .then((res) => dispatch(fetch_transactions(res.data)));
 };
+
+
