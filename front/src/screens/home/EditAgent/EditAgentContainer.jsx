@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Alert } from "react-native";
-import EditUserProfile from "../EditUserProfile/EditUserProfile";
+import EditAgent from "../EditAgent/EditAgent";
 import { editUser } from "../../../redux/store/actions/users";
 import { useDispatch } from "react-redux";
 

@@ -18,6 +18,6 @@ export const logUser = () => (dispatch) => {
 export const editUser = (userData) => () => {
   return axios
     .patch(`http://${IP}:1337/api/users/editprofile`, userData)
-    .then((res) => console.log(res.data))
+    .then((res) => console.log("Usuario editado"))
     .catch((err) => console.log(err, "ERROR"));
 };

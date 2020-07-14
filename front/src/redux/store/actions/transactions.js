@@ -1,5 +1,4 @@
 import axios from "axios";
-import { FETCH_TRANSACTIONS } from "../constants";
 import { IP } from "../../../../config";
 import { FETCH_TRANSACTIONS, SET_TRANSACTION_VALUE } from "../constants";
 
