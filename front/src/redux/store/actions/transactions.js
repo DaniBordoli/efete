@@ -22,3 +22,5 @@ export const getTransactions = () => (dispatch) => {
     .then((res) => dispatch(fetch_transactions(res.data)))
     .catch((err) => console.log(err, "ERROR"));
 };
+
+
