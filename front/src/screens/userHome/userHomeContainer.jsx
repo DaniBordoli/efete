@@ -1,9 +1,9 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import  React from "react";
+import  { useDispatch, useSelector } from "react-redux";
 import  { useEffect } from "react";
-import { getUserTransactions } from "../../../redux/store/actions/transactions";
-import UserHome from "../userHome/userHome";
-import { View } from "react-native";
+import  { getUserTransactions } from "../../../redux/store/actions/transactions";
+import  UserHome from "./userHome";
+import  { View } from "react-native";
 
 export default ( { navigation }) => {
   const dispatch = useDispatch();

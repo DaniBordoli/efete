@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_TRANSACTIONS, FETCH_USER_TRANSACTIONS, FETCH_USER_TRANSACTION } from "../constants";
+import { FETCH_TRANSACTIONS, FETCH_USER_TRANSACTIONS, FETCH_USER_TRANSACTION, FETCH_TRANSACTIONS, SET_TRANSACTION_VALUE} from "../constants";
 
 const fetch_transactions = (transactions) => {
   return {
@@ -22,6 +22,12 @@ const fetch_users_transaction = (userTransaction) => {
   }
 }
 
+export const newTransactionValue = (transactionValue) => {
+  return {
+    type: SET_TRANSACTION_VALUE,
+    transactionValue,
+  };
+};
 
 export const getTransactions = () => (dispatch) => {
   return axios
@@ -43,3 +49,4 @@ export const getUserTransaction = (id) => (dispatch) => {
      return res.data})
    .then(transaction => dispatch(fetch_users_transaction(transaction)))
 }
+
