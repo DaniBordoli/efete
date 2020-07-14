@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, FlatList, Button, TextInput } from "react-native";
 import { style } from "./style";
 
-export default ({ handleValue, navigation, handleSubmit }) => {
+export default ({ userAccounts, handleValue, handleSubmit, navigation }) => {
   return (
     <View>
       <Text>Monto para Extraer</Text>

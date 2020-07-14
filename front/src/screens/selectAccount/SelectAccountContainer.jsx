@@ -1,38 +1,34 @@
-import React, { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { newTransactionValue } from "../../redux/store/actions/transactions";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUserAccounts } from "../../redux/store/actions/accounts";
 import SelectAccount from "./SelectAmount";
-import { useDispatch } from "react-redux";
 
 import { View } from "react-native";
 
 export default ({ navigation }) => {
   const dispatch = useDispatch();
 
-  useEffect = () => {
-    useDispatch();
-  };
+  useEffect(() => {
+    useDispatch(fetchUserAccounts());
+  });
 
-  const transactionValue = useSelector(
-    (state) => state.transactions.transactionValue
-  );
+  const userAccounts = useSelector((state) => state.accounts.accounts);
 
-  const [value, setValue] = useState(0);
+  const [selectedAccount, setSelectedAccount] = useState({});
 
-  const handleValue = (item) => {
-    setValue(item);
+  const handleAccount = (account) => {
+    setSelectedAccount(account);
   };
 
   const handleSubmit = () => {
-    dispatch(newTransactionValue(value));
+    dispatch(newTransactionValue(selectedAccount));
   };
 
   return (
     <View>
       <SelectAccount
-        transactionValue={transactionValue}
-        handleValue={handleValue}
+        userAccounts={userAccounts}
+        handleValue={handleAccount}
         handleSubmit={handleSubmit}
         navigation={navigation}
       />
