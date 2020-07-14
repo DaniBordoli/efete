@@ -6,6 +6,7 @@ import Home from "../front/src/screens/home/home";
 import userHomeContainer from "./src/screens/home/userHome/userHomeContainer";
 import EditUserProfileContainer from "./src/screens/home/EditUserProfile/EditUserProfileContainer";
 import store from "./src/redux/store/index";
+import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,11 @@ export default () => {
         <Stack.Navigator initialRouteName="EditUserProfile">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="User" component={userHomeContainer} />
+          <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
+          <Stack.Screen
+            name="selectOtherAmount"
+            component={SelectOtherAmountContainer}
+          />
           <Stack.Screen
             name="EditUserProfile"
             component={EditUserProfileContainer}
