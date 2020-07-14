@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button} from 'react-native';
 
-const AddAccount = ({handleAccount,handleSubmit, account, navigation}) => {
+const AddAccount = ({handleNameAccount,handleDni, handleCbu, handleSubmit, account, navigation}) => {
 
   return (
     <View>
@@ -13,7 +13,7 @@ const AddAccount = ({handleAccount,handleSubmit, account, navigation}) => {
         autoCapitalize="none"
         autoCorrect={false}
         value={account}
-        onChangeText={account => handleAccount(account)}
+        onChangeText={name => handleNameAccount(name)}
       />
       
       <Text>CBU / CVU</Text>
@@ -22,7 +22,7 @@ const AddAccount = ({handleAccount,handleSubmit, account, navigation}) => {
         autoCapitalize="none"
         autoCorrect={false}
         value={account}
-        onChangeText={newValue => setAccount(newValue)}
+        onChangeText={cbu => handleCbu(cbu)}
       />
       {/* {account.length < 16 ? <Text>La cuenta debe contener al menos 16 numeros</Text> : null} */}
 
@@ -32,7 +32,7 @@ const AddAccount = ({handleAccount,handleSubmit, account, navigation}) => {
         autoCapitalize="none"
         autoCorrect={false}
         value={account}
-        onChangeText={newValue => setAccount(newValue)}
+        onChangeText={dni => handleDni(dni)}
       />
       {/* {account.length < 22 ? <Text>La cuenta debe contener al menos 22 numeros</Text> : null} */}
 

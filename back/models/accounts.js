@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var accountSchema = new Schema({
-  entity: {
-    type: Number,
-    required: true,
-  },
+  // entity: {
+  //   type: Number,
+  //   //required: true,
+  // },
   nameEntity: {
     type: String,
     required: true,
@@ -17,14 +17,14 @@ var accountSchema = new Schema({
   cbu_cvu: {
     type: String,
     required: true,
-    enum: ["cbu", "cvu"],
+    
   },
-  user: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "users",
-    },
-  ],
+  // user: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "users",
+  //   },
+  // ],
 });
 
 const Account = mongoose.model("accounts", accountSchema);
