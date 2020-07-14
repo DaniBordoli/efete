@@ -1,21 +1,51 @@
 import React from "react";
 import { View, Text, TextInput, Button } from "react-native";
-import { style } from "./style";
+// import { style } from "./style";
 
-export default ({ handleValue, navigation, handleSubmit, value }) => {
-  const data = [100, 200, 500, 1000, 2000];
+export default ({
+  handleValueUsername,
+  handleValuePassword,
+  handleSubmit,
+  username,
+  password,
+  user,
+  isData,
+  navigation,
+}) => {
   return (
     <View>
-      <Text>Seleccionar Monto</Text>
+      <Text>Efeté</Text>
+      <Text>Iniciar Sesión</Text>
 
-      <TextInput onChangeText={(value) => handleValue(value)} value={value} />
-      <TextInput onChangeText={(value) => handleValue(value)} value={value} />
+      <TextInput
+        keyboardType="email-address"
+        onChangeText={(username) => {
+          handleValueUsername(username);
+        }}
+        value={username}
+        placeholder="Usuario"
+      />
 
+      <TextInput
+        secureTextEntry={true}
+        onChangeText={(password) => {
+          handleValuePassword(password);
+        }}
+        value={password}
+        placeholder="Contraseña"
+      />
+      {user.message ? <Text>{user.message}</Text> : null}
       <Button
-        title="Confirmar"
+        disabled={isData}
+        title="Iniciar Sesión"
         onPress={() => {
           handleSubmit();
-          navigation.navigate("Home");
+        }}
+      />
+      <Button
+        title="Registrarte"
+        onPress={() => {
+          navigation.navigate("Registro");
         }}
       />
     </View>

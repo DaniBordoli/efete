@@ -2,28 +2,48 @@ import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import AddAccounts from "../accounts/AddAccounts";
 import {View} from "react-native"
+import {addAccounts} from "../../redux/store/actions/accounts"
 
 
 export default ({navigation}) => {
   const dispatch = useDispatch();
 
-  const [account, setAccount] = useState('');
-
-  const handleAccount = (account) => {
-    setAccount(account);
+  const [name, setNameAccount] = useState('');
+  const handleNameAccount = (name) => {
+    setNameAccount(name);
   };
+
+  const [cbu, setCbu] = useState('');
+  const handleCbu = (cbu) => {
+    setCbu(cbu);
+  };
+
+  const [dni, setDni] = useState('');
+  const handleDni = (dni) => {
+    console.log('dni',dni)
+    setDni(dni);
+  };
+
 
   const handleSubmit = () => {
-    dispatch(newAccount(Number(account)));
+
+    dispatch(addAccounts(name,cbu,dni))
+
   };
+
+  
 
   return (
     <View>
       <AddAccounts
-        handleAccount={handleAccount}
+        handleNameAccount={handleNameAccount}
+        handleCbu={handleCbu}
+        handleDni={handleDni}
         handleSubmit={handleSubmit}
         navigation={navigation}
-        account={account}
+        name={name}
+        cbu={cbu}
+        dni={dni}
       />
     </View>
   );

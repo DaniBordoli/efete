@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text } from "react-native";
 
-export default () => (
-  <View>
-    <Text> Prueba desde navegador</Text>
-  </View>
-);
+export default () => {
+
+
+  return (
+    <View>
+      <Text> Prueba VERIFICAR</Text>
+    </View>
+  );
+};

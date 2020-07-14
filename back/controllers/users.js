@@ -3,9 +3,11 @@ const SendMail = require("../controllers/nodemailer");
 
 const userRegister = (req, res, next) => {
   User.create(req.body)
-
-    .then(() => {
-      SendMail(req.body.username);
+    .then((user) => {
+      return User.findOne({ username: req.body.username });
+    })
+    .then((user) => {
+      SendMail(user);
       res.sendStatus(200);
     })
 
@@ -13,7 +15,6 @@ const userRegister = (req, res, next) => {
 };
 
 const userLogin = (req, res) => {
-  console.log("usuario logueado");
   res.json(req.user);
 };
 
