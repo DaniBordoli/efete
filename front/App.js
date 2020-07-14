@@ -7,6 +7,7 @@ import userHomeContainer from "./src/screens/home/userHome/userHomeContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmountContainer";
 import store from "./src/redux/store/index";
 import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
+import LoginContainer from "./src/screens/login/LoginContainer";
 
 const Stack = createStackNavigator();
 
@@ -14,8 +15,9 @@ export default () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="selectAmount">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Login" component={LoginContainer} />
           <Stack.Screen name="User" component={userHomeContainer} />
           <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
           <Stack.Screen
