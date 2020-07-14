@@ -12,8 +12,10 @@ const AccountsController = {
     },
 
     createAccount(req,res) {
+        console.log("cuenta",req.body)
         AccountsModel.create(req.body)
         .then (account => {
+            console.log("acount",account)
             res.status(201).send(account)
         })
         .catch (err => {

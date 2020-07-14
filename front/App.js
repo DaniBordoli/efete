@@ -15,7 +15,7 @@ export default () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="selectAmount">
+        <Stack.Navigator initialRouteName="AddAccounts">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="User" component={userHomeContainer} />
           <Stack.Screen name="selectAmount" component={SelectAmountContainer} />

@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_ACCOUNT:
-      return { ...state, accounts: action.accounts };
+      return { ...state, accounts: action.account };
     default:
       return state;
   }
