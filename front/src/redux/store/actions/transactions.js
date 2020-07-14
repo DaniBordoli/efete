@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_TRANSACTIONS, FETCH_USER_TRANSACTIONS, FETCH_USER_TRANSACTION, FETCH_TRANSACTIONS, SET_TRANSACTION_VALUE} from "../constants";
+import { FETCH_TRANSACTIONS, FETCH_USER_TRANSACTIONS, FETCH_USER_TRANSACTION, SET_TRANSACTION_VALUE} from "../constants";
 
 const fetch_transactions = (transactions) => {
   return {
