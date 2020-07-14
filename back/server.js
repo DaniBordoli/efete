@@ -9,10 +9,7 @@ const router = require("./routes/index");
 const cors = require("cors");
 const passport = require("./config/passportLocal");
 
-
-//require("./config/facebookConfig");
-
-
+/* require("./config/facebookConfig"); */
 
 app.use(cors());
 
