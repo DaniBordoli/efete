@@ -1,3 +1,5 @@
+import axios from "axios";
+import { IP } from "../../../../config";
 import { LOGIN_USER } from "../constants";
 import { IP } from "../../../../config";
 import axios from "axios";
@@ -11,7 +13,7 @@ const login_user = (user) => {
 
 export const logUser = (user) => (dispatch) => {
   return axios
-    .post("http://localhost:1337/api/users/login", user)
+    .post(`http://${IP}:1337/api/users/login`, user)
     .then((res) => dispatch(login_user(res.data)))
     .catch(() =>
       dispatch(login_user({ message: "El usuario o contraseña no existe" }))
@@ -30,4 +32,11 @@ export const register = (firstName, lastName, dni, password, username) => (
       password: password,
     })
     .then((res) => dispatch(login_user(res.data)));
+};
+
+export const editUser = (userData) => () => {
+  return axios
+    .patch(`http://${IP}:1337/api/users/editprofile`, userData)
+    .then((res) => console.log("Usuario editado"))
+    .catch((err) => console.log(err, "ERROR"));
 };

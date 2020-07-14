@@ -2,16 +2,18 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../front/src/screens/home/home";
+import userHomeContainer from "./src/screens/home/userHome/userHomeContainer";
+import EditUserProfileContainer from "./src/screens/home/EditUserProfile/EditUserProfileContainer";
+import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
+import SelectAmountContainer from "./src/screens/selectAmount/SelectAmount";
+import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
+import EditAgentContainer from "./src/screens/home/EditAgent/EditAgentContainer";
 import store from "./src/redux/store/index";
 import SingleUserTransactionContainer from "./src/screens/userTransaction/SingleUserTransactionContainer";
 import { Provider } from "react-redux";
-import userHomeContainer from "./src/screens/userHome/userHomeContainer";
 import verifityEmail from "./src/screens/verifityEmail/verifityEmail";
 import successRegister from "./src/screens/verifityEmail/successRegister";
 import registerContainer from "./src/screens/register/registerContainer";
-import SelectAmountContainer from "./src/screens/selectAmount/SelectAmountContainer";
-import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
-import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
 import LoginContainer from "./src/screens/login/LoginContainer";
 
 const Stack = createStackNavigator();
@@ -35,6 +37,14 @@ export default () => {
           <Stack.Screen
             name="selectOtherAmount"
             component={SelectOtherAmountContainer}
+          />
+          <Stack.Screen
+            name="EditUserProfile"
+            component={EditUserProfileContainer}
+          />
+          <Stack.Screen
+            name="EditAgentProfile"
+            component={EditAgentContainer}
           />
           <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
         </Stack.Navigator>

@@ -28,7 +28,7 @@ const userLogout = (req, res) => {
 };
 
 const editProfileUser = (req, res) => {
-  let id = req.params.id;
+  let id = req.body.id;
   User.findByIdAndUpdate(id, req.body, { new: true }).then((userProfile) => {
     res.status(200).send(userProfile);
   });
