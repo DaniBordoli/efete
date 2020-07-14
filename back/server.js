@@ -32,9 +32,6 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
-
 app.use("/api", router);
 
 //ERROR MIDDLEWARE
@@ -44,5 +41,7 @@ app.use(function (err, req, res, next) {
 });
 
 app.listen(1337, console.log("Escuchando el puerto 1337"));
+
+
 
 module.exports = app;

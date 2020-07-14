@@ -1,21 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Provider } from 'react-redux';
+import Home from '../front/src/screens/home/home'
+import userHomeContainer from './src/screens/home/userHome/userHomeContainer'
+import store from './src/redux/store/index'
+import SingleUserTransactionContainer from './src/screens/userTransaction/SingleUserTransactionContainer'
 
-export default function App() {
+const Stack = createStackNavigator()
+
+export default () =>{
   return (
-    <View style={styles.container}>
-      <Text style={{color:"white"}}>EFETE</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="User" >
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="User" component=
+            {userHomeContainer} />
+             <Stack.Screen name="SingleUserTransaction" component=
+            {SingleUserTransactionContainer} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      </Provider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#6F76E4',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
