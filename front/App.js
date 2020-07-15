@@ -19,6 +19,9 @@ import verifityEmail from "./src/screens/verifityEmail/verifityEmail";
 import successRegister from "./src/screens/verifityEmail/successRegister";
 import registerContainer from "./src/screens/register/registerContainer";
 import LoginContainer from "./src/screens/login/LoginContainer";
+import ConfAmountAgentContainer from './src/screens/confAmountAgent/ConfAmountAgentContainer'
+import OtherAmountAgentContainer from './src/screens/confOtherAmountAgent/OtherAmountAgentContainer'
+import ConfirmAgentLoad from './src/screens/ConfirmAgentLoad/ConfirmAgentLoad'
 import SelectAccountContainer from "./src/screens/selectAccount/SelectAccountContainer";
 import TransactionOkContainer from "./src/screens/transactionOk/TransactionOkContainer";
 import AccountsContainer from "./src/screens/accounts/AccountsContainer";
@@ -29,17 +32,70 @@ export default () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="User" component={userHomeContainer} />
-          <Stack.Screen name="Agent" component={AgentHomeContainer} />
+        <Stack.Navigator initialRouteName='ConfAmountAgent'>
+            <Stack.Screen 
+            name="Home" 
+            component={Home} 
+            />
+            <Stack.Screen 
+            name="User" 
+            component={userHomeContainer} 
+            />
+             <Stack.Screen 
+             name="SingleUserTransaction" 
+             component={SingleUserTransactionContainer} 
+             />
+            <Stack.Screen 
+            name="successRegister" 
+            component={successRegister} 
+            />
+            <Stack.Screen
+            name="SelectOtherAmountAgent"
+            component={OtherAmountAgentContainer}
+            />
+            <Stack.Screen
+            name="ConfirmAgentLoad"
+            component={ConfirmAgentLoad}
+            />
+            <Stack.Screen 
+            name="Register" 
+            component={registerContainer} 
+            />
+            <Stack.Screen 
+            name="selectAmount" 
+            component={SelectAmountContainer} 
+            />
+            <Stack.Screen 
+            name="ConfAmountAgent" 
+            component={ConfAmountAgentContainer}
+            />
+            <Stack.Screen 
+            name="Login" 
+            component={LoginContainer} 
+            />
+            <Stack.Screen 
+            name="Verificar" 
+            component={verifityEmail} 
+            />
+            <Stack.Screen
+              name="SelectOtherAmount"
+              component={SelectOtherAmountContainer}
+            />
+            <Stack.Screen
+              name="EditUserProfile"
+              component={EditUserProfileContainer}
+            />
+            <Stack.Screen
+              name="EditAgentProfile"
+              component={EditAgentContainer}
+            />
+          <Stack.Screen 
+          name="Agent" 
+          component={AgentHomeContainer} 
+          />
           <Stack.Screen
             name="SingleUserTransaction"
             component={SingleUserTransactionContainer}
-          />
-          <Stack.Screen
-            name="SingleAgentTransaction"
-            component={SingleAgentTransactionContainer}
           />
           <Stack.Screen
             name="AllAgentTransactions"
@@ -49,11 +105,26 @@ export default () => {
             name="AllUserTransactions"
             component={AllUserTransactionsContainer}
           />
-          <Stack.Screen name="Login" component={LoginContainer} />
-          <Stack.Screen name="Verificar" component={verifityEmail} />
-          <Stack.Screen name="successRegister" component={successRegister} />
-          <Stack.Screen name="Register" component={registerContainer} />
-          <Stack.Screen name="SelectAmount" component={SelectAmountContainer} />
+          <Stack.Screen 
+          name="Login" 
+          component={LoginContainer} 
+          />
+          <Stack.Screen 
+          name="Verificar" 
+          component={verifityEmail} 
+          />
+          <Stack.Screen 
+          name="successRegister" 
+          component={successRegister} 
+          />
+          <Stack.Screen 
+          name="Register" 
+          component={registerContainer} 
+          />
+          <Stack.Screen 
+          name="SelectAmount" 
+          component={SelectAmountContainer} 
+          />
           <Stack.Screen
             name="SelectOtherAmount"
             component={SelectOtherAmountContainer}
@@ -66,7 +137,10 @@ export default () => {
             name="EditAgentProfile"
             component={EditAgentContainer}
           />
-          <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
+          <Stack.Screen 
+          name="AddAccounts" 
+          component={AddAccountsContainer} 
+          />
           <Stack.Screen
             name="SelectAccount"
             component={SelectAccountContainer}
@@ -75,7 +149,10 @@ export default () => {
             name="TransactionOk"
             component={TransactionOkContainer}
           />
-          <Stack.Screen name="Accounts" component={AccountsContainer} />
+          <Stack.Screen 
+          name="Accounts" 
+          component={AccountsContainer} 
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

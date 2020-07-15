@@ -4,6 +4,8 @@ import {
   FETCH_TRANSACTIONS,
   FETCH_USER_TRANSACTIONS,
   FETCH_USER_TRANSACTION,
+  SET_TRANSACTION_VALUE,
+  SET_AG_TRANSACTION_VALUE,
   SET_TRANSACTION,
   FETCH_AGENT_TRANSACTIONS,
 } from "../constants";
@@ -43,7 +45,13 @@ const fetch_agent_transactions = (agentTransactions) => {
   };
 };
 
-/////////////////////////////////////////////////////////////////////////////////////
+
+export const newAgtTransactionValue = (transactionValueAgn) => {
+  return {
+   type: SET_AG_TRANSACTION_VALUE,
+   transactionValueAgn 
+  }
+}
 
 export const getTransactions = () => (dispatch) => {
   return axios
@@ -70,6 +78,14 @@ export const getUserTransaction = (id) => (dispatch) => {
     })
     .then((transaction) => dispatch(fetch_users_transaction(transaction)));
 };
+
+export const updateAmountAgent = () => (dispatch) => {
+  return axios
+  .post(`http://${IP}:1337/api/agent/editdailyamount`)
+  .then(res => res.data)
+  .then((data=> dispatch(newAgtTransactionValue(data))))
+}
+
 
 export const createTransaction = (transaction) => (dispatch) =>
   axios.post(`http://${IP}:1337/api/transactions`, transaction).then((res) => {
