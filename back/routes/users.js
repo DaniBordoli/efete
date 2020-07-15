@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const passport = require("../config/passportLocal");
+const passport = require("passport");
 const { User } = require("../models/index");
 const {
   userRegister,
   userLogin,
   userLogout,
   editProfileUser,
+  userVerify,
 } = require("../controllers/users");
 
 router.post("/register", userRegister);
@@ -30,6 +31,8 @@ router.get("/verify", function (req, res) {
     res.send("<h1>Request is from unknown source");
   }
 });
+
+router.get("/sendVerificationEmail/:id", userVerify);
 
 router.post("/login", passport.authenticate("local"), userLogin);
 

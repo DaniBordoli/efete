@@ -17,7 +17,6 @@ var accountSchema = new Schema({
   cbu_cvu: {
     type: String,
     required: true,
-    
   },
   user: [
     {

@@ -1,33 +1,49 @@
 import React from "react";
-import { View, Text, FlatList, Button, TextInput } from "react-native";
+import { View, Text, FlatList, Button, ActivityIndicator } from "react-native";
 import { style } from "./style";
 
-export default ({ userAccounts, handleValue, handleSubmit, navigation }) => {
+export default ({
+  userAccounts,
+  handleValue,
+  handleSubmit,
+  transactionValue,
+  loading,
+  selectedAccount,
+}) => {
   return (
     <View>
-      <Text>Monto para Extraer</Text>
-      <TextInput>{}</TextInput>
+      {loading ? (
+        <View>
+          <Text>Monto para Extraer</Text>
+          <Text>{`$ ${transactionValue}`}</Text>
 
-      <FlatList
-        keyExtractor={(data) => data}
-        data={data}
-        renderItem={({ item }) => {
-          return (
-            <Button
-              style={style.button}
-              title={`$ ${item}`}
-              onPress={() => handleValue(item)}
-            />
-          );
-        }}
-      />
-      <Button
-        title="Realizar Transacción"
-        onPress={() => {
-          handleSubmit();
-          navigation.navigate("Home");
-        }}
-      />
+          <FlatList
+            keyExtractor={(userAccounts) => userAccounts._id}
+            data={userAccounts}
+            renderItem={({ item }) => {
+              return (
+                <Text onPress={() => handleValue(item)}>
+                  {item.nameEntity}
+                  <br />
+                  xxxx-xxxx-xxxx-
+                  {item.accountNumber.toString().slice(6)}
+                </Text>
+              );
+            }}
+          />
+          <Button
+            disabled={!selectedAccount._id}
+            title="Realizar Transacción"
+            onPress={() => {
+              handleSubmit();
+            }}
+          />
+        </View>
+      ) : (
+        <View>
+          <ActivityIndicator size="large" color="#00ff00" />
+        </View>
+      )}
     </View>
   );
 };

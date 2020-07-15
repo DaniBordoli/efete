@@ -7,7 +7,7 @@ const findAllTransactions = (req, res) => {
 };
 
 const findAllUserTransactions = (req, res) => {
-  // console.log("REQ User", req.params)
+  console.log("REQ User", req.user);
   Transaction.find({ user: req.params.id })
     .populate("user")
     .populate("agent")
@@ -33,9 +33,20 @@ const findOneUserTransacion = (req, res) => {
     .populate("user")
     .populate("agent")
     .then((transaction) => {
-      console.log("TRANSACTION USER SOLO", transaction);
       res.json(transaction);
     });
+};
+
+const createTransaction = (req, res) => {
+  Transaction.create(req.body).then((transaction) => {
+    return Transaction.findById(transaction._id)
+      .populate("user")
+      .populate("agent")
+      .populate("originAccount")
+      .then((transaction) => {
+        res.status(201).send(transaction);
+      });
+  });
 };
 
 module.exports = {
@@ -43,4 +54,5 @@ module.exports = {
   findOneUserTransacion,
   findAllTransactions,
   findAllAgentTransactions,
+  createTransaction,
 };
