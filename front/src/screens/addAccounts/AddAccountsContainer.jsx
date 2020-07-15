@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useDispatch } from "react-redux";
-import AddAccounts from "../accounts/AddAccounts";
+import AddAccounts from "../addAccounts/AddAccounts";
 import {View} from "react-native"
 import {addAccounts} from "../../redux/store/actions/accounts"
 

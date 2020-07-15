@@ -19,12 +19,12 @@ var accountSchema = new Schema({
     required: true,
     
   },
-  // user: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "users",
-  //   },
-  // ],
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+    },
+  ],
 });
 
 const Account = mongoose.model("accounts", accountSchema);
