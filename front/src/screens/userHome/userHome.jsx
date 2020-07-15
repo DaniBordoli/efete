@@ -9,7 +9,6 @@ const userHomeContainer = ({ userTransactions, navigation }) => {
    
     <View>
       <View>
-
       <Button
        title='Extraccion'
        onPress={()=> navigation.navigate('')}

@@ -13,7 +13,6 @@ export default ( { navigation }) => {
     dispatch(getUserTransactions('5f064320cefb0877fc05368b')); // Hardcodeado => Despues pasar Id.
   }, []);
 
-
   // useEffect(() => {
   //   console.log('Hola') Consologue cada vez que renderiza
   // }, [boolean]); renderiza cuando cambia el boooleano
