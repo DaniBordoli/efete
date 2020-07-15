@@ -37,7 +37,7 @@ export default ({ navigation }) => {
   const handleSubmit = () => {
     dispatch(logUser({ username: username, password: password })).then(
       (data) => {
-        if (data.user._id) navigation.navigate("Home");
+        if (data.user._id) navigation.navigate("User");
       }
     );
   };
