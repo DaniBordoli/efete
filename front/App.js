@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../front/src/screens/home/home";
-import userHomeContainer from "./src/screens/home/userHome/userHomeContainer";
+import userHomeContainer from "./src/screens/userHome/userHomeContainer";
 import EditUserProfileContainer from "./src/screens/home/EditUserProfile/EditUserProfileContainer";
 import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmount";
