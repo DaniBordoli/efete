@@ -11,6 +11,7 @@ export default (state = initialState, action) => {
       return { ...state, account: action.account };
     case GET_USER_ACCOUNTS:
       return { ...state, accounts: action.accounts };
+    
     default:
       return state;
   }

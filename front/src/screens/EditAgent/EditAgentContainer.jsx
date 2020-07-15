@@ -4,7 +4,7 @@ import EditAgent from "./EditAgent";
 import { useDispatch } from "react-redux";
 import { editAgent } from "../../redux/store/actions/agents";
 
-export default () => {
+export default ({ navigation }) => {
   // tengo los datos hardcodeados, falta agregar un useselector para traer los datos del usuario logueado y agrgarlos en los useState
   // user.name ? user.name:'' (agregar este ternario para esperar al back que busque los datos de usuario?)
   const [agent, setAgent] = useState({
@@ -44,6 +44,7 @@ export default () => {
         name={agent.name}
         address={agent.address}
         CUIL={agent.CUIL}
+        navigation={navigation}
       />
     </View>
   );

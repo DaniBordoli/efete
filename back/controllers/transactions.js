@@ -19,15 +19,14 @@ const findAllUserTransactions = (req, res) => {
     });
 };
 
-// const findAllAgentTransactions = (req, res) => {
-//   console.log('REQ AGENT', req.params)
-//   Transaction.find({ agent: req.params.agent})
-//    .populate("user")
-//    .populate("agent")
-//    .populate("originAccount")
-//    .populate("destinationAccount")
-//    .then((lista) => res.json(lista));
-// }
+const findAllAgentTransactions = (req, res) => {
+  Transaction.find({ agent: req.params.id })
+    .populate("user")
+    .populate("agent")
+    .populate("originAccount")
+    .populate("destinationAccount")
+    .then((lista) => res.json(lista));
+};
 
 const findOneUserTransacion = (req, res) => {
   Transaction.findById(req.params.id)
@@ -54,5 +53,6 @@ module.exports = {
   findAllUserTransactions,
   findOneUserTransacion,
   findAllTransactions,
+  findAllAgentTransactions,
   createTransaction,
 };

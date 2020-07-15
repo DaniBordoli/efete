@@ -1,5 +1,7 @@
 import axios from "axios";
-import { ADD_ACCOUNT, GET_USER_ACCOUNTS } from "../constants";
+import { ADD_ACCOUNT, GET_USER_ACCOUNTS} from "../constants";
+//import {IP} from '../../../../config'
+
 
 const add_account = (account) => {
   return {
@@ -15,6 +17,7 @@ const get_user_accounts = (accounts) => {
   };
 };
 
+
 export const addAccounts = (name, cbu, dni) => (dispatch) => {
   return axios
     .post("http://localhost:1337/api/accounts", {
@@ -29,3 +32,10 @@ export const fetchUserAccounts = (id) => (dispatch) =>
   axios
     .get(`http://localhost:1337/api/accounts/${id}`)
     .then((res) => dispatch(get_user_accounts(res.data)));
+
+
+export const deleteAccounts = (id) => (dispatch) =>
+  axios
+    .delete(`http://localhost:1337/api/accounts/${id}`)
+    .then((res) => dispatch(fetchUserAccounts()));
+    //axios.delete

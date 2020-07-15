@@ -1,24 +1,12 @@
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  Link,
-  Button,
-  ActivityIndicator,
-} from "react-native";
-import { style } from "./style";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { View, Text, Button, Image, Link, FlatList } from "react-native";
 
-export default ({ userTransactions, navigation, loading }) => {
+export default ({ navigation, userTransactions }) => {
+  //Tiene sentido poner un ternario si no estoy buscando algo al back y la info la paso por props?
   return (
     <View>
-      {loading ? (
+      {userTransactions ? (
         <View>
-          <Text>Movimientos</Text>
-
-          <View>{/* Espacio para las imagenes que linkean*/}</View>
           <FlatList
             keyExtractor={(userTransactions) => userTransactions._id}
             data={userTransactions}
@@ -42,20 +30,16 @@ export default ({ userTransactions, navigation, loading }) => {
               );
             }}
           ></FlatList>
-          <Button
-            title="ver todas las operaciones"
-            onPress={() =>
-              navigation.navigate("AllUserTransactions", {
-                userTransactions,
-              })
-            }
-          />
         </View>
       ) : (
         <View>
           <ActivityIndicator size="large" color="#00ff00" />
         </View>
       )}
+      <Button
+        title="Volver a mi perfil"
+        onPress={() => navigation.navigate("User")}
+      ></Button>
     </View>
   );
 };

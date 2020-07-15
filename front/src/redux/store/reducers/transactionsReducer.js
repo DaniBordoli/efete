@@ -3,6 +3,7 @@ import {
   FETCH_USER_TRANSACTIONS,
   FETCH_USER_TRANSACTION,
   SET_TRANSACTION,
+  FETCH_AGENT_TRANSACTIONS,
 } from "../constants";
 
 const initialState = {
@@ -10,8 +11,8 @@ const initialState = {
   userTransactions: [],
   userTransaction: {},
   transactions: [],
-  transactionValue: 0,
   transaction: {},
+  agentTransactions: [],
 };
 
 export default (state = initialState, action) => {
@@ -27,6 +28,9 @@ export default (state = initialState, action) => {
 
     case SET_TRANSACTION:
       return { ...state, transaction: action.transaction };
+
+    case FETCH_AGENT_TRANSACTIONS:
+      return { ...state, agentTransactions: action.agentTransactions };
 
     default:
       return state;

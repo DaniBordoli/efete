@@ -5,6 +5,7 @@ import {
   FETCH_USER_TRANSACTIONS,
   FETCH_USER_TRANSACTION,
   SET_TRANSACTION,
+  FETCH_AGENT_TRANSACTIONS,
 } from "../constants";
 
 export const fetch_transactions = (transactions) => {
@@ -34,6 +35,15 @@ const newTransaction = (transaction) => {
     transaction,
   };
 };
+
+const fetch_agent_transactions = (agentTransactions) => {
+  return {
+    type: FETCH_AGENT_TRANSACTIONS,
+    agentTransactions,
+  };
+};
+
+/////////////////////////////////////////////////////////////////////////////////////
 
 export const getTransactions = () => (dispatch) => {
   return axios
@@ -65,3 +75,11 @@ export const createTransaction = (transaction) => (dispatch) =>
   axios.post(`http://${IP}:1337/api/transactions`, transaction).then((res) => {
     dispatch(newTransaction(res.data));
   });
+export const getAgentTransactions = (id) => (dispatch) => {
+  return axios
+    .get(`http://localhost:1337/api/transactions/agent/${id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .then((transactions) => dispatch(fetch_agent_transactions(transactions)));
+};
