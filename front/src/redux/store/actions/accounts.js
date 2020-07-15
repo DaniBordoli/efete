@@ -8,7 +8,7 @@ const add_account = (account) => {
   };
 };
 
-const get_user_accounts = () => {
+const get_user_accounts = (accounts) => {
   return {
     type: GET_USER_ACCOUNTS,
     accounts,
@@ -25,7 +25,7 @@ export const addAccounts = (name, cbu, dni) => (dispatch) => {
     .then((res) => dispatch(add_account(res.data)));
 };
 
-export const fetchUserAccounts = () => (dispatch) =>
+export const fetchUserAccounts = (id) => (dispatch) =>
   axios
-    .get("http://localhost:1337/api/accounts")
+    .get(`http://localhost:1337/api/accounts/${id}`)
     .then((res) => dispatch(get_user_accounts(res.data)));

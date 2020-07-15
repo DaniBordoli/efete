@@ -11,7 +11,12 @@ const login_user = (user) => {
 
 export const logUser = (user) => (dispatch) => {
   return axios
-    .post(`http://${IP}:1337/api/users/login`, user)
+    .post(`http://${IP}:1337/api/users/login`, user, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
     .then((res) => dispatch(login_user(res.data)))
     .catch(() =>
       dispatch(login_user({ message: "El usuario o contraseña no existe" }))
@@ -38,3 +43,6 @@ export const editUser = (userData) => () => {
     .then((res) => console.log("Usuario editado"))
     .catch((err) => console.log(err, "ERROR"));
 };
+
+export const verifyEmail = (id) => (dispatch) =>
+  axios.get(`http://${IP}:1337/api/users/sendVerificationEmail/${id}`);
