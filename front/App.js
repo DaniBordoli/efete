@@ -12,6 +12,7 @@ import registerContainer from "./src/screens/register/registerContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmountContainer";
 import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
 import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
+import ConfAmountAgentContainer from './src/screens/confAmountAgent/ConfAmountAgentContainer'
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default () => {
             <Stack.Screen name="Register" component={registerContainer} />
             <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
             <Stack.Screen name="selectOtherAmount" component={SelectOtherAmountContainer}/>
+            <Stack.Screen name="ConfAmountAgent" component={ConfAmountAgentContainer}/>
           <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
         </Stack.Navigator>
       </NavigationContainer>

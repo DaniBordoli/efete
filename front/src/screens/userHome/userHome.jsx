@@ -1,20 +1,26 @@
 import React from "react";
-import { View, Text, FlatList, Image, Link, Button } from "react-native";
-import {style} from './style'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { View, Text, FlatList, Image, Link, Button, TouchableOpacity } from "react-native";
+import {style} from './style';
 
 
-export default ({ userTransactions, navigation }) => {
+const userHomeContainer = ({ userTransactions, navigation }) => {
 
   return (
    
     <View>
       <View>
-        <Text>Movimientos</Text>
+
+      <Button
+       title='Extraccion'
+       onPress={()=> navigation.navigate('')}
+       />
+
+       <Button
+       title='Perfil Agente'
+       onPress={()=> navigation.navigate('')}
+       />
       
-      <View>
-       {/* Espacio para las imagenes que linkean*/}
-      </View>  
+        <Text>Movimientos</Text>
         <FlatList
          keyExtractor={(userTransactions) => userTransactions._id}
          data={userTransactions}
@@ -35,4 +41,4 @@ export default ({ userTransactions, navigation }) => {
   );
 };
 
-
+export default userHomeContainer
