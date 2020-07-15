@@ -45,7 +45,7 @@ export default ({
       <Button
         title="Registrarte"
         onPress={() => {
-          navigation.navigate("Registro");
+          navigation.navigate("Register");
         }}
       />
     </View>
