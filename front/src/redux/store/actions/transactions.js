@@ -71,7 +71,7 @@ export const getUserTransaction = (id) => (dispatch) => {
 
 export const getAgentTransactions = (id) => (dispatch) => {
   return axios
-    .get(`http://localhost:1337/api/transactions/agent`, id)
+    .get(`http://localhost:1337/api/transactions/agent/${id}`)
     .then((res) => {
       return res.data;
     })
