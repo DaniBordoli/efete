@@ -2,12 +2,12 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../front/src/screens/home/home";
-import userHomeContainer from "./src/screens/home/userHome/userHomeContainer";
-import EditUserProfileContainer from "./src/screens/home/EditUserProfile/EditUserProfileContainer";
+import userHomeContainer from "./src/screens/userHome/userHomeContainer";
+import EditUserProfileContainer from "./src/screens//EditUserProfile/EditUserProfileContainer";
 import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmount";
 import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
-import EditAgentContainer from "./src/screens/home/EditAgent/EditAgentContainer";
+import EditAgentContainer from "./src/screens/EditAgent/EditAgentContainer";
 import store from "./src/redux/store/index";
 import SingleUserTransactionContainer from "./src/screens/userTransaction/SingleUserTransactionContainer";
 import { Provider } from "react-redux";
@@ -33,9 +33,9 @@ export default () => {
           <Stack.Screen name="Verificar" component={verifityEmail} />
           <Stack.Screen name="successRegister" component={successRegister} />
           <Stack.Screen name="Register" component={registerContainer} />
-          <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
+          <Stack.Screen name="SelectAmount" component={SelectAmountContainer} />
           <Stack.Screen
-            name="selectOtherAmount"
+            name="SelectOtherAmount"
             component={SelectOtherAmountContainer}
           />
           <Stack.Screen
