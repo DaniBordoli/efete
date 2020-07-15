@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, TextInput, Button} from 'react-native';
 
 const AddAccount = ({handleNameAccount,handleDni, handleCbu, handleSubmit, account, navigation}) => {
@@ -7,7 +7,7 @@ const AddAccount = ({handleNameAccount,handleDni, handleCbu, handleSubmit, accou
     <View>
       <Text>Agregar Cuenta</Text>
 
-      <Text>Nombre del Establecimiento</Text>
+      <Text>Seleccione Entidad Bancaria</Text>
       <TextInput
         style={styles.input}
         autoCapitalize="none"

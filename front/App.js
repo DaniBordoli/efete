@@ -5,7 +5,7 @@ import Home from "../front/src/screens/home/home";
 import userHomeContainer from "./src/screens/userHome/userHomeContainer";
 import AgentHomeContainer from "./src/screens/agentHome/AgentHomeContainer";
 import EditUserProfileContainer from "./src/screens//EditUserProfile/EditUserProfileContainer";
-import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
+import AddAccountsContainer from "./src/screens/addAccounts/AddAccountsContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmount";
 import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
 import EditAgentContainer from "./src/screens/EditAgent/EditAgentContainer";
@@ -19,6 +19,7 @@ import verifityEmail from "./src/screens/verifityEmail/verifityEmail";
 import successRegister from "./src/screens/verifityEmail/successRegister";
 import registerContainer from "./src/screens/register/registerContainer";
 import LoginContainer from "./src/screens/login/LoginContainer";
+import AccountsContainer from "./src/screens/accounts/AccountsContainer";
 
 const Stack = createStackNavigator();
 
@@ -26,7 +27,7 @@ export default () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Agent">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="User" component={userHomeContainer} />
           <Stack.Screen name="Agent" component={AgentHomeContainer} />
@@ -64,6 +65,7 @@ export default () => {
             component={EditAgentContainer}
           />
           <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
+          <Stack.Screen name="Accounts" component={AccountsContainer} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
