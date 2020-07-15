@@ -2,46 +2,43 @@ const Transaction = require("../models/transactions");
 require("../config/db");
 
 const charmander = {
-    amount: 2350,
-    comissionTotal: 50,
-    comissionEfete: 25,
-    comissionAgent: 25,
-    user: {
-        "_id": "5f064320cefb0877fc05368b",
-    },
-    agent: {"_id" : "5f06437f5739037841c7195f"},
-    originAccount: {"_id" : "5f06440f400ecf7891a2fa42"},
-    destinationAccount: {"_id" : "5f06440f400ecf7891a2fa45"},
-
-}
+  amount: 2350,
+  comissionTotal: 50,
+  comissionEfete: 25,
+  comissionAgent: 25,
+  user: {
+    _id: "5f06118a3988da4a1972ad61",
+  },
+  agent: { _id: "5f0613df7611854c3595635c" },
+  originAccount: { _id: "5f0617933db0cd510a503a0f" },
+  destinationAccount: { _id: "5f0617933db0cd510a503a12" },
+};
 
 const bulbasaur = {
-    amount: 500,
-    comissionTotal: 50,
-    comissionEfete: 25,
-    comissionAgent: 25,
-    user: {
-        "_id": "5f064320cefb0877fc05368c",
-    },
-    agent: {"_id" :"5f06437f5739037841c7195d"},
-    originAccount: {"_id" :"5f06440f400ecf7891a2fa44"},
-    destinationAccount: {"_id" :"5f06440f400ecf7891a2fa42"},
-
-}
+  amount: 500,
+  comissionTotal: 50,
+  comissionEfete: 25,
+  comissionAgent: 25,
+  user: {
+    _id: "5f06118a3988da4a1972ad62",
+  },
+  agent: { _id: "5f0613df7611854c3595635b" },
+  originAccount: { _id: "5f0617933db0cd510a503a11" },
+  destinationAccount: { _id: "5f0617933db0cd510a503a11" },
+};
 
 const squirtle = {
-    amount: 1000,
-    comissionTotal: 50,
-    comissionEfete: 25,
-    comissionAgent: 25,
-    user: {
-        "_id": "5f064320cefb0877fc05368d",
-    },
-    agent: { "_id": "5f06437f5739037841c7195e" },
-    originAccount: {"_id" :"5f06440f400ecf7891a2fa45"},
-    destinationAccount: { "_id": "5f06440f400ecf7891a2fa44" },
-
-}
+  amount: 1000,
+  comissionTotal: 50,
+  comissionEfete: 25,
+  comissionAgent: 25,
+  user: {
+    _id: "5f06118a3988da4a1972ad63",
+  },
+  agent: { _id: "5f0613df7611854c3595635a" },
+  originAccount: { _id: "5f0617933db0cd510a503a12" },
+  destinationAccount: { _id: "5f0617933db0cd510a503a0f" },
+};
 
 Transaction.insertMany([charmander, bulbasaur, squirtle]).then(() => {
   console.log("Ready to go!");

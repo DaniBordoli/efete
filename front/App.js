@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../front/src/screens/home/home";
 import userHomeContainer from "./src/screens/userHome/userHomeContainer";
+import AgentHomeContainer from "./src/screens/agentHome/AgentHomeContainer";
 import EditUserProfileContainer from "./src/screens//EditUserProfile/EditUserProfileContainer";
 import AddAccountsContainer from "./src/screens/addAccounts/AddAccountsContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmount";
@@ -10,6 +11,9 @@ import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOt
 import EditAgentContainer from "./src/screens/EditAgent/EditAgentContainer";
 import store from "./src/redux/store/index";
 import SingleUserTransactionContainer from "./src/screens/userTransaction/SingleUserTransactionContainer";
+import SingleAgentTransactionContainer from "./src/screens/agentTransaction/SingleAgentTransactionContainer";
+import AllAgentTransactionsContainer from "./src/screens/allAgentTransactions/AllAgentTransactionsContainer";
+import AllUserTransactionsContainer from "./src/screens/allUserTransactions/AllUserTransactionsContainer";
 import { Provider } from "react-redux";
 import verifityEmail from "./src/screens/verifityEmail/verifityEmail";
 import successRegister from "./src/screens/verifityEmail/successRegister";
@@ -23,12 +27,25 @@ export default () => {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Accounts">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="User" component={userHomeContainer} />
+          <Stack.Screen name="Agent" component={AgentHomeContainer} />
           <Stack.Screen
             name="SingleUserTransaction"
             component={SingleUserTransactionContainer}
+          />
+          <Stack.Screen
+            name="SingleAgentTransaction"
+            component={SingleAgentTransactionContainer}
+          />
+          <Stack.Screen
+            name="AllAgentTransactions"
+            component={AllAgentTransactionsContainer}
+          />
+          <Stack.Screen
+            name="AllUserTransactions"
+            component={AllUserTransactionsContainer}
           />
           <Stack.Screen name="Login" component={LoginContainer} />
           <Stack.Screen name="Verificar" component={verifityEmail} />
