@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text, FlatList, Button } from "react-native";
+import { View, Text, FlatList, Button, TextInput } from "react-native";
 import { style } from "./style";
 
-export default ({ handleValue, navigation, handleSubmit }) => {
-  const data = [100, 200, 500, 1000, 2000];
+export default ({ userAccounts, handleValue, handleSubmit, navigation }) => {
   return (
     <View>
-      <Text>Seleccionar Monto</Text>
+      <Text>Monto para Extraer</Text>
+      <TextInput>{}</TextInput>
 
       <FlatList
         keyExtractor={(data) => data}
@@ -22,11 +22,7 @@ export default ({ handleValue, navigation, handleSubmit }) => {
         }}
       />
       <Button
-        title="Seleccionar monto"
-        onPress={() => navigation.navigate("SelectOtherAmount")}
-      />
-      <Button
-        title="Confirmar"
+        title="Realizar Transacción"
         onPress={() => {
           handleSubmit();
           navigation.navigate("Home");

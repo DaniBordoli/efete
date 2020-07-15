@@ -19,7 +19,7 @@ router.get("/verify", function (req, res) {
         user.save().then(() => {
           console.log("email is verified");
 
-          res.redirect('http://localhost:19006/successRegister')
+          res.redirect("http://localhost:19006/successRegister");
         });
       } else {
         console.log("email is not verified");
@@ -35,6 +35,6 @@ router.post("/login", passport.authenticate("local"), userLogin);
 
 router.post("/logout", userLogout);
 
-router.patch("/:id/editprofile", editProfileUser);
+router.patch("/editprofile", editProfileUser);
 
 module.exports = router;

@@ -1,12 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { editProfileAgent,
-    editDailyAmount,
+const { editProfileAgent, editDailyAmount } = require("../controllers/agents");
 
-} = require("../controllers/agents");
-
-router.patch("/:id/editprofile", editProfileAgent);
-router.patch("/:id/editdailyamount", editDailyAmount);
-
+router.patch("/editprofile", editProfileAgent);
+router.patch("/editdailyamount", editDailyAmount);
 
 module.exports = router;
