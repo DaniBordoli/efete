@@ -4,14 +4,13 @@ const router = express.Router();
 const {
   findAllUserTransactions,
   findOneUserTransacion,
-  // findAllAgentTransactions,
-  findAllTransactions
+  findAllAgentTransactions,
+  findAllTransactions,
 } = require("../controllers/transactions");
 
-router.get('/', findAllTransactions)
+router.get("/", findAllTransactions);
 router.get("/:id", findAllUserTransactions);
-// router.get("/", findAllAgentTransactions)
+router.get("/agent/:id", findAllAgentTransactions);
 router.get("/user/:id", findOneUserTransacion);
-
 
 module.exports = router;

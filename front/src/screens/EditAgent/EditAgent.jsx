@@ -1,7 +1,14 @@
 import React from "react";
 import { View, Text, TextInput, Button, Image } from "react-native";
 
-export default ({ handleSubmit, handleChange, name, address, CUIL }) => {
+export default ({
+  handleSubmit,
+  handleChange,
+  name,
+  address,
+  CUIL,
+  navigation,
+}) => {
   return (
     <View>
       <Text>Datos de tu Negocio</Text>
@@ -32,6 +39,11 @@ export default ({ handleSubmit, handleChange, name, address, CUIL }) => {
         title="Guardar cambios"
         color="#841584"
         alert
+      />
+
+      <Button
+        title="Volver a Home"
+        onPress={() => navigation.navigate("Agent")}
       />
     </View>
   );
