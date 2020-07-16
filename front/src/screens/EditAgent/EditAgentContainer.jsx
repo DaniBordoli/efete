@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Alert } from "react-native";
 import EditAgent from "./EditAgent";
 import { useDispatch, useSelector } from "react-redux";
-import { editAgent } from "../../redux/store/actions/agents";
+import { editAgent, fetchAgent } from "../../redux/store/actions/agents";
 
 export default ({ navigation }) => {
   const agentInfo = useSelector((state) => state.agents.agent);
@@ -10,6 +10,12 @@ export default ({ navigation }) => {
   const [agent, setAgent] = useState(agentInfo);
 
   const dispatch = useDispatch();
+
+  const userId = useSelector((state) => state.users.user._id);
+
+  useEffect(() => {
+    dispatch(fetchAgent(userId));
+  }, []);
 
   function handleChange(e, name) {
     setAgent({ ...agent, [name]: e });

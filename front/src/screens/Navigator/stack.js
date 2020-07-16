@@ -42,7 +42,7 @@ export default ({ navigation }) => {
 }) */
 
   return (
-    <Stack.Navigator initialRouteName="Accounts">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Home"
         component={Home}
