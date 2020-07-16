@@ -2,7 +2,7 @@ import axios from "axios";
 import { IP } from "../../../../config";
 import { LOGIN_USER } from "../constants";
 
-const login_user = (user) => {
+export const login_user = (user) => {
   return {
     type: LOGIN_USER,
     user,

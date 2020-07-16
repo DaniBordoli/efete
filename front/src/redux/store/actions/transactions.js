@@ -77,12 +77,14 @@ export const getUserTransaction = (id) => (dispatch) => {
     .then((transaction) => dispatch(fetch_users_transaction(transaction)));
 };
 
-export const updateAmountAgent = () => (dispatch) => {
+export const updateAmountAgent = (value) => (dispatch) => {
   return axios
-    .post(`http://${IP}:1337/api/agent/editdailyamount`)
-    .then((res) => res.data)
-    .then((data) => dispatch(newAgtTransactionValue(data)));
-};
+  .post(`http://${IP}:1337/api/agent/editdailyamount`, value)
+  .then(res => {console.log('RES.DATA', res.data)
+    return res.data})
+  .then((amount=> dispatch(newAgtTransactionValue(amount))))
+}
+
 
 export const createTransaction = (transaction) => (dispatch) =>
   axios.post(`http://${IP}:1337/api/transactions`, transaction).then((res) => {

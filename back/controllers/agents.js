@@ -1,4 +1,6 @@
 const Agent = require("../models/agents");
+const User = require("../models/users");
+
 
 const editProfileAgent = (req, res) => {
   let id = req.body._id;
@@ -18,6 +20,30 @@ const editDailyAmount = (req, res) => {
   });
 };
 
+const createAgent = (req, res) => {
+  console.log('REQ.bo', req.body) 
+  Agent.create(req.body)
+   .then((agent)=>{
+    User.findOne({_id: req.body.user})
+    .then((user)=>{
+      user.updateOne({role : 'agent'})
+     .then(()=>{
+      return User.findOne({_id: req.body.user})})
+      .then((userUpdated)=>{ console.log('userUpdated', userUpdated)
+      res.status(201).json(userUpdated)
+     })
+    })
+  }).catch((err)=>{
+      res.status(500).json(err)
+   })
+}
+
+const getAllUsers = (req, res) => {
+  Agent.find()
+  .then((agents)=>{
+      res.json(agents)
+  })
+}
 const getAgent = (req, res) => {
   let userId = req.params.id;
   Agent.findOne({ user: userId }).then((agent) => {
@@ -28,5 +54,7 @@ const getAgent = (req, res) => {
 module.exports = {
   editProfileAgent,
   editDailyAmount,
-  getAgent,
+  createAgent,
+  getAllUsers,
+  getAgent
 };
