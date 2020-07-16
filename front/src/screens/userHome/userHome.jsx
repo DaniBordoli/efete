@@ -21,6 +21,8 @@ export default ({ userTransactions, navigation, loading }) => {
             onPress={() => {
               navigation.navigate("SelectAmount");
             }}
+            title="Perfil Agente"
+            onPress={() => navigation.navigate("Agent")}
           />
           <Text>Movimientos</Text>
 

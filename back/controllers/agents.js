@@ -26,9 +26,16 @@ const changeDailyAmount = (req, res) => {
       });
   });
 };
+const getAgent = (req, res) => {
+  let userId = req.params.id;
+  Agent.findOne({ user: userId }).then((agent) => {
+    res.status(200).json(agent);
+  });
+};
 
 module.exports = {
   editProfileAgent,
   editDailyAmount,
   changeDailyAmount,
+  getAgent,
 };

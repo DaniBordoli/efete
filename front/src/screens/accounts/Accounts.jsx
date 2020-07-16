@@ -8,26 +8,33 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-const Accounts = ({ accountsUser, loading, navigation }) => {
+const Accounts = ({ accountsUser, loading, handleDelete }) => {
+  console.log("accountsuser", accountsUser);
+
   return (
     <View>
       {loading ? (
         <View>
-          <Text> CUENTAS PRINCIPALES</Text>
+          <Text> CUENTAS ASOCIADAS</Text>
+
           <FlatList
-            keyExtractor={(account) => account._id}
+            keyExtractor={(accountsUser) => accountsUser._id}
             data={accountsUser}
-            renderItem={({ item }) => {
+            renderItem={({ item, index }) => {
               return (
-                <Button
-                  //   style={style.button}
-                  title={item.nameEntity}
-                  onPress={() =>
-                    navigation.navigate("SingleAccount", {
-                      account: item,
-                    })
-                  }
-                />
+                <View>
+                  <Text>Entidad: {item.nameEntity}</Text>
+                  <Text>
+                    Cuenta: {item.accountNumber}
+                    <Button
+                      title="ELIMINAR CUENTA"
+                      onPress={() => {
+                        console.log("item", item._id);
+                        handleDelete(item._id);
+                      }}
+                    />
+                  </Text>
+                </View>
               );
             }}
           />

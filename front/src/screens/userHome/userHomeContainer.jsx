@@ -6,7 +6,6 @@ import UserHome from "./userHome";
 import { View } from "react-native";
 
 export default ({ navigation, route }) => {
-  console.log("LLEGA BIEN EL USUARIO", route.params.user);
   const [loading, setLoader] = useState(false);
 
   const dispatch = useDispatch();
@@ -17,12 +16,8 @@ export default ({ navigation, route }) => {
   useEffect(() => {
     dispatch(getUserTransactions(route.params.user)).then(() =>
       setLoader(true)
-    ); // Hardcodeado => Despues pasar Id.
+    );
   }, []);
-
-  // useEffect(() => {
-  //   console.log('Hola') Consologue cada vez que renderiza
-  // }, [boolean]); renderiza cuando cambia el boooleano
 
   return (
     <View>
