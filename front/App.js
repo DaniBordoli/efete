@@ -5,7 +5,7 @@ import Home from "../front/src/screens/home/home";
 import userHomeContainer from "./src/screens/userHome/userHomeContainer";
 import AgentHomeContainer from "./src/screens/agentHome/AgentHomeContainer";
 import EditUserProfileContainer from "./src/screens//EditUserProfile/EditUserProfileContainer";
-import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
+import AddAccountsContainer from "./src/screens/addAccounts/AddAccountsContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmountContainer";
 import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
 import EditAgentContainer from "./src/screens/EditAgent/EditAgentContainer";

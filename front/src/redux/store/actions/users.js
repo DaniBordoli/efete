@@ -13,9 +13,6 @@ export const logUser = (user) => (dispatch) => {
   return axios
     .post(`http://${IP}:1337/api/users/login`, user, {
       withCredentials: true,
-      headers: {
-        "Content-Type": "application/json",
-      },
     })
     .then((res) => dispatch(login_user(res.data)))
     .catch(() =>
