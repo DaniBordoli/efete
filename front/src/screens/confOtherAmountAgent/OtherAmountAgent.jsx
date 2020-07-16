@@ -41,10 +41,15 @@ const OtherAmountAgent = ({ handlerValue, handlerSubmit, value, navigation})=>{
     title="Confirmar"
     onPress={() => {
     handlerSubmit();
-    navigation.navigate("Home"); // Deberia llevar a una vista de confirmación
+    navigation.navigate("ConfirmAgentLoad"); // Deberia llevar a una vista de confirmación
     }}
     />
     }
+
+         <Button
+         title="Volver"
+         onPress={()=> navigation.goBack()}
+         /> 
        
        
     <Button

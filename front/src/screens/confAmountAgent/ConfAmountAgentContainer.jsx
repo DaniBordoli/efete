@@ -12,6 +12,7 @@ const ConfAmountAgentContainer = ({ navigation }) => {
   const [value, setValue] = useState(0)
 
   const handlerValue = (item) =>{
+    const total =+ item
     setValue(item)
   }
 

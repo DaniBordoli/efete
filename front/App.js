@@ -5,7 +5,7 @@ import Home from "../front/src/screens/home/home";
 import userHomeContainer from "./src/screens/userHome/userHomeContainer";
 import AgentHomeContainer from "./src/screens/agentHome/AgentHomeContainer";
 import EditUserProfileContainer from "./src/screens//EditUserProfile/EditUserProfileContainer";
-import AddAccountsContainer from "./src/screens/accounts/AddAccountsContainer";
+import AddAccountsContainer from "./src/screens/addAccounts/AddAccountsContainer";
 import SelectAmountContainer from "./src/screens/selectAmount/SelectAmountContainer";
 import SelectOtherAmountContainer from "./src/screens/selectOtherAmount/SelectOtherAmountContainer";
 import EditAgentContainer from "./src/screens/EditAgent/EditAgentContainer";
@@ -21,7 +21,7 @@ import registerContainer from "./src/screens/register/registerContainer";
 import LoginContainer from "./src/screens/login/LoginContainer";
 import ConfAmountAgentContainer from './src/screens/confAmountAgent/ConfAmountAgentContainer'
 import OtherAmountAgentContainer from './src/screens/confOtherAmountAgent/OtherAmountAgentContainer'
-import ConfirmAgentLoad from './src/screens/ConfirmAgentLoad/ConfirmAgentLoad'
+import ConfirmAgentLoad from './src/screens/ConfirmAgentLoad/ConfirmAgentLoadContainer'
 import SelectAccountContainer from "./src/screens/selectAccount/SelectAccountContainer";
 import TransactionOkContainer from "./src/screens/transactionOk/TransactionOkContainer";
 import AccountsContainer from "./src/screens/accounts/AccountsContainer";
@@ -41,10 +41,6 @@ export default () => {
             name="User" 
             component={userHomeContainer} 
             />
-             <Stack.Screen 
-             name="SingleUserTransaction" 
-             component={SingleUserTransactionContainer} 
-             />
             <Stack.Screen 
             name="successRegister" 
             component={successRegister} 
@@ -58,10 +54,6 @@ export default () => {
             component={ConfirmAgentLoad}
             />
             <Stack.Screen 
-            name="Register" 
-            component={registerContainer} 
-            />
-            <Stack.Screen 
             name="selectAmount" 
             component={SelectAmountContainer} 
             />
@@ -73,17 +65,9 @@ export default () => {
             name="Login" 
             component={LoginContainer} 
             />
-            <Stack.Screen 
-            name="Verificar" 
-            component={verifityEmail} 
-            />
             <Stack.Screen
               name="SelectOtherAmount"
               component={SelectOtherAmountContainer}
-            />
-            <Stack.Screen
-              name="EditUserProfile"
-              component={EditUserProfileContainer}
             />
             <Stack.Screen
               name="EditAgentProfile"
@@ -106,16 +90,8 @@ export default () => {
             component={AllUserTransactionsContainer}
           />
           <Stack.Screen 
-          name="Login" 
-          component={LoginContainer} 
-          />
-          <Stack.Screen 
           name="Verificar" 
           component={verifityEmail} 
-          />
-          <Stack.Screen 
-          name="successRegister" 
-          component={successRegister} 
           />
           <Stack.Screen 
           name="Register" 
@@ -126,16 +102,8 @@ export default () => {
           component={SelectAmountContainer} 
           />
           <Stack.Screen
-            name="SelectOtherAmount"
-            component={SelectOtherAmountContainer}
-          />
-          <Stack.Screen
             name="EditUserProfile"
             component={EditUserProfileContainer}
-          />
-          <Stack.Screen
-            name="EditAgentProfile"
-            component={EditAgentContainer}
           />
           <Stack.Screen 
           name="AddAccounts" 
