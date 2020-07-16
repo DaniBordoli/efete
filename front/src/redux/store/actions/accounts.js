@@ -1,7 +1,10 @@
 import axios from "axios";
-import { ADD_ACCOUNT, GET_USER_ACCOUNTS} from "../constants";
-//import {IP} from '../../../../config'
-
+import {
+  ADD_ACCOUNT,
+  GET_USER_ACCOUNTS,
+  GET_USER_SINGLE_ACCOUNT,
+} from "../constants";
+import { IP } from "../../../../config";
 
 const add_account = (account) => {
   return {
@@ -17,25 +20,36 @@ const get_user_accounts = (accounts) => {
   };
 };
 
+const get_user_single_account = (account) => {
+  return {
+    type: GET_USER_SINGLE_ACCOUNT,
+    account,
+  };
+};
 
-export const addAccounts = (name, cbu, dni) => (dispatch) => {
+export const addAccounts = (name, cbu, accountNumber, user) => (dispatch) => {
   return axios
-    .post("http://localhost:1337/api/accounts", {
+    .post(`http://${IP}:1337/api/accounts`, {
       nameEntity: name,
       cbu_cvu: cbu,
-      accountNumber: dni,
+      accountNumber: accountNumber,
+      user: user,
     })
     .then((res) => dispatch(add_account(res.data)));
 };
 
 export const fetchUserAccounts = (id) => (dispatch) =>
   axios
-    .get(`http://localhost:1337/api/accounts/${id}`)
+    .get(`http://${IP}:1337/api/accounts/${id}`)
     .then((res) => dispatch(get_user_accounts(res.data)));
 
-
-export const deleteAccounts = (id,userId) => (dispatch) =>
+export const fetchUserSingleAccount = (id) => (dispatch) =>
   axios
-    .delete(`http://localhost:1337/api/accounts/${id}/${userId}`)
-    .then((res) => dispatch(get_user_accounts(res.data)));
-    //axios.delete
+    .get(`http://${IP}:1337/api/accounts/user/${id}`)
+    .then((res) => dispatch(get_user_single_account(res.data)));
+
+export const deleteAccounts = (id, userId) => (dispatch) =>
+  axios.delete(`http://${IP}:1337/api/accounts/${id}/${userId}`).then((res) => {
+    dispatch(get_user_single_account({}));
+    dispatch(get_user_accounts(res.data));
+  });

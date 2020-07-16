@@ -3,24 +3,38 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import SingleAccount from "./SingleAccount";
 import { View } from "react-native";
-import { fetchUserAccounts } from "../../redux/store/actions/accounts";
+import {
+  deleteAccounts,
+  fetchUserSingleAccount,
+} from "../../redux/store/actions/accounts";
 
 export default ({ navigation, route }) => {
-  console.log("CUENTA PASADA POR ROUTE", route.params.account);
   const dispatch = useDispatch();
-  const [loading, setLoader] = useState(false);
 
-  const accountsUser = useSelector((state) => state.accounts.accounts);
+  const user = useSelector((state) => state.users.user);
+  const account = useSelector((state) => state.accounts.account);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchUserAccounts("5f0f14c1830a243382d6c6aa")).then(() => {
-      setLoader(true);
+    dispatch(fetchUserSingleAccount(route.params.account._id)).then(() => {
+      setLoading(true);
     });
+    // dispatch(fetchUserAccounts(user._id))
   }, []);
+
+  const handleDelete = (accountId) => {
+    // dispatch(deleteAccounts(accountId, "5f0f14c1830a243382d6c6aa"));
+    dispatch(deleteAccounts(accountId, user._id));
+  };
 
   return (
     <View>
-      <SingleAccount account={route.params.account} navigation={navigation} />
+      <SingleAccount
+        account={account}
+        navigation={navigation}
+        handleDelete={handleDelete}
+        loading={loading}
+      />
     </View>
   );
 };

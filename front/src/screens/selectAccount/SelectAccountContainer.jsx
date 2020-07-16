@@ -50,15 +50,6 @@ export default ({ navigation, route }) => {
       });
   };
 
-  // const handleAgentDailyAmount = () => {
-  //   dispatch(
-  //     changeDailyAmount({
-  //       id: "5f0632f8d75672228cc337c4",
-  //       amount: route.params.value,
-  //     })
-  //   );
-  // };
-
   return (
     <View>
       <SelectAccount

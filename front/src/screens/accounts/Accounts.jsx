@@ -8,9 +8,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-const Accounts = ({ accountsUser, loading, handleDelete }) => {
-  console.log("accountsuser", accountsUser);
-
+const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
   return (
     <View>
       {loading ? (
@@ -23,17 +21,22 @@ const Accounts = ({ accountsUser, loading, handleDelete }) => {
             renderItem={({ item, index }) => {
               return (
                 <View>
-                  <Text>Entidad: {item.nameEntity}</Text>
-                  <Text>
-                    Cuenta: {item.accountNumber}
-                    <Button
-                      title="ELIMINAR CUENTA"
-                      onPress={() => {
-                        console.log("item", item._id);
-                        handleDelete(item._id);
-                      }}
-                    />
+                  <Text
+                    onPress={() =>
+                      navigation.navigate("SingleAccount", { account: item })
+                    }
+                  >
+                    <Text>Entidad: {item.nameEntity}</Text>
+                    <br />
+                    <Text>Cuenta: {item.accountNumber}</Text>
                   </Text>
+                  <Button
+                    title="ELIMINAR CUENTA"
+                    onPress={() => {
+                      console.log("item", item._id);
+                      handleDelete(item._id);
+                    }}
+                  />
                 </View>
               );
             }}
