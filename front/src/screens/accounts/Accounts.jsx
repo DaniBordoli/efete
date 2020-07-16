@@ -3,34 +3,43 @@ import { View, Text, StyleSheet, Button, FlatList, ActivityIndicator} from 'reac
 
 
 
-const Accounts = ({accountsUser,loading}) => {
+const Accounts = ({accountsUser,loading,handleDelete}) => {
     console.log("accountsuser",accountsUser)
 
     return (
         <View>
             {loading?
             <View> 
-                <Text> CUENTAS PRINCIPALES</Text>
-                <FlatList
-                    keyExtractor={(data) => data}
-                    data={data}
-                    renderItem={({ item }) => {
-                    return (
-                        <Button
-                        style={style.button}
-                        title={`$ ${item}`}
-                        onPress={() => handleValue(item)}
-            />
-          );
-        }}
-      />
+                <Text> CUENTAS ASOCIADAS</Text>
+                
+            <FlatList
+                keyExtractor={(accountsUser) => accountsUser._id}
+                data={accountsUser}
+                renderItem={({ item,index }) => {
+                  return (
+                    <View>
+                      <Text>Entidad: {item.nameEntity}</Text>
+                      <Text>Cuenta: {item.accountNumber}
+                      <Button
+                        title="ELIMINAR CUENTA"
+                        onPress={() =>
+                        {console.log('item',item._id)
+                        handleDelete(item._id)}
+                        }
+                      />
+                      </Text>
+                      
+                    </View>
+                  );
+                }}
+              ></FlatList>
             </View> : 
                 <View>
                     <ActivityIndicator size="large" color="#00ff00" />
                 </View>
+                    
             }
-            
-            
+
         </View>
     )
 }

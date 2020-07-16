@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {useEffect} from 'react';
 import Accounts from "../accounts/Accounts";
 import {View} from "react-native"
-import { fetchUserAccounts } from '../../redux/store/actions/accounts'
+import { fetchUserAccounts, deleteAccounts } from '../../redux/store/actions/accounts'
 
 
 
@@ -12,6 +12,7 @@ export default ({navigation}) => {
   const [loading,setLoader] = useState (false)
 
   const accountsUser = useSelector((state) => state.accounts.accounts)
+  const user = useSelector((state) => state.users.user)
 
   useEffect(()=>{
     dispatch(fetchUserAccounts('5f0621025f0a913d445f2baf'))
@@ -20,7 +21,10 @@ export default ({navigation}) => {
     })
   },[])
 
-  
+  const handleDelete = (accountId) => { 
+    dispatch(deleteAccounts(accountId, '5f0621025f0a913d445f2baf')) 
+    //dispatch(deleteAccounts(accountId, user._id)) 
+  }
 
   return (
     <View>
@@ -28,6 +32,7 @@ export default ({navigation}) => {
         navigation={navigation}
         accountsUser={accountsUser}
         loading={loading}
+        handleDelete={handleDelete}
         
       />
     </View>
