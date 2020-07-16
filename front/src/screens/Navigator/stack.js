@@ -60,7 +60,7 @@ export default ({ navigation }) => {
         }}
       />
       <Stack.Screen
-        name="SingleAgentTransactionContainer"
+        name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
       />
       <Stack.Screen name="User" component={userHomeContainer} />

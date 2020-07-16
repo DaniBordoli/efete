@@ -16,6 +16,10 @@ export default ({ userTransactions, navigation, loading }) => {
     <View>
       {loading ? (
         <View>
+          <Button
+            title="Perfil Agente"
+            onPress={() => navigation.navigate("Agent")}
+          />
           <Text>Movimientos</Text>
 
           <View>{/* Espacio para las imagenes que linkean*/}</View>
