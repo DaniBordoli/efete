@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logUser } from "../../redux/store/actions/users";
+import { logUser, verifyEmail } from "../../redux/store/actions/users";
 import Login from "./Login";
 
 import { View } from "react-native";
@@ -37,9 +37,15 @@ export default ({ navigation }) => {
   const handleSubmit = () => {
     dispatch(logUser({ username: username, password: password })).then(
       (data) => {
-        if (data.user._id) navigation.navigate("User");
+        if (data.user._id && data.user.isVerified) navigation.navigate("User" , {user: user._id});
       }
     );
+  };
+
+  const handleVerifyAccount = () => {
+    dispatch(verifyEmail(user._id)).then(() => {
+      navigation.navigate("Verificar");
+    });
   };
 
   return (
@@ -54,6 +60,7 @@ export default ({ navigation }) => {
         password={password}
         user={user}
         navigation={navigation}
+        handleVerifyAccount={handleVerifyAccount}
       />
     </View>
   );

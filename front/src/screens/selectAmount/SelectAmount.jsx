@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, FlatList, Button } from "react-native";
 import { style } from "./style";
 
-export default ({ handleValue, navigation, handleSubmit }) => {
+export default ({ handleValue, navigation, handleSubmit, value }) => {
   const data = [100, 200, 500, 1000, 2000];
   return (
     <View>
@@ -15,7 +15,7 @@ export default ({ handleValue, navigation, handleSubmit }) => {
           return (
             <Button
               style={style.button}
-              title={`$ ${item}`}
+              title={item}
               onPress={() => handleValue(item)}
             />
           );
@@ -28,8 +28,7 @@ export default ({ handleValue, navigation, handleSubmit }) => {
       <Button
         title="Confirmar"
         onPress={() => {
-          handleSubmit();
-          navigation.navigate("Home");
+          navigation.navigate("SelectAccount", { value: value });
         }}
       />
     </View>

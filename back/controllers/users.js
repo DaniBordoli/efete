@@ -15,11 +15,11 @@ const userRegister = (req, res, next) => {
 };
 
 const userLogin = (req, res) => {
+  console.log("REQ>USER:", req.user)
   res.json(req.user);
 };
 
 const userLogout = (req, res) => {
-  console.log("REQ.USER", req.user);
   if (req.isAuthenticated()) {
     console.log("usuario deslogueado");
     req.logout();
@@ -34,4 +34,19 @@ const editProfileUser = (req, res) => {
   });
 };
 
-module.exports = { userRegister, userLogin, userLogout, editProfileUser };
+const userVerify = (req, res, next) => {
+  User.findById(req.params.id)
+    .then((user) => {
+      SendMail(user);
+      res.sendStatus(200);
+    })
+    .catch((err) => res.status(400).send(err));
+};
+
+module.exports = {
+  userRegister,
+  userLogin,
+  userLogout,
+  editProfileUser,
+  userVerify,
+};

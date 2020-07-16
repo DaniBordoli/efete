@@ -16,8 +16,7 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
       <Button
         title="Confirmar"
         onPress={() => {
-          handleSubmit();
-          navigation.navigate("Home");
+          navigation.navigate("SelectAccount", { value: value });
         }}
       />
     </View>

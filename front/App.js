@@ -6,6 +6,9 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerMenu from "./src/screens/Navigator/drawer";
 import Root from "./src/screens/Navigator/stack";
 
+
+
+
 const Drawer = createDrawerNavigator();
 
 export default () => {

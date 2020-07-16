@@ -17,14 +17,13 @@ var accountSchema = new Schema({
   cbu_cvu: {
     type: String,
     required: true,
-    
   },
-  // user: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "users",
-  //   },
-  // ],
+  user: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "users",
+    },
+  ],
 });
 
 const Account = mongoose.model("accounts", accountSchema);

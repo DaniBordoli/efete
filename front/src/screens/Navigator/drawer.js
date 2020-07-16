@@ -13,7 +13,7 @@ export default (props) => {
   return (
     <DrawerContentScrollView {...props}>
       <View>
-        <Text style={{fontSize:30}}>Efete</Text>
+        <Text style={{ fontSize: 30 }}>Efete</Text>
       </View>
       <View>
         <DrawerItem
@@ -33,7 +33,11 @@ export default (props) => {
         <DrawerItem
           label="Perfil agente"
           onPress={() =>
-            props.navigation.navigate("Root", { screen: "EditUserProfile" }, props)
+            props.navigation.navigate(
+              "Root",
+              { screen: "EditUserProfile" },
+              props
+            )
           }
         />
 

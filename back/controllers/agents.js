@@ -9,8 +9,8 @@ const editProfileAgent = (req, res) => {
 
 const editDailyAmount = (req, res) => {
   let id = req.body.id;
-  Agent.findByIdAndUpdate(id, req.body, { new: true }).then((agentProfile) => {
-    res.status(200).send(agentProfile);
+  Agent.findByIdAndUpdate(id, req.body, { new: true }).then((agentProfile) => {console.log('Agent Profile', agentProfile)
+    res.status(200).json(agentProfile);
   });
 };
 

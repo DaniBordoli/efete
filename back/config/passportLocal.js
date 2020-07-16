@@ -23,12 +23,13 @@ passport.use(
 
 
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  done(null, user);
 });
 
-passport.deserializeUser(function (id, done) {
-  User.findById(id)
-    .then((user) => done(user))
+passport.deserializeUser((user, done) => {
+  console.log("ENTRA AL DESERIALIZE");
+  User.findById(user._id)
+    .then((user) => done(null, user))
     .catch((err) => done(err));
 });
 

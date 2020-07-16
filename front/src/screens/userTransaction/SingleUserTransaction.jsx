@@ -11,10 +11,10 @@ export default ( {getOneUserTransaction, navigation} ) =>{
         <View>
         { getOneUserTransaction.agent ?  (
         <View>
-        <Text>Monto: {getOneUserTransaction.amount}</Text>
+        <Text>Monto: ${getOneUserTransaction.amount}</Text>
+        <Text>Comisión: ${getOneUserTransaction.comissionTotal}</Text> 
         <Text>Cuenta de Origen: {getOneUserTransaction.originAccount}</Text>
-        <Text>Cuenta de destino: {getOneUserTransaction.destinationAccount}</Text>
-        <Text>Agente: {getOneUserTransaction.agent[0].name}</Text> 
+        <Text>Agente: {getOneUserTransaction.agent[0].name} - {getOneUserTransaction.agent[0].address}</Text> 
         </View>) :
         
         null

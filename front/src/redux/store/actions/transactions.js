@@ -5,6 +5,9 @@ import {
   FETCH_USER_TRANSACTIONS,
   FETCH_USER_TRANSACTION,
   SET_TRANSACTION_VALUE,
+  SET_AG_TRANSACTION_VALUE,
+  SET_TRANSACTION,
+  FETCH_AGENT_TRANSACTIONS,
 } from "../constants";
 
 export const fetch_transactions = (transactions) => {
@@ -28,12 +31,27 @@ const fetch_users_transaction = (userTransaction) => {
   };
 };
 
-export const newTransactionValue = (transactionValue) => {
+const newTransaction = (transaction) => {
   return {
-    type: SET_TRANSACTION_VALUE,
-    transactionValue,
+    type: SET_TRANSACTION,
+    transaction,
   };
 };
+
+const fetch_agent_transactions = (agentTransactions) => {
+  return {
+    type: FETCH_AGENT_TRANSACTIONS,
+    agentTransactions,
+  };
+};
+
+
+export const newAgtTransactionValue = (transactionValueAgn) => {
+  return {
+   type: SET_AG_TRANSACTION_VALUE,
+   transactionValueAgn 
+  }
+}
 
 export const getTransactions = () => (dispatch) => {
   return axios
@@ -44,7 +62,9 @@ export const getTransactions = () => (dispatch) => {
 
 export const getUserTransactions = (id) => (dispatch) => {
   return axios
-    .get(`http://localhost:1337/api/transactions/${id}`)
+    .get(`http://localhost:1337/api/transactions/${id}`, {
+      withCredentials: true,
+    })
     .then((res) => res.data)
     .then((transactions) => dispatch(fetch_users_transactions(transactions)));
 };
@@ -56,4 +76,25 @@ export const getUserTransaction = (id) => (dispatch) => {
       return res.data;
     })
     .then((transaction) => dispatch(fetch_users_transaction(transaction)));
+};
+
+export const updateAmountAgent = () => (dispatch) => {
+  return axios
+  .post(`http://${IP}:1337/api/agent/editdailyamount`)
+  .then(res => res.data)
+  .then((data=> dispatch(newAgtTransactionValue(data))))
+}
+
+
+export const createTransaction = (transaction) => (dispatch) =>
+  axios.post(`http://${IP}:1337/api/transactions`, transaction).then((res) => {
+    dispatch(newTransaction(res.data));
+  });
+export const getAgentTransactions = (id) => (dispatch) => {
+  return axios
+    .get(`http://localhost:1337/api/transactions/agent/${id}`)
+    .then((res) => {
+      return res.data;
+    })
+    .then((transactions) => dispatch(fetch_agent_transactions(transactions)));
 };

@@ -11,6 +11,7 @@ export default ({
   user,
   isData,
   navigation,
+  handleVerifyAccount,
 }) => {
   return (
     <View>
@@ -34,7 +35,20 @@ export default ({
         value={password}
         placeholder="Contraseña"
       />
-      {user.message ? <Text>{user.message}</Text> : null}
+      {user.message ? (
+        <Text>{user.message}</Text>
+      ) : user._id && !user.isVerified ? (
+        <View>
+          <Text>Tu cuenta no ha sido verificada.</Text>
+          <Text
+            onPress={() => {
+              handleVerifyAccount();
+            }}
+          >
+            Verificar cuenta
+          </Text>
+        </View>
+      ) : null}
       <Button
         disabled={isData}
         title="Iniciar Sesión"
@@ -49,7 +63,7 @@ export default ({
         }}
       />
 
-<Button
+      <Button
         title="Home"
         onPress={() => {
           navigation.navigate("Home");

@@ -8,15 +8,15 @@ var transactionSchema = new Schema({
   },
   comissionTotal: {
     type: Number,
-    required: true,
+    default: 50,
   },
   comissionEfete: {
     type: Number,
-    required: true,
+    default: 25,
   },
   comissionAgent: {
     type: Number,
-    required: true,
+    default: 25,
   },
   user: [
     {
