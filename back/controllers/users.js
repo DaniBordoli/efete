@@ -15,7 +15,7 @@ const userRegister = (req, res, next) => {
 };
 
 const userLogin = (req, res) => {
-  console.log("REQ>USER:", req.user)
+  console.log("REQ.USER:", req.user)
   res.json(req.user);
 };
 
