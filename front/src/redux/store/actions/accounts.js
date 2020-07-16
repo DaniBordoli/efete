@@ -34,8 +34,8 @@ export const fetchUserAccounts = (id) => (dispatch) =>
     .then((res) => dispatch(get_user_accounts(res.data)));
 
 
-export const deleteAccounts = (id) => (dispatch) =>
+export const deleteAccounts = (id,userId) => (dispatch) =>
   axios
-    .delete(`http://localhost:1337/api/accounts/${id}`)
-    .then((res) => dispatch(fetchUserAccounts()));
+    .delete(`http://localhost:1337/api/accounts/${id}/${userId}`)
+    .then((res) => dispatch(get_user_accounts(res.data)));
     //axios.delete

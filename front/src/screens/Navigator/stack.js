@@ -42,7 +42,7 @@ export default ({ navigation }) => {
 }) */
 
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Accounts">
       <Stack.Screen
         name="Home"
         component={Home}
@@ -73,7 +73,10 @@ export default ({ navigation }) => {
         name="SelectOtherAmountAgent"
         component={OtherAmountAgentContainer}
       />
-      <Stack.Screen name="ConfirmAgentLoad" component={ConfirmAgentLoadContainer} />
+      <Stack.Screen
+        name="ConfirmAgentLoad"
+        component={ConfirmAgentLoadContainer}
+      />
       <Stack.Screen name="Register" component={registerContainer} />
       <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
       <Stack.Screen
