@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IP } from "../../../../config";
+import { IP } from "../../../../config"
 import { LOGIN_USER } from "../constants";
 
 const login_user = (user) => {
@@ -13,9 +13,9 @@ export const logUser = (user) => (dispatch) => {
   return axios
     .post(`http://${IP}:1337/api/users/login`, user, {
       withCredentials: true,
-      headers: {
+      /* headers: {
         "Content-Type": "application/json",
-      },
+      }, */
     })
     .then((res) => dispatch(login_user(res.data)))
     .catch(() =>

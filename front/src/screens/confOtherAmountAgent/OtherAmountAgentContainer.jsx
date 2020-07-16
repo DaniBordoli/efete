@@ -2,7 +2,7 @@ import  React, {useState} from "react";
 import  { View } from "react-native";
 import { newAgtTransactionValue } from '../../redux/store/actions/transactions'
 import { useDispatch } from "react-redux";
-import OtherAmountAgent from "./otherAmountAgent";
+import OtherAmountAgent from "./OtherAmountAgent";
 
 
 const OtherAmountContainer = ({ navigation }) => {

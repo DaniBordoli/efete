@@ -73,7 +73,6 @@ export const getUserTransaction = (id) => (dispatch) => {
   return axios
     .get(`http://localhost:1337/api/transactions/user/${id}`)
     .then((res) => {
-      console.log("Transaction en action", res.data);
       return res.data;
     })
     .then((transaction) => dispatch(fetch_users_transaction(transaction)));
