@@ -9,12 +9,20 @@ const editProfileAgent = (req, res) => {
 
 const editDailyAmount = (req, res) => {
   let id = req.body.id;
-  Agent.findByIdAndUpdate(id, req.body, { new: true }).then((agentProfile) => {console.log('Agent Profile', agentProfile)
+  Agent.findByIdAndUpdate(id, req.body, { new: true }).then((agentProfile) => {
     res.status(200).json(agentProfile);
+  });
+};
+
+const getAgent = (req, res) => {
+  let userId = req.params.id;
+  Agent.findOne({ user: userId }).then((agent) => {
+    res.status(200).json(agent);
   });
 };
 
 module.exports = {
   editProfileAgent,
   editDailyAmount,
+  getAgent,
 };
