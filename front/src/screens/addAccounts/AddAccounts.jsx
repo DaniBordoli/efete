@@ -1,13 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, Button} from 'react-native';
+import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+
 
 const AddAccount = ({handleNameAccount,handleDni, handleCbu, handleSubmit, account, navigation}) => {
+  
+  
 
   return (
     <View>
       <Text>Agregar Cuenta</Text>
 
-      <Text>Seleccione Entidad Bancaria</Text>
+      
       <TextInput
         style={styles.input}
         autoCapitalize="none"
@@ -52,13 +55,23 @@ const styles = StyleSheet.create({
   input: {
     margin: 15,
     borderColor: 'black',
-    borderWidth: 1
+    borderWidth: 1,
+    flex:1
   },
   button: {
-    margin: 15,
-    borderColor: 'blue',
-    borderWidth: 1
-}
+    margin: 50,
+    borderColor: 'black',
+    borderWidth: 1,
+    flex:1
+},
+
+drop: {
+  margin: 50,
+  borderColor: 'black',
+  borderWidth: 1,
+  flex:1
+},
+
 });
 
 export default AddAccount;
