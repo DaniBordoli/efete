@@ -62,6 +62,13 @@ export default ({
           navigation.navigate("Register");
         }}
       />
+
+      <Button
+        title="Home"
+        onPress={() => {
+          navigation.navigate("Home");
+        }}
+      />
     </View>
   );
 };

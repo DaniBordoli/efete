@@ -15,7 +15,7 @@ export default ({ navigation }) => {
   );
 
   useEffect(() => {
-    dispatch(getAgentTransactions("5f0613df7611854c3595635b")).then(() =>
+    dispatch(getAgentTransactions("5f06437f5739037841c7195d")).then(() =>
       setLoading(true)
     ); // Hardcodeado => Despues pasar Id por navigation del boton anterior a esta pantalla
   }, []);

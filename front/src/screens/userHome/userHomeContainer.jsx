@@ -5,7 +5,7 @@ import { getUserTransactions } from "../../redux/store/actions/transactions";
 import UserHome from "./userHome";
 import { View } from "react-native";
 
-export default ({ navigation }) => {
+export default ({ navigation , route}) => {
   const [loading, setLoader] = useState(false);
 
   const dispatch = useDispatch();
@@ -13,9 +13,15 @@ export default ({ navigation }) => {
   const userTransactions = useSelector(
     (state) => state.transactions.userTransactions
   );
+
+  const userRole = useSelector(
+    (state) => state.users.user.role
+  )
+
   useEffect(() => {
-    dispatch(getUserTransactions("5f06118a3988da4a1972ad61")).then(() =>
+    dispatch(getUserTransactions('5f064320cefb0877fc05368b')).then(() =>
       setLoader(true)
+      //route.params.user
     ); // Hardcodeado => Despues pasar Id.
   }, []);
 
@@ -29,6 +35,7 @@ export default ({ navigation }) => {
         userTransactions={userTransactions}
         navigation={navigation}
         loading={loading}
+        userRole={userRole}
       />
     </View>
   );

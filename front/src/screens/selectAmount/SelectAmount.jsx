@@ -21,6 +21,8 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
           );
         }}
       />
+     <Text>Monto: ${value}</Text>
+
       <Button
         title="Seleccionar monto"
         onPress={() => navigation.navigate("SelectOtherAmount")}
