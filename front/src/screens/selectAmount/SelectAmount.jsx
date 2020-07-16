@@ -23,7 +23,7 @@ export default ({ handleValue, navigation, handleSubmit }) => {
       />
       <Button
         title="Seleccionar monto"
-        onPress={() => navigation.navigate("selectOtherAmount")}
+        onPress={() => navigation.navigate("SelectOtherAmount")}
       />
       <Button
         title="Confirmar"
