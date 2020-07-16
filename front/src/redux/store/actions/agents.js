@@ -20,3 +20,6 @@ export const fetchAgent = (id) => (dispatch) =>
   axios
     .get(`http://${IP}:1337/api/agents/${id}`)
     .then((res) => dispatch(setAgent(res.data)));
+
+export const changeDailyAmount = (amountTransaction) => () =>
+  axios.patch(`http://${IP}:1337/api/agents/transaction`, amountTransaction);

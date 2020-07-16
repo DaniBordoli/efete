@@ -6,7 +6,7 @@ import UserHome from "./userHome";
 import { View } from "react-native";
 
 export default ({ navigation, route }) => {
-  console.log("ROUTE PARAMS USER", route.params.user);
+  console.log("LLEGA BIEN EL USUARIO", route.params.user);
   const [loading, setLoader] = useState(false);
 
   const dispatch = useDispatch();

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import Accounts from "../accounts/Accounts";
+import SingleAccount from "./SingleAccount";
 import { View } from "react-native";
 import { fetchUserAccounts } from "../../redux/store/actions/accounts";
 
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
+  console.log("CUENTA PASADA POR ROUTE", route.params.account);
   const dispatch = useDispatch();
   const [loading, setLoader] = useState(false);
 
@@ -19,11 +20,7 @@ export default ({ navigation }) => {
 
   return (
     <View>
-      <Accounts
-        navigation={navigation}
-        accountsUser={accountsUser}
-        loading={loading}
-      />
+      <SingleAccount account={route.params.account} navigation={navigation} />
     </View>
   );
 };

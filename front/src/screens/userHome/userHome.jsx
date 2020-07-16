@@ -16,6 +16,12 @@ export default ({ userTransactions, navigation, loading }) => {
     <View>
       {loading ? (
         <View>
+          <Button
+            title="Realizar una Extracción"
+            onPress={() => {
+              navigation.navigate("SelectAmount");
+            }}
+          />
           <Text>Movimientos</Text>
 
           <View>{/* Espacio para las imagenes que linkean*/}</View>
