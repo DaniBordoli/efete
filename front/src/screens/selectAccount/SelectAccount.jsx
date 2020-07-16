@@ -9,6 +9,7 @@ export default ({
   transactionValue,
   loading,
   selectedAccount,
+  // handleAgentDailyAmount,
 }) => {
   return (
     <View>
@@ -36,6 +37,7 @@ export default ({
             title="Realizar Transacción"
             onPress={() => {
               handleSubmit();
+              // handleAgentDailyAmount();
             }}
           />
         </View>
