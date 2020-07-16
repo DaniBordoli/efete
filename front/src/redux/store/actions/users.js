@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IP } from "../../../../config"
+import { IP } from "../../../../config";
 import { LOGIN_USER } from "../constants";
 
 export const login_user = (user) => {

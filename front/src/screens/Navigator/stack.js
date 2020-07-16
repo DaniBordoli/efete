@@ -61,7 +61,7 @@ export default ({ navigation }) => {
         }}
       />
       <Stack.Screen
-        name="SingleAgentTransactionContainer"
+        name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
       />
       <Stack.Screen name="User" component={userHomeContainer} />
@@ -80,7 +80,10 @@ export default ({ navigation }) => {
       name="SelectOtherAmountAgent"
       component={OtherAmountAgentContainer}
       />
-      <Stack.Screen name="ConfirmAgentLoad" component={ConfirmAgentLoadContainer} />
+      <Stack.Screen
+        name="ConfirmAgentLoad"
+        component={ConfirmAgentLoadContainer}
+      />
       <Stack.Screen name="Register" component={registerContainer} />
       <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
       <Stack.Screen

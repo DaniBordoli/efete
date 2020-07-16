@@ -45,13 +45,12 @@ const fetch_agent_transactions = (agentTransactions) => {
   };
 };
 
-
 export const newAgtTransactionValue = (transactionValueAgn) => {
   return {
-   type: SET_AG_TRANSACTION_VALUE,
-   transactionValueAgn 
-  }
-}
+    type: SET_AG_TRANSACTION_VALUE,
+    transactionValueAgn,
+  };
+};
 
 export const getTransactions = () => (dispatch) => {
   return axios
@@ -62,7 +61,7 @@ export const getTransactions = () => (dispatch) => {
 
 export const getUserTransactions = (id) => (dispatch) => {
   return axios
-    .get(`http://localhost:1337/api/transactions/${id}`, {
+    .get(`http://${IP}:1337/api/transactions/${id}`, {
       withCredentials: true,
     })
     .then((res) => res.data)
@@ -71,7 +70,7 @@ export const getUserTransactions = (id) => (dispatch) => {
 
 export const getUserTransaction = (id) => (dispatch) => {
   return axios
-    .get(`http://localhost:1337/api/transactions/user/${id}`)
+    .get(`http://${IP}:1337/api/transactions/user/${id}`)
     .then((res) => {
       return res.data;
     })
@@ -93,7 +92,7 @@ export const createTransaction = (transaction) => (dispatch) =>
   });
 export const getAgentTransactions = (id) => (dispatch) => {
   return axios
-    .get(`http://localhost:1337/api/transactions/agent/${id}`)
+    .get(`http://${IP}:1337/api/transactions/agent/${id}`)
     .then((res) => {
       return res.data;
     })

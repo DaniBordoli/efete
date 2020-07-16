@@ -13,7 +13,7 @@ const passport = require("./config/passportLocal");
 
 app.use(
   cors({
-    // methods: ["GET", "POST"],
+    //methods: ["GET", "POST"],
     credentials: true,
     origin: true,
   })

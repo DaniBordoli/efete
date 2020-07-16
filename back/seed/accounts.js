@@ -17,7 +17,7 @@ const charmander2 = {
   accountNumber: 9786753678,
   cbu_cvu: "cbu",
   user: {
-    _id: "5f0f14c1830a243382d6c6aa",
+    _id: "5f0621025f0a913d445f2baf",
   },
 };
 
@@ -27,7 +27,7 @@ const bulbasaur = {
   accountNumber: 83783472923,
   cbu_cvu: "cbu",
   user: {
-    _id: "5f0f14c1830a243382d6c6aa",
+    _id: "5f0621025f0a913d445f2baf",
   },
 };
 
@@ -37,7 +37,7 @@ const squirtle = {
   accountNumber: 1837437239,
   cbu_cvu: "cbu",
   user: {
-    _id: "5f064320cefb0877fc05368d",
+    _id: "5f0621025f0a913d445f2baf",
   },
 };
 
@@ -46,3 +46,6 @@ Account.insertMany([charmander, charmander2, bulbasaur, squirtle]).then(() => {
 
   process.exit();
 });
+
+
+

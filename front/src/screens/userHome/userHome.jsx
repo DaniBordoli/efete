@@ -18,6 +18,10 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
     <View>
       {loading ? (
         <View>
+          <Button
+            title="Perfil Agente"
+            onPress={() => navigation.navigate("Agent")}
+          />
           <Text>Movimientos</Text>
           
           <Text>{userTransactions[0].agent[0].name}</Text>

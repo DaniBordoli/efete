@@ -20,7 +20,7 @@ const newAgent = (newAgent) => {
 export const editAgent = (agentData) => () => {
   return axios
     .patch(`http://${IP}:1337/api/agents/editprofile`, agentData)
-    .then((res) => console.log("Agente editado"))
+    .then((res) => dispatch(setAgent(res.data)))
     .catch((err) => console.log(err, "ERROR"));
 };
 
