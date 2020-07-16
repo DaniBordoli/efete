@@ -14,6 +14,7 @@ export default ({ navigation, route }) => {
     (state) => state.transactions.userTransactions
   );
   useEffect(() => {
+    console.log(route.params.user, "ROOOOOUTE");
     dispatch(getUserTransactions(route.params.user)).then(() =>
       setLoader(true)
     );

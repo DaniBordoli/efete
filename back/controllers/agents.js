@@ -1,10 +1,14 @@
 const Agent = require("../models/agents");
 
 const editProfileAgent = (req, res) => {
-  let id = req.body.id;
-  Agent.findByIdAndUpdate(id, req.body, { new: true }).then((agentProfile) => {
-    res.status(200).send(agentProfile);
-  });
+  let id = req.body._id;
+  Agent.updateOne({ _id: id }, req.body, { new: true })
+    .then(() => {
+      return Agent.findById(id);
+    })
+    .then((agentProfile) => {
+      res.status(200).send(agentProfile);
+    });
 };
 
 const editDailyAmount = (req, res) => {
