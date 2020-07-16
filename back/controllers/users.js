@@ -1,5 +1,6 @@
 const { User } = require("../models/index");
 const SendMail = require("../controllers/nodemailer");
+const { findById } = require("../models/users");
 
 const userRegister = (req, res, next) => {
   User.create(req.body)
@@ -43,10 +44,18 @@ const userVerify = (req, res, next) => {
     .catch((err) => res.status(400).send(err));
 };
 
+const getAllUsers = (req, res) => {
+  User.find()
+  .then((users)=>{
+      res.json(users)
+  })
+}
+
 module.exports = {
   userRegister,
   userLogin,
   userLogout,
   editProfileUser,
   userVerify,
+  getAllUsers
 };
