@@ -37,7 +37,8 @@ export default ({ navigation }) => {
   const handleSubmit = () => {
     dispatch(logUser({ username: username, password: password })).then(
       (data) => {
-        if (data.user._id && data.user.isVerified) navigation.navigate("User");
+        if (data.user._id && data.user.isVerified)
+          navigation.navigate("User", { user: data.user._id });
       }
     );
   };
