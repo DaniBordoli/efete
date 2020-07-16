@@ -8,6 +8,7 @@ const {
   userLogout,
   editProfileUser,
   userVerify,
+  getAllUsers
 } = require("../controllers/users");
 
 router.post("/register", userRegister);
@@ -39,5 +40,7 @@ router.post("/login", passport.authenticate("local"), userLogin);
 router.post("/logout", userLogout);
 
 router.patch("/editprofile", editProfileUser);
+
+router.get('/', getAllUsers)
 
 module.exports = router;

@@ -18,6 +18,9 @@ export default ({ navigation }) => {
   const userId = useSelector((state) => state.users.user._id);
 
   useEffect(() => {
+    dispatch(getAgentTransactions("5f06437f5739037841c7195d")).then(() =>
+      setLoading(true)
+    ); // Hardcodeado => Despues pasar Id por navigation del boton anterior a esta pantalla
     dispatch(fetchAgent(userId)).then((agent) => {
       dispatch(getAgentTransactions(agent.agent._id)).then(() =>
         setLoading(true)

@@ -13,7 +13,13 @@ export default ({ navigation, route }) => {
   const userTransactions = useSelector(
     (state) => state.transactions.userTransactions
   );
+
+  const userRole = useSelector(
+    (state) => state.users.user.role
+  )
+
   useEffect(() => {
+    console.log(route.params.user, "ROOOOOUTE");
     dispatch(getUserTransactions(route.params.user)).then(() =>
       setLoader(true)
     );
@@ -25,6 +31,7 @@ export default ({ navigation, route }) => {
         userTransactions={userTransactions}
         navigation={navigation}
         loading={loading}
+        userRole={userRole}
       />
     </View>
   );

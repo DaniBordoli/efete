@@ -11,7 +11,9 @@ import {
 import { style } from "./style";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-export default ({ userTransactions, navigation, loading }) => {
+export default ({ userTransactions, navigation, loading, userRole }) => {
+  console.log(userRole)
+  
   return (
     <View>
       {loading ? (
@@ -25,8 +27,29 @@ export default ({ userTransactions, navigation, loading }) => {
             onPress={() => navigation.navigate("Agent")}
           />
           <Text>Movimientos</Text>
+          
+          <Text>{userTransactions[0].agent[0].name}</Text>
+          
+          <View>
+          <Button
+          title='Extracciones'
+          onPress={()=> navigation.navigate('selectAmount')}
+          />
 
-          <View>{/* Espacio para las imagenes que linkean*/}</View>
+        {userRole === 'agent' 
+        ? 
+        <Button
+          title='Perfil Agente'
+          onPress={()=> navigation.navigate('Agent')}
+          />
+          :
+          <Button
+          title='Convertirte en agente'
+          onPress={()=> navigation.navigate('CreateAgentForm')}
+          />
+      }
+
+          </View>
           <FlatList
             keyExtractor={(userTransactions) => userTransactions._id}
             data={userTransactions}

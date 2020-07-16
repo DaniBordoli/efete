@@ -10,8 +10,8 @@ const OtherAmountContainer = ({ navigation }) => {
    
   const [value, setValue] = useState(0)
 
-  const handlerValue = (item) =>{
-    setValue(item)
+  const handlerValue = (value) =>{
+    setValue(value)
   }
 
   const handlerSubmit = () => {

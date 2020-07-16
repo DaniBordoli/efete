@@ -24,6 +24,7 @@ import SelectAccountContainer from "../selectAccount/SelectAccountContainer";
 import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
+import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
 
 const Stack = createStackNavigator();
 
@@ -43,7 +44,7 @@ export default ({ navigation }) => {
 }) */
 
   return (
-    <Stack.Navigator initialRouteName="AddAccounts">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Home"
         component={Home}
@@ -68,6 +69,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SingleUserTransaction"
         component={SingleUserTransactionContainer}
+      />
+      <Stack.Screen
+        name="CreateAgentForm"
+        component={CreateAgentFormContainer}
       />
       <Stack.Screen name="successRegister" component={successRegister} />
       <Stack.Screen

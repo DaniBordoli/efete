@@ -12,7 +12,6 @@ const AddAccount = ({
     <View>
       <Text>Agregar Cuenta</Text>
 
-      <Text>Seleccione Entidad Bancaria</Text>
       <TextInput
         style={styles.input}
         autoCapitalize="none"
@@ -55,11 +54,20 @@ const styles = StyleSheet.create({
     margin: 15,
     borderColor: "black",
     borderWidth: 1,
+    flex: 1,
   },
   button: {
-    margin: 15,
-    borderColor: "blue",
+    margin: 50,
+    borderColor: "black",
     borderWidth: 1,
+    flex: 1,
+  },
+
+  drop: {
+    margin: 50,
+    borderColor: "black",
+    borderWidth: 1,
+    flex: 1,
   },
 });
 
