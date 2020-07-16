@@ -6,7 +6,6 @@ import UserHome from "./userHome";
 import { View } from "react-native";
 
 export default ({ navigation, route }) => {
-  console.log("ROUTE PARAMS USER", route.params.user);
   const [loading, setLoader] = useState(false);
 
   const dispatch = useDispatch();
@@ -14,15 +13,17 @@ export default ({ navigation, route }) => {
   const userTransactions = useSelector(
     (state) => state.transactions.userTransactions
   );
+
+  const userRole = useSelector(
+    (state) => state.users.user.role
+  )
+
   useEffect(() => {
+    console.log(route.params.user, "ROOOOOUTE");
     dispatch(getUserTransactions(route.params.user)).then(() =>
       setLoader(true)
-    ); // Hardcodeado => Despues pasar Id.
+    );
   }, []);
-
-  // useEffect(() => {
-  //   console.log('Hola') Consologue cada vez que renderiza
-  // }, [boolean]); renderiza cuando cambia el boooleano
 
   return (
     <View>
@@ -30,6 +31,7 @@ export default ({ navigation, route }) => {
         userTransactions={userTransactions}
         navigation={navigation}
         loading={loading}
+        userRole={userRole}
       />
     </View>
   );

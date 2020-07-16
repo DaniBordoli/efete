@@ -5,7 +5,7 @@ const initialState = {
   userTransactions : [],
   userTransaction : {},
   transactionValue: 0,
-  transactionValueAgn: 0,
+  transactionValueAgn: [],
   agentTransactions: []
 }
 

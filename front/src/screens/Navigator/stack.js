@@ -23,6 +23,7 @@ import ConfirmAgentLoadContainer from "../ConfirmAgentLoad/ConfirmAgentLoadConta
 import SelectAccountContainer from "../selectAccount/SelectAccountContainer";
 import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
+import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer"
 
 const Stack = createStackNavigator();
 
@@ -42,7 +43,7 @@ export default ({ navigation }) => {
 }) */
 
   return (
-    <Stack.Navigator initialRouteName="AddAccounts">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Home"
         component={Home}
@@ -60,7 +61,7 @@ export default ({ navigation }) => {
         }}
       />
       <Stack.Screen
-        name="SingleAgentTransactionContainer"
+        name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
       />
       <Stack.Screen name="User" component={userHomeContainer} />
@@ -68,10 +69,16 @@ export default ({ navigation }) => {
         name="SingleUserTransaction"
         component={SingleUserTransactionContainer}
       />
-      <Stack.Screen name="successRegister" component={successRegister} />
+      <Stack.Screen 
+      name="CreateAgentForm"
+      component={CreateAgentFormContainer}
+      />
+      <Stack.Screen 
+      name="successRegister" 
+      component={successRegister} />
       <Stack.Screen
-        name="SelectOtherAmountAgent"
-        component={OtherAmountAgentContainer}
+      name="SelectOtherAmountAgent"
+      component={OtherAmountAgentContainer}
       />
       <Stack.Screen
         name="ConfirmAgentLoad"

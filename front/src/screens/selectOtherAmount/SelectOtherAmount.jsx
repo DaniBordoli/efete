@@ -13,12 +13,20 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
         value={value}
       />
 
-      <Button
-        title="Confirmar"
-        onPress={() => {
-          navigation.navigate("SelectAccount", { value: value });
-        }}
-      />
+    {value  <= 0
+    ?  
+    <Button 
+    title="Confirmar"
+    disabled={true}/> 
+    :
+    <Button 
+    title="Confirmar"
+    onPress={() => {
+    handlerSubmit();
+    navigation.navigate("ConfirmAgentLoad"); // Deberia llevar a una vista de confirmación
+    }}
+    />
+    }
     </View>
   );
 };

@@ -2,10 +2,9 @@ import React from "react";
 import { View, Text, Button, Image, Link, FlatList } from "react-native";
 
 export default ({ navigation, agentTransactions }) => {
-  //Tiene sentido poner un ternario si no estoy buscando algo al back y la info la paso por props?
   return (
     <View>
-      {agentTransactions ? (
+      {agentTransactions[0] !== undefined ? (
         <View>
           <FlatList
             keyExtractor={(agentTransactions) => agentTransactions._id}
