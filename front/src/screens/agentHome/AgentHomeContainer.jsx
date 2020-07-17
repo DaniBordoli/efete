@@ -16,10 +16,12 @@ export default ({ navigation }) => {
   );
 
   const userId = useSelector((state) => state.users.user._id);
+
+
   useEffect(() => {
     dispatch(fetchAgent(userId)).then((agent) => {
-      console.log(agent)
-      dispatch(getAgentTransactions("5f11c28efe514f5ae4cbd243")).then(() =>
+      dispatch(getAgentTransactions(agent.agent._id)).then(() =>
+
         setLoading(true)
       );
     });

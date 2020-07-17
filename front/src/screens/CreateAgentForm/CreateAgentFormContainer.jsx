@@ -5,10 +5,12 @@ import { createAgent } from '../../redux/store/actions/agents'
 import { useDispatch ,useSelector } from "react-redux";
 
 
+
 const CreateAgentFormContainer = ({ navigation}) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state)=> state.users.user)
+
     
 const [name, setName] = useState('');
 const [address, setAddress] =  useState('');
@@ -39,6 +41,7 @@ function handlerCodigo(text){
 function handlerSubmit(){
   console.log('!!!!!!!!!',name, address, cuil, dailyAmount, codigoQr)
   dispatch(createAgent(name, address, cuil, dailyAmount, codigoQr, user._id))
+
 }
   
   

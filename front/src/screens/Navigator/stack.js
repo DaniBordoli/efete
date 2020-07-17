@@ -87,6 +87,7 @@ export default ({ navigation }) => {
       />
       <Stack.Screen name="Register" component={registerContainer} 
       options={{ headerShown: false }}/>
+    
       <Stack.Screen name="SelectAmount" component={SelectAmountContainer} />
       <Stack.Screen
         name="ConfAmountAgent"

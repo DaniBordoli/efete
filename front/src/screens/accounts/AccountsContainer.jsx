@@ -18,6 +18,7 @@ export default ({ navigation }) => {
   useEffect(() => {
     //dispatch(fetchUserAccounts("5f0f14c1830a243382d6c6aa"))
      dispatch(fetchUserAccounts(user._id))
+
       .then(() => {
         setLoader(true);
       });
@@ -26,6 +27,7 @@ export default ({ navigation }) => {
   const handleDelete = (accountId) => {
     //dispatch(deleteAccounts(accountId, "5f0f14c1830a243382d6c6aa"));
     dispatch(deleteAccounts(accountId, user._id))
+
   };
 
   return (

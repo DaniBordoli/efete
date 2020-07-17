@@ -23,11 +23,12 @@ export default ({ agentTransactions, navigation, loading }) => {
               />
               <Button
                 title="Modificar monto diario"
-                 onPress={() => navigation.navigate("ConfAmountAgent")}
+
+                /*  onPress={() => navigation.navigate()} */
               />
             </View>
 
-            {/* <View>
+            <View>
               <Text>Movimientos</Text>
               <View>
                 <Text>
@@ -71,7 +72,9 @@ export default ({ agentTransactions, navigation, loading }) => {
                   })
                 }
               />
-            </View> */}
+
+            </View>
+
           </View>
         ) : (
           <Text>No tenes transacciones realizadas</Text>

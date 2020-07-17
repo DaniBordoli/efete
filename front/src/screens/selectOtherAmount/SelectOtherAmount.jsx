@@ -22,8 +22,8 @@ export default ({ handleValue, navigation, value }) => {
     <Button 
     title="Confirmar"
     onPress={() => {
-    
     navigation.navigate("SelectAccount", {value:value}); // Deberia llevar a una vista de confirmación
+
     }}
     />
     }

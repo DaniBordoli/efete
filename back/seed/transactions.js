@@ -7,11 +7,12 @@ const charmander = {
   comissionEfete: 25,
   comissionAgent: 25,
   user: {
-    _id: "5f0f89d80e87d154048bb6f0",
+
+    _id: "5f0f14c1830a243382d6c6aa",
   },
-  agent: { _id: "5f11c28efe514f5ae4cbd243" },
-  originAccount: { _id: "5f11c4c667715f1364ac92c7" },
-  destinationAccount: { _id: "5f11c4c667715f1364ac92c7" },
+  agent: { _id: "5f1098421ebe6a3fd0fb7dc4" },
+  originAccount: { _id: "5f0617933db0cd510a503a0f" },
+  destinationAccount: { _id: "5f0617933db0cd510a503a12" },
 };
 
 const bulbasaur = {
@@ -20,11 +21,13 @@ const bulbasaur = {
   comissionEfete: 25,
   comissionAgent: 25,
   user: {
-    _id: "5f0f89d80e87d154048bb6f0",
+
+    _id: "5f0f14c1830a243382d6c6aa",
   },
-  agent: { _id: "5f11c28efe514f5ae4cbd243" },
-  originAccount: { _id: "5f11c4c667715f1364ac92c7" },
-  destinationAccount: { _id: "5f11c4c667715f1364ac92c7" },
+  agent: { _id: "5f1098421ebe6a3fd0fb7dc4" },
+  originAccount: { _id: "5f0617933db0cd510a503a11" },
+  destinationAccount: { _id: "5f0617933db0cd510a503a11" },
+
 };
 
 const squirtle = {
@@ -33,11 +36,13 @@ const squirtle = {
   comissionEfete: 25,
   comissionAgent: 25,
   user: {
-    _id: "5f0f89d80e87d154048bb6f0",
+
+    _id: "5f0f14c1830a243382d6c6aa",
   },
-  agent: { _id: "5f11c28efe514f5ae4cbd243" },
-  originAccount: { _id: "5f0ca75b36577442ccbc74a6" },
-  destinationAccount: { _id: "5f11c4c667715f1364ac92c7" },
+  agent: { _id: "5f0632f8d75672228cc337c3" },
+  originAccount: { _id: "5f0617933db0cd510a503a12" },
+  destinationAccount: { _id: "5f0617933db0cd510a503a0f" },
+
 };
 
 Transaction.insertMany([charmander, bulbasaur, squirtle]).then(() => {
