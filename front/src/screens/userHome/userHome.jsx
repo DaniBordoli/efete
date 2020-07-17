@@ -18,14 +18,7 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
     <View>
       {loading ? (
         <View>
-          <Button
-            title="Perfil Agente"
-            onPress={() => navigation.navigate("Agent")}
-          />
-          <Text>Movimientos</Text>
-          
-          <Text>{userTransactions[0].agent[0].name}</Text>
-          
+          {/* <Text>{userTransactions[0].agent[0].name}</Text> */}
           <View>
           <Button
           title='Extracciones'
@@ -33,7 +26,7 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
           />
 
         {userRole === 'agent' 
-        ? 
+         ? 
         <Button
           title='Perfil Agente'
           onPress={()=> navigation.navigate('Agent')}
@@ -44,6 +37,8 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
           onPress={()=> navigation.navigate('CreateAgentForm')}
           />
       }
+
+             <Text>Movimientos</Text>
 
           </View>
           <FlatList
