@@ -2,18 +2,12 @@ import React, { useState } from "react";
 import { View, Alert } from "react-native";
 import EditUserProfile from "./EditUserProfile";
 import { editUser } from "../../redux/store/actions/users";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 
 export default () => {
-  // tengo los datos hardcodeados, falta agregar un useselector para traer los datos del usuario logueado y agrgarlos en los useState
-  // user.name ? user.name:'' (agregar este ternario para esperar al back que busque los datos de usuario?)
-  const [user, setUser] = useState({
-    firstName: "Joaquin",
-    lastName: "Gaona",
-    username: "joacogaona@gmail.com",
-    password: "1234",
-    id: "5f063aac7c500b6f49952348",
-  });
+  const userInfo = useSelector((state) => state.users.user);
+
+  const [user, setUser] = useState(userInfo);
 
   const dispatch = useDispatch();
 
@@ -21,7 +15,6 @@ export default () => {
     setUser({ ...user, [name]: e });
   }
 
-  // le harcodeo el id pero hay que traerlo con el useSelector del usuario logueado
   function handleSubmit() {
     if (user.username.length > 0 && user.password.length > 0) {
       dispatch(editUser(user));

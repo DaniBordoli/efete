@@ -15,12 +15,14 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
           return (
             <Button
               style={style.button}
-              title={item}
+              title={`${item}`}
               onPress={() => handleValue(item)}
             />
           );
         }}
       />
+     <Text>Monto: ${value}</Text>
+
       <Button
         title="Seleccionar monto"
         onPress={() => navigation.navigate("SelectOtherAmount")}

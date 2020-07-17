@@ -9,6 +9,7 @@ export default ({
   transactionValue,
   loading,
   selectedAccount,
+  // handleAgentDailyAmount,
 }) => {
   return (
     <View>
@@ -24,7 +25,6 @@ export default ({
               return (
                 <Text onPress={() => handleValue(item)}>
                   {item.nameEntity}
-                  <br />
                   xxxx-xxxx-xxxx-
                   {item.accountNumber.toString().slice(6)}
                 </Text>
@@ -36,6 +36,7 @@ export default ({
             title="Realizar Transacción"
             onPress={() => {
               handleSubmit();
+              // handleAgentDailyAmount();
             }}
           />
         </View>

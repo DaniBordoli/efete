@@ -11,14 +11,41 @@ import {
 import { style } from "./style";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-export default ({ userTransactions, navigation, loading }) => {
+export default ({ userTransactions, navigation, loading, userRole }) => {
+  console.log(userRole)
+  
   return (
     <View>
       {loading ? (
         <View>
-          <Text>Movimientos</Text>
+          <Button
+            title="Realizar una Extracción"
+            onPress={() => {
+              navigation.navigate("SelectAmount");
+            }}
+          />
 
-          <View>{/* Espacio para las imagenes que linkean*/}</View>
+{userRole === 'agent' 
+        ? 
+        <Button
+          title='Perfil Agente'
+          onPress={()=> navigation.navigate('Agent')}
+          />
+          :
+          <Button
+          title='Convertirte en agente'
+          onPress={()=> navigation.navigate('CreateAgentForm')}
+          />
+      }
+
+          <Text>Movimientos</Text>
+                    
+          <View>
+          
+
+       
+
+          </View>
           <FlatList
             keyExtractor={(userTransactions) => userTransactions._id}
             data={userTransactions}
@@ -49,6 +76,10 @@ export default ({ userTransactions, navigation, loading }) => {
                 userTransactions,
               })
             }
+          />
+          <Button
+          title='Mis cuentas'
+          onPress={()=> navigation.navigate('Accounts')}
           />
         </View>
       ) : (

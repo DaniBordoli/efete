@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, FlatList, Button } from "react-native";
 
 const ConfAmountAgent = ({handlerValue, handlerSubmit, navigation, value}) => {
-    console.log('Submit', value)
      
     const amount = [1000, 2000, 5000, 10000, 20000] 
 
@@ -52,7 +51,7 @@ const ConfAmountAgent = ({handlerValue, handlerSubmit, navigation, value}) => {
             <Button
             title="Cancelar"
             onPress={() => {
-            navigation.navigate("Home"); //Cancelar devuelve al home
+            navigation.navigate("Agent"); //Cancelar devuelve al home
         }}
     />
 

@@ -1,42 +1,65 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button, FlatList, ActivityIndicator} from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 
-
-
-const Accounts = ({accountsUser,loading}) => {
-    console.log("accountsuser",accountsUser)
-
-    return (
+const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
+  return (
+    <View>
+      {loading ? (
         <View>
-            {loading?
-            <View> 
-                <Text> CUENTAS PRINCIPALES</Text>
-                <FlatList
-                    keyExtractor={(data) => data}
-                    data={data}
-                    renderItem={({ item }) => {
-                    return (
-                        <Button
-                        style={style.button}
-                        title={`$ ${item}`}
-                        onPress={() => handleValue(item)}
-            />
-          );
-        }}
-      />
-            </View> : 
+          <Text> CUENTAS ASOCIADAS</Text>
+
+          <FlatList
+            keyExtractor={(accountsUser) => accountsUser._id}
+            data={accountsUser}
+            renderItem={({ item, index }) => {
+              return (
                 <View>
-                    <ActivityIndicator size="large" color="#00ff00" />
+                  <Text
+                    onPress={() =>
+                      navigation.navigate("SingleAccount", { account: item })
+                    }
+                  >
+                    <Text>Entidad: {item.nameEntity}</Text>
+                   
+                    <Text>Cuenta: {item.accountNumber}</Text>
+                  </Text>
+                  <Button
+                    title="ELIMINAR CUENTA"
+                    onPress={() => {
+                      console.log("item", item._id);
+                      handleDelete(item._id);
+                    }}
+                  />
+
+                   
                 </View>
-            }
-            
-            
+              );
+            }}
+          />
+           <Button
+                    title="AGREGAR CUENTA"
+                    onPress={() => {
+                  
+                      navigation.navigate("AddAccounts")
+                    }}
+                  />
         </View>
-    )
-}
+      ) : (
+        <View>
+          <ActivityIndicator size="large" color="#00ff00" />
+        </View>
+      )}
+    </View>
+  );
+};
 
-const styles = StyleSheet.create({
-
-})
+const styles = StyleSheet.create({});
 
 export default Accounts;

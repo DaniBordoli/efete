@@ -28,14 +28,13 @@ export const Texto=styled.Text`
 font-style: normal;
 font-weight: bold;
 font-size: 18px;
-color:white
-text-transform: uppercase;
-
+color:white;
+text-transform: uppercase
 `
 
 export const ButtonPrimary = styled.TouchableOpacity`
 	width: 167px;
-	height: 48px
+	height: 48px;
     border-radius: 4px;
     background-color: #5352EC;
     display: flex;

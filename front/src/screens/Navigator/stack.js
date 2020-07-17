@@ -23,6 +23,8 @@ import ConfirmAgentLoadContainer from "../ConfirmAgentLoad/ConfirmAgentLoadConta
 import SelectAccountContainer from "../selectAccount/SelectAccountContainer";
 import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
+import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
+import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
 
 const Stack = createStackNavigator();
 
@@ -62,13 +64,17 @@ export default ({ navigation }) => {
         }}
       />
       <Stack.Screen
-        name="SingleAgentTransactionContainer"
+        name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
       />
       <Stack.Screen name="User" component={userHomeContainer} />
       <Stack.Screen
         name="SingleUserTransaction"
         component={SingleUserTransactionContainer}
+      />
+      <Stack.Screen
+        name="CreateAgentForm"
+        component={CreateAgentFormContainer}
       />
       <Stack.Screen name="successRegister" component={successRegister} />
       <Stack.Screen
@@ -81,7 +87,7 @@ export default ({ navigation }) => {
       />
       <Stack.Screen name="Register" component={registerContainer} 
       options={{ headerShown: false }}/>
-      <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
+      <Stack.Screen name="SelectAmount" component={SelectAmountContainer} />
       <Stack.Screen
         name="ConfAmountAgent"
         component={ConfAmountAgentContainer}
@@ -114,6 +120,7 @@ export default ({ navigation }) => {
       <Stack.Screen name="SelectAccount" component={SelectAccountContainer} />
       <Stack.Screen name="TransactionOk" component={TransactionOkContainer} />
       <Stack.Screen name="Accounts" component={AccountsContainer} />
+      <Stack.Screen name="SingleAccount" component={SingleAccountContainer} />
     </Stack.Navigator>
   );
 };

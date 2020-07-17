@@ -31,6 +31,7 @@ export default ({
   return (
     
 
+
 <View style={style.container} >
       
 <View style={{
@@ -71,6 +72,7 @@ export default ({
           <TextInput
             secureTextEntry={true}
             style={style.input}
+            value={password}
             placeholder="Contraseña"
             onChangeText={(password) => {
               handleValuePassword(password);
@@ -102,7 +104,8 @@ export default ({
           flexDirection: "row-reverse",
           justifyContent: "center" ,
           flex:1,
-          zIndex:-1
+          zIndex:-1,
+         
           
         }}
       >
@@ -131,6 +134,10 @@ export default ({
 
       
     </View>
+
+
+
+
     
     
   );

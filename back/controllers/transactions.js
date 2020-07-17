@@ -7,14 +7,12 @@ const findAllTransactions = (req, res) => {
 };
 
 const findAllUserTransactions = (req, res) => {
-  console.log("REQ User", req.user);
   Transaction.find({ user: req.params.id })
     .populate("user")
     .populate("agent")
     .populate("originAccount")
     .populate("destinationAccount")
     .then((lista) => {
-      console.log("Lista", lista);
       return res.json(lista);
     });
 };
@@ -25,7 +23,10 @@ const findAllAgentTransactions = (req, res) => {
     .populate("agent")
     .populate("originAccount")
     .populate("destinationAccount")
-    .then((lista) => res.json(lista));
+    .then((lista) => {
+      console.log("LISTA" , lista)
+      res.json(lista)})
+      
 };
 
 const findOneUserTransacion = (req, res) => {
