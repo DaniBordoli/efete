@@ -50,6 +50,7 @@ export default ({ navigation }) => {
           headerLeft: () => (
             <Feather
               name="menu"
+              
               style={{ marginLeft: 5 }}
               size={26}
               color="black"
@@ -57,6 +58,7 @@ export default ({ navigation }) => {
             />
           ),
           headerTitleAlign: "center",
+          
         }}
       />
       <Stack.Screen
@@ -77,7 +79,8 @@ export default ({ navigation }) => {
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
       />
-      <Stack.Screen name="Register" component={registerContainer} />
+      <Stack.Screen name="Register" component={registerContainer} 
+      options={{ headerShown: false }}/>
       <Stack.Screen name="selectAmount" component={SelectAmountContainer} />
       <Stack.Screen
         name="ConfAmountAgent"
