@@ -50,7 +50,7 @@ export default ({ navigation }) => {
   };
 
   return (
-    <View>
+    
       <Login
         isData={isData}
         handleIsData={handleIsData}
@@ -63,6 +63,6 @@ export default ({ navigation }) => {
         navigation={navigation}
         handleVerifyAccount={handleVerifyAccount}
       />
-    </View>
+    
   );
 };

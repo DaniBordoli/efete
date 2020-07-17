@@ -25,7 +25,6 @@ export default ({
               return (
                 <Text onPress={() => handleValue(item)}>
                   {item.nameEntity}
-                  <br />
                   xxxx-xxxx-xxxx-
                   {item.accountNumber.toString().slice(6)}
                 </Text>

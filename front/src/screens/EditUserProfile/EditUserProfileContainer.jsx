@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Alert } from "react-native";
 import EditUserProfile from "./EditUserProfile";
 import { editUser } from "../../redux/store/actions/users";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 
 export default () => {
   const userInfo = useSelector((state) => state.users.user);

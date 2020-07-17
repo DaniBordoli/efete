@@ -23,6 +23,7 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
             onPress={() => {
               navigation.navigate("SelectAmount");
             }}
+
             title="Perfil Agente"
             onPress={() => navigation.navigate("Agent")}
           />
@@ -80,6 +81,10 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
                 userTransactions,
               })
             }
+          />
+          <Button
+          title='Mis cuentas'
+          onPress={()=> navigation.navigate('Accounts')}
           />
         </View>
       ) : (

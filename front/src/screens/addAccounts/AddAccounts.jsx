@@ -10,10 +10,9 @@ const AddAccount = ({
 }) => {
   return (
     <View>
-      <Text>Agregar Cuenta</Text>
+      <Text>Entidad</Text>
 
       <TextInput
-        style={styles.input}
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={(name) => handleNameAccount(name)}
@@ -21,7 +20,7 @@ const AddAccount = ({
 
       <Text>CBU / CVU</Text>
       <TextInput
-        style={styles.input}
+  
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={(cbu) => handleCbu(cbu)}
@@ -30,7 +29,7 @@ const AddAccount = ({
 
       <Text>Número de Cuenta</Text>
       <TextInput
-        style={styles.input}
+       
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}
@@ -42,7 +41,7 @@ const AddAccount = ({
         title="Confirmar"
         onPress={() => {
           handleSubmit();
-          navigation.navigate("Home");
+          navigation.navigate("Accounts");
         }}
       />
     </View>

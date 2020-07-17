@@ -23,6 +23,7 @@ export default ({ agentTransactions, navigation, loading }) => {
               />
               <Button
                 title="Modificar monto diario"
+
                 /*  onPress={() => navigation.navigate()} */
               />
             </View>
@@ -71,7 +72,9 @@ export default ({ agentTransactions, navigation, loading }) => {
                   })
                 }
               />
+
             </View>
+
           </View>
         ) : (
           <Text>No tenes transacciones realizadas</Text>

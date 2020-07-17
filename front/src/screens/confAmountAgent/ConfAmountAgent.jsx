@@ -51,7 +51,7 @@ const ConfAmountAgent = ({handlerValue, handlerSubmit, navigation, value}) => {
             <Button
             title="Cancelar"
             onPress={() => {
-            navigation.navigate("Home"); //Cancelar devuelve al home
+            navigation.navigate("Agent"); //Cancelar devuelve al home
         }}
     />
 

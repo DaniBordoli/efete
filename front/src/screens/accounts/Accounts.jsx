@@ -27,7 +27,7 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
                     }
                   >
                     <Text>Entidad: {item.nameEntity}</Text>
-                    <br />
+
                     <Text>Cuenta: {item.accountNumber}</Text>
                   </Text>
                   <Button
@@ -37,10 +37,19 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
                       handleDelete(item._id);
                     }}
                   />
+
                 </View>
               );
             }}
           />
+           <Button
+                    title="AGREGAR CUENTA"
+                    onPress={() => {
+                  
+                      navigation.navigate("AddAccounts")
+                    }}
+                  />
+
         </View>
       ) : (
         <View>

@@ -17,7 +17,8 @@ const newAgent = (newAgent) => {
   };
 };
 
-export const editAgent = (agentData) => () => {
+export const editAgent = (agentData) => (dispatch) => {
+
   return axios
     .patch(`http://${IP}:1337/api/agents/editprofile`, agentData)
     .then((res) => dispatch(setAgent(res.data)))
@@ -32,7 +33,8 @@ export const fetchAgent = (id) => (dispatch) =>
 export const changeDailyAmount = (amountTransaction) => () =>
   axios.patch(`http://${IP}:1337/api/agents/transaction`, amountTransaction);
 
-export const createAgent = (name, address, cuil, dailyAmount, codigoQr) => (
+export const createAgent = (name, address, cuil, dailyAmount, codigoQr,user) => (
+
   dispatch
 ) => {
   return axios
@@ -42,6 +44,8 @@ export const createAgent = (name, address, cuil, dailyAmount, codigoQr) => (
       cuil: cuil,
       dailyAmount: dailyAmount,
       codigoQr: codigoQr,
+      user:user
+
     })
     .then((res) => {
       dispatch(login_user(res.data));
