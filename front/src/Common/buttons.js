@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {buttonColor} from './constans'
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import React ,{useState} from "react";
@@ -36,7 +37,7 @@ export const ButtonPrimary = styled.TouchableOpacity`
 	width: 167px;
 	height: 48px;
     border-radius: 4px;
-    background-color: #5352EC;
+    background-color: ${buttonColor};
     display: flex;
     align-items: center;
     justify-content:center

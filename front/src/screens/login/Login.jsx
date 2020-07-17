@@ -3,7 +3,7 @@ import { View, Text, TextInput, KeyboardAvoidingView} from "react-native";
 import {
   ButtonPrimary,
   Texto,
-} from "../../../assets/style/StyleComponents/buttons";
+} from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from "react-native-elements";
 import { style } from "./style.js";

@@ -4,7 +4,7 @@ import { Button } from "react-native-elements";
 import {
   ButtonPrimary,
   Texto,
-} from "../../../assets/style/StyleComponents/buttons";
+} from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { style } from "./style.js";
 
