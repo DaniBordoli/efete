@@ -25,7 +25,7 @@ import React ,{useState} from "react";
 } */
 
     
-export const Texto=styled.Text`
+/* export const Texto=styled.Text`
 font-style: normal;
 font-weight: bold;
 font-size: 18px;
@@ -61,3 +61,4 @@ export const ButtonConfirm= styled.TouchableOpacity`
 	border-radius: 10px;	
 	background-color: red;
 `;
+ */

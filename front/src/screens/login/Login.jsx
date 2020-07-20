@@ -4,6 +4,7 @@ import { ButtonPrimary, Texto } from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from "react-native-elements";
 import { style } from "./style.js";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 //funcion para ver los bordes
 const borde = function (color) {
@@ -23,6 +24,8 @@ export default ({
   isData,
   navigation,
   handleVerifyAccount,
+  updateSecureTextEntry,
+  data
 }) => {
   return (
     <View style={style.container}>
@@ -64,14 +67,33 @@ export default ({
             />
             <TextInput
               autoCapitalize="none"
-              secureTextEntry={true}
+              secureTextEntry={data.secureTextEntry? true : false}
               style={style.input}
               value={password}
               placeholder="Contraseña"
               onChangeText={(password) => {
                 handleValuePassword(password);
               }}
+              
             />
+            <TouchableOpacity onPress={updateSecureTextEntry}>
+            {data.secureTextEntry? <Icon
+            style={style.eyeLock}
+            name="eye-off"
+            size={22}
+            color="#94AFB6"
+          />:
+          <Icon
+            style={style.eyeLock}
+            name="eye"
+            size={22}
+            color="#94AFB6"
+          />
+
+}
+            
+            </TouchableOpacity>
+            
           </View>
         </View>
 
@@ -109,14 +131,14 @@ export default ({
           }}
         />
 
-        <ButtonPrimary
-          style={style.register}
+        <Button
+          buttonStyle={style.botonRegister}
+          titleStyle={style.tituloRegister}
+          title="Registrarte"
           onPress={() => {
             navigation.navigate("Register");
           }}
-        >
-          <Texto style={style.textRegister}>Registrarte</Texto>
-        </ButtonPrimary>
+        ></Button>
       </View>
     </View>
   );

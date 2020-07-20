@@ -22,7 +22,7 @@ export const style = StyleSheet.create({
     fontSize: 64,
     color: "#6F76E4",
     textAlign: "center",
-    fontWeight: "bold",
+    fontFamily: "nunito",
     marginTop: 50,
   },
   registrarse: {
@@ -30,6 +30,8 @@ export const style = StyleSheet.create({
     color: "#6F76E4",
     textAlign: "center",
     marginTop: 50,
+    fontFamily: "nunito",
+
   },
   inputContainer: {
     backgroundColor: "#FFFFFF",
@@ -37,16 +39,20 @@ export const style = StyleSheet.create({
     marginRight: 15,
     borderRadius: 20,
     height: 320,
-    display: "flex",
     marginTop: 30,
     justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 18,
+    elevation:5,
+
   },
-  register: {
-    backgroundColor: "#F1F3F6",
-  },
-  textRegister: {
-    color: "#404CB3",
-  },
+  
+  
   hr: {
     borderBottomColor: "#DDDDDD",
     borderBottomWidth: 1,
@@ -62,6 +68,17 @@ export const style = StyleSheet.create({
   tituloIniciar: {
     color: "#FFFFFF",
     textTransform: "uppercase",
+    fontFamily: "nunito",
+  },
+  botonRegister: {
+    backgroundColor: "#F1F3F6",
+    width: 167,
+    height: 48,
+  },
+  tituloRegister: {
+    color: "#404CB3",
+    textTransform: "uppercase",
+    fontFamily: "nunito",
   },
   searchSection: {
     flex: 1,
@@ -87,5 +104,14 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
   },
-  
+  border:{
+    backgroundColor: "#FFFFFF",
+    width: 150,
+    margin: 5,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#DDDDDD",
+    height:37,
+    justifyContent:'center'
+  }
 });

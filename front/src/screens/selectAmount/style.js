@@ -1,73 +1,66 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet } from "react-native";
+import { headerColor, buttonColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
-  titulo: {
+  monto: {
+    textAlign: "center",
     fontSize: 36,
-    color: "#6F76E4",
-    textAlign: "center",
-    fontWeight: "bold",
-    marginTop: 50,
+    fontFamily: "nunito",
+    marginTop: 30,
+    color: `${headerColor}`,
+  },
+  valor: {
     marginBottom: 50,
-  },
-  iniciarSesion: {
-    fontSize: 24,
-    color: "#6F76E4",
     textAlign: "center",
-    marginTop: 50,
+    fontSize: 24,
+    borderBottomWidth: 1,
+    width: "35%",
+    alignSelf: "center",
+    marginTop: 10,
+    borderColor:"#807fc7"
   },
-  inputContainer: {
-    backgroundColor: "#FFFFFF",
-    width: Dimensions.get("window").width - 40,
-    marginLeft: 20,
-    marginRight: 20,
+  otroMonto: {
+    backgroundColor: "white",
+    height: 66,
   },
-  register: {
-    backgroundColor: "#F1F3F6",
+  montoContainer: {
+    borderRadius: 5,
+    marginBottom: 50,
+    width: "90%",
+    alignSelf: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 8.0,
+    elevation: 5,
   },
-  textRegister: {
-    color: "#404CB3",
+  otroMontoTitulo: {
+    color: `${buttonColor}`,
+    fontSize: 15,
+    textAlign: "center",
   },
   hr: {
     borderBottomColor: "#DDDDDD",
     borderBottomWidth: 1,
     display: "flex",
     alignSelf: "center",
-    width: 370,
+    width: "100%",
   },
-  botonIniciar: {
-    backgroundColor: "#5352EC",
+  confirmar: {
     width: 167,
-    height: 48,
-  },
-  tituloIniciar: {
-    color: "#FFFFFF",
-    textTransform: "uppercase",
-  },
-  searchSection: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    borderRadius: 10,
-  },
-  searchIcon: {
-    padding: 10,
-  },
-  input: {
-    fontSize: 25,
-    flex: 1,
-    color: "#424242",
-    borderBottomWidth: 1,
-    borderBottomColor: "#DDDDDD",
-    textAlign: "center",
-    width: Dimensions.get("window").width - 40,
-    marginLeft: 20,
-    marginRight: 20,
-    marginTop: 20,
+    height: 60,
+    backgroundColor: `${buttonColor}`,
+    marginTop: 10,
     alignSelf: "center",
   },
-  container: {
-    flex: 1,
+  tituloConfirmar: {
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    color: "white",
+    fontWeight: "400",
   },
 });
