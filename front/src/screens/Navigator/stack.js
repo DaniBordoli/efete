@@ -44,7 +44,7 @@ export default ({ navigation }) => {
 }) */
 
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="SelectAmount">
       <Stack.Screen
         name="Home"
         component={Home}
@@ -52,7 +52,6 @@ export default ({ navigation }) => {
           headerLeft: () => (
             <Feather
               name="menu"
-              
               style={{ marginLeft: 5 }}
               size={26}
               color="black"
@@ -60,7 +59,6 @@ export default ({ navigation }) => {
             />
           ),
           headerTitleAlign: "center",
-          
         }}
       />
       <Stack.Screen
@@ -85,9 +83,12 @@ export default ({ navigation }) => {
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
       />
-      <Stack.Screen name="Register" component={registerContainer} 
-      options={{ headerShown: false }}/>
-    
+      <Stack.Screen
+        name="Register"
+        component={registerContainer}
+        options={{ headerShown: false }}
+      />
+
       <Stack.Screen name="SelectAmount" component={SelectAmountContainer} />
       <Stack.Screen
         name="ConfAmountAgent"

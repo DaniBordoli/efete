@@ -12,8 +12,8 @@ import { style } from "./style";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default ({ userTransactions, navigation, loading, userRole }) => {
-  console.log(userRole)
-  
+  console.log(userRole);
+
   return (
     <View>
       {loading ? (
@@ -23,34 +23,22 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
             onPress={() => {
               navigation.navigate("SelectAmount");
             }}
-
-            title="Perfil Agente"
-            onPress={() => navigation.navigate("Agent")}
           />
-          <Text>Movimientos</Text>
-          
-          <Text>{userTransactions[0].agent[0].name}</Text>
-          
+
           <View>
-          <Button
-          title='Extracciones'
-          onPress={()=> navigation.navigate('selectAmount')}
-          />
-
-        {userRole === 'agent' 
-        ? 
-        <Button
-          title='Perfil Agente'
-          onPress={()=> navigation.navigate('Agent')}
-          />
-          :
-          <Button
-          title='Convertirte en agente'
-          onPress={()=> navigation.navigate('CreateAgentForm')}
-          />
-      }
-
+            {userRole === "agent" ? (
+              <Button
+                title="Perfil Agente"
+                onPress={() => navigation.navigate("Agent")}
+              />
+            ) : (
+              <Button
+                title="Convertirte en agente"
+                onPress={() => navigation.navigate("CreateAgentForm")}
+              />
+            )}
           </View>
+          <Text>Movimientos</Text>
           <FlatList
             keyExtractor={(userTransactions) => userTransactions._id}
             data={userTransactions}
@@ -83,8 +71,8 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
             }
           />
           <Button
-          title='Mis cuentas'
-          onPress={()=> navigation.navigate('Accounts')}
+            title="Mis cuentas"
+            onPress={() => navigation.navigate("Accounts")}
           />
         </View>
       ) : (

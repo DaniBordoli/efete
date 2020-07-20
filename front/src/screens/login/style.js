@@ -6,7 +6,7 @@ export const style = StyleSheet.create({
     color: "#6F76E4",
     textAlign: "center",
     fontWeight: "bold",
-    marginTop:50
+    marginTop: 50,
   },
   iniciarSesion: {
     fontSize: 24,
@@ -17,8 +17,8 @@ export const style = StyleSheet.create({
   inputContainer: {
     backgroundColor: "#FFFFFF",
     marginLeft: 15,
-    marginRight: 15,   
-     borderRadius: 20,
+    marginRight: 15,
+    borderRadius: 20,
     height: 130,
     marginTop: 30,
   },
@@ -66,6 +66,6 @@ export const style = StyleSheet.create({
     color: "#424242",
   },
   container: {
-   flex:1,
+    flex: 1,
   },
 });

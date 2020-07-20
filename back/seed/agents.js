@@ -8,7 +8,7 @@ const charmander = {
   CUIL: 3017263882,
   dailyAmount: 7000,
   user: {
-    _id: "5f063aac7c500b6f49952346",
+    _id: "5f135ee39656182f99dea88a",
   },
 };
 
@@ -18,7 +18,7 @@ const bulbasaur = {
   CUIL: 135674839,
   dailyAmount: 14000,
   user: {
-    _id: "5f064320cefb0877fc05368c",
+    _id: "5f135ee39656182f99dea888",
   },
 };
 
