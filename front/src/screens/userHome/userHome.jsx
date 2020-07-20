@@ -34,7 +34,7 @@ export default ({ userTransactions, navigation, loading, userRole }) => {
           <View>
           <Button
           title='Extracciones'
-          onPress={()=> navigation.navigate('selectAmount')}
+          onPress={()=> navigation.navigate('SelectAmount')}
           />
 
         {userRole === 'agent' 
