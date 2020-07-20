@@ -23,10 +23,8 @@ const findAllAgentTransactions = (req, res) => {
     .populate("agent")
     .populate("originAccount")
     .populate("destinationAccount")
-    .then((lista) => {
-      console.log("LISTA" , lista)
-      res.json(lista)})
-      
+    .then((lista) => {res.json(lista);
+    });
 };
 
 const findOneUserTransacion = (req, res) => {
@@ -44,6 +42,7 @@ const createTransaction = (req, res) => {
       .populate("user")
       .populate("agent")
       .populate("originAccount")
+      .populate("destinationAccount")
       .then((transaction) => {
         res.status(201).send(transaction);
       });

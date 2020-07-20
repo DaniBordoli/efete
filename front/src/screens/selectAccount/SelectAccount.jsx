@@ -9,6 +9,7 @@ export default ({
   transactionValue,
   loading,
   selectedAccount,
+  navigation
   // handleAgentDailyAmount,
 }) => {
   return (
@@ -34,10 +35,12 @@ export default ({
           <Button
             disabled={!selectedAccount._id}
             title="Realizar Transacción"
-            onPress={() => {
-              handleSubmit();
+            onPress={() => navigation.navigate('TransactionOk')}
               // handleAgentDailyAmount();
-            }}
+          />
+          <Button
+            title="Agregar Cuenta"
+            onPress={() => navigation.navigate('AddAcounts', )}
           />
         </View>
       ) : (

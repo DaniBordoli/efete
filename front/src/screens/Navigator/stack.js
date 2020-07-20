@@ -1,5 +1,6 @@
 import React from "react";
-import { Feather } from "@expo/vector-icons";
+import { headerColor } from "../../Common/constans";
+import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../home/home";
 import userHomeContainer from "../userHome/userHomeContainer";
@@ -25,6 +26,7 @@ import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
+import { NavigationContainer } from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
@@ -35,15 +37,8 @@ const Stack = createStackNavigator();
 } */
 
 export default ({ navigation }) => {
-  /* const header =(headerTitle , headerShown)=>({
-  header: props => <Navbar {...props} title={title} backRoute={backRoute}/> ,
-  headerStyle:{
-    backgroundColor: "transparent"
-  }
-
-}) */
-
   return (
+    
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Home"
@@ -52,7 +47,6 @@ export default ({ navigation }) => {
           headerLeft: () => (
             <Feather
               name="menu"
-              
               style={{ marginLeft: 5 }}
               size={26}
               color="black"
@@ -60,18 +54,44 @@ export default ({ navigation }) => {
             />
           ),
           headerTitleAlign: "center",
-          
         }}
       />
       <Stack.Screen
         name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
       />
-      <Stack.Screen name="User" component={userHomeContainer} />
+      <Stack.Screen
+        name="User"
+        component={userHomeContainer}
+        options={{
+          headerRight: () => (
+            <MaterialIcons
+              name="notifications-none"
+              style={{ marginRight: 10, color: "white" }}
+              size={24}
+              color="black"
+            />
+          ),
+          headerLeft: () => (
+            <Feather
+              name="menu"
+              style={{ marginLeft: 10 }}
+              size={26}
+              color="white"
+              onPress={() => navigation.openDrawer()}
+            />
+          ),
+          ...myHeader,
+
+          headerTitleAlign: "center",
+          title: "Perfil usuario",
+        }}
+      />
       <Stack.Screen
         name="SingleUserTransaction"
         component={SingleUserTransactionContainer}
       />
+
       <Stack.Screen
         name="CreateAgentForm"
         component={CreateAgentFormContainer}
@@ -79,16 +99,30 @@ export default ({ navigation }) => {
       <Stack.Screen name="successRegister" component={successRegister} />
       <Stack.Screen
         name="SelectOtherAmountAgent"
+        options={{
+          ...myHeader,
+          title: "Seleccionar otro monto",
+        }}
         component={OtherAmountAgentContainer}
       />
       <Stack.Screen
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
       />
-      <Stack.Screen name="Register" component={registerContainer} 
-      options={{ headerShown: false }}/>
-    
-      <Stack.Screen name="SelectAmount" component={SelectAmountContainer} />
+      <Stack.Screen
+        name="Register"
+        component={registerContainer}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="SelectAmount"
+        options={{
+          ...myHeader,
+          title: "Seleccionar monto",
+        }}
+        component={SelectAmountContainer}
+      />
       <Stack.Screen
         name="ConfAmountAgent"
         component={ConfAmountAgentContainer}
@@ -96,11 +130,15 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Login"
         component={LoginContainer}
-        options={{ headerShown: false }}
+        options={{ headerShown: false}}
       />
       <Stack.Screen name="Verificar" component={verifityEmail} />
       <Stack.Screen
         name="SelectOtherAmount"
+        options={{
+          ...myHeader,
+          title: "Seleccionar otro monto",
+        }}
         component={SelectOtherAmountContainer}
       />
       <Stack.Screen
@@ -120,8 +158,22 @@ export default ({ navigation }) => {
       <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
       <Stack.Screen name="SelectAccount" component={SelectAccountContainer} />
       <Stack.Screen name="TransactionOk" component={TransactionOkContainer} />
-      <Stack.Screen name="Accounts" component={AccountsContainer} />
+      <Stack.Screen
+        name="Accounts"
+        component={AccountsContainer}
+        options={{ ...myHeader, title: "Mis cuentas" }}
+      />
       <Stack.Screen name="SingleAccount" component={SingleAccountContainer} />
     </Stack.Navigator>
   );
+};
+
+const myHeader = {
+  headerTintColor: "white",
+  headerTitleStyle: {
+    color: "white",
+  },
+  headerStyle: {
+    backgroundColor: headerColor,
+  },
 };

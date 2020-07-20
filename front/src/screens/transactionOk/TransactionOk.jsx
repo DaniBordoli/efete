@@ -3,6 +3,7 @@ import { View, Text, FlatList, Button, ActivityIndicator } from "react-native";
 import { style } from "./style";
 
 export default ({ navigation, transaction }) => {
+  console.log('Transacciones', transaction)
   return (
     <View>
       <Text>Transacción Realizada</Text>

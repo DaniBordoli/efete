@@ -11,12 +11,10 @@ export default ({ navigation }) => {
   };
 
   return (
-    <View>
       <SelectAmount
         handleValue={handleValue}
         navigation={navigation}
         value={value}
       />
-    </View>
   );
 };

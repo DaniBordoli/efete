@@ -1,20 +1,11 @@
 import React from "react";
-import { View, TextInput, Text,   } from "react-native";
+import { View, TextInput, Text, KeyboardAvoidingView , SafeAreaView, ScrollView } from "react-native";
 import { Button } from "react-native-elements";
-import {
-  ButtonPrimary,
-  Texto,
-} from "../../Common/buttons";
+import { ButtonPrimary, Texto } from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { style } from "./style.js";
+import Icons from "react-native-vector-icons/FontAwesome";
 
-//funcion para ver los bordes
-const borde = function (color) {
-  return {
-    borderColor: color,
-    borderWidth: 7,
-  };
-};
+import { style } from "./style.js";
 
 export default ({
   firstNameChange,
@@ -25,14 +16,18 @@ export default ({
   handleSubmit,
   navigation,
 }) => (
-  <View style={style.container}>
-    <View style={{ flex:8}}>
+  
+  <KeyboardAvoidingView behavior='height' >
+
+    <ScrollView showsVerticalScrollIndicator={false}>
+    <View style={{ flex: 8 }}>
       <Text style={style.titulo}>Efeté</Text>
       <Text style={style.registrarse}>Registrarte</Text>
 
-      <View style={style.inputContainer}>
+      <View
+      
+       style={style.inputContainer}>
         <View style={style.searchSection}>
-          
           <Icon
             style={style.searchIcon}
             name="account-circle-outline"
@@ -83,7 +78,6 @@ export default ({
             color="#94AFB6"
           />
           <TextInput
-          
             keyboardType="email-address"
             style={style.input}
             placeholder="Email"
@@ -100,8 +94,8 @@ export default ({
             color="#94AFB6"
           />
           <TextInput
-          autoGrow={true}
-          importantForAutofill='yes'
+            autoGrow={true}
+            importantForAutofill="yes"
             autoCapitalize="none"
             secureTextEntry={true}
             password={true}
@@ -119,16 +113,30 @@ export default ({
         }}
       >
         <Button
-          buttonStyle={{ backgroundColor: "#FFFFFF", width: 180 ,marginRight:5 
-         } }
-          titleStyle={{ color: "#d94821" }}
+        icon={
+          <Icons
+          style={{margin:10}}
+            name="google"
+            size={20}
+            color="#d94821"
+          />
+        }
+         buttonStyle={style.border}
+          titleStyle={{ color: "#d94821" ,fontSize:15}}
           title="GOOGLE"
-          
         />
 
         <Button
-          buttonStyle={{ backgroundColor: "#FFFFFF", width: 180 ,marginLeft:5}}
-          titleStyle={{ color: "#3a5aa0" }}
+          icon={
+            <Icons
+            style={{marginRight:10}}
+              name="facebook"
+              size={20}
+              color="#3a5aa0"
+            />
+          }
+          buttonStyle={style.border}
+          titleStyle={{ color: "#3a5aa0", fontSize:15}}
           title="FACEBOOK"
         />
       </View>
@@ -143,6 +151,8 @@ export default ({
         style={{
           flexDirection: "row-reverse",
           justifyContent: "center",
+          marginTop:50,
+        
         }}
       >
         <Button
@@ -155,15 +165,18 @@ export default ({
           }}
         />
 
-        <ButtonPrimary
-          style={style.register}
+        <Button
+          buttonStyle={style.botonRegister}
+          titleStyle={style.tituloRegister}
+          title="Iniciar Sesión"
           onPress={() => {
             navigation.navigate("Login");
           }}
-        >
-          <Texto style={style.textRegister}>Iniciar Sesión</Texto>
-        </ButtonPrimary>
+        ></Button>
       </View>
     </View>
-  </View>
+        
+
+    </ScrollView>
+    </KeyboardAvoidingView>
 );
