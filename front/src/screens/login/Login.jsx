@@ -1,21 +1,18 @@
 import React from "react";
-import { View, Text, TextInput, KeyboardAvoidingView} from "react-native";
-import {
-  ButtonPrimary,
-  Texto,
-} from "../../Common/buttons";
+import { View, Text, TextInput, KeyboardAvoidingView } from "react-native";
+import { ButtonPrimary, Texto } from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from "react-native-elements";
 import { style } from "./style.js";
-
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 //funcion para ver los bordes
-const borde=function(color){
-  return{
-    borderColor:color, borderWidth:3, 
-  }
-}
-
+const borde = function (color) {
+  return {
+    borderColor: color,
+    borderWidth: 3,
+  };
+};
 
 export default ({
   handleValueUsername,
@@ -27,86 +24,101 @@ export default ({
   isData,
   navigation,
   handleVerifyAccount,
+  updateSecureTextEntry,
+  data
 }) => {
   return (
-    
+    <View style={style.container}>
+      <View
+        style={{
+          flex: 8,
+        }}
+      >
+        <Text style={style.titulo}>Efeté</Text>
+        <Text style={style.iniciarSesion}>Iniciar Sesión</Text>
+        <View style={style.inputContainer}>
+          <View style={style.searchSection}>
+            <Icon
+              style={style.searchIcon}
+              name="email-outline"
+              size={24}
+              color="#94AFB6"
+            />
+            <TextInput
+              autoCapitalize="none"
+              keyboardType="email-address"
+              style={style.input}
+              value={username}
+              placeholder="Email"
+              onChangeText={(username) => {
+                handleValueUsername(username);
+              }}
+            />
+          </View>
 
+          <View style={style.hr} />
 
-<View style={style.container} >
-      
-<View style={{
-  flex:8
-}}>
-
-
-<Text style={style.titulo}>Efeté</Text>
-      <Text style={style.iniciarSesion}>Iniciar Sesión</Text>
-      <View style={style.inputContainer} >
-        <View style={style.searchSection}>
+          <View style={style.searchSection}>
+            <Icon
+              style={style.searchIcon}
+              name="lock-outline"
+              size={24}
+              color="#94AFB6"
+            />
+            <TextInput
+              autoCapitalize="none"
+              secureTextEntry={data.secureTextEntry? true : false}
+              style={style.input}
+              value={password}
+              placeholder="Contraseña"
+              onChangeText={(password) => {
+                handleValuePassword(password);
+              }}
+              
+            />
+            <TouchableOpacity onPress={updateSecureTextEntry}>
+            {data.secureTextEntry? <Icon
+            style={style.eyeLock}
+            name="eye-off"
+            size={22}
+            color="#94AFB6"
+          />:
           <Icon
-            style={style.searchIcon}
-            name="email-outline"
-            size={24}
+            style={style.eyeLock}
+            name="eye"
+            size={22}
             color="#94AFB6"
           />
-          <TextInput
-            keyboardType="email-address"
-            style={style.input}
-            value={username}
-            placeholder="Email"
-            onChangeText={(username) => {
-              handleValueUsername(username);
-            }}
-          />
+
+}
+            
+            </TouchableOpacity>
+            
+          </View>
         </View>
 
-        <View style={style.hr}/>
-
-        <View style={style.searchSection}>
-          <Icon
-            style={style.searchIcon}
-            name="lock-outline"
-            size={24}
-            color="#94AFB6"
-          />
-          <TextInput
-            secureTextEntry={true}
-            style={style.input}
-            value={password}
-            placeholder="Contraseña"
-            onChangeText={(password) => {
-              handleValuePassword(password);
-            }}
-          />
-        </View>
+        {user.message ? (
+          <Text>{user.message}</Text>
+        ) : user._id && !user.isVerified ? (
+          <View>
+            <Text>Tu cuenta no ha sido verificada.</Text>
+            <Text
+              onPress={() => {
+                handleVerifyAccount();
+              }}
+            >
+              Verificar cuenta
+            </Text>
+          </View>
+        ) : null}
       </View>
 
-      {user.message ? (
-        <Text>{user.message}</Text>
-      ) : user._id && !user.isVerified ? (
-        <View>
-          <Text>Tu cuenta no ha sido verificada.</Text>
-          <Text
-            onPress={() => {
-              handleVerifyAccount();
-            }}
-          >
-            Verificar cuenta
-          </Text>
-        </View>
-      ) : null}
-
-</View>
-
-
-<View
+      <View
         style={{
           flexDirection: "row-reverse",
-          justifyContent: "center" ,
-          flex:1,
-          zIndex:-1,
-         
-          
+          justifyContent: "center",
+          flex: 1,
+          zIndex: -1,
         }}
       >
         <Button
@@ -119,26 +131,15 @@ export default ({
           }}
         />
 
-        <ButtonPrimary
-          style={style.register}
+        <Button
+          buttonStyle={style.botonRegister}
+          titleStyle={style.tituloRegister}
+          title="Registrarte"
           onPress={() => {
             navigation.navigate("Register");
           }}
-        >
-          <Texto style={style.textRegister}>Registrarte</Texto>
-        </ButtonPrimary>
+        ></Button>
       </View>
-
-
-
-
-      
     </View>
-
-
-
-
-    
-    
   );
 };

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { View } from "react-native";
 import { register } from "../../redux/store/actions/users";
 import Register from "./register";
 import { useDispatch } from "react-redux";
@@ -35,6 +34,7 @@ export default ({ navigation }) => {
 
   return (
     
+      
       <Register
         usernameChange={usernameChange}
         firstNameChange={firstNameChange}
@@ -44,6 +44,6 @@ export default ({ navigation }) => {
         handleSubmit={handleSubmit}
         navigation={navigation}
       />
-    
+
   );
 };
