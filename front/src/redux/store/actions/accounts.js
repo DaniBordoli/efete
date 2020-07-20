@@ -45,7 +45,7 @@ export const addAccounts = (name, cbu, accountNumber, user) => (dispatch) => {
       accountNumber: accountNumber,
       user: user,
     })
-    .then((res) => dispatch(add_account(res.data)));
+    .then((res) => dispatch(get_user_accounts(res.data)));
 };
 
 export const fetchBanks = () => (dispatch) =>
