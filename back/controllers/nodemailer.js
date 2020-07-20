@@ -1,19 +1,18 @@
 const nodemailer = require("nodemailer");
-const IP = require('../config')
+const IP = require("../config");
 
 const SendMail = function (user) {
   var transporter = nodemailer.createTransport({
     secure: false,
     service: "gmail",
     auth: {
-      user: "facu.efete@gmail.com",
-      pass: "Efete123<",
+      user: process.env.MAIL,
+      pass: process.env.PASS,
     },
     tls: { rejectUnauthorized: false },
   });
 
- 
-  link = `http://${IP}:1337/api/users/verify?id=${user._id}`
+  link = `http://${IP}:1337/api/users/verify?id=${user._id}`;
 
   var mailOptions = {
     from: "facu.efete@gmail.com",

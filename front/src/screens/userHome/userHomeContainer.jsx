@@ -14,9 +14,7 @@ export default ({ navigation, route }) => {
     (state) => state.transactions.userTransactions
   );
 
-  const userRole = useSelector(
-    (state) => state.users.user.role
-  )
+  const userRole = useSelector((state) => state.users.user.role);
 
     useEffect(()=>{
       var date = moment()
