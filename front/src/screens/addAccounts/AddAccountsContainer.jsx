@@ -1,51 +1,46 @@
-import React, {useState} from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AddAccounts from "../addAccounts/AddAccounts";
-import {View} from "react-native"
-import {addAccounts} from "../../redux/store/actions/accounts"
+import { View } from "react-native";
+import { addAccounts } from "../../redux/store/actions/accounts";
 
+export default ({ navigation }) => {
+  const user = useSelector((state) => state.users.user);
 
-export default ({navigation}) => {
   const dispatch = useDispatch();
 
-  const [name, setNameAccount] = useState('');
+  const [name, setNameAccount] = useState("");
   const handleNameAccount = (name) => {
     setNameAccount(name);
   };
 
-  const [cbu, setCbu] = useState('');
+  const [cbu, setCbu] = useState("");
   const handleCbu = (cbu) => {
     setCbu(cbu);
   };
 
-  const [dni, setDni] = useState('');
-  const handleDni = (dni) => {
-    console.log('dni',dni)
-    setDni(dni);
+  const [accountNumber, setAccountNumber] = useState("");
+  const handleAccountNumber = (accountNumber) => {
+    setAccountNumber(accountNumber);
   };
-
 
   const handleSubmit = () => {
-
-    dispatch(addAccounts(name,cbu,dni))
-
+    dispatch(addAccounts(name, cbu, accountNumber, user._id));
+    // dispatch(addAccounts(name, cbu, accountNumber, "5f0f14c1830a243382d6c6aa"));
   };
-
-  
 
   return (
     <View>
       <AddAccounts
         handleNameAccount={handleNameAccount}
         handleCbu={handleCbu}
-        handleDni={handleDni}
+        handleAccountNumber={handleAccountNumber}
         handleSubmit={handleSubmit}
         navigation={navigation}
         name={name}
         cbu={cbu}
-        dni={dni}
+        accountNumber={accountNumber}
       />
     </View>
   );
 };
-

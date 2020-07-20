@@ -19,7 +19,6 @@ export default ({ navigation, route }) => {
   )
 
   useEffect(() => {
-    console.log(route.params.user, "ROOOOOUTE");
     dispatch(getUserTransactions(route.params.user)).then(() =>
       setLoader(true)
     );

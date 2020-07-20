@@ -1,4 +1,5 @@
 const express = require("express");
+const IP = require('../config')
 const router = express.Router();
 const passport = require("passport");
 const { User } = require("../models/index");
@@ -14,14 +15,14 @@ const {
 router.post("/register", userRegister);
 
 router.get("/verify", function (req, res) {
-  if (req.protocol + "://" + req.get("host") == "http://localhost:1337") {
+  if (req.protocol + "://" + req.get("host") == `http://${IP}:1337`) {
     User.findById(req.query.id).then((user) => {
       if (user) {
         user.isVerified = true;
         user.save().then(() => {
           console.log("email is verified");
 
-          res.redirect("http://localhost:19006/successRegister");
+          res.redirect(`http://${IP}:19006`);
         });
       } else {
         console.log("email is not verified");

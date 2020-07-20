@@ -17,7 +17,7 @@ export default ({ navigation, transaction }) => {
       <Button
         title="Ir a inicio"
         onPress={() => {
-          navigation.navigate("Login");
+          navigation.navigate("User");
         }}
       />
     </View>

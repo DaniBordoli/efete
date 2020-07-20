@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import { style } from "./style";
 
-export default ({ handleValue, navigation, handleSubmit, value }) => {
+export default ({ handleValue, navigation, value }) => {
   return (
     <View>
       <Text>Seleccionar Monto</Text>
@@ -22,8 +22,8 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
     <Button 
     title="Confirmar"
     onPress={() => {
-    handlerSubmit();
-    navigation.navigate("ConfirmAgentLoad"); // Deberia llevar a una vista de confirmación
+    navigation.navigate("SelectAccount", {value:value}); // Deberia llevar a una vista de confirmación
+
     }}
     />
     }

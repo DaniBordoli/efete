@@ -54,7 +54,8 @@ const CreateAgentForm = ({
             title='Enviar'
             onPress={() => {
             handlerSubmit();
-            navigation.navigate("Home");
+            navigation.navigate("User");
+
             }}
             />
            

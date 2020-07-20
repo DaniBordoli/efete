@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native'
 
 
 export default ( {getOneUserTransaction, navigation} ) =>{
- console.log('Route en el tonto', getOneUserTransaction)
 
  return(
 

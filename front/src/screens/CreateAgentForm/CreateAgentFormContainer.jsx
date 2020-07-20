@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import {View } from "react-native";
 import CreateAgentForm from "./CreateAgentForm"
 import { createAgent } from '../../redux/store/actions/agents'
-import { useDispatch } from "react-redux";
+import { useDispatch ,useSelector } from "react-redux";
+
 
 
 const CreateAgentFormContainer = ({ navigation}) => {
   const dispatch = useDispatch();
+
+  const user = useSelector((state)=> state.users.user)
 
     
 const [name, setName] = useState('');
@@ -36,8 +39,8 @@ function handlerCodigo(text){
 }
   
 function handlerSubmit(){
-  console.log('!!!!!!!!!',name, address, cuil, dailyAmount, codigoQr)
-  dispatch(createAgent(name, address, cuil, dailyAmount, codigoQr))
+  dispatch(createAgent(name, address, cuil, dailyAmount, codigoQr, user._id))
+
 }
   
   

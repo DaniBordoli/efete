@@ -34,7 +34,7 @@ export default ({ navigation }) => {
   }
 
   return (
-    <View>
+    
       <Register
         usernameChange={usernameChange}
         firstNameChange={firstNameChange}
@@ -44,6 +44,6 @@ export default ({ navigation }) => {
         handleSubmit={handleSubmit}
         navigation={navigation}
       />
-    </View>
+    
   );
 };
