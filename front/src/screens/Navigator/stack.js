@@ -38,7 +38,6 @@ const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
-    
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Home"
@@ -130,7 +129,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Login"
         component={LoginContainer}
-        options={{ headerShown: false}}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name="Verificar" component={verifityEmail} />
       <Stack.Screen
@@ -156,7 +155,14 @@ export default ({ navigation }) => {
         component={AllUserTransactionsContainer}
       />
       <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
-      <Stack.Screen name="SelectAccount" component={SelectAccountContainer} />
+      <Stack.Screen
+        name="SelectAccount"
+        options={{
+          ...myHeader,
+          title: "Seleccionar Cuenta",
+        }}
+        component={SelectAccountContainer}
+      />
       <Stack.Screen name="TransactionOk" component={TransactionOkContainer} />
       <Stack.Screen
         name="Accounts"
