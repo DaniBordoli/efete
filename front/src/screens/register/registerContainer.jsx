@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { register } from "../../redux/store/actions/users";
 import Register from "./register";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default ({ navigation }) => {
   const dispatch = useDispatch();
@@ -11,6 +11,8 @@ export default ({ navigation }) => {
   const [dni, setDni] = useState(0);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+
+  const user = useSelector((state) => state.users.user);
 
   function usernameChange(text) {
     setUsername(text);
@@ -29,21 +31,30 @@ export default ({ navigation }) => {
   }
 
   function handleSubmit() {
-    dispatch(register(firstName, lastName, dni, password, username));
+    dispatch(register(firstName, lastName, dni, password, username)).then(
+      (data) => {
+        if (data.user._id) {
+          setFirstName("");
+          setLastName("");
+          setDni(0);
+          setPassword("");
+          setUsername("");
+          navigation.navigate("Verificar");
+        }
+      }
+    );
   }
 
   return (
-    
-      
-      <Register
-        usernameChange={usernameChange}
-        firstNameChange={firstNameChange}
-        lastNameChange={lastNameChange}
-        dniChange={dniChange}
-        passwordChange={passwordChange}
-        handleSubmit={handleSubmit}
-        navigation={navigation}
-      />
-
+    <Register
+      usernameChange={usernameChange}
+      firstNameChange={firstNameChange}
+      lastNameChange={lastNameChange}
+      dniChange={dniChange}
+      passwordChange={passwordChange}
+      handleSubmit={handleSubmit}
+      navigation={navigation}
+      user={user}
+    />
   );
 };

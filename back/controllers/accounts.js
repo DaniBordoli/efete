@@ -12,8 +12,10 @@ const AccountsController = {
   },
   createAccount(req, res) {
     AccountsModel.create(req.body)
-      .then((account) => {
-        res.status(201).send(account);
+      .then(() => {
+        return AccountsModel.find({ user: req.body.user }).then((accounts) => {
+          res.status(201).send(accounts);
+        });
       })
       .catch((err) => {
         res.status(500).send(err);
