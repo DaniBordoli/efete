@@ -1,5 +1,6 @@
 const AccountsModel = require("../models/accounts");
 
+
 const AccountsController = {
   findAll(req, res) {
     AccountsModel.find({ user: req.params.id })
@@ -49,4 +50,4 @@ const AccountsController = {
   },
 };
 
-module.exports = AccountsController;
+module.exports = AccountsController

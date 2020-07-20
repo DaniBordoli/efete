@@ -3,6 +3,7 @@ import {
   ADD_ACCOUNT,
   GET_USER_ACCOUNTS,
   GET_USER_SINGLE_ACCOUNT,
+  FETCH_BANKS,
 } from "../constants";
 import { IP } from "../../../../config";
 
@@ -27,6 +28,15 @@ const get_user_single_account = (account) => {
   };
 };
 
+const get_banks = (banks) => {
+  return {
+    type: FETCH_BANKS,
+    banks,
+  };
+};
+
+
+
 export const addAccounts = (name, cbu, accountNumber, user) => (dispatch) => {
   return axios
     .post(`http://${IP}:1337/api/accounts`, {
@@ -37,6 +47,13 @@ export const addAccounts = (name, cbu, accountNumber, user) => (dispatch) => {
     })
     .then((res) => dispatch(add_account(res.data)));
 };
+
+export const fetchBanks = () => (dispatch) =>
+  axios
+  .get(`http://${IP}:1337/api/banks/`)
+  .then((res) => dispatch(get_banks(res.data)))
+  .catch((err) => console.log(err, "ERROR"))
+  
 
 export const fetchUserAccounts = (id) => (dispatch) =>
   axios

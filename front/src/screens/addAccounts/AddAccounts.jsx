@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const AddAccount = ({
-  handleNameAccount,
+  banks,
   handleAccountNumber,
   handleCbu,
   handleSubmit,
@@ -10,12 +11,13 @@ const AddAccount = ({
 }) => {
   return (
     <View>
-      <Text>Entidad</Text>
-
-      <TextInput
-        autoCapitalize="none"
-        autoCorrect={false}
-        onChangeText={(name) => handleNameAccount(name)}
+      <DropDownPicker
+          items={banks.map(item =>(
+            {label: `${item.nameEntity}`, value: `${item.nameEntity}`}
+        )) }
+          defaultIndex={0}
+          containerStyle={{height: 40}}
+          onChangeItem={item => console.log(item.label, item.value)}
       />
 
       <Text>CBU / CVU</Text>
