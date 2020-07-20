@@ -11,7 +11,6 @@ const AccountsController = {
       });
   },
   createAccount(req, res) {
-    console.log(" req body create", req.body);
     AccountsModel.create(req.body)
       .then((account) => {
         res.status(201).send(account);

@@ -4,6 +4,7 @@ import { logUser, verifyEmail } from "../../redux/store/actions/users";
 import Login from "./Login";
 
 import { View } from "react-native";
+import { set } from "react-native-reanimated";
 
 export default ({ navigation }) => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ export default ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isData, setIsData] = useState(true);
+  const [data,setData] = useState({secureTextEntry:true})
 
   const handleValueUsername = (username) => {
     setUsername(username);
@@ -20,6 +22,12 @@ export default ({ navigation }) => {
       ? setIsData(false)
       : setIsData(true);
   };
+
+  const updateSecureTextEntry=()=>{
+    setData({
+      ...data,secureTextEntry: !data.secureTextEntry
+    })
+  }
 
   const handleValuePassword = (password) => {
     setPassword(password);
@@ -62,6 +70,8 @@ export default ({ navigation }) => {
         user={user}
         navigation={navigation}
         handleVerifyAccount={handleVerifyAccount}
+        updateSecureTextEntry={updateSecureTextEntry}
+        data={data}
       />
     
   );

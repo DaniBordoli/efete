@@ -16,7 +16,6 @@ const userRegister = (req, res, next) => {
 };
 
 const userLogin = (req, res) => {
-  console.log("REQ.USER:", req.user)
   res.json(req.user);
 };
 
@@ -45,11 +44,10 @@ const userVerify = (req, res, next) => {
 };
 
 const getAllUsers = (req, res) => {
-  User.find()
-  .then((users)=>{
-      res.json(users)
-  })
-}
+  User.find().then((users) => {
+    res.json(users);
+  });
+};
 
 module.exports = {
   userRegister,
@@ -57,5 +55,5 @@ module.exports = {
   userLogout,
   editProfileUser,
   userVerify,
-  getAllUsers
+  getAllUsers,
 };
