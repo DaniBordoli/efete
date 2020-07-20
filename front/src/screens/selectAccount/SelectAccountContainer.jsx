@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserAccounts } from "../../redux/store/actions/accounts";
-import { createTransaction } from "../../redux/store/actions/transactions";
+import {
+  createTransaction,
+  getUserTransactions,
+} from "../../redux/store/actions/transactions";
 import { changeDailyAmount } from "../../redux/store/actions/agents";
 import SelectAccount from "./SelectAccount";
 
@@ -35,9 +38,8 @@ export default ({ navigation, route }) => {
         user: user._id,
         // agent: route.params.agent
 
-        agent: "5f0ca7549495954eb8a89f4d",
-        destinationAccount:"5f11c4c667715f1364ac92c7"
-
+        agent: "5f135f55aa3c333017f57cfa",
+        destinationAccount: "5f135fe0217b94308c20992a",
       })
     )
       .then(() => {
@@ -48,6 +50,9 @@ export default ({ navigation, route }) => {
             amount: route.params.value,
           })
         );
+      })
+      .then(() => {
+        dispatch(getUserTransactions(user._id));
       })
       .then(() => {
         navigation.navigate("TransactionOk");

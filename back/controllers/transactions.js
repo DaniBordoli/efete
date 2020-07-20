@@ -24,9 +24,9 @@ const findAllAgentTransactions = (req, res) => {
     .populate("originAccount")
     .populate("destinationAccount")
     .then((lista) => {
-      console.log("LISTA" , lista)
-      res.json(lista)})
-      
+      console.log("LISTA", lista);
+      res.json(lista);
+    });
 };
 
 const findOneUserTransacion = (req, res) => {
@@ -39,11 +39,13 @@ const findOneUserTransacion = (req, res) => {
 };
 
 const createTransaction = (req, res) => {
+  console.log("REQ BODYYY", req.body);
   Transaction.create(req.body).then((transaction) => {
     return Transaction.findById(transaction._id)
       .populate("user")
       .populate("agent")
       .populate("originAccount")
+      .populate("destinationAccount")
       .then((transaction) => {
         res.status(201).send(transaction);
       });
