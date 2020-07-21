@@ -7,11 +7,16 @@ import { addAccounts,fetchBanks } from "../../redux/store/actions/accounts";
 export default ({ navigation }) => {
   const user = useSelector((state) => state.users.user);
   const banks = useSelector((state) => state.accounts.banks);
+  
 
   const dispatch = useDispatch();
 
- 
-
+  const [bankId, setBankId] = useState("");
+  const handleBank = (id) => {
+    console.log("id",id)
+    setBankId (id)
+  } 
+  
   const [cbu, setCbu] = useState("");
   const handleCbu = (cbu) => {
     setCbu(cbu);
@@ -26,13 +31,12 @@ export default ({ navigation }) => {
     //dispatch(fetchUserAccounts("5f0f14c1830a243382d6c6aa"))
      dispatch(fetchBanks())
 
-      // .then(() => {
-      //   setLoader(true);
-      // });
   }, []);
 
+  
+
   const handleSubmit = () => {
-    dispatch(addAccounts(cbu, accountNumber, user._id));
+    dispatch(addAccounts(bankId,cbu, accountNumber, user._id));
     
     // dispatch(addAccounts(name, cbu, accountNumber, "5f0f14c1830a243382d6c6aa"));
   };
@@ -44,6 +48,7 @@ export default ({ navigation }) => {
         handleCbu={handleCbu}
         handleAccountNumber={handleAccountNumber}
         handleSubmit={handleSubmit}
+        handleBank={handleBank}
         navigation={navigation}
         name={name}
         cbu={cbu}

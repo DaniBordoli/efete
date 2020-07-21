@@ -79,7 +79,6 @@ export const style = StyleSheet.create({
       paddingLeft: 0,
       backgroundColor: "#fff",
       color: "#424242",
-      marginHorizontal:10
     },
     container: {
       flex: 1,
@@ -92,24 +91,4 @@ export const style = StyleSheet.create({
       borderRadius: 10,
       marginRight:15
     },
-    text:{
-      textAlign:'center',
-      fontSize:15,
-      margin:5
-  },
-  dropdown: {
-    marginTop:10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal:10
-  },
-
-  placeholder: {
-    marginTop:10,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal:10
-  },
-  
   });
-  

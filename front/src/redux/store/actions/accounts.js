@@ -1,18 +1,11 @@
 import axios from "axios";
 import {
-  ADD_ACCOUNT,
   GET_USER_ACCOUNTS,
   GET_USER_SINGLE_ACCOUNT,
   FETCH_BANKS,
 } from "../constants";
 import { IP } from "../../../../config";
 
-const add_account = (account) => {
-  return {
-    type: ADD_ACCOUNT,
-    account,
-  };
-};
 
 const get_user_accounts = (accounts) => {
   return {
