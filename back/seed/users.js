@@ -3,6 +3,7 @@ require("../config/db");
 
 const charmander = {
   firstName: "Jesus",
+  role:'agent',
   lastName: 'Lombardo',
   isVerified:true,
   dni:23456782,

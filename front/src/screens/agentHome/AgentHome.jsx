@@ -15,7 +15,7 @@ export default ({ agentTransactions, navigation, loading }) => {
               />
               <Button
                 title="Cobrar con Qr"
-                /* onPress={() => navigation.navigate( cobrar con Qr )} */
+               onPress={() => navigation.navigate('Home')}
               />
               <Button
                 title="Tu Negocio"

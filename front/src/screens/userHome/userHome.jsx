@@ -6,8 +6,8 @@ import { Load } from "../../Common/loading";
 import { Button } from "react-native-elements";
 
 export default ({ userTransactions, navigation, loading, userRole, time }) => {
-  console.log(userRole);
-
+  
+ 
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {loading ? (

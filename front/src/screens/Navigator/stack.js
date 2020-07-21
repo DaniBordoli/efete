@@ -26,35 +26,28 @@ import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
-import { NavigationContainer } from "@react-navigation/native";
+import ScannerQR from "../QR/scanner"
+import GeneratorQR from "../QR/generatorQR"
 
 const Stack = createStackNavigator();
-
-/* function Navbar(){
-  return(
-    
-  )
-} */
 
 export default ({ navigation }) => {
   return (
     
     <Stack.Navigator initialRouteName="Login">
+       
+       <Stack.Screen
+        name="QRgenerator"
+        component={GeneratorQR}
+      />
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{
-          headerLeft: () => (
-            <Feather
-              name="menu"
-              style={{ marginLeft: 5 }}
-              size={26}
-              color="black"
-              onPress={() => navigation.openDrawer()}
-            />
-          ),
-          headerTitleAlign: "center",
-        }}
+        options={{ headerShown: false}}
+      />
+      <Stack.Screen
+        name="QRscanner"
+        component={ScannerQR}
       />
       <Stack.Screen
         name="SingleAgentTransaction"
@@ -89,6 +82,7 @@ export default ({ navigation }) => {
       />
       <Stack.Screen
         name="SingleUserTransaction"
+        options={{ ...myHeader, title: "Transaccion" }}
         component={SingleUserTransactionContainer}
       />
 
@@ -96,7 +90,7 @@ export default ({ navigation }) => {
         name="CreateAgentForm"
         component={CreateAgentFormContainer}
       />
-      <Stack.Screen name="successRegister" component={successRegister} />
+      <Stack.Screen name="successRegister" component={successRegister} options={{ headerShown: false}}/>
       <Stack.Screen
         name="SelectOtherAmountAgent"
         options={{
@@ -109,6 +103,7 @@ export default ({ navigation }) => {
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
       />
+      
       <Stack.Screen
         name="Register"
         component={registerContainer}
@@ -132,7 +127,7 @@ export default ({ navigation }) => {
         component={LoginContainer}
         options={{ headerShown: false}}
       />
-      <Stack.Screen name="Verificar" component={verifityEmail} />
+      <Stack.Screen name="Verificar" component={verifityEmail} options={{ headerShown: false}} />
       <Stack.Screen
         name="SelectOtherAmount"
         options={{
