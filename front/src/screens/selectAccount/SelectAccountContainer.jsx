@@ -45,7 +45,7 @@ export default ({ navigation, route }) => {
       .then(() => {
         dispatch(
           changeDailyAmount({
-            id: "5f0ca7549495954eb8a89f4d",
+            id: "5f135f55aa3c333017f57cfa",
 
             amount: route.params.value,
           })

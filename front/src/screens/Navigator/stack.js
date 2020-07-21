@@ -27,6 +27,7 @@ import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
 import { NavigationContainer } from "@react-navigation/native";
+import OpenCameraContainer from "../camera/OpenCameraContainer";
 
 const Stack = createStackNavigator();
 
@@ -65,10 +66,11 @@ export default ({ navigation }) => {
         options={{
           headerRight: () => (
             <MaterialIcons
-              name="notifications-none"
+              name="person-outline"
               style={{ marginRight: 10, color: "white" }}
               size={24}
               color="black"
+              onPress={() => navigation.navigate("EditUserProfile")}
             />
           ),
           headerLeft: () => (
@@ -141,6 +143,14 @@ export default ({ navigation }) => {
         component={SelectOtherAmountContainer}
       />
       <Stack.Screen
+        name="OpenCamera"
+        options={{
+          ...myHeader,
+          title: "Tomar Foto",
+        }}
+        component={OpenCameraContainer}
+      />
+      <Stack.Screen
         name="EditUserProfile"
         component={EditUserProfileContainer}
       />
@@ -163,7 +173,11 @@ export default ({ navigation }) => {
         }}
         component={SelectAccountContainer}
       />
-      <Stack.Screen name="TransactionOk" component={TransactionOkContainer} />
+      <Stack.Screen
+        name="TransactionOk"
+        component={TransactionOkContainer}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Accounts"
         component={AccountsContainer}
