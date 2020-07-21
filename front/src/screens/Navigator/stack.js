@@ -38,7 +38,6 @@ const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
-    
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Home"
@@ -130,7 +129,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Login"
         component={LoginContainer}
-        options={{ headerShown: false}}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name="Verificar" component={verifityEmail} />
       <Stack.Screen
