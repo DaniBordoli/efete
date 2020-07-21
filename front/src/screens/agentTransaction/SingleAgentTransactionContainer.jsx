@@ -2,7 +2,7 @@ import React from "react";
 import SingleAgentTransaction from "./SingleAgentTransaction";
 import { View } from "react-native";
 
-export default SingleAgentTransactionContainer = ({ navigation, route }) => {
+const SingleAgentTransactionContainer = ({ navigation, route }) => {
   return (
     <View>
       <SingleAgentTransaction
@@ -13,4 +13,4 @@ export default SingleAgentTransactionContainer = ({ navigation, route }) => {
   );
 };
 
-
+export default SingleAgentTransactionContainer;

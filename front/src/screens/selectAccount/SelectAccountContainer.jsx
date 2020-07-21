@@ -14,7 +14,6 @@ export default ({ navigation, route }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(fetchUserAccounts("5f0f14c1830a243382d6c6aa"))
     dispatch(fetchUserAccounts(user._id)).then(() => {
       setLoading(true);
     });
@@ -45,7 +44,7 @@ export default ({ navigation, route }) => {
       .then(() => {
         dispatch(
           changeDailyAmount({
-            id: "5f0ca7549495954eb8a89f4d",
+            id: "5f15b90f82b5fe31f56c1bae",
 
             amount: route.params.value,
           })

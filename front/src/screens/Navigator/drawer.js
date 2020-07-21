@@ -57,7 +57,7 @@ export default (props) => {
           label="Acerca de la App"
           labelStyle={style.label}
           onPress={() =>
-            props.navigation.navigate("Root", { screen: "Login" }, props)
+            props.navigation.navigate("Root", { screen: "QRscanner" }, props)
           }
         />
         <View style={style.hr} />
