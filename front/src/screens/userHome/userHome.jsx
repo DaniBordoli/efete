@@ -91,7 +91,7 @@ export default ({
             <FlatList
             showsVerticalScrollIndicator={false}
               keyExtractor={(userTransactions) => userTransactions._id}
-              data={userTransactions.reverse().slice(0,3)}
+              data={userTransactions.reverse().slice(0,4)}
               renderItem={({ item }) => {
                 return (
                   <View style={{ height: 90, flex: 1 }}>

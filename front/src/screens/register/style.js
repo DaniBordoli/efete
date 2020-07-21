@@ -31,7 +31,6 @@ export const style = StyleSheet.create({
     textAlign: "center",
     marginTop: 50,
     fontFamily: "nunito",
-
   },
   inputContainer: {
     backgroundColor: "#FFFFFF",
@@ -48,11 +47,9 @@ export const style = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 18,
-    elevation:5,
-
+    elevation: 5,
   },
-  
-  
+
   hr: {
     borderBottomColor: "#DDDDDD",
     borderBottomWidth: 1,
@@ -104,14 +101,21 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
   },
-  border:{
+  border: {
     backgroundColor: "#FFFFFF",
     width: 150,
     margin: 5,
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: "#DDDDDD",
-    height:37,
-    justifyContent:'center'
-  }
+    height: 37,
+    justifyContent: "center",
+  },
+  alerta: {
+    fontSize: 15,
+    color: "#DDDDDD",
+    fontStyle: "italic",
+    fontWeight: "bold",
+    paddingLeft: 10,
+  },
 });

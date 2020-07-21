@@ -26,7 +26,7 @@ import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DarkTheme } from "@react-navigation/native";
 
 const Stack = createStackNavigator();
 
@@ -38,7 +38,6 @@ const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
-    
     <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Home"
@@ -130,7 +129,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Login"
         component={LoginContainer}
-        options={{ headerShown: false}}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name="Verificar" component={verifityEmail} />
       <Stack.Screen
@@ -156,7 +155,14 @@ export default ({ navigation }) => {
         component={AllUserTransactionsContainer}
       />
       <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
-      <Stack.Screen name="SelectAccount" component={SelectAccountContainer} />
+      <Stack.Screen
+        name="SelectAccount"
+        options={{
+          ...myHeader,
+          title: "Seleccionar Cuenta",
+        }}
+        component={SelectAccountContainer}
+      />
       <Stack.Screen name="TransactionOk" component={TransactionOkContainer} />
       <Stack.Screen
         name="Accounts"

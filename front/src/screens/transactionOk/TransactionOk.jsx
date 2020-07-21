@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text, FlatList, Button, ActivityIndicator } from "react-native";
 import { style } from "./style";
+// import { useTheme } from '@react-native/navigation'
+import { colors } from "react-native-elements";
 
 export default ({ navigation, transaction }) => {
   console.log('Transacciones', transaction)
+  // const {colors} = useTheme()
   return (
-    <View>
+    <View >
       <Text>Transacción Realizada</Text>
       <Text>Monto:</Text>
       <Text>${transaction.amount}</Text>
