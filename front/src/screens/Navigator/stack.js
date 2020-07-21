@@ -155,7 +155,14 @@ export default ({ navigation }) => {
         component={AllUserTransactionsContainer}
       />
       <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
-      <Stack.Screen name="SelectAccount" component={SelectAccountContainer} />
+      <Stack.Screen
+        name="SelectAccount"
+        options={{
+          ...myHeader,
+          title: "Seleccionar Cuenta",
+        }}
+        component={SelectAccountContainer}
+      />
       <Stack.Screen name="TransactionOk" component={TransactionOkContainer} />
       <Stack.Screen
         name="Accounts"

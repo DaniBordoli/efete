@@ -1,26 +1,93 @@
-import { StyleSheet } from "react-native";
-import {headerColor , buttonColor} from '../../Common/constans'
-
+import { StyleSheet, Dimensions } from "react-native";
+import { headerColor, buttonColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
-  button: {
-    fontSize: 50,
-    marginVertical: 20,
+  titulo: {
+    textAlign: "center",
+    fontSize: 26,
+    fontFamily: "nunito",
+    marginTop: 30,
+    color: `${headerColor}`,
+    fontWeight: "bold",
   },
-  monto:{
-    textAlign:'center',
-    fontSize:36,
-    fontFamily:'nunito',
-    marginTop:36,
-    marginBottom:60,
-    color:`${headerColor}`
+  monto: {
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    color: "black",
+    width: Dimensions.get("window").width - 40,
+    marginLeft: 20,
+    marginRight: 20,
+    fontSize: 24,
+    textAlign: "center",
+    marginTop: 30,
+    marginBottom: 50,
+    height: 60,
+    paddingBottom: 10,
+    paddingTop: 10,
   },
-  montoContainer:{
-    backgroundColor:'white'
+  account: {
+    color: "black",
+    fontSize: 18,
+    fontWeight: "bold",
   },
-  otroMontoTitulo:{
-    color:`${buttonColor}`,
-    fontSize:15,
-    textAlign:'center'
-  }
+  bankIcon: {
+    marginLeft: 10,
+    marginRight: 20,
+  },
+  accountContainer: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#DDDDDD",
+    borderRadius: 12,
+    width: Dimensions.get("window").width - 40,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4.0,
+    elevation: 3,
+    marginBottom: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    height: 70,
+  },
+  accountContainerFocus: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#6F76E4",
+    borderRadius: 12,
+    width: Dimensions.get("window").width - 40,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4.0,
+    elevation: 3,
+    marginBottom: 30,
+    marginLeft: 20,
+    marginRight: 20,
+    height: 70,
+  },
+  confirmar: {
+    width: 167,
+    height: 60,
+    backgroundColor: `${buttonColor}`,
+    marginTop: 10,
+    alignSelf: "center",
+  },
+  tituloConfirmar: {
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    color: "white",
+    fontWeight: "400",
+  },
 });
