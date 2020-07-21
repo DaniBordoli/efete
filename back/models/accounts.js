@@ -2,14 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var accountSchema = new Schema({
-  // entity: {
-  //   type: Number,
-  //   //required: true,
-  // },
-  nameEntity: {
-    type: String,
-    required: true,
-  },
+  
+  nameEntity: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "banks",
+    },
+  ],
   accountNumber: {
     type: Number,
     required: true,
