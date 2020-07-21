@@ -1,11 +1,13 @@
 import React from "react";
 import { View, Text, Button, Image, Link, FlatList } from "react-native";
+import { style } from "./style.js";
 
 export default ({ navigation, agentTransactions }) => {
   return (
-    <View>
+    <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {agentTransactions[0] !== undefined ? (
-        <View>
+        <View style={{ flex: 1, alignItems: "center" }}>
+          <Text style={style.movimientos}>Movimientos</Text>
           <FlatList
             keyExtractor={(agentTransactions) => agentTransactions._id}
             data={agentTransactions}
@@ -20,6 +22,10 @@ export default ({ navigation, agentTransactions }) => {
 
                   <Text>Extracción realizada</Text>
                   <Button
+                    buttonStyle={{
+                      marginRight: 25,
+                      backgroundColor: "#629bcaa6",
+                    }}
                     title="ver transaccion"
                     onPress={() =>
                       navigation.navigate("SingleAgentTransaction", {
@@ -37,10 +43,6 @@ export default ({ navigation, agentTransactions }) => {
           <ActivityIndicator size="large" color="#00ff00" />
         </View>
       )}
-      <Button
-        title="Volver a mi perfil"
-        onPress={() => navigation.navigate("Agent")}
-      ></Button>
     </View>
   );
 };
