@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableRipple } from "react-native-paper";
+/* cle */
 import { headerColor } from "../../Common/constans";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import {
@@ -7,7 +7,7 @@ import {
   DrawerContentScrollView,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet , TouchableOpacity} from "react-native";
 import { Switch } from "react-native-gesture-handler";
 
 const Drawer = createDrawerNavigator();
@@ -57,11 +57,11 @@ export default (props) => {
           label="Acerca de la App"
           labelStyle={style.label}
           onPress={() =>
-            props.navigation.navigate("Root", { screen: "Login" }, props)
+            props.navigation.navigate("Root", { screen: "QRscanner" }, props)
           }
         />
         <View style={style.hr} />
-        <TouchableRipple
+        <TouchableOpacity
           onPress={() => {
             cambiarModo();
           }}
@@ -72,7 +72,7 @@ export default (props) => {
               <Switch value={modoDark} />
             </View>
           </View>
-        </TouchableRipple>
+        </TouchableOpacity>
 
         <View style={style.hr} />
 

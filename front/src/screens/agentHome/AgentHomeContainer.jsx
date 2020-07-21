@@ -35,13 +35,13 @@ export default ({ navigation }) => {
   }, []);
 
   return (
-    <View>
+  
       <AgentHome
         agentTransactions={agentTransactions}
         navigation={navigation}
         loading={loading}
         time={time}
       />
-    </View>
+  
   );
 };
