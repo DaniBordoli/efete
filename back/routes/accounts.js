@@ -7,4 +7,5 @@ router.get("/:id", AccountsController.findAll);
 router.post("/", AccountsController.createAccount);
 router.delete("/:id/:userId", AccountsController.deleteById);
 
+
 module.exports = router;
