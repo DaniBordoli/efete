@@ -26,30 +26,25 @@ import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
-import ScannerQR from "../QR/scanner"
-import GeneratorQR from "../QR/generatorQR"
+import { NavigationContainer } from "@react-navigation/native";
+import OpenCameraContainer from "../camera/OpenCameraContainer";
+import ScannerQR from "../QR/scanner";
+import GeneratorQR from "../QR/generatorQR";
 
 const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
     <Stack.Navigator initialRouteName="Login">
-       
-       <Stack.Screen
-        name="QRgenerator"
-        component={GeneratorQR}
-      />
-       <Stack.Screen
-        name="QRscanner"
-        component={ScannerQR}
-      />
+      <Stack.Screen name="QRgenerator" component={GeneratorQR} />
+      <Stack.Screen name="QRscanner" component={ScannerQR} />
 
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ headerShown: false}}
+        options={{ headerShown: false }}
       />
-     
+
       <Stack.Screen
         name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
@@ -60,10 +55,11 @@ export default ({ navigation }) => {
         options={{
           headerRight: () => (
             <MaterialIcons
-              name="notifications-none"
+              name="person-outline"
               style={{ marginRight: 10, color: "white" }}
               size={24}
               color="black"
+              onPress={() => navigation.navigate("EditUserProfile")}
             />
           ),
           headerLeft: () => (
@@ -91,7 +87,11 @@ export default ({ navigation }) => {
         name="CreateAgentForm"
         component={CreateAgentFormContainer}
       />
-      <Stack.Screen name="successRegister" component={successRegister} options={{ headerShown: false}}/>
+      <Stack.Screen
+        name="successRegister"
+        component={successRegister}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="SelectOtherAmountAgent"
         options={{
@@ -104,7 +104,7 @@ export default ({ navigation }) => {
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
       />
-      
+
       <Stack.Screen
         name="Register"
         component={registerContainer}
@@ -128,7 +128,11 @@ export default ({ navigation }) => {
         component={LoginContainer}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Verificar" component={verifityEmail} options={{ headerShown: false}} />
+      <Stack.Screen
+        name="Verificar"
+        component={verifityEmail}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="SelectOtherAmount"
         options={{
@@ -138,11 +142,20 @@ export default ({ navigation }) => {
         component={SelectOtherAmountContainer}
       />
       <Stack.Screen
+        name="OpenCamera"
+        options={{
+          ...myHeader,
+          title: "Tomar Foto",
+        }}
+        component={OpenCameraContainer}
+      />
+      <Stack.Screen
         name="EditUserProfile"
         component={EditUserProfileContainer}
       />
       <Stack.Screen name="EditAgentProfile" component={EditAgentContainer} />
-      <Stack.Screen name="Agent" 
+      <Stack.Screen
+        name="Agent"
         options={{
           headerRight: () => (
             <MaterialIcons
@@ -166,7 +179,8 @@ export default ({ navigation }) => {
           headerTitleAlign: "center",
           title: "Perfil agente",
         }}
-      component={AgentHomeContainer} />
+        component={AgentHomeContainer}
+      />
       <Stack.Screen
         name="AllAgentTransactions"
         component={AllAgentTransactionsContainer}
@@ -184,7 +198,11 @@ export default ({ navigation }) => {
         }}
         component={SelectAccountContainer}
       />
-      <Stack.Screen name="TransactionOk" component={TransactionOkContainer} />
+      <Stack.Screen
+        name="TransactionOk"
+        component={TransactionOkContainer}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Accounts"
         component={AccountsContainer}

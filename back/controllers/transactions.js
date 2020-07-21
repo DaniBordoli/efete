@@ -1,4 +1,5 @@
 const { Transaction, Agent } = require("../models/index");
+const { SendTransaction } = require("../controllers/nodemailer");
 
 const findAllTransactions = (req, res) => {
   Transaction.find()
@@ -38,7 +39,6 @@ const findOneUserTransacion = (req, res) => {
 };
 
 const createTransaction = (req, res) => {
-  console.log("REQ BODYYY", req.body);
   Transaction.create(req.body).then((transaction) => {
     return Transaction.findById(transaction._id)
       .populate("user")
@@ -46,6 +46,7 @@ const createTransaction = (req, res) => {
       .populate("originAccount")
       .populate("destinationAccount")
       .then((transaction) => {
+        SendTransaction(transaction);
         res.status(201).send(transaction);
       });
   });
