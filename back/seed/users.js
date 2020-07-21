@@ -3,6 +3,7 @@ require("../config/db");
 
 const charmander = {
   firstName: "Jesus",
+  role:'agent',
   lastName: 'Lombardo',
   isVerified:true,
   dni:23456782,
@@ -13,25 +14,21 @@ const charmander = {
 
 const bulbasaur = {
   firstName: "Juan",
-  lastName: 'Cor',
+  lastName: "Cor",
   isVerified: true,
   dni: 34456879,
-  username: 'juan@gmail.com',
-  password: '1234',
-
-}
+  username: "juan@gmail.com",
+  password: "1234",
+};
 
 const squirtle = {
   firstName: "Victoria",
-  lastName: 'Di Liscia',
+  lastName: "Di Liscia",
   isVerified: true,
   dni: 40458289,
-  username: 'vico@gmail.com',
-  password: '1234',
-
-}
-
-
+  username: "vico@gmail.com",
+  password: "1234",
+};
 
 User.insertMany([charmander, bulbasaur, squirtle]).then(() => {
   console.log("Ready to go!");
