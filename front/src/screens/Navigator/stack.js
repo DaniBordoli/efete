@@ -89,6 +89,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SingleUserTransaction"
         component={SingleUserTransactionContainer}
+        options={{
+          ...myHeader,
+          title: "Ver transacción",
+        }}
       />
 
       <Stack.Screen

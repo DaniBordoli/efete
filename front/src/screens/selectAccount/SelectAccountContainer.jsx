@@ -14,7 +14,6 @@ export default ({ navigation, route }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(fetchUserAccounts("5f0f14c1830a243382d6c6aa"))
     dispatch(fetchUserAccounts(user._id)).then(() => {
       setLoading(true);
     });
@@ -38,14 +37,14 @@ export default ({ navigation, route }) => {
         user: user._id,
         // agent: route.params.agent
 
-        agent: "5f135f55aa3c333017f57cfa",
-        destinationAccount: "5f135fe0217b94308c20992a",
+        agent: "5f15d81b718e1b46570cfc22",
+        destinationAccount: "5f15d82b50d5c5466475c876",
       })
     )
       .then(() => {
         dispatch(
           changeDailyAmount({
-            id: "5f0ca7549495954eb8a89f4d",
+            id: "5f15b90f82b5fe31f56c1bae",
 
             amount: route.params.value,
           })

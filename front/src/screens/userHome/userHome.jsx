@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, FlatList, Image, TouchableOpacity} from "react-native";
-import * as Animatable from 'react-native-animatable'
+import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { style } from "./style.js";
 import { Load } from "../../Common/loading";
 import { Button } from "react-native-elements";
@@ -18,7 +18,7 @@ export default ({
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {loading ? (
-        <View style={{ flex: 1 ,alignItems:'center' }}>
+        <View style={{ flex: 1, alignItems: "center" }}>
           <View
             style={{
               flex: 1,
@@ -79,17 +79,17 @@ export default ({
           /> */}
           </View>
 
-          <Animatable.View 
-          animation="fadeInUpBig"
-          
-          style={style.movimientosContainer}>
+          <Animatable.View
+            animation="fadeInUpBig"
+            style={style.movimientosContainer}
+          >
             <Text style={style.movimientos}>Movimientos</Text>
             <Text style={style.time}>{time.toUpperCase()}</Text>
 
             <View style={style.hr} />
 
             <FlatList
-            showsVerticalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
               keyExtractor={(userTransactions) => userTransactions._id}
               data={userTransactions.reverse().slice(0,4)}
               renderItem={({ item }) => {
@@ -105,16 +105,14 @@ export default ({
                     >
                       <View style={{ marginLeft: 17 }}>
                         <Text>Monto: ${item.amount}</Text>
-                        <Text>
-                          Agente: {item.agent[0].name}
-                        </Text>
+                        <Text>Agente: {item.agent[0].name}</Text>
                         <Text>Extracción realizada</Text>
                       </View>
                       <View>
                         <Button
                           buttonStyle={{
                             marginRight: 25,
-                            backgroundColor:'#629bcaa6'
+                            backgroundColor: "#629bcaa6",
                           }}
                           title="Ver mas"
                           onPress={() =>

@@ -47,7 +47,7 @@ export default () => {
   }
   return (
     <Provider store={store}>
-      <NavigationContainer  theme={customDarkTheme}>
+      <NavigationContainer>
         <Drawer.Navigator
           initialRouteName="Root"
           drawerType="slide"

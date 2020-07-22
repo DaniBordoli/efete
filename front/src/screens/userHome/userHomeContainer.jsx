@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserTransactions } from "../../redux/store/actions/transactions";
 import UserHome from "./userHome";
-import moment from 'moment';
+import moment from "moment";
 
 export default ({ navigation, route }) => {
-  const [loading, setLoader] = useState(false);
-  const [time, setTime] = useState('')
-
   const dispatch = useDispatch();
+  
+  const [loading, setLoader] = useState(false);
+  const [time, setTime] = useState('');
 
   const userTransactions = useSelector(
     (state) => state.transactions.userTransactions
@@ -20,22 +20,19 @@ export default ({ navigation, route }) => {
     (state) => state.users.user.role
   );
 
-    useEffect(()=>{
-      var date = moment()
-      var fecha = date.locale('es').format('dddd MM-MMMM')
-      
-      setTime(fecha)
-      
-    })
+  useEffect(() => {
+    var date = moment();
+    var fecha = date.locale("es").format("dddd MM-MMMM");
+
+    setTime(fecha);
+  });
 
   useEffect(() => {
     dispatch(getUserTransactions(route.params.user)).then(() =>
       setLoader(true)
-    )
+    );
   }, []);
-  
 
-  
   return (
       <UserHome
         navigation={navigation}
