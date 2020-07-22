@@ -3,9 +3,9 @@ import {
   GET_USER_ACCOUNTS,
   GET_USER_SINGLE_ACCOUNT,
   FETCH_BANKS,
+  SET_MAIN_ACCOUNT,
 } from "../constants";
 import { IP } from "../../../../config";
-
 
 const get_user_accounts = (accounts) => {
   return {
@@ -28,7 +28,17 @@ const get_banks = (banks) => {
   };
 };
 
+export const fetchMainAccount = (userId) => (dispatch) => {
+  axios
+    .get(`http://${IP}:1337/api/accounts/main/${userId}`)
+    .then((res) => dispatch(get_user_single_account(res.data)));
+};
 
+export const setMainAccount = (id, userId) => (dispatch) => {
+  axios
+    .patch(`http://${IP}:1337/api/accounts/${id}/${userId}`)
+    .then((res) => dispatch(get_user_accounts(res.data)));
+};
 
 export const addAccounts = (name, cbu, accountNumber, user) => (dispatch) => {
   return axios
@@ -43,10 +53,9 @@ export const addAccounts = (name, cbu, accountNumber, user) => (dispatch) => {
 
 export const fetchBanks = () => (dispatch) =>
   axios
-  .get(`http://${IP}:1337/api/banks/`)
-  .then((res) => dispatch(get_banks(res.data)))
-  .catch((err) => console.log(err, "ERROR"))
-  
+    .get(`http://${IP}:1337/api/banks/`)
+    .then((res) => dispatch(get_banks(res.data)))
+    .catch((err) => console.log(err, "ERROR"));
 
 export const fetchUserAccounts = (id) => (dispatch) =>
   axios
