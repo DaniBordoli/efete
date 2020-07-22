@@ -1,5 +1,5 @@
 const { User } = require("../models/index");
-const SendMail = require("../controllers/nodemailer");
+const { SendMail } = require("../controllers/nodemailer");
 const { findById } = require("../models/users");
 
 const userRegister = (req, res, next) => {

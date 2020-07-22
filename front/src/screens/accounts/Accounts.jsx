@@ -7,13 +7,15 @@ import {
   FlatList,
   ActivityIndicator,
 } from "react-native";
+import { style } from "../register/style";
 
 const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
+  console.log("cuentas",accountsUser)
   return (
     <View>
       {loading ? (
         <View>
-          <Text> CUENTAS ASOCIADAS</Text>
+          <Text style={style.registrarse}> CUENTAS ASOCIADAS</Text>
 
           <FlatList
             keyExtractor={(accountsUser) => accountsUser._id}
@@ -26,7 +28,7 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
                       navigation.navigate("SingleAccount", { account: item })
                     }
                   >
-                    <Text>Entidad: {item.nameEntity}</Text>
+                    <Text>Entidad: {item.nameEntity[0].nameEntity}</Text>
 
                     <Text>Cuenta: {item.accountNumber}</Text>
                   </Text>

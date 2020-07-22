@@ -3,12 +3,14 @@ require("../config/db");
 
 const charmander = {
   firstName: "Jesus",
-  lastName: "Lombardo",
-  isVerified: true,
-  dni: 23456782,
-  username: "jesus@gmail.com",
-  password: "1234",
-};
+  role:'agent',
+  lastName: 'Lombardo',
+  isVerified:true,
+  dni:23456782,
+  username: 'jesus@gmail.com',
+  password:'1234',
+
+}
 
 const bulbasaur = {
   firstName: "Juan",

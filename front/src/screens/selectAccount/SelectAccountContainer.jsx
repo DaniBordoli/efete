@@ -37,8 +37,8 @@ export default ({ navigation, route }) => {
         user: user._id,
         // agent: route.params.agent
 
-        agent: "5f15d81b718e1b46570cfc22",
-        destinationAccount: "5f15d82b50d5c5466475c876",
+        agent: "5f1604c71df146256416cb21",
+        destinationAccount: "5f160507cab91755fce4e535",
       })
     )
       .then(() => {

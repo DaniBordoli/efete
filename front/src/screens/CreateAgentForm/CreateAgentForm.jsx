@@ -1,66 +1,97 @@
 import React from "react";
-import { View, TextInput, Text, Button } from "react-native";
-import { styles } from "./styles";
+import { View, TextInput, Text, Button, Image,TouchableOpacity, ScrollView } from "react-native";
+import { style } from "./style";
+
 
 const CreateAgentForm = ({
-    handlerCodigo,
-    handlerDailyAmount,
-    handlerCuil,
-    handlerAddress,
-    handlerName,
-    handlerSubmit,
-    navigation
+  handlerCodigo,
+  handlerDailyAmount,
+  handlerCuil,
+  handlerAddress,
+  handlerName,
+  handlerSubmit,
+  navigation,
 }) => {
+  return (
+  <ScrollView>
+    <View style={style.container}>
+      
+      <Text style={style.containerTitle}>Agregar Establecimiento</Text>
 
-    return(
-        <View>
-         
-            <Text style={styles.text}>Nombre</Text>
-            <TextInput
-             style={styles.inp}
-             onChangeText={(text) => handlerName(text)}
-             placeholder="Nombre"
-             />
-               <Text style={styles.text}>Dirección</Text>
-            <TextInput
-             style={styles.inp}
-             onChangeText={(text) => handlerAddress(text)}
-             placeholder="Dirección"
-             />
+      <View>
+      <Text style={style.title}>Nombre</Text>
+      <TextInput
+        style={style.input}
+        onChangeText={(text) => handlerName(text)}
+        placeholder="Ingrese el nombre del establecimiento"
+      />
+      </View>
+      
+      <View>
+      <Text style={style.title}>Dirección</Text>
+      <TextInput
+        style={style.input}
+        onChangeText={(text) => handlerAddress(text)}
+        placeholder="Indique la dirección"
+      />
+      </View>
 
-            <Text style={styles.text}>CUIL</Text>
-            <TextInput
-             style={styles.inp}
-             onChangeText={(num) => handlerCuil(num)}
-             placeholder="CUIL"
-             />
+      <View>
+      <Text style={style.title}>CUIL</Text>
+      <TextInput
+        style={style.input}
+        onChangeText={(num) => handlerCuil(num)}
+        placeholder="Ingrese su numero de CUIL"
+      />
+      </View>
 
-            <Text style={styles.text}>Monto diario</Text>
-            <TextInput
-             style={styles.inp}
-             onChangeText={(num) => handlerDailyAmount(num)}
-             placeholder="Monto diario"
-             />
+      <View>
+      <Text style={style.title}>Monto diario</Text>
+      <TextInput
+        style={style.input}
+        onChangeText={(num) => handlerDailyAmount(num)}
+        placeholder="Agregue el monto diario"
+      />
+      </View>
 
-           
-            <Text style={styles.text}>Codigo QR</Text>
-            <TextInput
-             style={styles.inp}
-             onChangeText={(text) => handlerCodigo(text)}
-             placeholder="Codigo QR"
-             />
+      {/* <View>
+      <Text style={style.title}>Codigo QR</Text>
+      <TextInput
+        onChangeText={(text) => handlerCodigo(text)}
+        placeholder="Codigo QR"
+      />
+      </View> */}
 
-            <Button
-            title='Enviar'
-            onPress={() => {
-            handlerSubmit();
-            navigation.navigate("User");
+      {/* Aqui va el QR */}
 
-            }}
-            />
-           
-        </View>
-    )
-}
+      <TouchableOpacity
+        style={style.openCamera}
+        title="Open Camera"
+        onPress={() => {
+          navigation.navigate("OpenCamera");
+        }}
+        >
+        <Text style={style.textOpenCamera}>Subir foto</Text>
+        <Image 
+        source={require("../../../assets/iconos/openCamera.png")}
+        />
+        <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
+      </TouchableOpacity>
+      
+      
+      <TouchableOpacity
+        style={style.confirmar}
+        title="Confirmar"
+        onPress={() => {
+        handlerSubmit();
+        navigation.navigate("createdAgentOk");
+        }}
+      >
+      <Text style={style.textConfirmar}>CONFIRMAR</Text>
+      </TouchableOpacity>
+</View>
+</ScrollView>
+  );
+};
 
 export default CreateAgentForm;

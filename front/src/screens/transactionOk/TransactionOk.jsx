@@ -1,29 +1,50 @@
 import React from "react";
-import { View, Text, FlatList, Button, ActivityIndicator } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
 // import { useTheme } from '@react-native/navigation'
-import { colors } from "react-native-elements";
+import { colors, Button } from "react-native-elements";
 
 export default ({ navigation, transaction }) => {
   console.log('Transacciones', transaction)
   // const {colors} = useTheme()
   return (
-    <View >
-      <Text>Transacción Realizada</Text>
-      <Text>Monto:</Text>
-      <Text>${transaction.amount}</Text>
-      <Text>Cuenta:</Text>
-      <Text>{transaction.originAccount[0].accountNumber}</Text>
-      <Text>{transaction.originAccount[0].nameEntity}</Text>
-      <Text>Donde:</Text>
-      <Text>{transaction.agent[0].name}</Text>
-      <Text>{transaction.agent[0].address}</Text>
-      <Button
-        title="Ir a inicio"
+    <View>
+      <TouchableOpacity
+        style={style.clearIcon}
         onPress={() => {
           navigation.navigate("User");
         }}
-      />
+      >
+        <Image source={require("../../../assets/iconos/mdi_clear.png")} />
+      </TouchableOpacity>
+      <View style={style.okIcon}>
+        <Image source={require("../../../assets/iconos/ok.png")} />
+      </View>
+      <View style={style.transactionContainer}>
+        <Text style={style.titulo}>Transacción Realizada</Text>
+        <Text style={style.subTitle}>Monto:</Text>
+        <Text style={style.content}>${transaction.amount}</Text>
+        <Text style={style.subTitle}>Cuenta:</Text>
+        <Text style={style.content}>
+          {transaction.originAccount[0].accountNumber}
+        </Text>
+        <Text style={style.content}>
+          {transaction.originAccount[0].nameEntity}
+        </Text>
+        <Text style={style.subTitle}>Dónde:</Text>
+        <Text style={style.content}>{transaction.agent[0].name}</Text>
+        <Text style={style.content}>{transaction.agent[0].address}</Text>
+      </View>
+      <View>
+        <Button
+          buttonStyle={style.confirmar}
+          titleStyle={style.tituloConfirmar}
+          title="Descargar Comprobante"
+          onPress={() => {
+            console.log("se apreta");
+          }}
+        />
+      </View>
     </View>
   );
 };

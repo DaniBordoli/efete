@@ -25,7 +25,7 @@ export default ( {getOneUserTransaction, navigation, getOneTransAccount} ) =>{
 
         <View style={style.cajas}>
         <Text style={style.title}>Cuenta de Origen</Text>
-        <Text style={style.description}>xxxx-xxxx-xxxx-xxxx-xx{getOneTransAccount.toString().slice(16)}</Text>
+        <Text style={style.description}>xxxx-xxxx-xxxx-xxxx-xx{getOneTransAccount.toString().slice(18, 22)}</Text>
         </View>
         
         <View style={style.cajas}>

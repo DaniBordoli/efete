@@ -95,3 +95,14 @@ export const getAgentTransactions = (id) => (dispatch) => {
     })
     .then((transactions) => dispatch(fetch_agent_transactions(transactions)));
 };
+
+// export const createPdf = (transaction) => () =>
+//   axios
+//     .post(`http://${IP}:1337/api/pdf/create`, transaction)
+//     .then(() =>
+//       axios.get(`http://${IP}:1337/api/pdf/fetch`, { responsType: "blob" })
+//     )
+//     .then((res) => {
+//       const pdfBlob = new Blob([res.data], { type: "application/pdf" });
+//       saveAs(pdfBlob, "transacción.pdf");
+//     });
