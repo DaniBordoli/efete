@@ -4,12 +4,10 @@ import { View } from "react-native";
 
 const AllUserTransactionsContainer = ({ navigation, route }) => {
   return (
-    <View>
-      <AllUserTransactions
-        navigation={navigation}
-        userTransactions={route.params.userTransactions}
-      />
-    </View>
+    <AllUserTransactions
+      navigation={navigation}
+      userTransactions={route.params.userTransactions}
+    />
   );
 };
 

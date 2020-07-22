@@ -15,13 +15,13 @@ export default ({ navigation, transaction }) => {
             Cuenta de Origen: {transaction.originAccount[0].accountNumber}
           </Text>
           <Text style={style.text}>
-            Banco: {transaction.originAccount[0].nameEntity}
+            Banco: {transaction.originAccount[0].nameEntity[0].nameEntity}
           </Text>
           <Text style={style.text}>
             Cuenta de destino: {transaction.destinationAccount[0].accountNumber}
           </Text>
           <Text style={style.text}>
-            Banco: {transaction.destinationAccount[0].nameEntity}
+            Banco: {transaction.destinationAccount[0].nameEntity[0].nameEntity}
           </Text>
         </View>
       ) : (

@@ -8,9 +8,5 @@ export default ({ navigation }) => {
   const user = useSelector((state) => state.users.user);
   const transaction = useSelector((state) => state.transactions.transaction);
 
-  return (
-    <View>
-      <TransactionOk navigation={navigation} transaction={transaction} />
-    </View>
-  );
+  return <TransactionOk navigation={navigation} transaction={transaction} />;
 };

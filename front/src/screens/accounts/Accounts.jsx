@@ -10,7 +10,6 @@ import {
 import { style } from "../register/style";
 
 const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
-  console.log("cuentas",accountsUser)
   return (
     <View>
       {loading ? (
@@ -39,19 +38,16 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
                       handleDelete(item._id);
                     }}
                   />
-
                 </View>
               );
             }}
           />
-           <Button
-                    title="AGREGAR CUENTA"
-                    onPress={() => {
-                  
-                      navigation.navigate("AddAccounts")
-                    }}
-                  />
-
+          <Button
+            title="AGREGAR CUENTA"
+            onPress={() => {
+              navigation.navigate("AddAccounts");
+            }}
+          />
         </View>
       ) : (
         <View>

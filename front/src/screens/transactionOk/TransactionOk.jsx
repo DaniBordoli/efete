@@ -4,6 +4,7 @@ import { style } from "./style";
 import { Button } from "react-native-elements";
 
 export default ({ navigation, transaction }) => {
+  console.log(transaction, "TRANSACTION");
   return (
     <View>
       <TouchableOpacity
@@ -26,7 +27,7 @@ export default ({ navigation, transaction }) => {
           {transaction.originAccount[0].accountNumber}
         </Text>
         <Text style={style.content}>
-          {transaction.originAccount[0].nameEntity}
+          {transaction.originAccount[0].nameEntity[0].nameEntity}
         </Text>
         <Text style={style.subTitle}>Dónde:</Text>
         <Text style={style.content}>{transaction.agent[0].name}</Text>

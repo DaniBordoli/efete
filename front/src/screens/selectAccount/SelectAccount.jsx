@@ -38,7 +38,9 @@ export default ({
                       source={require("../../../assets/iconos/Bank.png")}
                     />
                     <View>
-                      <Text style={style.account}>{item.nameEntity}</Text>
+                      <Text style={style.account}>
+                        {item.nameEntity[0].nameEntity}
+                      </Text>
                       <Text style={style.account}>
                         xxxx-xxxx-xxxx-
                         {item.accountNumber.toString().slice(6)}
