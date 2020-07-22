@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput } from "react-native";
-import DropDownPicker from 'react-native-dropdown-picker';
+import DropDownPicker from "react-native-dropdown-picker";
 import { style } from "./style.js";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -12,18 +12,19 @@ const AddAccount = ({
   handleCbu,
   handleSubmit,
   navigation,
-  handleBank
+  handleBank,
 }) => {
-
   return (
     <View style={{ flex: 8 }}>
-      <DropDownPicker style={style.dropdown}
-          items={banks.map(item =>(
-            {label: `${item.nameEntity}`, value: item._id}
-        )) }
-          defaultIndex={0}
-          containerStyle={{height: 40}}
-          onChangeItem={item => handleBank(item.value)}
+      <DropDownPicker
+        style={style.dropdown}
+        items={banks.map((item) => ({
+          label: `${item.nameEntity}`,
+          value: item._id,
+        }))}
+        defaultIndex={0}
+        containerStyle={{ height: 40 }}
+        onChangeItem={(item) => handleBank(item.value)}
       />
 
       <Text style={style.text}>CBU / CVU</Text>
@@ -45,12 +46,14 @@ const AddAccount = ({
         onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}
       />
       {/* {account.length < 22 ? <Text>La cuenta debe contener al menos 22 numeros</Text> : null} */}
-      <View style={{ flex: 8 }}
+      <View
+        style={{ flex: 8 }}
         style={{
           flexDirection: "row-reverse",
           justifyContent: "center",
           marginTop: 100,
-        }}>
+        }}
+      >
         <Button
           buttonStyle={style.botonIniciar}
           titleStyle={style.tituloIniciar}
@@ -61,11 +64,8 @@ const AddAccount = ({
           }}
         />
       </View>
-      
     </View>
   );
 };
-
-
 
 export default AddAccount;

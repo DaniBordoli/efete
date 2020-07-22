@@ -66,74 +66,78 @@ export default ({ agentTransactions, navigation, loading, time }) => {
             </TouchableOpacity>
           </View>
 
-          <Animatable.View
-            animation="fadeInUpBig"
-            style={style.movimientosContainer}
-          >
-            <Text style={style.movimientos}>Movimientos</Text>
-            <Text style={style.time}>{time.toUpperCase()}</Text>
-            <View>
-              <Text>
-                Monto diario restante:
-                {agentTransactions[0].agent[0].dailyAmount}
-              </Text>
-            </View>
-            <View style={style.hr} />
+          {agentTransactions[0] ? (
+            <Animatable.View
+              animation="fadeInUpBig"
+              style={style.movimientosContainer}
+            >
+              <Text style={style.movimientos}>Movimientos</Text>
+              <Text style={style.time}>{time.toUpperCase()}</Text>
+              <View>
+                <Text>
+                  Monto diario restante:
+                  {agentTransactions[0].agent[0].dailyAmount}
+                </Text>
+              </View>
+              <View style={style.hr} />
 
-            <FlatList
-              showsVerticalScrollIndicator={false}
-              keyExtractor={(agentTransactions) => agentTransactions._id}
-              data={agentTransactions}
-              renderItem={({ item }) => {
-                return (
-                  <View style={{ height: 90, flex: 1 }}>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        height: 90,
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <View style={{ marginLeft: 17 }}>
-                        <Text>Monto: $ {item.amount}</Text>
-                        <Text>Banco: {item.originAccount[0].nameEntity}</Text>
-                        <Text>
-                          Numero de cuenta:{" "}
-                          {item.originAccount[0].accountNumber}
-                        </Text>
-                        <Text>Extracción realizada</Text>
+              <FlatList
+                showsVerticalScrollIndicator={false}
+                keyExtractor={(agentTransactions) => agentTransactions._id}
+                data={agentTransactions}
+                renderItem={({ item }) => {
+                  return (
+                    <View style={{ height: 90, flex: 1 }}>
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          height: 90,
+                          alignItems: "center",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <View style={{ marginLeft: 17 }}>
+                          <Text>Monto: $ {item.amount}</Text>
+                          <Text>Banco: {item.originAccount[0].nameEntity}</Text>
+                          <Text>
+                            Numero de cuenta:{" "}
+                            {item.originAccount[0].accountNumber}
+                          </Text>
+                          <Text>Extracción realizada</Text>
+                        </View>
+                        <View>
+                          <Button
+                            buttonStyle={{
+                              marginRight: 25,
+                              backgroundColor: "#629bcaa6",
+                            }}
+                            title="Ver transacción"
+                            onPress={() =>
+                              navigation.navigate("SingleAgentTransaction", {
+                                item,
+                              })
+                            }
+                          />
+                        </View>
                       </View>
-                      <View>
-                        <Button
-                          buttonStyle={{
-                            marginRight: 25,
-                            backgroundColor: "#629bcaa6",
-                          }}
-                          title="Ver transacción"
-                          onPress={() =>
-                            navigation.navigate("SingleAgentTransaction", {
-                              item,
-                            })
-                          }
-                        />
-                      </View>
+                      <View style={style.hr} />
                     </View>
-                    <View style={style.hr} />
-                  </View>
-                );
-              }}
-            ></FlatList>
+                  );
+                }}
+              ></FlatList>
 
-            <Button
-              title="Ver todas las operaciones"
-              onPress={() =>
-                navigation.navigate("AllAgentTransactions", {
-                  agentTransactions,
-                })
-              }
-            />
-          </Animatable.View>
+              <Button
+                title="Ver todas las operaciones"
+                onPress={() =>
+                  navigation.navigate("AllAgentTransactions", {
+                    agentTransactions,
+                  })
+                }
+              />
+            </Animatable.View>
+          ) : (
+            <Text>No hay transacciones todavia</Text>
+          )}
         </View>
       ) : (
         <Load />
