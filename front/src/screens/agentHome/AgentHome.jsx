@@ -4,7 +4,7 @@ import { style } from "./style";
 import * as Animatable from "react-native-animatable";
 import { Button } from "react-native-elements";
 import { Load } from "../../Common/loading";
-
+import { headerColor } from "../../Common/constans";
 export default ({ agentTransactions, navigation, loading, time }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
@@ -15,6 +15,8 @@ export default ({ agentTransactions, navigation, loading, time }) => {
               flex: 1,
               flexDirection: "row",
               flexWrap: "wrap",
+              alignContent: "center",
+              justifyContent: "center",
             }}
           >
             <TouchableOpacity
@@ -23,7 +25,7 @@ export default ({ agentTransactions, navigation, loading, time }) => {
               onPress={() => navigation.navigate("User")}
             >
               <Image
-                source={require("../../../assets/iconos/extraccion.png")}
+                source={require("../../../assets/iconos/usuario.png")}
                 style={style.imageIconStyle}
               />
               <Text style={style.text}>Perfil Usuario</Text>
@@ -32,10 +34,10 @@ export default ({ agentTransactions, navigation, loading, time }) => {
             <TouchableOpacity
               style={style.agente}
               activeOpacity={0.5}
-              /* onPress={() => navigation.navigate("User")} */
+              onPress={() => navigation.navigate("QRgenerator")}
             >
               <Image
-                source={require("../../../assets/iconos/extraccion.png")}
+                source={require("../../../assets/iconos/QR.png")}
                 style={style.imageIconStyle}
               />
               <Text style={style.text}>Cobrar con Qr</Text>
@@ -47,7 +49,7 @@ export default ({ agentTransactions, navigation, loading, time }) => {
               onPress={() => navigation.navigate("EditAgentProfile")}
             >
               <Image
-                source={require("../../../assets/iconos/extraccion.png")}
+                source={require("../../../assets/iconos/negocio.png")}
                 style={style.imageIconStyle}
               />
               <Text style={style.text}>Tu Negocio</Text>
@@ -59,10 +61,10 @@ export default ({ agentTransactions, navigation, loading, time }) => {
               onPress={() => navigation.navigate("EditAgentProfile")}
             >
               <Image
-                source={require("../../../assets/iconos/extraccion.png")}
+                source={require("../../../assets/iconos/calculadora.png")}
                 style={style.imageIconStyle}
               />
-              <Text style={style.text}>Modificar monto diario</Text>
+              <Text style={style.text}>Modificar monto</Text>
             </TouchableOpacity>
           </View>
 
@@ -73,11 +75,49 @@ export default ({ agentTransactions, navigation, loading, time }) => {
             >
               <Text style={style.movimientos}>Movimientos</Text>
               <Text style={style.time}>{time.toUpperCase()}</Text>
-              <View>
-                <Text>
-                  Monto diario restante:
-                  {agentTransactions[0].agent[0].dailyAmount}
-                </Text>
+              <View style={style.hr} />
+              <View
+                style={{
+                  height: 50,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View style={{ flexDirection: "row" }}>
+                  <Text
+                    style={{
+                      marginLeft: 17,
+                      textTransform: "none",
+                      fontFamily: "nunito",
+                      color: "#949af0",
+                      fontSize: 19,
+                    }}
+                  >
+                    Monto restante:&nbsp;
+                  </Text>
+                  <Text style={{ fontSize: 17, alignSelf: "center" }}>
+                    ${agentTransactions[0].agent[0].dailyAmount}
+                  </Text>
+                </View>
+                <View>
+                  <Button
+                    buttonStyle={{
+                      backgroundColor: "white",
+                      borderWidth: 1,
+                      borderColor: "#6f76e4",
+                      marginRight: 25,
+                      width: 90,
+                    }}
+                    titleStyle={{ color: "#6f76e4" }}
+                    title="Ver todo"
+                    onPress={() =>
+                      navigation.navigate("AllAgentTransactions", {
+                        agentTransactions,
+                      })
+                    }
+                  />
+                </View>
               </View>
               <View style={style.hr} />
 
@@ -98,7 +138,10 @@ export default ({ agentTransactions, navigation, loading, time }) => {
                       >
                         <View style={{ marginLeft: 17 }}>
                           <Text>Monto: $ {item.amount}</Text>
-                          <Text>Banco: {item.originAccount[0].nameEntity}</Text>
+                          <Text>
+                            Banco:{" "}
+                            {item.originAccount[0].nameEntity[0].nameEntity}
+                          </Text>
                           <Text>
                             Numero de cuenta:{" "}
                             {item.originAccount[0].accountNumber}
@@ -110,8 +153,9 @@ export default ({ agentTransactions, navigation, loading, time }) => {
                             buttonStyle={{
                               marginRight: 25,
                               backgroundColor: "#629bcaa6",
+                              width: 90,
                             }}
-                            title="Ver transacción"
+                            title="Ver mas"
                             onPress={() =>
                               navigation.navigate("SingleAgentTransaction", {
                                 item,
@@ -119,24 +163,16 @@ export default ({ agentTransactions, navigation, loading, time }) => {
                             }
                           />
                         </View>
+                        <View style={style.hr} />
                       </View>
                       <View style={style.hr} />
                     </View>
                   );
                 }}
               ></FlatList>
-
-              <Button
-                title="Ver todas las operaciones"
-                onPress={() =>
-                  navigation.navigate("AllAgentTransactions", {
-                    agentTransactions,
-                  })
-                }
-              />
             </Animatable.View>
           ) : (
-            <Text>No hay transacciones todavia</Text>
+            <Text>No hay operaciones todavia</Text>
           )}
         </View>
       ) : (

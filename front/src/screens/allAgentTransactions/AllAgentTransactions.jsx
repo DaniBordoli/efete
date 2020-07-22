@@ -15,7 +15,9 @@ export default ({ navigation, agentTransactions }) => {
               return (
                 <View>
                   <Text>Monto: $ {item.amount}</Text>
-                  <Text>Banco: {item.originAccount[0].nameEntity}</Text>
+                  <Text>
+                    Banco: {item.originAccount[0].nameEntity[0].nameEntity}
+                  </Text>
                   <Text>
                     Numero de cuenta: {item.originAccount[0].accountNumber}
                   </Text>

@@ -18,41 +18,40 @@ export default ({
       {loading ? (
         <View>
           <Text style={style.titulo}>Monto Disponible</Text>
-          <Text style={style.monto}>{transactionValue}</Text>
-
-          <FlatList
-            keyExtractor={(userAccounts) => userAccounts._id}
-            data={userAccounts}
-            renderItem={({ item }) => {
-              return (
-                <TouchableOpacity
-                  style={
-                    selectedAccount._id === item._id
-                      ? style.accountContainerFocus
-                      : style.accountContainer
-                  }
-                  onPress={() => handleValue(item)}
-                >
-                  <Image
-                    style={style.bankIcon}
-                    source={require("../../../assets/iconos/Bank.png")}
-                  />
-                  <View>
-                    <Text style={style.account}>{item.nameEntity}</Text>
-                    <Text style={style.account}>
-                      xxxx-xxxx-xxxx-
-                      {item.accountNumber.toString().slice(6)}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            }}
-          />
-          <View
-            style={{
-              zIndex: -1,
-            }}
-          >
+          <Text style={style.monto}>{`$ ${transactionValue}`}</Text>
+          <View>
+            <FlatList
+              keyExtractor={(userAccounts) => userAccounts._id}
+              data={userAccounts}
+              renderItem={({ item }) => {
+                return (
+                  <TouchableOpacity
+                    style={
+                      selectedAccount._id === item._id
+                        ? style.accountContainerFocus
+                        : style.accountContainer
+                    }
+                    onPress={() => handleValue(item)}
+                  >
+                    <Image
+                      style={style.bankIcon}
+                      source={require("../../../assets/iconos/Bank.png")}
+                    />
+                    <View>
+                      <Text style={style.account}>
+                        {item.nameEntity[0].nameEntity}
+                      </Text>
+                      <Text style={style.account}>
+                        xxxx-xxxx-xxxx-
+                        {item.accountNumber.toString().slice(6)}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                );
+              }}
+            />
+          </View>
+          <View>
             <Button
               disabled={!selectedAccount._id}
               buttonStyle={style.confirmar}

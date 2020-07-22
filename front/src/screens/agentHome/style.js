@@ -11,11 +11,10 @@ export const style = StyleSheet.create({
     color: `${headerColor}`,
   },
   movimientosContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    borderTopRightRadius: 28,
-    borderTopLeftRadius: 28,
+    flex: 1,
+    backgroundColor:'white',
+    borderTopRightRadius:28,
+    borderTopLeftRadius:28,
     width: "94%",
     shadowColor: "#000",
     shadowOffset: {
@@ -24,9 +23,11 @@ export const style = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 8.0,
-    elevation: 5,
+    elevation:5
   },
+
   agente: {
+    margin:6,
     width: 164,
     height: 140,
     backgroundColor: "white",
