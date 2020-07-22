@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var accountSchema = new Schema({
-  
+  mainAccount: {
+    type: Boolean,
+    default: false,
+  },
+
   nameEntity: [
     {
       type: Schema.Types.ObjectId,

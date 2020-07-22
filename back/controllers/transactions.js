@@ -43,6 +43,12 @@ const findOneUserTransacion = (req, res) => {
   Transaction.findById(req.params.id)
     .populate("user")
     .populate("agent")
+    .populate({
+      path: "originAccount",
+      populate: {
+        path: "nameEntity",
+      },
+    })
     .then((transaction) => {
       res.json(transaction);
     });
