@@ -20,7 +20,7 @@ export const style = StyleSheet.create({
       paddingBottom: 10,
       paddingLeft: 0,
       backgroundColor: "#fff",
-      color: "#424242",
+      color: "black",
       marginHorizontal:15
     },
     text:{
