@@ -3,12 +3,16 @@ import { style } from './style'
 import { View, Text, FlatList, ScrollView } from "react-native";
 import { Button } from 'react-native-elements'
 
-const ConfAmountAgent = ({handlerValue, handlerSubmit, navigation, value}) => {
-     
-    const amount = [1000, 2000, 5000, 10000, 20000] 
+const ConfAmountAgent = ({
+  handlerValue,
+  handlerSubmit,
+  navigation,
+  value,
+}) => {
+  const amount = ["1000", "2000", "5000", "10000", "20000"];
 
 
-    return(
+   return(
  <ScrollView>
      <View >
          <Text style={style.monto}>Monto</Text>
@@ -57,7 +61,7 @@ const ConfAmountAgent = ({handlerValue, handlerSubmit, navigation, value}) => {
         navigation.navigate("ConfirmAgentLoad"); // Deberia llevar a una vista de confirmación
         }}
         />
-        }
+      }
 
         <Button
         buttonStyle={style.confirmar}

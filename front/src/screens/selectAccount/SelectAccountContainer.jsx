@@ -62,7 +62,7 @@ export default ({ navigation, route }) => {
       <SelectAccount
         selectedAccount={selectedAccount}
         userAccounts={userAccounts}
-        handleValue={handleAccount}
+        handleAccount={handleAccount}
         handleSubmit={handleSubmit}
         navigation={navigation}
         transactionValue={route.params.value}

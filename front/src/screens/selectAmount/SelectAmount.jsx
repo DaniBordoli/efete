@@ -4,7 +4,7 @@ import { style } from "./style.js";
 import { Button } from "react-native-elements";
 
 export default ({ handleValue, navigation, handleSubmit, value }) => {
-  const data = [100, 200, 500, 1000, 2000];
+  const data = ['100', '200', '500', '1000', '2000'];
   return (
    <ScrollView>
     <View style={{ flex: 1 }}>
@@ -61,7 +61,7 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
         titleStyle={style.tituloConfirmar}
         title="Cancelar"
         onPress={() => {
-        navigation.navigate("Agent"); //Cancelar devuelve al home
+        navigation.navigate("ScannerQR", { value: value });
         }}
     />
   </View>
