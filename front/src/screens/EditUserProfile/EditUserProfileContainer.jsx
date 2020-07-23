@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Alert } from "react-native";
 import EditUserProfile from "./EditUserProfile";
 import { editUser } from "../../redux/store/actions/users";
-import { useDispatch , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default () => {
   const userInfo = useSelector((state) => state.users.user);
@@ -31,15 +31,13 @@ export default () => {
   }
 
   return (
-    <View>
-      <EditUserProfile
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        firstName={user.firstName}
-        lastName={user.lastName}
-        username={user.username}
-        password={user.password}
-      />
-    </View>
+    <EditUserProfile
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      firstName={user.firstName}
+      lastName={user.lastName}
+      username={user.username}
+      password={user.password}
+    />
   );
 };
