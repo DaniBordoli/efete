@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-const Accounts = ({ account, navigation, handleDelete, loading }) => {
+const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
   console.log("account", account);
   return (
     <View>
@@ -15,7 +15,7 @@ const Accounts = ({ account, navigation, handleDelete, loading }) => {
         <View>
           {account._id ? (
             <View>
-              <Text>{account.nameEntity}</Text>
+              <Text>{account.nameEntity[0].nameEntity}</Text>
               <Text>{account.accountNumber}</Text>
               <Button
                 //   style={style.button}
@@ -26,8 +26,8 @@ const Accounts = ({ account, navigation, handleDelete, loading }) => {
           ) : null}
           <Button
             //   style={style.button}
-            title="Volver a mis cuentas"
-            onPress={() => navigation.navigate("Accounts")}
+            title="Establecer como predeterminada"
+            onPress={() => handleMainAccount(account._id)}
           />
         </View>
       ) : (

@@ -37,15 +37,13 @@ export default ({ navigation }) => {
   }
 
   return (
-    <View>
-      <EditAgent
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-        name={agent.name}
-        address={agent.address}
-        CUIL={agent.CUIL}
-        navigation={navigation}
-      />
-    </View>
+    <EditAgent
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      name={agent.name}
+      address={agent.address}
+      CUIL={agent.CUIL}
+      navigation={navigation}
+    />
   );
 };

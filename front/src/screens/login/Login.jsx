@@ -25,7 +25,7 @@ export default ({
   navigation,
   handleVerifyAccount,
   updateSecureTextEntry,
-  data
+  data,
 }) => {
   return (
     <View style={style.container}>
@@ -67,33 +67,31 @@ export default ({
             />
             <TextInput
               autoCapitalize="none"
-              secureTextEntry={data.secureTextEntry? true : false}
+              secureTextEntry={data.secureTextEntry ? true : false}
               style={style.input}
               value={password}
               placeholder="Contraseña"
               onChangeText={(password) => {
                 handleValuePassword(password);
               }}
-              
             />
             <TouchableOpacity onPress={updateSecureTextEntry}>
-            {data.secureTextEntry? <Icon
-            style={style.eyeLock}
-            name="eye-off"
-            size={22}
-            color="#94AFB6"
-          />:
-          <Icon
-            style={style.eyeLock}
-            name="eye"
-            size={22}
-            color="#94AFB6"
-          />
-
-}
-            
+              {data.secureTextEntry ? (
+                <Icon
+                  style={style.eyeLock}
+                  name="eye-off"
+                  size={22}
+                  color="#94AFB6"
+                />
+              ) : (
+                <Icon
+                  style={style.eyeLock}
+                  name="eye"
+                  size={22}
+                  color="#94AFB6"
+                />
+              )}
             </TouchableOpacity>
-            
           </View>
         </View>
 
