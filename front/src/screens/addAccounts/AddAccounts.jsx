@@ -31,8 +31,9 @@ const AddAccount = ({
           <DropDownPicker style={style.dropdown}
                 labelStyle={{fontSize: 14, color: '#6F76E4'}}
                 items={[
-                    {label: 'CBU', value: 'CBU', selected: true},
+                    {label: 'CBU', value: 'CBU'},
                     {label: 'CVU', value: 'CVU'},
+                    {label: 'Selecciona tipo de cuenta', value: '', selected: true},
                 ]}
                 defaultIndex={0}
                 containerStyle={{height: 40}}
@@ -40,7 +41,7 @@ const AddAccount = ({
           />
         </View>
       <View style={style.acc}>
-        <Text style={style.text}>Número de Cuenta</Text>
+        <Text style={style.text}>NUMERO DE CUENTA</Text>
         <TextInput
           style={style.input}
           placeholder="Ingrese su número de cuenta"

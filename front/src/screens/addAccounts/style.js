@@ -21,13 +21,15 @@ export const style = StyleSheet.create({
       paddingLeft: 0,
       backgroundColor: "#fff",
       color: "#424242",
-      marginHorizontal:15
+      marginHorizontal:15,
+      //height:100
     },
     text:{
       textAlign:'center',
       fontSize:15,
       margin:20,
-      color:"#6F76E4"
+      color:"#6F76E4",
+      fontWeight:"bold"
   },
     dropdown: {
       marginTop:10,
@@ -44,6 +46,6 @@ export const style = StyleSheet.create({
     acc: {
       marginTop:30,
       },
-
+      
 });
   

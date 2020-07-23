@@ -18,6 +18,7 @@ export default ({ navigation }) => {
 
   const [cbu, setCbu] = useState("");
   const handleCbu = (cbu) => {
+    console.log("CBU",cbu)
     setCbu(cbu);
   };
 

@@ -21,6 +21,13 @@ const get_user_single_account = (account) => {
   };
 };
 
+const get_user_main_account = (account) => {
+  return {
+    type:  SET_MAIN_ACCOUNT,
+    account,
+  };
+};
+
 const get_banks = (banks) => {
   return {
     type: FETCH_BANKS,
@@ -31,7 +38,7 @@ const get_banks = (banks) => {
 export const fetchMainAccount = (userId) => (dispatch) => {
   axios
     .get(`http://${IP}:1337/api/accounts/main/${userId}`)
-    .then((res) => dispatch(get_user_single_account(res.data)));
+    .then((res) => dispatch(get_user_main_account(res.data)));
 };
 
 export const setMainAccount = (id, userId) => (dispatch) => {
@@ -71,4 +78,10 @@ export const deleteAccounts = (id, userId) => (dispatch) =>
   axios.delete(`http://${IP}:1337/api/accounts/${id}/${userId}`).then((res) => {
     dispatch(get_user_single_account({}));
     dispatch(get_user_accounts(res.data));
+  });
+
+  export const deleteMainAccount = (id) => (dispatch) =>
+  axios.delete(`http://${IP}:1337/api/accounts/main/${id}`).then((res) => {
+    //dispatch(get_user_single_account({}));
+    dispatch(get_user_main_account({}));
   });
