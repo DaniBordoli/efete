@@ -4,7 +4,7 @@ import { style } from "./style.js";
 import { Button } from "react-native-elements";
 
 export default ({ handleValue, navigation, handleSubmit, value }) => {
-  const data = [100, 200, 500, 1000, 2000];
+  const data = ['100', '200', '500', '1000', '2000'];
   return (
     <View style={{ flex: 1 }}>
       <Text style={style.monto}>Monto</Text>
@@ -41,7 +41,7 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
         titleStyle={style.tituloConfirmar}
         title="Confirmar"
         onPress={() => {
-          navigation.navigate("QRscanner", { value: value });
+          navigation.navigate("ScannerQR", { value: value });
         }}
       />
     </View>

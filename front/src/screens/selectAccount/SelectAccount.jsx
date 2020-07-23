@@ -58,7 +58,7 @@ export default ({
               buttonStyle={style.confirmar}
               titleStyle={style.tituloConfirmar}
               title="Realizar Transacción"
-              onPress={() => navigation.navigate('TransactionOk')}
+              onPress={handleSubmit()}
                 // handleAgentDailyAmount();
             />
                <Button
