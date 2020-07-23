@@ -26,6 +26,7 @@ import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
+import createdAgentOkContainer from '../createdAgentOk/createdAgentOkContainer'
 import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
@@ -36,6 +37,7 @@ const Stack = createStackNavigator();
 export default ({ navigation }) => {
   return (
     <Stack.Navigator initialRouteName="Login">
+      
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
@@ -167,6 +169,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="ConfAmountAgent"
         component={ConfAmountAgentContainer}
+        options={{
+          ...myHeader,
+          title: "Seleccionar monto",
+        }}
       />
       <Stack.Screen
         name="Login"

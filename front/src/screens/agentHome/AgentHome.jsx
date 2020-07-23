@@ -59,7 +59,7 @@ export default ({ agentTransactions, navigation, loading, time }) => {
             <TouchableOpacity
               style={style.agente}
               activeOpacity={0.5}
-              onPress={() => navigation.navigate("EditAgentProfile")}
+              onPress={() => navigation.navigate("ConfAmountAgent")}
             >
               <Image
                 source={require("../../../assets/iconos/calculadora.png")}

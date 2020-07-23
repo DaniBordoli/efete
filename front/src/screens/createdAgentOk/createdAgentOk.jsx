@@ -5,12 +5,10 @@ import { style } from "./style";
 
 const CreatedAgentOk = (agent) => {
     console.log('AGENTSSSSSSS!!!!!!!!', agent)
-    //INFORMACIÓN HARCODEADA!
 
     return(
     <ScrollView>
        
-
       <View style={style.mainContainer}>
 
       <View style={style.container}>
