@@ -48,28 +48,59 @@ export const style = StyleSheet.create({
       alignSelf: "center",
       width: '100%',
     },
-    botonIniciar: {
+    botonAgregar: {
       backgroundColor: "#00CC96",
       width: 167,
       height: 48,
+      flexDirection: "row-reverse",
+      justifyContent: "center",
+      alignItems:"center",
+      marginTop: 40,
+      
+      //marginLeft:50,
     },
-    tituloIniciar: {
+    tituloAgregar: {
       color: "#FFFFFF",
       textTransform: "uppercase",
       fontFamily: "nunito",
       fontWeight:'normal'
     },
-    searchSection: {
-      flex: 1,
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#fff",
-      borderRadius: 10,
+    // botonDeterminada: {
+    //   backgroundColor: "#5352EC",
+    //   width: 250,
+    //   height: 48,
+    //   flexDirection: "row-reverse",
+    //   justifyContent: "center",
+    //   marginTop: 75,
+    //   marginLeft:"auto",
+    //   marginRight:"auto"
+    //   //marginLeft:50,
+    // },
+    // tituloDeterminada: {
+    //   color: "#FFFFFF",
+    //   textTransform: "uppercase",
+    //   fontFamily: "nunito",
+    //   fontWeight:'normal',
+    //   fontSize:15
+    // },
+    asociadas: {
+      fontSize: 24,
+      color: "#6F76E4",
+      textAlign: "center",
+      marginTop: 50,
+      fontFamily: "nunito",
     },
-    searchIcon: {
-      padding: 10,
-    },
+    // searchSection: {
+    //   flex: 1,
+    //   flexDirection: "row",
+    //   justifyContent: "center",
+    //   alignItems: "center",
+    //   backgroundColor: "#fff",
+    //   borderRadius: 10,
+    // },
+    // searchIcon: {
+    //   padding: 10,
+    // },
     input: {
       fontSize: 18,
       flex: 1,
@@ -82,13 +113,46 @@ export const style = StyleSheet.create({
     },
     container: {
       flex: 1,
+      backgroundColor:"#FFFFFF",
+      borderRadius: 12,
+      margin:10
+      
+
+    
     },
-    eyeLock: {
-      flexDirection: "row",
+    
+    wallet: {
+      flexDirection: "column",
       justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#fff",
-      borderRadius: 10,
-      marginRight:15
+      alignItems: "flex-start",
+      size:50,
+      color:"grey",
+      flex:3,
+      
+      
     },
+    
+    principal: {
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      size:50,
+      flex:8,
+      marginLeft:30
+
+    },
+
+    delete: {
+      flexDirection: "column",
+      justifyContent: "space-around",
+      alignItems: "flex-end",
+      size:50,
+      color:"grey",
+      flex:3,
+      marginRight:15,
+      
+      
+    },
+    
+    
+
   });
