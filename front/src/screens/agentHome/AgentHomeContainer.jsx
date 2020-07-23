@@ -29,7 +29,9 @@ export default ({ navigation }) => {
 
   useEffect(() => {
     dispatch(fetchAgent(userId)).then((agent) => {
-      dispatch(getAgentTransactions(agent._id)).then(() => setLoading(true));
+      dispatch(getAgentTransactions(agent.agent._id)).then(() =>
+        setLoading(true)
+      );
     });
   }, []);
 
