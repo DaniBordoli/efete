@@ -17,7 +17,13 @@ const findAllUserTransactions = (req, res) => {
         path: "nameEntity",
       },
     })
-    .populate("destinationAccount")
+    .populate({
+      path: "destinationAccount",
+      populate: {
+        path: "nameEntity",
+      },
+    })
+    .sort([["_id", "descending"]])
     .then((lista) => {
       return res.json(lista);
     });
@@ -33,8 +39,15 @@ const findAllAgentTransactions = (req, res) => {
         path: "nameEntity",
       },
     })
-    .populate("destinationAccount")
-    .then((lista) => {res.json(lista);
+    .populate({
+      path: "destinationAccount",
+      populate: {
+        path: "nameEntity",
+      },
+    })
+    .sort([["_id", "descending"]])
+    .then((lista) => {
+      res.json(lista);
     });
 };
 
@@ -64,7 +77,12 @@ const createTransaction = (req, res) => {
           path: "nameEntity",
         },
       })
-      .populate("destinationAccount")
+      .populate({
+        path: "destinationAccount",
+        populate: {
+          path: "nameEntity",
+        },
+      })
       .then((transaction) => {
         SendTransaction(transaction);
         res.status(201).send(transaction);

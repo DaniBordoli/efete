@@ -10,13 +10,11 @@ import {
 } from "react-native";
 import { Button, Icon } from "react-native-elements";
 import { style } from "./style";
-import { AntDesign } from '@expo/vector-icons';
-
+import { AntDesign } from "@expo/vector-icons";
 
 const Accounts = ({ accountsUser, loading, handleDelete, navigation,mainAccount }) => {
   console.log(mainAccount,"MAIN")
   return (
-    
     <View>
       {loading ? (
         <View>

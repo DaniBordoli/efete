@@ -2,60 +2,60 @@ import { StyleSheet } from "react-native";
 import { headerColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
-  movimientos: {
-    fontSize: 28,
-    marginTop: 15,
-    marginBottom: 13,
-    textAlign: "center",
-    fontFamily: "nunito",
-    color: `${headerColor}`,
-  },
-
-  text: {
-    textAlign: "center",
-    color: "black",
-    fontSize: 14,
-    textTransform: "uppercase",
-    //fontFamily: "sans-serif",
-    marginTop: 13,
-  },
-
-  eyeLock: {
-    flexDirection: "row",
-    justifyContent: "center",
+ container : {
     alignItems: "center",
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    marginRight: 15,
-  },
+    backgroundColor: "#FAFBFF",
+    paddingBottom: 70,
+    height: 740
 
-  searchSection: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    borderRadius: 10,
   },
-
-  searchIcon: {
-    padding: 10,
+  containerTitle : {
+    color: "#6F76E4",
+    fontSize: 22,    
+    fontFamily: "nunito", 
+    margin: 40,
+    textTransform: "uppercase"
   },
-
-  input: {
-    fontSize: 18,
-    flex: 1,
-    paddingTop: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
-    paddingLeft: 0,
-    backgroundColor: "#fff",
-    color: "#424242",
+  title : {
+    marginBottom: 10,
+    color: '#424242'
   },
-
-  boton: {
+  input : {
+    backgroundColor: "#ffffff",
+    width: 340,
+    padding: 5,
+    marginBottom: 25,
+    elevation: 2,
+    shadowRadius: 4.0,
+    shadowOpacity: 0.25,
+  },
+  confirmar : {
     backgroundColor: "#00CC96",
-    width: 236,
-    height: 43,
+    padding: 5,
+    borderRadius: 5,
+    marginTop: 30  
+  },
+  textConfirmar : {
+    color: "#ffffff",
+    fontSize: 18,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingBottom: 5,
+    paddingTop: 5,
+    fontFamily: "nunito" 
+  },
+  openCamera : {
+    alignItems: "center",
+    marginTop: 20
+  },
+textOpenCamera : {
+    margin: 15,
+    color: '#A4A4A4',
+    fontSize: 15,
+  },
+textMaxsize : {
+    margin: 5,
+    color: '#606060',
+    fontSize: 10, 
   },
 });

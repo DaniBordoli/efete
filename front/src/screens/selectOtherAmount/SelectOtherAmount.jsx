@@ -28,7 +28,7 @@ export default ({ handleValue, navigation, value }) => {
           titleStyle={style.tituloConfirmar}
           title="Confirmar"
           onPress={() => {
-            navigation.navigate("QRscanner", { value: value }); // Deberia llevar a una vista de confirmación
+            navigation.navigate("ScannerQR", { value: value }); // Deberia llevar a una vista de confirmación
           }}
         />
       )}

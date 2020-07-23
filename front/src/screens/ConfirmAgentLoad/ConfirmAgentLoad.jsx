@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Text, FlatList, Button } from "react-native";
+import { View, Text, FlatList, Button, Image, TouchableOpacity,  ScrollView} from "react-native";
 import { useNavigation } from '@react-navigation/native'
+import { style } from './style'
 
 
 const ConfirmAgentLoad = ({ value }) => {
@@ -8,19 +9,41 @@ const ConfirmAgentLoad = ({ value }) => {
     const navigation = useNavigation();
 
     return(
-        <View>
-          <Text>
 
-            Felicitaciones has realizado una recarga de: ${value} pesos
-          </Text>
-
-          <Button
-         title="Volver"
-         onPress={()=> navigation.goBack()}
-         /> 
+  <ScrollView>
+    <View style={style.container}>
+      
+      <View style={style.imageCont}>
+      <Image  source={require("../../../assets/iconos/arriba.png")}
+        style={style.image}
+        /> 
+        </View>
+         
+          
+          <Text style={style.title}>Confirmación de carga</Text>
+          <Image
+          style={style.icon}
+          source={require("../../../assets/icon.png")}
+          />
+          <Text style={style.text}>Felicitaciones has realizado una recarga de </Text> 
+         <Text style={style.valor}>{value}</Text>          
+        
+        <TouchableOpacity
+        style={style.volver}
+        title="Volver a Agente"
+        onPress={() => {;
+        navigation.navigate("Agent");
+        }}
+         >
+         <Text style={style.textConfirmar}>Volver a Agente</Text>  
+        </TouchableOpacity>  
 
         </View>
+        </ScrollView>
+
     )
 }
 
 export default ConfirmAgentLoad;
+
+// Felicitaciones has realizado una recarga de: ${value} pesos

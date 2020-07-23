@@ -35,7 +35,7 @@ export const style = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 8.0,
-    elevation: 5,
+    elevation: 3,
   },
   otroMontoTitulo: {
     color: `${buttonColor}`,
@@ -63,4 +63,23 @@ export const style = StyleSheet.create({
     color: "white",
     fontWeight: "400",
   },
+  confirmarDisabled : {
+    width: 167,
+    height: 60,
+    marginTop: 10,
+    alignSelf: "center",
+
+},
+  tituloConfirmarDisabled : {
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    fontWeight: "400",
+ },
+ contBotones : {
+   flexDirection: 'row',
+   justifyContent: "space-around",
+
+
+ }
 });
