@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TextInput, Text, Button, Image,TouchableOpacity, ScrollView } from "react-native";
 import { style } from "./style";
-
+import { MaterialIcons } from '@expo/vector-icons'; 
 
 const CreateAgentForm = ({
   handlerCodigo,
@@ -11,13 +11,15 @@ const CreateAgentForm = ({
   handlerName,
   handlerSubmit,
   navigation,
+  fotos
 }) => {
+  
   return (
-  <ScrollView>
-    <View style={style.container}>
+  <ScrollView style={{flex:1 }}>
+    
       
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
-
+      <View style={style.container}>
       <View>
       <Text style={style.title}>Nombre</Text>
       <TextInput
@@ -54,6 +56,10 @@ const CreateAgentForm = ({
       />
       </View>
 
+
+      </View>
+      
+
       {/* <View>
       <Text style={style.title}>Codigo QR</Text>
       <TextInput
@@ -63,6 +69,11 @@ const CreateAgentForm = ({
       </View> */}
 
       {/* Aqui va el QR */}
+      {fotos ?  (
+      <Image style={style.image} 
+            source={{ uri: fotos }} />
+      ) : null
+        }
 
       <TouchableOpacity
         style={style.openCamera}
@@ -72,9 +83,7 @@ const CreateAgentForm = ({
         }}
         >
         <Text style={style.textOpenCamera}>Subir foto</Text>
-        <Image 
-        source={require("../../../assets/iconos/openCamera.png")}
-        />
+        <MaterialIcons name="camera-alt" size={27} color="white" style={style.foto}/>
         <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
       </TouchableOpacity>
       
@@ -89,7 +98,6 @@ const CreateAgentForm = ({
       >
       <Text style={style.textConfirmar}>CONFIRMAR</Text>
       </TouchableOpacity>
-</View>
 </ScrollView>
   );
 };

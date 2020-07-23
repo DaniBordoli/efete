@@ -130,7 +130,7 @@ export default ({ navigation }) => {
         component={CreateAgentFormContainer}
         options={{
           ...myHeader,
-          title: "Agregar establecimiento",
+          title: "Tu Negocio",
         }}
       />
       <Stack.Screen
