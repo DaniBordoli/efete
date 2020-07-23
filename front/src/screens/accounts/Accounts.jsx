@@ -104,7 +104,6 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
             keyExtractor={(accountsUser) => accountsUser._id}
             data={accountsUser}
             renderItem={({ item, index }) => {
-              console.log(item, "ITEM");
               return (
                 <View>
                   <Text
@@ -115,26 +114,29 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
                     <Text>Entidad: {item.nameEntity[0].nameEntity}</Text>
 
                     <Text>Cuenta: {item.accountNumber}</Text>
-                    <Text>{`Cuenta principal: ${item.mainAccount}`}</Text>
                   </Text>
                   <Button
                     buttonStyle={style.botonDeterminada}
                     titleStyle={style.tituloDeterminada}
                     title="ElIMINAR CUENTA"
                     onPress={() => {
+                      console.log("item", item._id);
                       handleDelete(item._id);
                     }}
                   />
+
                 </View>
               );
             }}
-          />
-          <Button
-            title="AGREGAR CUENTA"
-            onPress={() => {
-              navigation.navigate("AddAccounts");
-            }}
-          />
+          />  */}
+           <Button
+              buttonStyle={style.botonAgregar}
+              titleStyle={style.tituloAgregar}
+              title="AGREGAR CUENTA"
+              onPress={() => {
+                navigation.navigate("AddAccounts")
+              }}
+            />
         </View>
           ) : (
             <View>
