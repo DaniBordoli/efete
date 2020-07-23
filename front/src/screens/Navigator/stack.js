@@ -30,6 +30,7 @@ import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
 import OpenCameraContainer from "../camera/OpenCameraContainer";
+import createdAgentOkContainer from "../createdAgentOk/createdAgentOkContainer"
 
 const Stack = createStackNavigator();
 
@@ -253,14 +254,7 @@ export default ({ navigation }) => {
           title: "Transacciones",
         }}
       />
-      <Stack.Screen
-        name="AddAccounts"
-        component={AddAccountsContainer}
-        options={{
-          ...myHeader,
-          title: "Nueva cuenta",
-        }}
-      />
+      
       <Stack.Screen 
         name="AddAccounts"
         component={AddAccountsContainer}

@@ -125,7 +125,6 @@ export const style = StyleSheet.create({
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "flex-start",
-      size:50,
       color:"grey",
       flex:3,
       
@@ -135,7 +134,6 @@ export const style = StyleSheet.create({
     principal: {
       flexDirection: "column",
       justifyContent: "flex-start",
-      size:50,
       flex:8,
       marginLeft:30
 
@@ -145,7 +143,6 @@ export const style = StyleSheet.create({
       flexDirection: "column",
       justifyContent: "space-around",
       alignItems: "flex-end",
-      size:50,
       color:"grey",
       flex:3,
       marginRight:15,

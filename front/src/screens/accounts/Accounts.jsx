@@ -29,11 +29,11 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
 
               <View style={style.principal}>
                   <Text style={{marginTop:10,marginLeft:30}}> 
-                    <strong>Entidad:</strong> Banco Santander
+                    Entidad: Banco Santander
                   </Text>
                     
                   <Text style={{marginTop:10,marginLeft:30}}> 
-                    <strong>Cuenta:</strong> 123456789
+                    Cuenta: 123456789
                   </Text>
               </View>
 
