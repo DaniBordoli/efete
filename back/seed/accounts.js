@@ -3,7 +3,7 @@ require("../config/db");
 
 const charmander = {
   entity: 72,
-  nameEntity: "Santander",
+  nameEntity: "5f18abe07a5fb064c4b415d7",
   accountNumber: 6563289820230,
   cbu_cvu: "cbu",
   user: {
@@ -13,7 +13,7 @@ const charmander = {
 
 const charmander2 = {
   entity: 143,
-  nameEntity: "Brubank",
+  nameEntity: "5f18abe07a5fb064c4b415d3",
   accountNumber: 9786753678,
   cbu_cvu: "cbu",
   user: {
@@ -23,7 +23,7 @@ const charmander2 = {
 
 const bulbasaur = {
   entity: 17,
-  nameEntity: "BBVA",
+  nameEntity: "5f18abe07a5fb064c4b415d5",
   accountNumber: 83783472923,
   cbu_cvu: "cbu",
   user: {
@@ -33,7 +33,7 @@ const bulbasaur = {
 
 const squirtle = {
   entity: 322,
-  nameEntity: "Banco Industrial",
+  nameEntity: "5f18abe07a5fb064c4b415d0",
   accountNumber: 1837437239,
   cbu_cvu: "cbu",
   user: {
