@@ -73,6 +73,12 @@ export default ({ navigation }) => {
       />
 
       <Stack.Screen
+        name="createdAgentOk"
+        component={createdAgentOkContainer}
+        options={{ ...myHeader, title: "Establecimiento agregado" }}
+      />
+
+      <Stack.Screen
         name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
         options={{
@@ -112,11 +118,19 @@ export default ({ navigation }) => {
         name="SingleUserTransaction"
         options={{ ...myHeader, title: "Transaccion" }}
         component={SingleUserTransactionContainer}
+        options={{
+          ...myHeader,
+          title: "Ver transacción",
+        }}
       />
 
       <Stack.Screen
         name="CreateAgentForm"
         component={CreateAgentFormContainer}
+        options={{
+          ...myHeader,
+          title: "Agregar establecimiento",
+        }}
       />
       <Stack.Screen
         name="successRegister"

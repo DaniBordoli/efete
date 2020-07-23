@@ -11,6 +11,7 @@ export default ({
   transactionValue,
   loading,
   selectedAccount,
+  navigation
   // handleAgentDailyAmount,
 }) => {
   return (
@@ -57,10 +58,15 @@ export default ({
               buttonStyle={style.confirmar}
               titleStyle={style.tituloConfirmar}
               title="Realizar Transacción"
-              onPress={() => {
-                handleSubmit();
+              onPress={() => navigation.navigate('TransactionOk')}
                 // handleAgentDailyAmount();
-              }}
+            />
+               <Button
+              buttonStyle={style.confirmar}
+              titleStyle={style.tituloConfirmar}
+              title="Agregar nueva cuenta"
+              onPress={() => navigation.navigate('AddAccounts')}
+                // handleAgentDailyAmount();
             />
           </View>
         </View>

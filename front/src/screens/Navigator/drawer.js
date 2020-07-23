@@ -10,6 +10,7 @@ import {
 import { View, Text, StyleSheet , TouchableOpacity} from "react-native";
 import { Switch } from "react-native-gesture-handler";
 
+
 const Drawer = createDrawerNavigator();
 
 export default (props) => {

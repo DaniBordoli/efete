@@ -1,6 +1,7 @@
 import React from "react";
-import { View, TextInput, Text, Button } from "react-native";
-import { styles } from "./styles";
+import { View, TextInput, Text, Button, Image,TouchableOpacity, ScrollView } from "react-native";
+import { style } from "./style";
+
 
 const CreateAgentForm = ({
   handlerCodigo,
@@ -12,55 +13,84 @@ const CreateAgentForm = ({
   navigation,
 }) => {
   return (
-    <View>
-      <Text style={styles.text}>Nombre</Text>
+  <ScrollView>
+    <View style={style.container}>
+      
+      <Text style={style.containerTitle}>Agregar Establecimiento</Text>
+
+      <View>
+      <Text style={style.title}>Nombre</Text>
       <TextInput
-        style={styles.inp}
+        style={style.input}
         onChangeText={(text) => handlerName(text)}
-        placeholder="Nombre"
+        placeholder="Ingrese el nombre del establecimiento"
       />
-      <Text style={styles.text}>Dirección</Text>
+      </View>
+      
+      <View>
+      <Text style={style.title}>Dirección</Text>
       <TextInput
-        style={styles.inp}
+        style={style.input}
         onChangeText={(text) => handlerAddress(text)}
-        placeholder="Dirección"
+        placeholder="Indique la dirección"
       />
+      </View>
 
-      <Text style={styles.text}>CUIL</Text>
+      <View>
+      <Text style={style.title}>CUIL</Text>
       <TextInput
-        style={styles.inp}
+        style={style.input}
         onChangeText={(num) => handlerCuil(num)}
-        placeholder="CUIL"
+        placeholder="Ingrese su numero de CUIL"
       />
+      </View>
 
-      <Text style={styles.text}>Monto diario</Text>
+      <View>
+      <Text style={style.title}>Monto diario</Text>
       <TextInput
-        style={styles.inp}
+        style={style.input}
         onChangeText={(num) => handlerDailyAmount(num)}
-        placeholder="Monto diario"
+        placeholder="Agregue el monto diario"
       />
+      </View>
 
-      <Text style={styles.text}>Codigo QR</Text>
+      {/* <View>
+      <Text style={style.title}>Codigo QR</Text>
       <TextInput
-        style={styles.inp}
         onChangeText={(text) => handlerCodigo(text)}
         placeholder="Codigo QR"
       />
+      </View> */}
 
-      <Button
-        title="Enviar"
-        onPress={() => {
-          handlerSubmit();
-          navigation.navigate("User");
-        }}
-      />
-      <Button
-        title="Enviar"
+      {/* Aqui va el QR */}
+
+      <TouchableOpacity
+        style={style.openCamera}
+        title="Open Camera"
         onPress={() => {
           navigation.navigate("OpenCamera");
         }}
-      />
-    </View>
+        >
+        <Text style={style.textOpenCamera}>Subir foto</Text>
+        <Image 
+        source={require("../../../assets/iconos/openCamera.png")}
+        />
+        <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
+      </TouchableOpacity>
+      
+      
+      <TouchableOpacity
+        style={style.confirmar}
+        title="Confirmar"
+        onPress={() => {
+        handlerSubmit();
+        navigation.navigate("createdAgentOk");
+        }}
+      >
+      <Text style={style.textConfirmar}>CONFIRMAR</Text>
+      </TouchableOpacity>
+</View>
+</ScrollView>
   );
 };
 

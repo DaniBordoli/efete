@@ -35,7 +35,7 @@ export default ({
         }}
       >
         <Text style={style.titulo}>Efeté</Text>
-        <Text style={style.iniciarSesion}>Iniciar Sesión</Text>
+        <Text style={style.iniciarSesion}>Acceder</Text>
         <View style={style.inputContainer}>
           <View style={style.searchSection}>
             <Icon

@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-elements";
-
 import { Load } from "../../Common/loading";
 import { style } from "./style";
 import { TouchableOpacity } from "react-native-gesture-handler";

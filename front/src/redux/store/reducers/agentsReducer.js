@@ -1,9 +1,10 @@
-import { SET_AGENT, CREATE_AGENT } from "../constants";
+import { SET_AGENT, CREATE_AGENT, CREATE_STORE } from "../constants";
 
 const initialState = {
   agent: {},
   agents: [],
-  newAgent: {}
+  newAgent: {},
+  newStore: {}
 };
 
 export default (state = initialState, action) => {
@@ -14,5 +15,7 @@ export default (state = initialState, action) => {
       return {...state, newAgent: action.newAgent}  
     default:
       return state;
+      case CREATE_STORE:
+        return {state, newStore: action.newStore}
   }
 };

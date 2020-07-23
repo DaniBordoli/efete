@@ -34,8 +34,7 @@ const findAllAgentTransactions = (req, res) => {
       },
     })
     .populate("destinationAccount")
-    .then((lista) => {
-      res.json(lista);
+    .then((lista) => {res.json(lista);
     });
 };
 

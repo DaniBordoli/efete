@@ -71,21 +71,17 @@ export const getUserTransactions = (id) => (dispatch) => {
 export const getUserTransaction = (id) => (dispatch) => {
   return axios
     .get(`http://${IP}:1337/api/transactions/user/${id}`)
-    .then((res) => {
-      return res.data;
-    })
+    .then((res) =>res.data)
     .then((transaction) => dispatch(fetch_users_transaction(transaction)));
 };
 
 export const updateAmountAgent = (value) => (dispatch) => {
   return axios
-    .post(`http://${IP}:1337/api/agent/editdailyamount`, value)
-    .then((res) => {
-      console.log("RES.DATA", res.data);
-      return res.data;
-    })
-    .then((amount) => dispatch(newAgtTransactionValue(amount)));
-};
+  .post(`http://${IP}:1337/api/agent/editdailyamount`, value)
+  .then(res => res.data)
+  .then((amount=> dispatch(newAgtTransactionValue(amount))))
+}
+
 
 export const createTransaction = (transaction) => (dispatch) =>
   axios.post(`http://${IP}:1337/api/transactions`, transaction).then((res) => {

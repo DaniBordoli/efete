@@ -7,6 +7,7 @@ const {
   getAllUsers,
   getAgent,
   changeDailyAmount,
+  
 } = require("../controllers/agents");
 
 router.patch("/editprofile", editProfileAgent);

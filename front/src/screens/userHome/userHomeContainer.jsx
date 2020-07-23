@@ -6,15 +6,19 @@ import UserHome from "./userHome";
 import moment from "moment";
 
 export default ({ navigation, route }) => {
-  const [loading, setLoader] = useState(false);
-  const [time, setTime] = useState("");
   const dispatch = useDispatch();
+  
+  const [loading, setLoader] = useState(false);
+  const [time, setTime] = useState('');
 
   const userTransactions = useSelector(
     (state) => state.transactions.userTransactions
-  );
+    )
 
-  const userRole = useSelector((state) => state.users.user.role);
+
+  const userRole = useSelector(
+    (state) => state.users.user.role
+  );
 
   useEffect(() => {
     var date = moment();
@@ -30,12 +34,12 @@ export default ({ navigation, route }) => {
   }, []);
 
   return (
-    <UserHome
-      userTransactions={userTransactions}
-      navigation={navigation}
-      loading={loading}
-      userRole={userRole}
-      time={time}
-    />
+      <UserHome
+        navigation={navigation}
+        loading={loading}
+        userRole={userRole}
+        time={time}
+        userTransactions={userTransactions}
+      />
   );
 };
