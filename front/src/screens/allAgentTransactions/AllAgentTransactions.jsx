@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Button, Image, Link, FlatList } from "react-native";
 import { style } from "./style.js";
+import { Load } from "../../Common/loading";
 
 export default ({ navigation, agentTransactions }) => {
   return (
@@ -41,9 +42,7 @@ export default ({ navigation, agentTransactions }) => {
           ></FlatList>
         </View>
       ) : (
-        <View>
-          <ActivityIndicator size="large" color="#00ff00" />
-        </View>
+        <Text style={{ textAlign: "center" }}>No hay operaciones todavia</Text>
       )}
     </View>
   );
