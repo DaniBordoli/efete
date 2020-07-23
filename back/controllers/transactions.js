@@ -11,7 +11,12 @@ const findAllUserTransactions = (req, res) => {
   Transaction.find({ user: req.params.id })
     .populate("user")
     .populate("agent")
-    .populate("originAccount")
+    .populate({
+      path: "originAccount",
+      populate: {
+        path: "nameEntity",
+      },
+    })
     .populate("destinationAccount")
     .then((lista) => {
       return res.json(lista);
@@ -22,7 +27,12 @@ const findAllAgentTransactions = (req, res) => {
   Transaction.find({ agent: req.params.id })
     .populate("user")
     .populate("agent")
-    .populate("originAccount")
+    .populate({
+      path: "originAccount",
+      populate: {
+        path: "nameEntity",
+      },
+    })
     .populate("destinationAccount")
     .then((lista) => {res.json(lista);
     });
@@ -42,7 +52,12 @@ const createTransaction = (req, res) => {
     return Transaction.findById(transaction._id)
       .populate("user")
       .populate("agent")
-      .populate("originAccount")
+      .populate({
+        path: "originAccount",
+        populate: {
+          path: "nameEntity",
+        },
+      })
       .populate("destinationAccount")
       .then((transaction) => {
         SendTransaction(transaction);

@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions } from "react-native";
 export const style = StyleSheet.create({
     mainContainer : {
      alignItems: "center",
-     backgroundColor: '#FAFBFF'
+     backgroundColor: '#FAFBFF',
     },
     container : {
       alignItems: "center"
@@ -12,7 +12,7 @@ export const style = StyleSheet.create({
     fontFamily: "nunito", 
     color: "#6F76E4",
     fontSize: 60,
-    margin: 10  
+    margin: 10
     },
     subTitle : {
      fontSize: 20,
@@ -66,6 +66,4 @@ export const style = StyleSheet.create({
         color: "#424242",
         fontSize: 16
     }
-
-
 })

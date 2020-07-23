@@ -4,10 +4,13 @@ import { style } from "./style";
 // import { style } from "./style";
 
 const CreatedAgentOk = (agent) => {
-    console.log('AGENTS', agent)
+    console.log('AGENTSSSSSSS!!!!!!!!', agent)
     //INFORMACIÓN HARCODEADA!
+
     return(
     <ScrollView>
+       
+
       <View style={style.mainContainer}>
 
       <View style={style.container}>
@@ -26,17 +29,17 @@ const CreatedAgentOk = (agent) => {
 
         <View style={style.caja}>
         <Text style={style.info}>Nombre:</Text>
-        <Text style={style.description}> Pepe Comercio </Text>
+    <Text style={style.description}> {agent.agent.name} </Text>
         </View>
         
         <View style={style.caja}>
         <Text style={style.info}>Dirección:</Text>
-        <Text style={style.description}> Castillo 2232, CABA </Text>
+    <Text style={style.description}> {agent.agent.address} </Text>
         </View>
         
         <View style={style.caja}>
         <Text style={style.info}>CUIL:</Text>
-        <Text style={style.description}> 657875895 </Text>
+    <Text style={style.description}> {agent.agent.cuil} </Text>
         </View>
      
       </View>

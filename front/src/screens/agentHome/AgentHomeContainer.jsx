@@ -35,13 +35,11 @@ export default ({ navigation }) => {
   }, []);
 
   return (
-  
-      <AgentHome
-        agentTransactions={agentTransactions}
-        navigation={navigation}
-        loading={loading}
-        time={time}
-      />
-  
+    <AgentHome
+      agentTransactions={agentTransactions}
+      navigation={navigation}
+      loading={loading}
+      time={time}
+    />
   );
 };

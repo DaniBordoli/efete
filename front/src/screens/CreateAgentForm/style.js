@@ -4,7 +4,9 @@ import { headerColor, buttonColor } from "../../Common/constans";
 export const style = StyleSheet.create({
 
     container : {
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: "#FAFBFF",
+        paddingBottom: 70
     },
     containerTitle : {
         color: "#6F76E4",
@@ -15,7 +17,7 @@ export const style = StyleSheet.create({
     },
     title : {
     marginBottom: 10,
-    color: '#808060'
+    color: '#424242'
 
 
     },

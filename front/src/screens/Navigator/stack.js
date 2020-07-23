@@ -36,7 +36,7 @@ const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
-    <Stack.Navigator initialRouteName="CreateAgentForm">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen name="QRgenerator" component={GeneratorQR} />
       <Stack.Screen name="QRscanner" component={ScannerQR} />
 
