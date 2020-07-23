@@ -18,9 +18,9 @@ export const logUser = (user) => (dispatch) => {
       }, */
     })
     .then((res) => dispatch(login_user(res.data)))
-    .catch(() =>
-      dispatch(login_user({ message: "El usuario o contraseña no existe" }))
-    );
+    .catch(() => {
+      dispatch(login_user({ message: "Alguno de los datos es inválido" }));
+    });
 };
 
 export const register = (firstName, lastName, dni, password, username) => (

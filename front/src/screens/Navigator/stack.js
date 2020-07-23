@@ -30,7 +30,7 @@ import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
 import OpenCameraContainer from "../camera/OpenCameraContainer";
-import createdAgentOkContainer from "../createdAgentOk/createdAgentOkContainer"
+import createdAgentOkContainer from "../createdAgentOk/createdAgentOkContainer";
 
 const Stack = createStackNavigator();
 
@@ -54,10 +54,14 @@ export default ({ navigation }) => {
           ),
         }}
       />
-      <Stack.Screen name="ScannerQR" component={ScannerQR}  options={{
+      <Stack.Screen
+        name="ScannerQR"
+        component={ScannerQR}
+        options={{
           ...myHeader,
           title: "Escaner QR",
-        }}/>
+        }}
+      />
       <Stack.Screen
         name="InfoQR"
         component={InfoQR}
@@ -76,7 +80,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="createdAgentOk"
         component={createdAgentOkContainer}
-        options={{ ...myHeader, title: "Establecimiento agregado" }}
+        options={{ headerShown: false }}
       />
 
       <Stack.Screen
@@ -254,11 +258,11 @@ export default ({ navigation }) => {
           title: "Transacciones",
         }}
       />
-      
-      <Stack.Screen 
+
+      <Stack.Screen
         name="AddAccounts"
         component={AddAccountsContainer}
-        options={{ 
+        options={{
           headerLeft: () => (
             <Feather
               name="menu"
@@ -268,9 +272,11 @@ export default ({ navigation }) => {
               onPress={() => navigation.openDrawer()}
             />
           ),
-        ...myHeader, title: "Agregar Cuentas" }}
-        //name="AddAccounts" component={AddAccountsContainer} 
-        />
+          ...myHeader,
+          title: "Agregar Cuentas",
+        }}
+        //name="AddAccounts" component={AddAccountsContainer}
+      />
 
       <Stack.Screen
         name="SelectAccount"
@@ -303,7 +309,7 @@ const myHeader = {
   headerTintColor: "white",
   headerTitleStyle: {
     color: "white",
-    fontFamily:"regular"
+    fontFamily: "regular",
   },
   headerStyle: {
     backgroundColor: headerColor,
