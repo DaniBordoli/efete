@@ -10,8 +10,9 @@ import {
 import { Button } from "react-native-elements";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { buttonColor, headerColor, fondoColor } from "../../Common/constans";
+import { RotationGestureHandler } from "react-native-gesture-handler";
 
-export default () => {
+export default ({ navigation, route }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [animationLineHeight, setAnimationLineHeight] = useState(0);
@@ -44,22 +45,15 @@ export default () => {
   };
 
   const handleBarCodeScanned = ({ type, data }) => {
+    const agentId = data.slice(0, data.indexOf(","));
+    const destinationAccount = data.slice(data.indexOf(",") + 1);
     setScanned(true);
-    /* alert(`Bar code with type ${type} and data ${data} has been scanned!`); */
-    // data del QR
-    Alert.alert(
-      "Datos de tu Codigo:",
-      `${data}`,
-      [
-        {
-          text: "Cancelar",
-          /*  onPress: () => console.log('Cancel Pressed'), */
-          style: "cancel",
-        },
-        { text: "OK" /* , onPress: () => console.log('OK Pressed') */ },
-      ],
-      { cancelable: false }
-    );
+
+    navigation.navigate("SelectAccount", {
+      agentId: agentId,
+      value: route.params.value,
+      destinationAccount: destinationAccount,
+    });
   };
 
   if (hasPermission === null) {
@@ -91,16 +85,20 @@ export default () => {
               
                 style={[
                   style.animationLineStyle,
-                  {
-                    transform: [
+                  
+                    
                       {
-                        translateY: focusLineAnimation.interpolate({
-                          inputRange: [0, 1],
-                          outputRange: [0, animationLineHeight],
-                        }),
+                        transform: [
+                          {
+                            translateY: focusLineAnimation.interpolate({
+                              inputRange: [0, 1],
+                              outputRange: [0, animationLineHeight],
+                            }),
+                          },
+                        ],
                       },
-                    ],
-                  },
+                    
+                
                 ]}
               />
             )}
@@ -131,8 +129,7 @@ export default () => {
         </View>
     
   );
-};
-const opacity = "rgba(0, 0, 0, .6)";
+}; 
 const style = StyleSheet.create({
   scanerButton: {
     width: 180,
@@ -187,3 +184,6 @@ const rightBottom = {
   borderBottomWidth: 3,
   borderColor: "white",
 };
+
+
+

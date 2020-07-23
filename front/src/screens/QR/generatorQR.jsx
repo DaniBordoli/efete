@@ -1,23 +1,25 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { QRCode } from "react-native-custom-qr-codes-expo";
-import {fetchAgent } from '../../redux/store/actions/agents'
-import { headerColor } from "../../Common/constans";
-import { StyleSheet, View, Text } from "react-native";
-import { useSelector , useDispatch} from "react-redux";
+import { Text } from "react-native";
+import { fetchAgent } from "../../redux/store/actions/agents";
+import {headerColor} from '../../Common/constans'
+import { StyleSheet, View, TextInput } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchMainAccount } from "../../redux/store/actions/accounts";
 
-export default ({navigation})=> {
+export default () => {
   const dispatch = useDispatch();
 
-  
   useEffect(() => {
-    dispatch(fetchAgent(userId))
-/*     setLoading(true)
- */  }, []);
-  
+    dispatch(fetchAgent(userId));
+    dispatch(fetchMainAccount(userId));
+    /*     setLoading(true)
+     */
+  }, []);
 
   const userId = useSelector((state) => state.users.user._id);
-  const agentId= useSelector((state) => state.agents.agent._id)
-
+  const agentId = useSelector((state) => state.agents.agent._id);
+  const mainAccount = useSelector((state) => state.accounts.account._id);
 
   /* const [user, userSet] = useState('')
   const [loading, setLoading] = useState(false); */
@@ -33,8 +35,8 @@ export default ({navigation})=> {
 </View>
 <View style={styles.container}>
         <QRCode
-          content= {`${agentId}`} 
-          /* `${{
+        content={`${agentId},${mainAccount}`}
+        /* `${{
             fecha: "132",
             dato: "13132"
           }}` */
@@ -47,6 +49,8 @@ export default ({navigation})=> {
     );
   
 }
+  
+
 
 const styles = StyleSheet.create({
   container: {

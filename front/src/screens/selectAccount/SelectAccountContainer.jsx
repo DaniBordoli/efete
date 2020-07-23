@@ -35,16 +35,14 @@ export default ({ navigation, route }) => {
         amount: route.params.value,
         originAccount: selectedAccount._id,
         user: user._id,
-        // agent: route.params.agent
-
-        agent: "5f1604c71df146256416cb21",
-        destinationAccount: "5f160507cab91755fce4e535",
+        agent: route.params.agentId,
+        destinationAccount: route.params.destinationAccount,
       })
     )
       .then(() => {
         dispatch(
           changeDailyAmount({
-            id: "5f15b90f82b5fe31f56c1bae",
+            id: route.params.agentId,
 
             amount: route.params.value,
           })

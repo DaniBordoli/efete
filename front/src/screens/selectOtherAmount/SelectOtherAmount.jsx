@@ -7,32 +7,31 @@ import { style } from "./style.js";
 export default ({ handleValue, navigation, value }) => {
   return (
     <View>
-<Text style={style.monto}>Monto</Text>
+      <Text style={style.monto}>Monto</Text>
       <TextInput
-      style={style.input}
+        style={style.input}
         keyboardType="numeric"
         onChangeText={(value) => handleValue(value)}
         value={value}
       />
 
-    {value  <= 0
-    ?  
-    <Button
-    buttonStyle={style.confirmar}
-    titleStyle={style.tituloConfirmar}
-    title="Confirmar"
-    disabled={true}/> 
-    :
-    <Button 
-    buttonStyle={style.confirmar}
-    titleStyle={style.tituloConfirmar}
-    title="Confirmar"
-    onPress={() => {
-    navigation.navigate("SelectAccount", {value:value}); // Deberia llevar a una vista de confirmación
-
-    }}
-    />
-    }
+      {value <= 0 ? (
+        <Button
+          buttonStyle={style.confirmar}
+          titleStyle={style.tituloConfirmar}
+          title="Confirmar"
+          disabled={true}
+        />
+      ) : (
+        <Button
+          buttonStyle={style.confirmar}
+          titleStyle={style.tituloConfirmar}
+          title="Confirmar"
+          onPress={() => {
+            navigation.navigate("QRscanner", { value: value }); // Deberia llevar a una vista de confirmación
+          }}
+        />
+      )}
     </View>
   );
 };

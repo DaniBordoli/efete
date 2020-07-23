@@ -79,12 +79,13 @@ export const getUserTransaction = (id) => (dispatch) => {
 
 export const updateAmountAgent = (value) => (dispatch) => {
   return axios
-  .post(`http://${IP}:1337/api/agent/editdailyamount`, value)
-  .then(res => {console.log('RES.DATA', res.data)
-    return res.data})
-  .then((amount=> dispatch(newAgtTransactionValue(amount))))
-}
-
+    .post(`http://${IP}:1337/api/agent/editdailyamount`, value)
+    .then((res) => {
+      console.log("RES.DATA", res.data);
+      return res.data;
+    })
+    .then((amount) => dispatch(newAgtTransactionValue(amount)));
+};
 
 export const createTransaction = (transaction) => (dispatch) =>
   axios.post(`http://${IP}:1337/api/transactions`, transaction).then((res) => {
@@ -98,3 +99,14 @@ export const getAgentTransactions = (id) => (dispatch) => {
     })
     .then((transactions) => dispatch(fetch_agent_transactions(transactions)));
 };
+
+// export const createPdf = (transaction) => () =>
+//   axios
+//     .post(`http://${IP}:1337/api/pdf/create`, transaction)
+//     .then(() =>
+//       axios.get(`http://${IP}:1337/api/pdf/fetch`, { responsType: "blob" })
+//     )
+//     .then((res) => {
+//       const pdfBlob = new Blob([res.data], { type: "application/pdf" });
+//       saveAs(pdfBlob, "transacción.pdf");
+//     });

@@ -29,6 +29,8 @@ import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContaine
 import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
+import OpenCameraContainer from "../camera/OpenCameraContainer";
+
 const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
@@ -84,10 +86,11 @@ export default ({ navigation }) => {
         options={{
           headerRight: () => (
             <MaterialIcons
-              name="notifications-none"
+              name="person-outline"
               style={{ marginRight: 10, color: "white" }}
-              size={24}
-              color="black"
+              size={26}
+              color="white"
+              onPress={() => navigation.navigate("EditUserProfile")}
             />
           ),
           headerLeft: () => (
@@ -170,6 +173,14 @@ export default ({ navigation }) => {
         component={SelectOtherAmountContainer}
       />
       <Stack.Screen
+        name="OpenCamera"
+        options={{
+          ...myHeader,
+          title: "Tomar Foto",
+        }}
+        component={OpenCameraContainer}
+      />
+      <Stack.Screen
         name="EditUserProfile"
         component={EditUserProfileContainer}
         options={{
@@ -244,7 +255,11 @@ export default ({ navigation }) => {
         }}
         component={SelectAccountContainer}
       />
-      <Stack.Screen name="TransactionOk" component={TransactionOkContainer} />
+      <Stack.Screen
+        name="TransactionOk"
+        component={TransactionOkContainer}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Accounts"
         component={AccountsContainer}

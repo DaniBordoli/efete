@@ -1,27 +1,30 @@
 import React from "react";
 import { View, Text, Button, Image, Link } from "react-native";
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from "@react-navigation/native";
 
+export default ({ getOneUserTransaction, navigation }) => {
+  console.log("Route en el tonto", getOneUserTransaction);
 
-export default ( {getOneUserTransaction, navigation} ) =>{
- console.log('Route en el tonto', getOneUserTransaction)
-
- return(
-
+  return (
+    <View>
+      {getOneUserTransaction.agent ? (
         <View>
-        { getOneUserTransaction.agent ?  (
-        <View>
-        <Text>Monto: ${getOneUserTransaction.amount}</Text>
-        <Text>Comisión: ${getOneUserTransaction.comissionTotal}</Text> 
-        <Text>Cuenta de Origen: {getOneUserTransaction.originAccount}</Text>
-        <Text>Agente: {getOneUserTransaction.agent[0].name} - {getOneUserTransaction.agent[0].address}</Text> 
-        </View>) :
-        
-        null
-     }
-        <Button title='Volver a transacciones' onPress={()=> navigation.navigate('User')}></Button>
-       </View>
-    )
-
-}
-
+          <Text>Monto: ${getOneUserTransaction.amount}</Text>
+          <Text>Comisión: ${getOneUserTransaction.comissionTotal}</Text>
+          <Text>
+            Cuenta de Origen:{" "}
+            {getOneUserTransaction.originAccount[0].accountNumber}
+          </Text>
+          <Text>
+            Agente: {getOneUserTransaction.agent[0].name} -{" "}
+            {getOneUserTransaction.agent[0].address}
+          </Text>
+        </View>
+      ) : null}
+      <Button
+        title="Volver a transacciones"
+        onPress={() => navigation.navigate("User")}
+      ></Button>
+    </View>
+  );
+};
