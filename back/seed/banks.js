@@ -8,12 +8,12 @@ const galicia = {
 
 const nacion = {
     entityNumber: 011,
-    nameEntity: "Banco de la Nacion Argentina",
+    nameEntity: "Banco Nacion",
   };
 
 const provincia = {
     entityNumber: 014,
-    nameEntity: "Banco de la Provincia de Buenos Aires",
+    nameEntity: "Banco Provincia",
   };
   
 const china = {
