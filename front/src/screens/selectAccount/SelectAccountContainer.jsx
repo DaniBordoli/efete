@@ -11,6 +11,7 @@ import SelectAccount from "./SelectAccount";
 import { View } from "react-native";
 
 export default ({ navigation, route }) => {
+  console.log(route.params.destinationAccount, "DESTINATION ACCOUNT");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,16 +36,14 @@ export default ({ navigation, route }) => {
         amount: route.params.value,
         originAccount: selectedAccount._id,
         user: user._id,
-        // agent: route.params.agent
-
-        agent: "5f175e4ac37e8d694b15fac5",
-        destinationAccount: "5f183620aaa5ac09dc90d085",
+        agent: route.params.agentId,
+        destinationAccount: route.params.destinationAccount,
       })
     )
       .then(() => {
         dispatch(
           changeDailyAmount({
-            id: "5f175e4ac37e8d694b15fac5",
+            id: route.params.agentId,
 
             amount: route.params.value,
           })

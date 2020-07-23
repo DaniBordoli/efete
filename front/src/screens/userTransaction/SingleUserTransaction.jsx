@@ -2,7 +2,9 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Button } from "react-native-elements"
 import {style} from './style'
+import { useNavigation } from "@react-navigation/native";
 
+export default ({ getOneUserTransaction, navigation }) => {
 
 export default ( {getOneUserTransaction, navigation, getOneTransAccount} ) =>{
 

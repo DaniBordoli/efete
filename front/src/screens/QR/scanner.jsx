@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet , Alert , Animated} from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Alert,
+  Animated,
+  
+} from "react-native";
 import { Button } from "react-native-elements";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { buttonColor, headerColor, fondoColor } from "../../Common/constans";
+import { RotationGestureHandler } from "react-native-gesture-handler";
 
-
-
-
-export default ()=> {
+export default ({ navigation, route }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [animationLineHeight, setAnimationLineHeight] = useState(0);
@@ -29,32 +34,26 @@ export default ()=> {
       Animated.timing(focusLineAnimation, {
         toValue: 1,
         duration: 1000,
-        useNativeDriver: true
+        useNativeDriver: true,
       }),
       Animated.timing(focusLineAnimation, {
         toValue: 0,
         duration: 1000,
-        useNativeDriver: true
+        useNativeDriver: true,
       }),
     ]).start(animateLine);
   };
 
   const handleBarCodeScanned = ({ type, data }) => {
+    const agentId = data.slice(0, data.indexOf(","));
+    const destinationAccount = data.slice(data.indexOf(",") + 1);
     setScanned(true);
-    /* alert(`Bar code with type ${type} and data ${data} has been scanned!`); */
-     // data del QR
-    Alert.alert(
-      'Datos de tu Codigo:',
-      `${data}`,
-      [{
-          text: 'Cancelar',
-         /*  onPress: () => console.log('Cancel Pressed'), */
-          style: 'cancel'
-        },
-        { text: 'OK'/* , onPress: () => console.log('OK Pressed') */ }
-      ],
-      { cancelable: false}
-    );
+
+    navigation.navigate("SelectAccount", {
+      agentId: agentId,
+      value: route.params.value,
+      destinationAccount: destinationAccount,
+    });
   };
 
   if (hasPermission === null) {
@@ -65,63 +64,57 @@ export default ()=> {
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "flex-end",
-        backgroundColor:'black'
-      }}
-    >
-      <View style={{ flex: 1, justifyContent: "flex-end" }}>
-        <Text style={style.texto}>Escanea tu codigo QR</Text>
-      </View>
+    <View style={{ flex: 1, backgroundColor:'black' }}>
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={{ ...StyleSheet.absoluteFill }}
+      />
 
-      <View style={{ flex: 4 }}>
-        
-        <BarCodeScanner
-        
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          style={[StyleSheet.absoluteFill, style.container]}
-        >
-          <View style={style.layerTop} />
-        <View style={style.layerCenter}>
-          <View style={style.layerLeft} />
-          <View style={style.focused} >
-          <View
-            onLayout={(e) =>
+      <View
+        style={{
+          ...StyleSheet.absoluteFill,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <View style={{ width: 300, height: 300 }}  onLayout={(e) =>
               setAnimationLineHeight(e.nativeEvent.layout.height)
-            }
-            style={style.focusedContainer}
-          >
-          {!scanned && (
+            }>
+        {!scanned && (
               <Animated.View
               
                 style={[
                   style.animationLineStyle,
-                  {
-                    transform: [
+                  
+                    
                       {
-                        translateY: focusLineAnimation.interpolate({
-                          inputRange: [0, 1],
-                          outputRange: [0, animationLineHeight],
-                        }),
+                        transform: [
+                          {
+                            translateY: focusLineAnimation.interpolate({
+                              inputRange: [0, 1],
+                              outputRange: [0, animationLineHeight],
+                            }),
+                          },
+                        ],
                       },
-                    ],
-                  },
+                    
+                
                 ]}
               />
             )}
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <View style={{ flex: 1, ...leftTop }}></View>
+            <View style={{ flex: 1 }} />
+            <View style={{ flex: 1, ...leftBottom }}></View>
           </View>
+          <View style={{ flex: 1 }} />
+          <View style={{ flex: 1, flexDirection: "row" }}>
+            <View style={{ flex: 1, ...rightTop }}></View>
+            <View style={{ flex: 1 }} />
+            <View style={{ flex: 1, ...rightBottom }}></View>
           </View>
-
-          <View style={style.layerRight} />
+          
         </View>
-        <View style={style.layerBottom} />
-
-</BarCodeScanner>
-      </View>
-
-      <View style={{ flex: 1, justifyContent: "flex-start" }}>
         {scanned && (
           <Button
             buttonStyle={style.scanerButton}
@@ -131,83 +124,66 @@ export default ()=> {
           />
         )}
       </View>
-    </View>
+      
+        
+        </View>
+    
   );
-}
-const opacity = 'rgba(0, 0, 0, .6)';
+}; 
 const style = StyleSheet.create({
   scanerButton: {
     width: 180,
     height: 70,
     backgroundColor: `${buttonColor}`,
-    marginTop:5,
+    justifyContent: "center",
     alignSelf: "center",
+    marginTop:60
   },
   scanerTitle: {
     fontSize: 20,
     textAlign: "center",
     textTransform: "uppercase",
-    fontFamily:'nunito',
+    fontFamily: "nunito",
     color: "white",
     fontWeight: "400",
   },
   texto: {
-    marginBottom:10,
-
+    marginBottom: 10,
     fontSize: 35,
     textAlign: "center",
-    textTransform:'uppercase',
-    color: 'white',
-  },
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    
-    
-  },
-  layerTop: {
-    flex: 0.5,
-    backgroundColor: opacity,
-    
-  },
-  layerCenter: {
-    flex: 1,
-    flexDirection: 'row'
-  },
-  layerLeft: {
-   flex:0.5,
-    backgroundColor: opacity,
-    
-  },
-  focused: {
-    flex: 2,
-    borderColor:'grey',
-    borderWidth:0.5,
-    },
-  layerRight: {
-    flex: 0.5,
-    backgroundColor: opacity,
-    
-    
-  },
-  layerBottom: {
-    flex: 0.5,
-    backgroundColor: opacity,
-    
+    textTransform: "uppercase",
+    color: "white",
   },
   animationLineStyle: {
-    height: 1,
+    height: 1.5,
     width: "100%",
-    backgroundColor: headerColor,
+    backgroundColor: 'red',
   },
-  overlay: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-  focusedContainer: {
-    flex: 6,
-  },
+
 });
+const leftTop = {
+  borderLeftWidth: 3,
+  borderTopWidth: 3,
+  borderColor: "white",
+};
+
+const rightTop = {
+  borderLeftWidth: 3,
+  borderBottomWidth: 3,
+  borderColor: "white",
+};
+
+const leftBottom = {
+  borderRightWidth: 3,
+  borderTopWidth: 3,
+  borderColor: "white",
+};
+
+const rightBottom = {
+  borderRightWidth: 3,
+  borderBottomWidth: 3,
+  borderColor: "white",
+};
+
+
+

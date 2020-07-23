@@ -6,6 +6,7 @@ import { View } from "react-native";
 import {
   deleteAccounts,
   fetchUserSingleAccount,
+  setMainAccount,
 } from "../../redux/store/actions/accounts";
 
 export default ({ navigation, route }) => {
@@ -19,22 +20,23 @@ export default ({ navigation, route }) => {
     dispatch(fetchUserSingleAccount(route.params.account._id)).then(() => {
       setLoading(true);
     });
-    // dispatch(fetchUserAccounts(user._id))
   }, []);
 
   const handleDelete = (accountId) => {
-    // dispatch(deleteAccounts(accountId, "5f0f14c1830a243382d6c6aa"));
     dispatch(deleteAccounts(accountId, user._id));
   };
 
+  const handleMainAccount = (accountId) => {
+    dispatch(setMainAccount(accountId, user._id));
+  };
+
   return (
-    <View>
-      <SingleAccount
-        account={account}
-        navigation={navigation}
-        handleDelete={handleDelete}
-        loading={loading}
-      />
-    </View>
+    <SingleAccount
+      account={account}
+      navigation={navigation}
+      handleDelete={handleDelete}
+      loading={loading}
+      handleMainAccount={handleMainAccount}
+    />
   );
 };
