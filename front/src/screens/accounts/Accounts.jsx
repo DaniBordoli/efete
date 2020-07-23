@@ -14,6 +14,9 @@ import { AntDesign } from '@expo/vector-icons';
 
 
 const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
+
+  console.log('ACOUNTUSER:',accountsUser)
+
   return (
     
     <View>
@@ -45,17 +48,18 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
 
           <Text style={style.asociadas}> CUENTAS ASOCIADAS</Text>
 
-          <TouchableOpacity style={style.container}>
 
               
-              <View style={{flex:3}}>
+
                     <FlatList
                       keyExtractor={(accountsUser) => accountsUser._id}
                       data={accountsUser}
                       renderItem={({ item, index }) => {
+                        
+                        
                         return (
                           <View>
-                            <Text
+                            <TouchableOpacity
                               onPress={() =>
                                 navigation.navigate("SingleAccount", { account: item })
                               }
@@ -64,13 +68,12 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
                                   <Image source={require("../../../assets/iconos/wallet.png")} style={{width:50,height:50}}/>
                               </View>
 
-                              <Text style={{marginTop:10,marginLeft:30}}><strong>Entidad:</strong>
-                              {item.nameEntity[0].nameEntity}
+                              <Text style={{marginTop:10,marginLeft:30}}>Entidad:{item.nameEntity[0].nameEntity}
                               </Text>
 
-                              <Text style={{marginTop:10,marginLeft:30}}><strong>Cuenta:</strong>
+                              <Text style={{marginTop:10,marginLeft:30}}>Cuenta:
                               {item.accountNumber}</Text>
-                              </Text>
+                              </TouchableOpacity>
 
                                 <View style={style.delete}>
                               <AntDesign name="delete" size={24} color="grey" style={style.delete}/>
@@ -90,45 +93,8 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
                         );
                       }}
                     /> 
-                  
-              </View>
-
-              
-
-          </TouchableOpacity>
-
+        
           
-
-          
-          {/* <FlatList
-            keyExtractor={(accountsUser) => accountsUser._id}
-            data={accountsUser}
-            renderItem={({ item, index }) => {
-              return (
-                <View>
-                  <Text
-                    onPress={() =>
-                      navigation.navigate("SingleAccount", { account: item })
-                    }
-                  >
-                    <Text>Entidad: {item.nameEntity[0].nameEntity}</Text>
-
-                    <Text>Cuenta: {item.accountNumber}</Text>
-                  </Text>
-                  <Button
-                    buttonStyle={style.botonDeterminada}
-                    titleStyle={style.tituloDeterminada}
-                    title="ElIMINAR CUENTA"
-                    onPress={() => {
-                      console.log("item", item._id);
-                      handleDelete(item._id);
-                    }}
-                  />
-
-                </View>
-              );
-            }}
-          />  */}
            <Button
               buttonStyle={style.botonAgregar}
               titleStyle={style.tituloAgregar}
@@ -149,6 +115,5 @@ const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
 
 
 
-const styles = StyleSheet.create({});
 
 export default Accounts;
