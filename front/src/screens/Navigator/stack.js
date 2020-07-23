@@ -26,18 +26,45 @@ import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
-import { NavigationContainer } from "@react-navigation/native";
-import OpenCameraContainer from "../camera/OpenCameraContainer";
 import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
+import InfoQR from "../QR/infoQR";
+import OpenCameraContainer from "../camera/OpenCameraContainer";
 
 const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
     <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="QRgenerator" component={GeneratorQR} />
-      <Stack.Screen name="QRscanner" component={ScannerQR} />
+      <Stack.Screen
+        name="QRgenerator"
+        component={GeneratorQR}
+        options={{
+          ...myHeader,
+          title: "Cobrar con QR",
+          headerRight: () => (
+            <Feather
+              name="info"
+              style={{ marginRight: 10 }}
+              size={26}
+              color="white"
+              onPress={() => navigation.navigate("InfoQR")}
+            />
+          ),
+        }}
+      />
+      <Stack.Screen name="ScannerQR" component={ScannerQR}  options={{
+          ...myHeader,
+          title: "Escaner QR",
+        }}/>
+      <Stack.Screen
+        name="InfoQR"
+        component={InfoQR}
+        options={{
+          ...myHeader,
+          title: "Todo sobre QR",
+        }}
+      />
 
       <Stack.Screen
         name="Home"
@@ -48,6 +75,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
+        options={{
+          ...myHeader,
+          title: "Transaccion",
+        }}
       />
       <Stack.Screen
         name="User"
@@ -57,8 +88,8 @@ export default ({ navigation }) => {
             <MaterialIcons
               name="person-outline"
               style={{ marginRight: 10, color: "white" }}
-              size={24}
-              color="black"
+              size={26}
+              color="white"
               onPress={() => navigation.navigate("EditUserProfile")}
             />
           ),
@@ -152,8 +183,19 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="EditUserProfile"
         component={EditUserProfileContainer}
+        options={{
+          ...myHeader,
+          title: "Mi perfil",
+        }}
       />
-      <Stack.Screen name="EditAgentProfile" component={EditAgentContainer} />
+      <Stack.Screen
+        name="EditAgentProfile"
+        component={EditAgentContainer}
+        options={{
+          ...myHeader,
+          title: "Tu negocio",
+        }}
+      />
       <Stack.Screen
         name="Agent"
         options={{
@@ -184,12 +226,27 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="AllAgentTransactions"
         component={AllAgentTransactionsContainer}
+        options={{
+          ...myHeader,
+          title: "Transacciones",
+        }}
       />
       <Stack.Screen
         name="AllUserTransactions"
         component={AllUserTransactionsContainer}
+        options={{
+          ...myHeader,
+          title: "Transacciones",
+        }}
       />
-      <Stack.Screen name="AddAccounts" component={AddAccountsContainer} />
+      <Stack.Screen
+        name="AddAccounts"
+        component={AddAccountsContainer}
+        options={{
+          ...myHeader,
+          title: "Nueva cuenta",
+        }}
+      />
       <Stack.Screen
         name="SelectAccount"
         options={{
@@ -221,6 +278,7 @@ const myHeader = {
   headerTintColor: "white",
   headerTitleStyle: {
     color: "white",
+    fontFamily:"regular"
   },
   headerStyle: {
     backgroundColor: headerColor,

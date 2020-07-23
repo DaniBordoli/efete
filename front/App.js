@@ -11,6 +11,8 @@ import Root from "./src/screens/Navigator/stack";
 const fetchFonts = () => {
   return Font.loadAsync({
     'nunito': require("./assets/fonts/Nunito-Black.ttf"),
+    'delgado': require("./assets/fonts/OpenSans-Light.ttf"),
+    'regular': require("./assets/fonts/OpenSans-Regular.ttf")
   });
 };
 
