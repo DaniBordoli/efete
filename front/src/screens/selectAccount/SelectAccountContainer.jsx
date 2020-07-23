@@ -11,6 +11,7 @@ import SelectAccount from "./SelectAccount";
 import { View } from "react-native";
 
 export default ({ navigation, route }) => {
+  console.log(route.params.destinationAccount, "DESTINATION ACCOUNT");
   const dispatch = useDispatch();
 
   useEffect(() => {

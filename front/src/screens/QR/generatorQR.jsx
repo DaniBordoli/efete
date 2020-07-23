@@ -24,8 +24,6 @@ export default () => {
   /* const [user, userSet] = useState('')
   const [loading, setLoading] = useState(false); */
 
-  console.log("USEER:", userId);
-  console.log("AGENTEEEEEE:", agentId);
   return (
     <View style={styles.container}>
       <QRCode
