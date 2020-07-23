@@ -4,65 +4,81 @@ import {
   Text,
   TextInput,
   Button,
+  Image,
   KeyboardAvoidingView,
   ScrollView,
+  TouchableOpacity
 } from "react-native";
 import { style } from "./style.js";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default ({ handleSubmit, handleChange, name, address, CUIL }) => {
+export default ({ handleSubmit, handleChange, name, address, CUIL, navigation }) => {
   return (
     <KeyboardAvoidingView behavior="height">
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
-          <Text style={style.movimientos}>Datos de tu Negocio</Text>
+        <View style={style.container}>
 
-          <Text style={style.text}>Nombre del negocio</Text>
-          <View style={style.searchSection}>
+          <Text style={style.containerTitle}>Datos de tu Negocio</Text>
+          
+          <View>
+          <Text style={style.title}>Nombre del negocio</Text>
             <TextInput
               style={style.input}
               onChangeText={(e) => handleChange(e, "name")}
               name="name"
+              placeholder="Ingrese el nombre del establecimiento"
               defaultValue={name}
               required
             />
-            <TouchableOpacity /* onPress={updateSecureTextEntry} */>
-              <MaterialCommunityIcons name="pencil" size={24} color="black" />
-            </TouchableOpacity>
           </View>
 
-          <Text style={style.text}>Direccion</Text>
-          <View style={style.searchSection}>
+          <View>
+          <Text style={style.title}>Direccion</Text>
             <TextInput
               style={style.input}
               onChangeText={(e) => handleChange(e, "address")}
               name="address"
+              placeholder="Indique la dirección"
               defaultValue={address}
               required
             />
-            <TouchableOpacity /* onPress={updateSecureTextEntry} */>
-              <MaterialCommunityIcons name="pencil" size={24} color="black" />
-            </TouchableOpacity>
           </View>
 
-          <Text style={style.text}>CUIL</Text>
-          <View style={style.searchSection}>
+          <View>
+          <Text style={style.title}>CUIL</Text>
             <TextInput
-              editable={false}
-              selectTextOnFocus={false}
               style={style.input}
+              editable={false}
+              placeholder="Ingrese su numero de CUIL"
+              selectTextOnFocus={false}
               defaultValue={`${CUIL}`}
               disable
             />
           </View>
 
-          <Button
-            style={style.boton}
+            <TouchableOpacity
+            style={style.openCamera}
+            title="Open Camera"
+            onPress={() => {
+              navigation.navigate("OpenCamera");
+            }}
+            >
+            <Text style={style.textOpenCamera}>Subir foto</Text>
+            <Image 
+            source={require("../../../assets/iconos/openCamera.png")}
+            />
+            <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
+          </TouchableOpacity>
+      
+          <TouchableOpacity
+            style={style.confirmar}
             onPress={() => handleSubmit()}
             title="Guardar cambios"
             alert
-          />
+          >
+          <Text style={style.textConfirmar}>CONFIRMAR</Text>
+          </TouchableOpacity>
+
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
