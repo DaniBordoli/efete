@@ -19,3 +19,4 @@ export const LOGIN_USER = "LOGIN_USER";
 //AGENTS
 export const CREATE_AGENT = "CREATE_AGENT";
 export const SET_AGENT = "SET_AGENT";
+export const CREATE_STORE = 'CREATE_STORE'

@@ -12,6 +12,7 @@ const SingleUserTransactionContainer = ({ navigation, route})=>{
     const dispacth = useDispatch();
 
     const getOneUserTransaction = useSelector((state) => state.transactions.userTransaction)
+    const getOneTransAccount = useSelector((state) => state.transactions.userTransaction.originAccount)
 
     useEffect(()=>{
         dispacth(getUserTransaction(route.params.id)) // Hardcodeado, despues pasar id
@@ -24,6 +25,7 @@ const SingleUserTransactionContainer = ({ navigation, route})=>{
          <SingleUserTransaction
          getOneUserTransaction={getOneUserTransaction}
          navigation={navigation}
+         getOneTransAccount={getOneTransAccount}
          />
        </View>
     )

@@ -62,6 +62,8 @@ const getAgent = (req, res) => {
   });
 };
 
+
+
 module.exports = {
   editProfileAgent,
   editDailyAmount,

@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
-import { Button } from "react-native-elements";
+// import { useTheme } from '@react-native/navigation'
+import { colors, Button } from "react-native-elements";
 
 export default ({ navigation, transaction }) => {
-  console.log(transaction, "TRANSACTION");
+  console.log('Transacciones', transaction)
   return (
     <View>
       <TouchableOpacity

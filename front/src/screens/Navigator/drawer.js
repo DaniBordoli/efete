@@ -10,6 +10,7 @@ import {
 import { View, Text, StyleSheet , TouchableOpacity} from "react-native";
 import { Switch } from "react-native-gesture-handler";
 
+
 const Drawer = createDrawerNavigator();
 
 export default (props) => {
@@ -57,7 +58,7 @@ export default (props) => {
           label="Acerca de la App"
           labelStyle={style.label}
           onPress={() =>
-            props.navigation.navigate("Root", { screen: "QRscanner" }, props)
+            props.navigation.navigate("Root", { screen: "ScannerQR" }, props)
           }
         />
         <View style={style.hr} />

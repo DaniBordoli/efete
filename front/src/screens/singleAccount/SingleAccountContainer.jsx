@@ -31,14 +31,12 @@ export default ({ navigation, route }) => {
   };
 
   return (
-    <View>
-      <SingleAccount
-        account={account}
-        navigation={navigation}
-        handleDelete={handleDelete}
-        loading={loading}
-        handleMainAccount={handleMainAccount}
-      />
-    </View>
+    <SingleAccount
+      account={account}
+      navigation={navigation}
+      handleDelete={handleDelete}
+      loading={loading}
+      handleMainAccount={handleMainAccount}
+    />
   );
 };
