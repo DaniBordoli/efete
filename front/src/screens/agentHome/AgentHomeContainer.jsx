@@ -29,7 +29,7 @@ export default ({ navigation }) => {
 
   useEffect(() => {
     dispatch(fetchAgent(userId)).then((agent) => {
-      dispatch(getAgentTransactions("5f10cfed048b9d32761c8146")).then(() =>
+      dispatch(getAgentTransactions(agent.agent._id)).then(() =>
         setLoading(true)
       );
     });
