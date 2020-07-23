@@ -6,6 +6,7 @@ import { Button } from "react-native-elements";
 import { Load } from "../../Common/loading";
 import { headerColor } from "../../Common/constans";
 export default ({ agentTransactions, navigation, loading, time, agent }) => {
+  console.log(agentTransactions, "WACHOOOO");
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {loading ? (
