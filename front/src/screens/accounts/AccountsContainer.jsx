@@ -6,6 +6,7 @@ import { View } from "react-native";
 import {
   fetchUserAccounts,
   deleteAccounts,
+  fetchMainAccount
 } from "../../redux/store/actions/accounts";
 
 export default ({ navigation }) => {
@@ -14,9 +15,15 @@ export default ({ navigation }) => {
 
   const accountsUser = useSelector((state) => state.accounts.accounts);
   const user = useSelector((state) => state.users.user);
+  const mainAccount = useSelector((state)=>state.accounts.mainAccount)
 
   useEffect(() => {
-    dispatch(fetchUserAccounts(user._id)).then(() => {
+    dispatch(fetchUserAccounts(user._id))
+    .then (()=> {
+      console.log('DISPATCH')
+      dispatch(fetchMainAccount(user._id))
+    })
+    .then(() => {
       setLoader(true);
     });
   }, []);
@@ -31,6 +38,7 @@ export default ({ navigation }) => {
       accountsUser={accountsUser}
       loading={loading}
       handleDelete={handleDelete}
+      mainAccount={mainAccount}
     />
   );
 };

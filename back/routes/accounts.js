@@ -8,5 +8,6 @@ router.get("/main/:userId", AccountsController.findMainAccount);
 router.post("/", AccountsController.createAccount);
 router.delete("/:id/:userId", AccountsController.deleteById);
 router.patch("/:id/:userId", AccountsController.setMainAccount);
+router.delete("/main/:id", AccountsController.deleteMainAccount);
 
 module.exports = router;
