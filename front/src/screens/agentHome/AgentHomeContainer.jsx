@@ -16,6 +16,7 @@ export default ({ navigation }) => {
   const agentTransactions = useSelector(
     (state) => state.transactions.agentTransactions
   );
+  const agent = useSelector((state) => state.agents.agent);
 
   const userId = useSelector((state) => state.users.user._id);
 
@@ -40,6 +41,7 @@ export default ({ navigation }) => {
       navigation={navigation}
       loading={loading}
       time={time}
+      agent={agent}
     />
   );
 };

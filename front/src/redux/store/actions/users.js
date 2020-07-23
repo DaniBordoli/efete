@@ -46,3 +46,8 @@ export const editUser = (userData) => () => {
 
 export const verifyEmail = (id) => (dispatch) =>
   axios.get(`http://${IP}:1337/api/users/sendVerificationEmail/${id}`);
+
+export const logOutUser = () => (dispatch) =>
+  axios
+    .post(`http://${IP}:1337/api/users/logout`)
+    .then(() => dispatch(login_user({})));
