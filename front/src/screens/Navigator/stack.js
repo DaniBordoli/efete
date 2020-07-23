@@ -265,7 +265,11 @@ export default ({ navigation }) => {
         component={AccountsContainer}
         options={{ ...myHeader, title: "Mis cuentas" }}
       />
-      <Stack.Screen name="SingleAccount" component={SingleAccountContainer} />
+      <Stack.Screen
+        name="SingleAccount"
+        component={SingleAccountContainer}
+        options={{ ...myHeader, title: "Detalle" }}
+      />
     </Stack.Navigator>
   );
 };
