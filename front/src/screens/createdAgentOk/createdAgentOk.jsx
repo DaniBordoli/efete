@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { style } from "./style";
+import {buttonColor} from '../../Common/constans'
 
 const CreatedAgentOk = ({ agent, navigation }) => {
   return (
@@ -19,7 +21,8 @@ const CreatedAgentOk = ({ agent, navigation }) => {
             navigation.navigate("Agent");
           }}
         >
-          <Image source={require("../../../assets/iconos/mdi_clear.png")} />
+          <MaterialCommunityIcons name="close-circle-outline" size={35} color= {buttonColor} />
+
         </TouchableOpacity>
       </View>
       <View style={style.mainContainer}>

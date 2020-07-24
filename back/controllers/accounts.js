@@ -26,6 +26,7 @@ const AccountsController = {
       });
   },
   createAccount(req, res) {
+    console.log("REQBODY",req.body)
     AccountsModel.find({ user: req.body.user })
       .then((accounts) => {
         if (accounts.length === 0) {
@@ -103,6 +104,17 @@ const AccountsController = {
           res.status(500).send(err);
         });
     });
+  },
+
+  deleteMainAccount(req, res) {
+    console.log("PARAMETRO:",req.params.id)
+    AccountsModel.deleteOne({ _id: req.params.id }).then(() => {
+          res.sendStatus(200);
+        })
+        .catch((err) => {
+          res.status(500).send(err);
+        });
+    
   },
 };
 

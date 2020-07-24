@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View } from "react-native";
 import CreateAgentForm from "./CreateAgentForm";
 import { createAgent } from "../../redux/store/actions/agents";
 import { useDispatch, useSelector } from "react-redux";
 
-const CreateAgentFormContainer = ({ navigation }) => {
+const CreateAgentFormContainer = ({ navigation , route}) => {
+
+  const [foto, setFoto] = useState("");
+
+  
+  useEffect(()=>{
+    route.params ? setFoto(route.params.capturarFoto) : "No hay fotos"
+  })
+
+  
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.users.user);
@@ -39,7 +48,6 @@ const CreateAgentFormContainer = ({ navigation }) => {
   }
 
   return (
-    <View>
       <CreateAgentForm
         handlerName={handlerName}
         handlerAddress={handlerAddress}
@@ -48,8 +56,8 @@ const CreateAgentFormContainer = ({ navigation }) => {
         handlerCodigo={handlerCodigo}
         handlerSubmit={handlerSubmit}
         navigation={navigation}
+        fotos={foto}
       />
-    </View>
   );
 };
 export default CreateAgentFormContainer;

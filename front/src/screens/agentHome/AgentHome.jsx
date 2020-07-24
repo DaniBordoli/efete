@@ -164,7 +164,7 @@ export default ({ agentTransactions, navigation, loading, time, agent }) => {
                             }
                           />
                         </View>
-                        <View style={style.hr} />
+                        
                       </View>
                       <View style={style.hr} />
                     </View>

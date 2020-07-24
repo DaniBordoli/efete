@@ -3,10 +3,11 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
+
+import {Button} from 'react-native-elements'
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { style } from "./style";
@@ -24,6 +25,7 @@ export default ({
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
           <Text style={style.movimientos}>Datos Personales</Text>
+          <View style={{margin:20}}>
 
           <Text style={style.text}>Nombre</Text>
           <View style={style.searchSection}>
@@ -34,8 +36,9 @@ export default ({
               defaultValue={firstName}
               required
             />
-            <TouchableOpacity /* onPress={updateSecureTextEntry} */>
-              <MaterialCommunityIcons name="pencil" size={24} color="black" />
+            <TouchableOpacity /* onPress={updateSecureTextEntry} */
+            style={{marginRight:10, marginRight:5}}>
+              <MaterialCommunityIcons name="pencil" size={20} color="black" />
             </TouchableOpacity>
           </View>
 
@@ -48,8 +51,8 @@ export default ({
               defaultValue={lastName}
               required
             />
-            <TouchableOpacity /* onPress={updateSecureTextEntry} */>
-              <MaterialCommunityIcons name="pencil" size={24} color="black" />
+            <TouchableOpacity /* onPress={updateSecureTextEntry} */style={{marginRight:10, marginRight:5}}>
+              <MaterialCommunityIcons name="pencil" size={20} color="black" />
             </TouchableOpacity>
           </View>
 
@@ -62,8 +65,8 @@ export default ({
               defaultValue={username}
               required
             />
-            <TouchableOpacity /* onPress={updateSecureTextEntry} */>
-              <MaterialCommunityIcons name="pencil" size={24} color="black" />
+            <TouchableOpacity /* onPress={updateSecureTextEntry} */style={{marginRight:10, marginRight:5}}>
+              <MaterialCommunityIcons name="pencil" size={20} color="black" />
             </TouchableOpacity>
           </View>
 
@@ -76,17 +79,21 @@ export default ({
               defaultValue={password}
               required
             />
-            <TouchableOpacity /* onPress={updateSecureTextEntry} */>
-              <MaterialCommunityIcons name="pencil" size={24} color="black" />
+            <TouchableOpacity /* onPress={updateSecureTextEntry} */style={{marginRight:10, marginRight:5}}>
+              <MaterialCommunityIcons name="pencil" size={20} color="black" />
             </TouchableOpacity>
           </View>
 
+          </View>
+          
+
           <View>
             <Button
-              style={style.boton}
+              buttonStyle={style.boton}
+              titleStyle={{fontWeight:'bold'}}
               onPress={() => handleSubmit()}
-              title="Guardar cambios"
-              color="#841584"
+              title="GUARDAR CAMBIOS"
+
               alert
             />
           </View>

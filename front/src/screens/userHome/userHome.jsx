@@ -5,16 +5,15 @@ import { style } from "./style.js";
 import { Load } from "../../Common/loading";
 import { Button } from "react-native-elements";
 
-export default ({ 
+export default ({
   // userTransactions,
-  navigation, 
-  loading, 
-  userRole, 
-  time, 
-  userTransactions
+  navigation,
+  loading,
+  userRole,
+  time,
+  userTransactions,
 }) => {
-  
-  console.log('transTonto', userTransactions)
+  console.log("transTonto", userTransactions);
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {loading ? (
@@ -91,7 +90,7 @@ export default ({
             <FlatList
               showsVerticalScrollIndicator={false}
               keyExtractor={(userTransactions) => userTransactions._id}
-              data={userTransactions.reverse().slice(0,4)}
+              data={userTransactions.slice(0, 4)}
               renderItem={({ item }) => {
                 return (
                   <View style={{ height: 90, flex: 1 }}>

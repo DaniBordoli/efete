@@ -22,7 +22,7 @@ export const style = StyleSheet.create({
     width: 167,
     height: 60,
     backgroundColor: `${buttonColor}`,
-    marginTop: 23,
+    marginTop: 100,
     alignSelf: "center",
   },
   tituloConfirmar: {
@@ -30,6 +30,6 @@ export const style = StyleSheet.create({
     textAlign: "center",
     textTransform: "uppercase",
     color: "white",
-    fontWeight: "400",
+    fontWeight: "bold",
   },
 });

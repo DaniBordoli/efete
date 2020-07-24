@@ -8,7 +8,7 @@ export const style = StyleSheet.create({
     fontSize: 14,
     textTransform: "uppercase",
     //fontFamily: "sans-serif",
-    marginTop: 13,
+    marginTop: 25,
   },
 
   icon: {
@@ -20,7 +20,7 @@ export const style = StyleSheet.create({
 
   movimientos: {
     fontSize: 28,
-    marginTop: 15,
+    marginTop: 40,
     marginBottom: 13,
     textAlign: "center",
     fontFamily: "nunito",
@@ -33,16 +33,20 @@ export const style = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderRadius: 10,
+    borderRadius:8,
+    marginTop:5
+
   },
 
   input: {
+    
     fontSize: 18,
     flex: 1,
     paddingTop: 10,
     paddingRight: 10,
     paddingBottom: 10,
     paddingLeft: 0,
+    borderRadius:8,
     backgroundColor: "#fff",
     color: "#424242",
   },
@@ -51,5 +55,7 @@ export const style = StyleSheet.create({
     backgroundColor: "#00CC96",
     width: 236,
     height: 43,
+    marginTop:40,
+    alignSelf:'center'
   },
 });

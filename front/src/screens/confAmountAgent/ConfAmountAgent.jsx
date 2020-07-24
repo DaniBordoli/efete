@@ -13,8 +13,7 @@ const ConfAmountAgent = ({
 
 
    return(
- <ScrollView>
-     <View >
+    <View style={{ flex: 1 }}>
          <Text style={style.monto}>Monto</Text>
          <Text style={style.valor}>{`$ ${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}</Text>
        <View style={style.montoContainer}>
@@ -64,16 +63,15 @@ const ConfAmountAgent = ({
       }
 
         <Button
-        buttonStyle={style.confirmar}
-        titleStyle={style.tituloConfirmar}
+        buttonStyle={style.cancelar}
+        titleStyle={style.tituloCancelar}
         title="Cancelar"
         onPress={() => {
         navigation.navigate("Agent"); //Cancelar devuelve al home
         }}
     />
-    </View>
    </View>
-</ScrollView>   
+</View>   
     )
 }
 

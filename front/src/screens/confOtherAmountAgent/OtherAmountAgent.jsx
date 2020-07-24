@@ -1,69 +1,131 @@
-import React from 'react';
-import { View, Text, TextInput, Button } from 'react-native'
+import React from "react";
+import { View, Text, TextInput, StyleSheet } from "react-native";
+import { headerColor, buttonColor } from "../../Common/constans";
+import {Button} from 'react-native-elements'
 
-const OtherAmountAgent = ({ handlerValue, handlerSubmit, value, navigation})=>{
+const OtherAmountAgent = ({
+  handlerValue,
+  handlerSubmit,
+  value,
+  navigation,
+}) => {
+  return (
+    <View>
+<Text style={style.monto}>Monto</Text>
+<View style={{flexDirection:'row' , justifyContent:'center'}}>
+      <Text style={{fontSize:25}}>$</Text>
+      <TextInput
+        style={style.input}
+        keyboardType="numeric"
+        onChangeText={(value) => handlerValue(value)}
+        value={value.toString()}
+      />
+      </View>
+      {/* {value < 100 ? (
+        <Text> Monto: ${value} - El monto debe ser mayor a $100</Text>
+      ) : (
+        <Text> Monto: ${value}</Text>
+      )} */}
 
-    return(
-        <View>
-            <Text>Selecciona Monto</Text>
-
-            <TextInput
-            keyboardType="numeric"
-            onChangeText={(value)=> handlerValue(value)}
-            value={value}
-            />
-         
-
-         {value < 100
-         ?
-         <Text> Monto: ${value} - El monto debe ser mayor a $100</Text>
-         :
-         <Text> Monto: ${value}</Text>
-         }
-          
-
-          {/* {value < 100
+      {/* {value < 100
          ?
          <Text> Monto: ${value} - El monto debe ser mayor a $100</Text>
          :
          <Text> Monto: ${value}</Text>
          } */}
-
-          
-
-    {value  < 100 
-    ?  
-    <Button 
-    title="Confirmar"
-    disabled={true}/> 
-    :
-    <Button 
-    title="Confirmar"
-    onPress={() => {
-    handlerSubmit();
-    navigation.navigate("ConfirmAgentLoad"); // Deberia llevar a una vista de confirmación
-    }}
-    />
-    }
-
+        <View style={style.contBotones}>
+      {value < 100 ? (
          <Button
-         title="Volver"
-         onPress={()=> navigation.goBack()}
-         /> 
-       
-       
-    <Button
-    title="Cancelar"
-    onPress={() => {
-    handlerSubmit();
-    navigation.navigate("Home"); //Cancelar devuelve al home
-    }}
+         buttonStyle={style.confirmar}
+         titleStyle={style.tituloConfirmar}
+         title="Confirmar"
+         disabled={true}
+       />
+      ) : (
+        <Button
+          buttonStyle={style.confirmar}
+          titleStyle={style.tituloConfirmar}
+          title="Confirmar"
+          onPress={() => {
+            handlerSubmit();
+            navigation.navigate("ConfirmAgentLoad"); // Deberia llevar a una vista de confirmación
+          }}
+        />
+      )}
+
+
+        <Button
+        buttonStyle={style.cancelar}
+        titleStyle={style.tituloCancelar}
+        title="Cancelar"
+        onPress={() => {
+            handlerSubmit();
+            navigation.navigate("Agent"); //Cancelar devuelve al home
+          }}
     />
 
-        </View>
-    )
-
-
-}
+        
+      </View>
+      </View>
+    
+  );
+};
 
 export default OtherAmountAgent;
+
+
+const style = StyleSheet.create({
+  monto: {
+    textAlign: "center",
+    fontSize: 36,
+    fontFamily: "nunito",
+    marginTop: 36,
+    color: `${headerColor}`,
+    marginBottom: 150,
+  },
+  input: {
+    textAlign: "center",
+    fontSize: 24,
+    borderBottomWidth: 1,
+    width: "35%",
+    alignSelf: "center",
+    borderColor: "#807fc7",
+  },
+  confirmar: {
+    width: 160,
+    height: 55,
+    backgroundColor: `${buttonColor}`,
+    marginTop: 10,
+    alignSelf: "center",
+  },
+  tituloConfirmar: {
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    color: "white",
+    fontWeight: "bold",
+  },
+  cancelar: {
+    width: 160,
+    height: 55,
+    backgroundColor: 'white',
+    marginTop: 10,
+    alignSelf: "center",
+    borderWidth: 1,
+    borderColor: buttonColor
+  },
+  tituloCancelar:{
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    color: buttonColor,
+    fontWeight: "bold",
+  },
+  contBotones : {
+      marginTop:100,
+    flexDirection: 'row-reverse',
+    justifyContent:'space-evenly',
+ 
+ 
+  },
+});

@@ -40,7 +40,7 @@ export const register = (firstName, lastName, dni, password, username) => (
 export const editUser = (userData) => () => {
   return axios
     .patch(`http://${IP}:1337/api/users/editprofile`, userData)
-    .then((res) => console.log("Usuario editado"))
+    .then((res) => dispatch(login_user(res.data)))
     .catch((err) => console.log(err, "ERROR"));
 };
 

@@ -6,114 +6,156 @@ import {
   FlatList,
   ActivityIndicator,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
-import { Card, Button, Icon } from "react-native-elements";
+import { Button, Icon } from "react-native-elements";
 import { style } from "./style";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import { Load } from "../../Common/loading";
 
-
-const Accounts = ({ accountsUser, loading, handleDelete, navigation }) => {
-
-  console.log('ACOUNTUSER:',accountsUser)
-
+const Accounts = ({
+  accountsUser,
+  loading,
+  handleDelete,
+  navigation,
+  mainAccount,
+  handleMainDelete
+}) => {
+  console.log(mainAccount, "MAIN");
   return (
-    
-    <View>
+    <View style={{ flex: 1 }}>
       {loading ? (
-        <View>
-           <Text style={style.asociadas}> CUENTA PRINCIPAL</Text>
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
+            <Text style={style.asociadas}> CUENTA PRINCIPAL</Text>
+            {mainAccount._id ? (
+              <View style={{ flex: 1 }}>
+                <TouchableOpacity
+                  style={style.parentOnly}
+                  onPress={() =>
+                    navigation.navigate("SingleAccount", { account: mainAccount })
+                  }
+                >
+                  <View style={style.wallet}>
+                    <Image
+                      source={require("../../../assets/iconos/wallet.png")}
+                      style={{ width: 50, height: 50 }}
+                    />
+                  </View>
 
-           <TouchableOpacity style={style.container}>
+                  <View style={{ alignContent: "center" }}>
+                    <View style={{ flexDirection: "row", marginBottom: 5 }}>
+                      <Text style={style.negrita}>Entidad:</Text>
+                      <Text>{mainAccount.nameEntity[0].nameEntity}</Text>
+                    </View>
+                    <View style={{ flexDirection: "row" }}>
+                      <Text style={style.negrita}>Cuenta:</Text>
+                      <Text>{mainAccount.accountNumber}</Text>
+                    </View>
+                  </View>
 
-              <View style={style.wallet}>
-                <Image source={require("../../../assets/iconos/wallet.png")} style={{width:50,height:50}}/>
-              </View>
-
-              <View style={style.principal}>
-                  <Text style={{marginTop:10,marginLeft:30}}> 
-                    Entidad: Banco Santander
-                  </Text>
-                    
-                  <Text style={{marginTop:10,marginLeft:30}}> 
-                    Cuenta: 123456789
-                  </Text>
-              </View>
-
-              <View style={style.delete}>
-                <AntDesign name="delete" size={24} color="grey" style={style.delete}/>
-              </View>
-  
-           </TouchableOpacity >
-
-          <Text style={style.asociadas}> CUENTAS ASOCIADAS</Text>
-
-
-              
-
-                    <FlatList
-                      keyExtractor={(accountsUser) => accountsUser._id}
-                      data={accountsUser}
-                      renderItem={({ item, index }) => {
-                        
-                        
-                        return (
-                          <View>
-                            <TouchableOpacity
-                              onPress={() =>
-                                navigation.navigate("SingleAccount", { account: item })
-                              }
-                            >
-                              <View style={style.wallet}>
-                                  <Image source={require("../../../assets/iconos/wallet.png")} style={{width:50,height:50}}/>
-                              </View>
-
-                              <Text style={{marginTop:10,marginLeft:30}}>Entidad:{item.nameEntity[0].nameEntity}
-                              </Text>
-
-                              <Text style={{marginTop:10,marginLeft:30}}>Cuenta:
-                              {item.accountNumber}</Text>
-                              </TouchableOpacity>
-
-                                <View style={style.delete}>
-                              <AntDesign name="delete" size={24} color="grey" style={style.delete}/>
-                            </View>
-
-                            {/* <Button
-                              buttonStyle={style.botonDeterminada}
-                              titleStyle={style.tituloDeterminada}
-                              title="ElIMINAR CUENTA"
-                              onPress={() => {
-                                console.log("item", item._id);
-                                handleDelete(item._id);
-                              }}
-                            /> */}
-
-                          </View>
-                        );
+                  <View
+                    style={{
+                      marginRight: 15,
+                      flex: 1,
+                      flexDirection: "row",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        handleMainDelete(mainAccount._id);
                       }}
-                    /> 
-        
-          
-           <Button
+                    >
+                      <AntDesign name="delete" size={24} color="grey" />
+                    </TouchableOpacity>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <View>
+                <Text style={{textAlign:'center'}}> Seleccionar una cuenta principal</Text>
+              </View>
+            )}
+          </View>
+          <View style={style.hr} />
+
+          <View style={{ flex: 2 }}>
+            <Text style={style.asociadas}> CUENTAS ASOCIADAS</Text>
+
+            <FlatList
+            
+              keyExtractor={(accountsUser) => accountsUser._id}
+              data={accountsUser}
+              renderItem={({ item, index }) => {
+                return (
+                  <View >
+                    {!item.mainAccount ? (
+                      <TouchableOpacity
+                        style={style.parent}
+                        onPress={() =>
+                          navigation.navigate("SingleAccount", {
+                            account: item,
+                          })
+                        }
+                      >
+                        <View style={style.wallet}>
+                          <Image
+                            source={require("../../../assets/iconos/wallet.png")}
+                            style={{ width: 50, height: 50 }}
+                          />
+                        </View>
+
+                        <View style={{ alignContent: "center" }}>
+                          <View
+                            style={{ flexDirection: "row", marginBottom: 5 }}
+                          >
+                            <Text style={style.negrita}>Entidad:</Text>
+                            <Text>{item.nameEntity[0].nameEntity}</Text>
+                          </View>
+                          <View style={{ flexDirection: "row" }}>
+                            <Text style={style.negrita}>Cuenta:</Text>
+                            <Text>{item.accountNumber}</Text>
+                          </View>
+                        </View>
+
+                        <View
+                          style={{
+                            marginRight: 15,
+                            flex: 1,
+                            flexDirection: "row",
+                            justifyContent: "flex-end",
+                          }}
+                        >
+                          <TouchableOpacity
+                            onPress={() => {
+                              handleDelete(item._id);
+                            }}
+                          >
+                            <AntDesign name="delete" size={24} color="grey" />
+                          </TouchableOpacity>
+                        </View>
+                      </TouchableOpacity>
+                    ) : null}
+                  </View>
+                );
+              }}
+            />
+            <Button
               buttonStyle={style.botonAgregar}
               titleStyle={style.tituloAgregar}
               title="AGREGAR CUENTA"
               onPress={() => {
-                navigation.navigate("AddAccounts")
+                navigation.navigate("AddAccounts");
               }}
             />
+          </View>
         </View>
-          ) : (
-            <View>
-              <ActivityIndicator size="large" color="#00ff00" />
-            </View>
-          )}
-        </View>
-      );
-    };
-
-
-
+      ) : (
+        <Load />
+      )}
+    </View>
+  );
+};
 
 export default Accounts;

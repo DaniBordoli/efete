@@ -3,6 +3,8 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
 // import { useTheme } from '@react-native/navigation'
 import { colors, Button } from "react-native-elements";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import {buttonColor} from '../../Common/constans'
 
 export default ({ navigation, transaction }) => {
   console.log('Transacciones', transaction)
@@ -14,7 +16,7 @@ export default ({ navigation, transaction }) => {
           navigation.navigate("User");
         }}
       >
-        <Image source={require("../../../assets/iconos/mdi_clear.png")} />
+        <MaterialCommunityIcons name="close-circle-outline" size={35} color= {buttonColor} />
       </TouchableOpacity>
       <View style={style.okIcon}>
         <Image source={require("../../../assets/iconos/ok.png")} />

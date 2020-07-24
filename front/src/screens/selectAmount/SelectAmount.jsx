@@ -6,7 +6,6 @@ import { Button } from "react-native-elements";
 export default ({ handleValue, navigation, handleSubmit, value }) => {
   const data = ['100', '200', '500', '1000', '2000'];
   return (
-   <ScrollView>
     <View style={{ flex: 1 }}>
       <Text style={style.monto}>Monto</Text>
       <Text style={style.valor}>{`$ ${value}`}</Text>
@@ -51,21 +50,20 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
       titleStyle={style.tituloConfirmar}
       title="Confirmar"
       onPress={() => {
-      navigation.navigate("QRscanner", { value: value });
+      navigation.navigate("ScannerQR", { value: value });
         }}
       />
       }
 
       <Button
-        buttonStyle={style.confirmar}
-        titleStyle={style.tituloConfirmar}
+        buttonStyle={style.cancelar}
+        titleStyle={style.tituloCancelar}
         title="Cancelar"
         onPress={() => {
-        navigation.navigate("ScannerQR", { value: value });
+        navigation.navigate("User");
         }}
     />
   </View>
     </View>
-</ScrollView>
   );
 };

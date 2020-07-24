@@ -3,12 +3,14 @@ import {
   GET_USER_ACCOUNTS,
   GET_USER_SINGLE_ACCOUNT,
   FETCH_BANKS,
+  SET_MAIN_ACCOUNT,
 } from "../constants";
 
 const initialState = {
   account: {},
   accounts: [],
   banks: [],
+  mainAccount: {},
 };
 
 export default (state = initialState, action) => {
@@ -21,6 +23,8 @@ export default (state = initialState, action) => {
       return { ...state, account: action.account };
     case FETCH_BANKS:
       return { ...state, banks: action.banks };
+    case SET_MAIN_ACCOUNT:
+      return { ...state, mainAccount: action.account };
     
 
     default:

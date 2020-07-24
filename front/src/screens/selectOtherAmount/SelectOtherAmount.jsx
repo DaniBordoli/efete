@@ -8,12 +8,17 @@ export default ({ handleValue, navigation, value }) => {
   return (
     <View>
       <Text style={style.monto}>Monto</Text>
+
+      <View style={{flexDirection:'row' , justifyContent:'center'}}>
+      <Text style={{fontSize:25}}>$</Text>
       <TextInput
         style={style.input}
         keyboardType="numeric"
         onChangeText={(value) => handleValue(value)}
-        value={value}
+        value={value.toString()}
       />
+      </View>
+      
 
       {value <= 0 ? (
         <Button

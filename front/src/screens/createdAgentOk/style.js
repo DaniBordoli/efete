@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions } from "react-native";
 export const style = StyleSheet.create({
   mainContainer: {
     alignItems: "center",
-    backgroundColor: "#FAFBFF",
+    
   },
   container: {
     alignItems: "center",
@@ -66,7 +66,7 @@ export const style = StyleSheet.create({
     fontSize: 16,
   },
   clearIcon: {
-    marginTop: 20,
+    marginTop: 40,
     marginRight: 15,
     alignItems: "flex-end",
   },

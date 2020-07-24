@@ -26,18 +26,17 @@ import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
+import createdAgentOkContainer from "../createdAgentOk/createdAgentOkContainer";
 import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
 import OpenCameraContainer from "../camera/OpenCameraContainer";
-import createdAgentOkContainer from "../createdAgentOk/createdAgentOkContainer";
 
 const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
     <Stack.Navigator initialRouteName="Login">
-      
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
@@ -135,7 +134,7 @@ export default ({ navigation }) => {
         component={CreateAgentFormContainer}
         options={{
           ...myHeader,
-          title: "Agregar establecimiento",
+          title: "Tu Negocio",
         }}
       />
       <Stack.Screen
@@ -272,19 +271,9 @@ export default ({ navigation }) => {
         name="AddAccounts"
         component={AddAccountsContainer}
         options={{
-          headerLeft: () => (
-            <Feather
-              name="menu"
-              style={{ marginLeft: 10 }}
-              size={26}
-              color="white"
-              onPress={() => navigation.openDrawer()}
-            />
-          ),
           ...myHeader,
-          title: "Agregar Cuentas",
+          title: "Nueva Cuenta",
         }}
-        //name="AddAccounts" component={AddAccountsContainer}
       />
 
       <Stack.Screen
