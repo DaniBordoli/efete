@@ -60,7 +60,7 @@ const OtherAmountAgent = ({
         title="Cancelar"
         onPress={() => {
             handlerSubmit();
-            navigation.navigate("Agent"); //Cancelar devuelve al home
+            navigation.navigate("Agent", ); //Cancelar devuelve al home
           }}
     />
 

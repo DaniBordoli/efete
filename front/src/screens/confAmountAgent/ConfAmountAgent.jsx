@@ -13,7 +13,7 @@ const ConfAmountAgent = ({
 
 
    return(
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 , backgroundColor:'white'}}>
          <Text style={style.monto}>Monto</Text>
          <Text style={style.valor}>{`$ ${value}`}</Text>
        <View style={style.montoContainer}>
