@@ -10,7 +10,7 @@ const ConfirmAgentLoadContainer = () => {
   const navigation = useNavigation();
 
   
-  const value = useSelector(state => state.transactions.transactionValueAgn )
+  const value = useSelector(state => state.agents.agent.dailyAmount )
 
   return(
       <View>

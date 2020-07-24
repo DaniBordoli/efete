@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddAccounts from "../addAccounts/AddAccounts";
 import { View } from "react-native";
-import { addAccounts, fetchBanks } from "../../redux/store/actions/accounts";
+import { addAccounts, fetchBanks, fetchMainAccount } from "../../redux/store/actions/accounts";
 
 export default ({ navigation }) => {
   const user = useSelector((state) => state.users.user);
@@ -33,7 +33,9 @@ export default ({ navigation }) => {
   }, []);
 
   const handleSubmit = () => {
-    dispatch(addAccounts(bankId, cbu, accountNumber, user._id));
+    dispatch(addAccounts(bankId, cbu, accountNumber, user._id))
+    .then(()=>dispatch(fetchMainAccount(user._id)))
+    
 
     // dispatch(addAccounts(name, cbu, accountNumber, "5f0f14c1830a243382d6c6aa"));
   };

@@ -153,6 +153,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
+        options={{headerShown:false}}
       />
 
       <Stack.Screen
