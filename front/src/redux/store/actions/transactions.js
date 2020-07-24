@@ -1,4 +1,5 @@
 import axios from "axios";
+import {setAgent} from './agents'
 import { IP } from "../../../../config";
 import {
   FETCH_TRANSACTIONS,
@@ -75,11 +76,15 @@ export const getUserTransaction = (id) => (dispatch) => {
     .then((transaction) => dispatch(fetch_users_transaction(transaction)));
 };
 
-export const updateAmountAgent = (value) => (dispatch) => {
+export const updateAmountAgent = (value, id) => (dispatch) => {
   return axios
-  .post(`http://${IP}:1337/api/agent/editdailyamount`, value)
+  .patch(`http://${IP}:1337/api/agents/editdailyamount`, {
+    dailyAmount:value ,
+    _id:id
+  
+  })
   .then(res => res.data)
-  .then((amount=> dispatch(newAgtTransactionValue(amount))))
+  .then((agent=> dispatch(setAgent(agent))))
 }
 
 

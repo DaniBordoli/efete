@@ -9,7 +9,8 @@ import {
   StyleSheet
 } from "react-native";
 import { Camera } from "expo-camera";
-import {FontAwesome} from '@expo/vector-icons'
+import {FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons'
+import { headerColor, buttonColor } from "../../Common/constans";
 export default ({
   hasPermission,
   camRef,
@@ -34,52 +35,60 @@ export default ({
             flexDirection: "row",
           }}
         ></View>
-      </Camera>
-      <TouchableOpacity style={style.button} onPress={() => tomaFoto()} >
-      <FontAwesome name='camera' size={23} color={'white'} />
+        <TouchableOpacity style={style.buttonCamara} onPress={() => tomaFoto()} >
+      <FontAwesome name='camera' size={30} color={'white'} />
       </TouchableOpacity>
+      </Camera>
+      
       
       {capturarFoto && (
-        <Modal animationType="slide" transparent={false} visible={open}>
-          <View style={{flex:1 , justifyContent:'center', alignItems:'center',margin:20, }}>
-            <View style={{flexDirection:'row', margin:10, alignSelf:'flex-end'}}>
-            <TouchableOpacity
-            style={{margin:10 }}
-              onPress={() => {
-                handleClose();
-              }}
-            >
-              <FontAwesome name="window-close" size={50} color="red"/>
-            </TouchableOpacity>
+        
 
+        <Modal animationType="fade" transparent={false} visible={open} statusBarTranslucent={true} >
+          <View style={{flex:1 , justifyContent:'center', alignItems:'center', backgroundColor:'black'}}>
+           
+            
+            
+                  <View style={{flex:1 ,backgroundColor:'black', width:'100%', height:'90%', justifyContent:'center'}}>
+
+                  <View style={{flexDirection:'row', alignSelf:'flex-end'}}>
+
+                            <TouchableOpacity
+                            style={{justifyContent:'flex-end', marginRight:10, marginBottom:10}}
+                              onPress={() => {
+                                handleClose();
+                              }}>
+                              
+                              <MaterialCommunityIcons name="close" size={45} color="#DD1919" />
+                            </TouchableOpacity>
+                            </View>
+                            <Image style={{width:'100%', height:'70%', borderRadius:5 , alignSelf:'center'}} 
+                      source={{ uri: capturarFoto }} />
+
+
+                                              <View style={{flexDirection:'row', justifyContent:'center'}}>
+                                                <TouchableOpacity
+                                                style={style.button}
+                                                  onPress={() => {
+                                                    //guardarFoto();
+                                                    handleConfirm()
+                                                  }}
+                                                >
+              <MaterialCommunityIcons name="upload" size={35} color={'white'}/>
+            </TouchableOpacity>
+            </View>
+
+                  </View>
            
 
 
+
+           
+
             </View>
             
-                
-           {/*  <TouchableOpacity
-              onPress={() => {
-                handleConfirm();
-              }}
-            >
-              <Text>Confirmar</Text>
-            </TouchableOpacity> */}
-            <Image style={{width:'100%', height:'80%', borderRadius:20}} 
-            source={{ uri: capturarFoto }} />
 
-            <View style={{flexDirection:'row', margin:10}}>
-            <TouchableOpacity
-            style={{margin:10}}
-              onPress={() => {
-                //guardarFoto();
-                handleConfirm()
-              }}
-            >
-              <FontAwesome name="upload" size={50} color="blue"/>
-            </TouchableOpacity>
-            </View>
-          </View>
+           
         </Modal>
       )}
     </View>
@@ -88,13 +97,27 @@ export default ({
 
 
 const style = StyleSheet.create({
+buttonCamara:{
+  justifyContent:'center',
+  alignItems:'center',
+  height:50,
+  backgroundColor: buttonColor,
+  width:75,
+  height:75,
+  borderRadius:60,
+  marginBottom:15,
+  alignSelf:'center'
+},
 button:{
   justifyContent:'center',
   alignItems:'center',
-  margin:20,
-  borderRadius:10,
   height:50,
-  backgroundColor:"blue"
+  backgroundColor: buttonColor,
+  width:75,
+  height:75,
+  borderRadius:60,
+  marginTop:10
+
 }
 
 

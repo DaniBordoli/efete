@@ -1,5 +1,13 @@
 import React from "react";
-import { View, TextInput, Text, Button, Image,TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  TextInput,
+  Text,
+  Button,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import { style } from "./style";
 import { MaterialIcons } from '@expo/vector-icons'; 
 
@@ -38,23 +46,16 @@ const CreateAgentForm = ({
       />
       </View>
 
-      <View>
-      <Text style={style.title}>CUIL</Text>
-      <TextInput
-        style={style.input}
-        onChangeText={(num) => handlerCuil(num)}
-        placeholder="Ingrese su numero de CUIL"
-      />
-      </View>
-
-      <View>
-      <Text style={style.title}>Monto diario</Text>
-      <TextInput
-        style={style.input}
-        onChangeText={(num) => handlerDailyAmount(num)}
-        placeholder="Agregue el monto diario"
-      />
-      </View>
+       
+        <View>
+          <Text style={style.title}>CUIL</Text>
+          <TextInput
+            keyboardType="numeric"
+            style={style.input}
+            onChangeText={(num) => handlerCuil(num)}
+            placeholder="Ingrese su numero de CUIL"
+          />
+        </View>
 
 
       </View>
@@ -74,19 +75,21 @@ const CreateAgentForm = ({
             source={{ uri: fotos }} />
       ) : null
         }
+        {/* Aqui va el QR */}
 
-      <TouchableOpacity
-        style={style.openCamera}
-        title="Open Camera"
-        onPress={() => {
-          navigation.navigate("OpenCamera");
-        }}
+        <TouchableOpacity
+          style={style.openCamera}
+          title="Open Camera"
+          onPress={() => {
+            navigation.navigate("OpenCamera");
+          }}
         >
-        <Text style={style.textOpenCamera}>Subir foto</Text>
-        <MaterialIcons name="camera-alt" size={27} color="white" style={style.foto}/>
-        <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
-      </TouchableOpacity>
-      
+          <Text style={style.textOpenCamera}>Subir foto</Text>
+          <MaterialIcons name="camera-alt" size={27} color="white" style={style.foto}/>
+          <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
+        </TouchableOpacity>
+
+        
       
       <TouchableOpacity
         style={style.confirmar}

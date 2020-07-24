@@ -16,6 +16,7 @@ export default ({ navigation }) => {
   const agentTransactions = useSelector(
     (state) => state.transactions.agentTransactions
   );
+  const agent = useSelector((state) => state.agents.agent);
 
   const userId = useSelector((state) => state.users.user._id);
 
@@ -28,7 +29,7 @@ export default ({ navigation }) => {
 
   useEffect(() => {
     dispatch(fetchAgent(userId)).then((agent) => {
-      dispatch(getAgentTransactions("5f10cfed048b9d32761c8146")).then(() =>
+      dispatch(getAgentTransactions(agent.agent._id)).then(() =>
         setLoading(true)
       );
     });
@@ -40,6 +41,7 @@ export default ({ navigation }) => {
       navigation={navigation}
       loading={loading}
       time={time}
+      agent={agent}
     />
   );
 };

@@ -19,7 +19,7 @@ export default () => {
 
   const userId = useSelector((state) => state.users.user._id);
   const agentId = useSelector((state) => state.agents.agent._id);
-  const mainAccount = useSelector((state) => state.accounts.account._id);
+  const mainAccount = useSelector((state) => state.accounts.mainAccount._id);
 
   /* const [user, userSet] = useState('')
   const [loading, setLoading] = useState(false); */

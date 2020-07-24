@@ -3,7 +3,7 @@ import { IP } from "../../../../config";
 import { SET_AGENT, CREATE_AGENT, CREATE_STORE } from "../constants";
 import { login_user } from "../actions/users";
 
-const setAgent = (agent) => {
+export const setAgent = (agent) => {
   return {
     type: SET_AGENT,
     agent,

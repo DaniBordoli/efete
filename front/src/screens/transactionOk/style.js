@@ -16,7 +16,7 @@ export const style = StyleSheet.create({
     alignItems: "center",
   },
   clearIcon: {
-    marginTop: 20,
+    marginTop: 40,
     marginRight: 15,
     alignItems: "flex-end",
   },

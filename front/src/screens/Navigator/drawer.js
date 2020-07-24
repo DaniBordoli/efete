@@ -7,9 +7,10 @@ import {
   DrawerContentScrollView,
   DrawerItem,
 } from "@react-navigation/drawer";
-import { View, Text, StyleSheet , TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Switch } from "react-native-gesture-handler";
-
+import { useSelector, useDispatch } from "react-redux";
+import { logOutUser } from "../../redux/store/actions/users";
 
 const Drawer = createDrawerNavigator();
 
@@ -18,11 +19,18 @@ export default (props) => {
   const cambiarModo = () => {
     setModoDark(!modoDark);
   };
+  const userRole = useSelector((state) => state.users.user.role);
+  const dispatch = useDispatch();
 
   return (
     <DrawerContentScrollView {...props}>
       <View>
-        <Text onPress={()=>props.navigation.closeDrawer()} style={style.titulo}>Efete</Text>
+        <Text
+          onPress={() => props.navigation.closeDrawer()}
+          style={style.titulo}
+        >
+          Efete
+        </Text>
       </View>
       <View style={style.hr} />
       <View>
@@ -44,14 +52,29 @@ export default (props) => {
           }
         />
 
-        <DrawerItem
-          icon={agent}
-          labelStyle={style.label}
-          label="Perfil agente"
-          onPress={() =>
-            props.navigation.navigate("Root", { screen: "Agent" }, props)
-          }
-        />
+        {userRole === "agent" ? (
+          <DrawerItem
+            icon={agent}
+            labelStyle={style.label}
+            label="Perfil agente"
+            onPress={() =>
+              props.navigation.navigate("Root", { screen: "Agent" }, props)
+            }
+          />
+        ) : (
+          <DrawerItem
+            icon={agent}
+            labelStyle={style.label}
+            label="Convertite en Agente"
+            onPress={() =>
+              props.navigation.navigate(
+                "Root",
+                { screen: "CreateAgentForm" },
+                props
+              )
+            }
+          />
+        )}
 
         <DrawerItem
           icon={info}
@@ -80,10 +103,11 @@ export default (props) => {
         <DrawerItem
           icon={exit}
           labelStyle={style.label}
-          label="Cerra sesion"
-          onPress={() =>
-            props.navigation.navigate("Root", { screen: "Login" }, props)
-          }
+          label="Cerrar sesion"
+          onPress={() => {
+            dispatch(logOutUser());
+            props.navigation.navigate("Root", { screen: "Login" }, props);
+          }}
         />
       </View>
     </DrawerContentScrollView>

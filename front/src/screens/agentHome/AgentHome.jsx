@@ -5,8 +5,7 @@ import * as Animatable from "react-native-animatable";
 import { Button } from "react-native-elements";
 import { Load } from "../../Common/loading";
 import { headerColor } from "../../Common/constans";
-export default ({ agentTransactions, navigation, loading, time }) => {
-  console.log(agentTransactions, "AGENTTRANSACTIONS");
+export default ({ agentTransactions, navigation, loading, time, agent }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {loading ? (
@@ -59,7 +58,7 @@ export default ({ agentTransactions, navigation, loading, time }) => {
             <TouchableOpacity
               style={style.agente}
               activeOpacity={0.5}
-              onPress={() => navigation.navigate("EditAgentProfile")}
+              onPress={() => navigation.navigate("ConfAmountAgent")}
             >
               <Image
                 source={require("../../../assets/iconos/calculadora.png")}
@@ -69,39 +68,39 @@ export default ({ agentTransactions, navigation, loading, time }) => {
             </TouchableOpacity>
           </View>
 
-          {agentTransactions[0] ? (
-            <Animatable.View
-              animation="fadeInUpBig"
-              style={style.movimientosContainer}
+          <Animatable.View
+            animation="fadeInUpBig"
+            style={style.movimientosContainer}
+          >
+            <Text style={style.movimientos}>Movimientos</Text>
+            <Text style={style.time}>{time.toUpperCase()}</Text>
+            <View style={style.hr} />
+            <View
+              style={{
+                height: 50,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
             >
-              <Text style={style.movimientos}>Movimientos</Text>
-              <Text style={style.time}>{time.toUpperCase()}</Text>
-              <View style={style.hr} />
-              <View
-                style={{
-                  height: 50,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <View style={{ flexDirection: "row" }}>
-                  <Text
-                    style={{
-                      marginLeft: 17,
-                      textTransform: "none",
-                      fontFamily: "nunito",
-                      color: "#949af0",
-                      fontSize: 19,
-                    }}
-                  >
-                    Monto restante:&nbsp;
-                  </Text>
-                  <Text style={{ fontSize: 17, alignSelf: "center" }}>
-                    ${agentTransactions[0].agent[0].dailyAmount}
-                  </Text>
-                </View>
-                <View>
+              <View style={{ flexDirection: "row" }}>
+                <Text
+                  style={{
+                    marginLeft: 17,
+                    textTransform: "none",
+                    fontFamily: "nunito",
+                    color: "#949af0",
+                    fontSize: 19,
+                  }}
+                >
+                  Monto restante:&nbsp;
+                </Text>
+                <Text style={{ fontSize: 17, alignSelf: "center" }}>
+                  ${agent.dailyAmount}
+                </Text>
+              </View>
+              <View>
+                {agentTransactions[0] ? (
                   <Button
                     buttonStyle={{
                       backgroundColor: "white",
@@ -118,10 +117,11 @@ export default ({ agentTransactions, navigation, loading, time }) => {
                       })
                     }
                   />
-                </View>
+                ) : null}
               </View>
-              <View style={style.hr} />
-
+            </View>
+            <View style={style.hr} />
+            {agentTransactions[0] ? (
               <FlatList
                 showsVerticalScrollIndicator={false}
                 keyExtractor={(agentTransactions) => agentTransactions._id}
@@ -164,17 +164,19 @@ export default ({ agentTransactions, navigation, loading, time }) => {
                             }
                           />
                         </View>
-                        <View style={style.hr} />
+                        
                       </View>
                       <View style={style.hr} />
                     </View>
                   );
                 }}
               ></FlatList>
-            </Animatable.View>
-          ) : (
-            <Text>No hay operaciones todavia</Text>
-          )}
+            ) : (
+              <Text style={{ textAlign: "center" }}>
+                No hay operaciones todavia
+              </Text>
+            )}
+          </Animatable.View>
         </View>
       ) : (
         <Load />

@@ -7,6 +7,7 @@ import {
   deleteAccounts,
   fetchUserSingleAccount,
   setMainAccount,
+  fetchMainAccount,
 } from "../../redux/store/actions/accounts";
 
 export default ({ navigation, route }) => {
@@ -23,11 +24,14 @@ export default ({ navigation, route }) => {
   }, []);
 
   const handleDelete = (accountId) => {
-    dispatch(deleteAccounts(accountId, user._id));
+    dispatch(deleteAccounts(accountId, user._id))
+    navigation.navigate("Accounts")
   };
 
   const handleMainAccount = (accountId) => {
-    dispatch(setMainAccount(accountId, user._id));
+    dispatch(setMainAccount(accountId, user._id))
+    dispatch(fetchMainAccount(user._id))
+    navigation.navigate("Accounts")
   };
 
   return (

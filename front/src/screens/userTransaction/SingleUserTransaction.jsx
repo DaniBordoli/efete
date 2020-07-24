@@ -4,8 +4,6 @@ import { Button } from "react-native-elements"
 import {style} from './style'
 import { useNavigation } from "@react-navigation/native";
 
-
-
 export default ( {getOneUserTransaction, navigation, getOneTransAccount} ) =>{
 
 
@@ -13,7 +11,7 @@ export default ( {getOneUserTransaction, navigation, getOneTransAccount} ) =>{
    <View style={style.mainContainer}>
         <View style={style.container}>
         { getOneUserTransaction.agent ?  (
-        <View>
+        <View >
         
         <View style={style.cajas}>   
         <Text style={style.title}>Monto</Text>
@@ -40,11 +38,6 @@ export default ( {getOneUserTransaction, navigation, getOneTransAccount} ) =>{
         null
      }
        </View>
-      <Button title='Volver a transacciones'
-      buttonStyle={style.confirmar}
-      titleStyle={style.tituloConfirmar}
-      onPress={()=> navigation.navigate('User')}>
-      </Button>
    </View>
     )
 

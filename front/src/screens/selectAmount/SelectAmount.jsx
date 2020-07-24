@@ -25,7 +25,7 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
                 />
                 <View style={style.hr} />
               </View>
-            );
+            )
           }}
         />
         <Button
@@ -35,15 +35,35 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
           onPress={() => navigation.navigate("SelectOtherAmount")}
         />
       </View>
-
+      
+    <View style={style.contBotones}>
+      {value === 0 
+      ?  
+      <Button 
+      buttonStyle={style.confirmarDisabled}
+      titleStyle={style.tituloConfirmarDisabled}
+      title="Confirmar"
+      disabled={true}/> 
+      :
       <Button
-        buttonStyle={style.confirmar}
-        titleStyle={style.tituloConfirmar}
-        title="Confirmar"
-        onPress={() => {
-          navigation.navigate("ScannerQR", { value: value });
+      buttonStyle={style.confirmar}
+      titleStyle={style.tituloConfirmar}
+      title="Confirmar"
+      onPress={() => {
+      navigation.navigate("ScannerQR", { value: value });
         }}
       />
+      }
+
+      <Button
+        buttonStyle={style.cancelar}
+        titleStyle={style.tituloCancelar}
+        title="Cancelar"
+        onPress={() => {
+        navigation.navigate("User");
+        }}
+    />
+  </View>
     </View>
   );
 };

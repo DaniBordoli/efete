@@ -35,7 +35,7 @@ export const style = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 8.0,
-    elevation: 5,
+    elevation: 3,
   },
   otroMontoTitulo: {
     color: `${buttonColor}`,
@@ -50,8 +50,8 @@ export const style = StyleSheet.create({
     width: "100%",
   },
   confirmar: {
-    width: 167,
-    height: 60,
+    width: 160,
+    height: 55,
     backgroundColor: `${buttonColor}`,
     marginTop: 10,
     alignSelf: "center",
@@ -63,4 +63,39 @@ export const style = StyleSheet.create({
     color: "white",
     fontWeight: "400",
   },
+  confirmarDisabled : {
+    width: 160,
+    height: 55,
+    marginTop: 10,
+    alignSelf: "center",
+
+},
+  tituloConfirmarDisabled : {
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    fontWeight: "bold",
+ },
+ contBotones : {
+   flexDirection: 'row-reverse',
+   justifyContent: "space-evenly",
+
+
+ },
+ cancelar: {
+  width: 160,
+  height: 55,
+  backgroundColor: 'white',
+  marginTop: 10,
+  alignSelf: "center",
+  borderWidth: 1,
+  borderColor: buttonColor
+},
+tituloCancelar:{
+  fontSize: 18,
+  textAlign: "center",
+  textTransform: "uppercase",
+  color: buttonColor,
+  fontWeight: "bold",
+},
 });

@@ -6,12 +6,12 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default ({
   userAccounts,
-  handleValue,
+  handleAccount,
   handleSubmit,
   transactionValue,
   loading,
   selectedAccount,
-  navigation
+  navigation,
   // handleAgentDailyAmount,
 }) => {
   return (
@@ -32,7 +32,7 @@ export default ({
                         ? style.accountContainerFocus
                         : style.accountContainer
                     }
-                    onPress={() => handleValue(item)}
+                    onPress={() => handleAccount(item)}
                   >
                     <Image
                       style={style.bankIcon}
@@ -58,15 +58,15 @@ export default ({
               buttonStyle={style.confirmar}
               titleStyle={style.tituloConfirmar}
               title="Realizar Transacción"
-              onPress={handleSubmit()}
-                // handleAgentDailyAmount();
+              onPress={() => {
+                handleSubmit();
+              }}
             />
-               <Button
+            <Button
               buttonStyle={style.confirmar}
               titleStyle={style.tituloConfirmar}
               title="Agregar nueva cuenta"
-              onPress={() => navigation.navigate('AddAccounts')}
-                // handleAgentDailyAmount();
+              onPress={() => navigation.navigate("AddAccounts")}
             />
           </View>
         </View>
