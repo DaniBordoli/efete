@@ -26,7 +26,7 @@ const ConfirmAgentLoad = ({ value }) => {
           source={require("../../../assets/icon.png")}
           />
           <Text style={style.text}>Felicitaciones has realizado una recarga de </Text> 
-         <Text style={style.valor}>{value}</Text>          
+         <Text style={style.valor}>${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Text>          
         
         <TouchableOpacity
         style={style.volver}

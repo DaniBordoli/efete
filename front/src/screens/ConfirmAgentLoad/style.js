@@ -32,6 +32,7 @@ text : {
   fontWeight: 'bold',
   textAlign: 'center',
   marginTop: 15,
+  width: '80%'
 },
 valor : {
    fontSize: 50,
