@@ -1,28 +1,26 @@
 import  React, {useState} from "react";
 import  { View } from "react-native";
-import { newAgtTransactionValue } from '../../redux/store/actions/transactions'
+import { updateAmountAgent } from '../../redux/store/actions/transactions'
 import ConfAmountAgent from "./ConfAmountAgent"
 import ConfirmAgentLoad from '../ConfirmAgentLoad/ConfirmAgentLoad'
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector } from "react-redux";
 
 
 const ConfAmountAgentContainer = ({ navigation }) => {
   const dispatch =  useDispatch();
-   
+   const agent = useSelector(state => state.agents.agent)
   const [value, setValue] = useState(0)
 
   const handlerValue = (item) =>{
-    const total =+ item
     setValue(item)
   }
 
   const handlerSubmit = () => {
-    dispatch(newAgtTransactionValue(value))
+    dispatch(updateAmountAgent(value,agent._id))
   }
   
 
     return(
-        <View>
           <ConfAmountAgent
           //  onChangeInput={onChangeInput}
           handlerValue={handlerValue}
@@ -30,7 +28,7 @@ const ConfAmountAgentContainer = ({ navigation }) => {
           navigation={navigation}
           value={value}
           />
-        </View>
+       
     )
 }
 

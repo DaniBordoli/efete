@@ -50,8 +50,8 @@ export const style = StyleSheet.create({
     width: "100%",
   },
   confirmar: {
-    width: 167,
-    height: 60,
+    width: 160,
+    height: 55,
     backgroundColor: `${buttonColor}`,
     marginTop: 10,
     alignSelf: "center",
@@ -64,8 +64,8 @@ export const style = StyleSheet.create({
     fontWeight: "400",
   },
   confirmarDisabled : {
-    width: 167,
-    height: 60,
+    width: 160,
+    height: 55,
     marginTop: 10,
     alignSelf: "center",
 
@@ -74,12 +74,28 @@ export const style = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     textTransform: "uppercase",
-    fontWeight: "400",
+    fontWeight: "bold",
  },
  contBotones : {
-   flexDirection: 'row',
-   justifyContent: "space-around",
+   flexDirection: 'row-reverse',
+   justifyContent: "space-evenly",
 
 
- }
+ },
+ cancelar: {
+  width: 160,
+  height: 55,
+  backgroundColor: 'white',
+  marginTop: 10,
+  alignSelf: "center",
+  borderWidth: 1,
+  borderColor: buttonColor
+},
+tituloCancelar:{
+  fontSize: 18,
+  textAlign: "center",
+  textTransform: "uppercase",
+  color: buttonColor,
+  fontWeight: "bold",
+},
 });

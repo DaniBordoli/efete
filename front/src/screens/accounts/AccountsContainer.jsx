@@ -6,10 +6,12 @@ import { View } from "react-native";
 import {
   fetchUserAccounts,
   deleteAccounts,
-  fetchMainAccount
+  fetchMainAccount,
+  deleteMainAccount
 } from "../../redux/store/actions/accounts";
 
 export default ({ navigation }) => {
+
   const dispatch = useDispatch();
   const [loading, setLoader] = useState(false);
 
@@ -29,8 +31,13 @@ export default ({ navigation }) => {
   }, []);
 
   const handleDelete = (accountId) => {
-    dispatch(deleteAccounts(accountId, user._id));
+    dispatch(deleteAccounts(accountId, user._id))
   };
+
+  const handleMainDelete=(accountId)=>{
+    console.log("IDDDDDDD:",accountId)
+    dispatch(deleteMainAccount(accountId))
+  }
 
   return (
     <Accounts
@@ -39,6 +46,7 @@ export default ({ navigation }) => {
       loading={loading}
       handleDelete={handleDelete}
       mainAccount={mainAccount}
+      handleMainDelete={handleMainDelete}
     />
   );
 };

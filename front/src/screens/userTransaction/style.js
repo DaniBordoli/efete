@@ -5,18 +5,19 @@ export const style = StyleSheet.create({
     
     
     mainContainer : {
-       alignItems: "center",
+      height:'100%',
+       justifyContent:'center'
     },
     container : {
       marginTop:20,
-      marginLeft:10,
-      marginRight: 10,
+      marginLeft:20,
+      marginRight: 20,
       marginBottom: 20,
       padding: 20,
       alignItems: "center",
       backgroundColor: '#F7F5FE',
       borderRadius: 25,
-      elevation: 3,
+      elevation: 4,
       shadowRadius: 4.0,
       shadowOpacity: 0.25,
     },
@@ -42,9 +43,11 @@ export const style = StyleSheet.create({
       fontSize: 18,
       width: 300,
       textAlign: "center",
-      elevation: 2,
+      borderWidth:0.5,
+      borderColor:'#aaaaac',
       shadowRadius: 4.0,
       shadowOpacity: 0.25,
+      borderRadius:3
 
     },
     confirmar: {

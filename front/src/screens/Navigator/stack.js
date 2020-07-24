@@ -134,7 +134,7 @@ export default ({ navigation }) => {
         component={CreateAgentFormContainer}
         options={{
           ...myHeader,
-          title: "Agregar establecimiento",
+          title: "Tu Negocio",
         }}
       />
       <Stack.Screen
@@ -267,19 +267,9 @@ export default ({ navigation }) => {
         name="AddAccounts"
         component={AddAccountsContainer}
         options={{
-          headerLeft: () => (
-            <Feather
-              name="menu"
-              style={{ marginLeft: 10 }}
-              size={26}
-              color="white"
-              onPress={() => navigation.openDrawer()}
-            />
-          ),
           ...myHeader,
-          title: "Agregar Cuentas",
+          title: "Nueva Cuenta",
         }}
-        //name="AddAccounts" component={AddAccountsContainer}
       />
 
       <Stack.Screen

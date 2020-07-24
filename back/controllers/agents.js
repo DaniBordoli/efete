@@ -13,7 +13,8 @@ const editProfileAgent = (req, res) => {
 };
 
 const editDailyAmount = (req, res) => {
-  let id = req.body.id;
+  console.log("BOOOOOOOODYYYY:",req.body)
+  let id = req.body._id;
   Agent.findByIdAndUpdate(id, req.body, { new: true }).then((agentProfile) => {
     res.status(200).json(agentProfile);
   });

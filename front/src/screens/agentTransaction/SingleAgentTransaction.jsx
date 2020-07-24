@@ -7,7 +7,6 @@ import { style } from "./style";
 export default ({ navigation, transaction }) => {
   console.log(transaction, "WALLY");
   return (
-    <ScrollView>
       <View style={style.mainContainer}>
         <View style={style.container}>
           <View style={style.cajas}>
@@ -44,6 +43,5 @@ export default ({ navigation, transaction }) => {
           </View>
         </View>
       </View>
-    </ScrollView>
   );
 };
