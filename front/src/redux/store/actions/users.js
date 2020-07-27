@@ -37,7 +37,7 @@ export const register = (firstName, lastName, dni, password, username) => (
     .then((res) => dispatch(login_user(res.data)));
 };
 
-export const editUser = (userData) => () => {
+export const editUser = (userData) => (dispatch) => {
   return axios
     .patch(`http://${IP}:1337/api/users/editprofile`, userData)
     .then((res) => dispatch(login_user(res.data)))

@@ -1,20 +1,14 @@
 import React, { useState } from "react";
 import { View, Alert } from "react-native";
 import EditUserProfile from "./EditUserProfile";
-import { editUser , login_user} from "../../redux/store/actions/users";
+import { editUser, login_user } from "../../redux/store/actions/users";
 import { useDispatch, useSelector } from "react-redux";
 
 export default () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.users.user);
 
-  
-
-
-
   const [user, setUser] = useState(userInfo);
-
-  
 
   function handleChange(e, name) {
     setUser({ ...user, [name]: e });
