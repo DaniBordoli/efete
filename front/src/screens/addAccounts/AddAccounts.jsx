@@ -12,6 +12,8 @@ const AddAccount = ({
   handleSubmit,
   navigation,
   handleBank,
+  isValid,
+  accountNumber
 }) => {
   return (
     <KeyboardAvoidingView style={{ flex: 1}} behavior="height">
@@ -47,28 +49,40 @@ const AddAccount = ({
               placeholder="Ingrese su número de cuenta"
               autoCapitalize="none"
               autoCorrect={false}
-              onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}/>
-
-
+              value={accountNumber}
+              onChangeText={(accountNumber) => 
+              handleAccountNumber(accountNumber)}
+              />
+              {isValid? 
+              null:
+              <Text> La cuente debe tener 22 digitos
+              </Text>}
+              
+ 
       </View>
        
-      {/* {account.length < 22 ? <Text>La cuenta debe contener al menos 22 numeros</Text> : null} */}
         <View
-          
-          style={{
+           style={{
             flexDirection: "row-reverse",
             justifyContent: "center",
             flex:1,
           }}>
-          <Button
-            buttonStyle={style.botonConfirmar}
-            titleStyle={style.tituloConfirmar}
-            title="Confirmar"
-            onPress={() => {
-              handleSubmit();
-              navigation.navigate("Accounts");
-            }}
-          />
+          
+              <Button disabled={!isValid}
+              buttonStyle={style.botonConfirmar}
+              titleStyle={style.tituloConfirmar}
+              title="Confirmar"
+              onPress={() => {
+                handleSubmit();
+                navigation.navigate("Accounts");
+              }}
+            />
+
+          
+          
+            
+          
+
         </View>
     </KeyboardAvoidingView>
   );

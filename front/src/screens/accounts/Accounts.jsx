@@ -115,7 +115,7 @@ const Accounts = ({
                           </View>
                           <View style={{ flexDirection: "row" }}>
                             <Text style={style.negrita}>Cuenta:</Text>
-                            <Text>{item.accountNumber}</Text>
+                            <Text>{item.accountNumber.toLocaleString().substr(0,22)}</Text>
                           </View>
                         </View>
 

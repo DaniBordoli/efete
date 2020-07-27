@@ -12,7 +12,6 @@ export const style = StyleSheet.create({
   },
   register: {
     textAlign: "center",
-
     color: "blue",
     fontSize: 20,
     margin: 20,

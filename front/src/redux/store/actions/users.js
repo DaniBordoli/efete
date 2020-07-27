@@ -10,6 +10,7 @@ export const login_user = (user) => {
 };
 
 export const logUser = (user) => (dispatch) => {
+  console.log("USUARIO",user)
   return axios
     .post(`http://${IP}:1337/api/users/login`, user, {
       withCredentials: true,

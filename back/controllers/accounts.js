@@ -108,7 +108,8 @@ const AccountsController = {
 
   deleteMainAccount(req, res) {
     console.log("PARAMETRO:",req.params.id)
-    AccountsModel.deleteOne({ _id: req.params.id }).then(() => {
+    AccountsModel.deleteOne({ _id: req.params.id })
+        .then(() => {
           res.sendStatus(200);
         })
         .catch((err) => {

@@ -24,10 +24,7 @@ export default ({
   navigation,
   user,
 }) => (
-  <KeyboardAvoidingView
-      behavior={Platform.OS == "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
+  <KeyboardAvoidingView  style={{flex:1}} behavior="height">
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{ flex: 8 }}>
         <Text style={style.titulo}>Efeté</Text>
