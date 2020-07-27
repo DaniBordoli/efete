@@ -12,7 +12,7 @@ const fetchFonts = () => {
   };
 
 
-export default () => {
+export default ({ navigation }) => {
   const [dataload, setDataload]= useState(false)
 
   if(!dataload){
@@ -32,6 +32,7 @@ export default () => {
       <View style={{display:"flex",flexDirection:"row", justifyContent:'center' , marginTop:150}}>
       <Text style={style.text4}>Para verificar tu Email</Text>
       <Text style={style.input} onPress={() => Linking.openURL('https://mail.google.com/')}>Ingrese Aqui</Text> 
+      <Text style={style.input}  onPress={() => navigation.navigate('Login')}>Ingrese aqui</Text> 
       </View>
     </View>
   )

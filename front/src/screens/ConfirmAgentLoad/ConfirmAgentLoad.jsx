@@ -10,7 +10,6 @@ const ConfirmAgentLoad = ({ value }) => {
 
     return(
 
-  <ScrollView>
     <View style={style.container}>
       
       <View style={style.imageCont}>
@@ -39,7 +38,6 @@ const ConfirmAgentLoad = ({ value }) => {
         </TouchableOpacity>  
 
         </View>
-        </ScrollView>
 
     )
 }

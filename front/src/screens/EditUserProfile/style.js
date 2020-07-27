@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { headerColor } from "../../Common/constans";
+import { headerColor, verdeTexto } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   text: {
@@ -34,28 +34,29 @@ export const style = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     borderRadius:8,
-    marginTop:5
-
+    marginTop:5,
+    elevation:2,
   },
 
   input: {
     
+    borderRadius:8,
     fontSize: 18,
     flex: 1,
     paddingTop: 10,
-    paddingRight: 10,
     paddingBottom: 10,
-    paddingLeft: 0,
-    borderRadius:8,
+    paddingLeft: 5,
     backgroundColor: "#fff",
-    color: "#424242",
+    color: verdeTexto,
   },
 
   boton: {
     backgroundColor: "#00CC96",
-    width: 236,
-    height: 43,
-    marginTop:40,
-    alignSelf:'center'
+    borderRadius: 5,
+    marginTop: 50 ,
+    width:236,
+    height:43,
+    alignSelf:'center',
+    justifyContent:'center',
   },
 });

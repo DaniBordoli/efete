@@ -11,7 +11,7 @@ import SelectAccount from "./SelectAccount";
 import { View } from "react-native";
 
 export default ({ navigation, route }) => {
-  console.log(route.params.destinationAccount, "DESTINATION ACCOUNT");
+  console.log("DESTINATION ACCOUNT::::::::::::::::::::::::::::::::::",route.params.destinationAccount);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,7 +58,6 @@ export default ({ navigation, route }) => {
   };
 
   return (
-    <View>
       <SelectAccount
         selectedAccount={selectedAccount}
         userAccounts={userAccounts}
@@ -69,6 +68,5 @@ export default ({ navigation, route }) => {
         loading={loading}
         // handleAgentDailyAmount={handleAgentDailyAmount}
       />
-    </View>
   );
 };

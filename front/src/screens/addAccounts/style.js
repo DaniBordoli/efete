@@ -22,7 +22,8 @@ export const style = StyleSheet.create({
     backgroundColor: "white",
     color: "#424242",
     borderWidth:0.5,
-    borderColor:'#c8c8c8'
+    borderColor:'#c8c8c8',
+    justifyContent:'center'
 
   },
   text: {

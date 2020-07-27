@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native";
-import { headerColor } from "../../Common/constans";
+import { buttonColor, verdeTexto } from "../../Common/constans";
 
 export const style = StyleSheet.create({
  container : {
-    alignItems: "center",
-    backgroundColor: "#FAFBFF",
-    paddingBottom: 70,
-    height: 740
+    alignSelf: "center",
+    backgroundColor: "#FAFBFF",    
+    flex:1,
+    height:'100%',
+    width:'90%',
 
   },
   containerTitle : {
@@ -14,35 +15,40 @@ export const style = StyleSheet.create({
     fontSize: 22,    
     fontFamily: "nunito", 
     margin: 40,
-    textTransform: "uppercase"
+    textTransform: "uppercase",
+    textAlign:'center'
   },
   title : {
     marginBottom: 10,
     color: '#424242'
   },
-  input : {
-    backgroundColor: "#ffffff",
-    width: 340,
-    padding: 5,
-    marginBottom: 25,
-    elevation: 2,
-    shadowRadius: 4.0,
-    shadowOpacity: 0.25,
+  input: {
+    borderRadius:8,
+    fontSize: 18,
+    flex: 1,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 5,
+    backgroundColor: "#fff",
+    color: verdeTexto,
   },
   confirmar : {
     backgroundColor: "#00CC96",
-    padding: 5,
     borderRadius: 5,
-    marginTop: 30  
+    marginTop: 50 ,
+    width:236,
+    height:43,
+    alignSelf:'center',
+    justifyContent:'center',
+  
   },
   textConfirmar : {
     color: "#ffffff",
-    fontSize: 18,
-    paddingLeft: 30,
-    paddingRight: 30,
-    paddingBottom: 5,
-    paddingTop: 5,
-    fontFamily: "nunito" 
+    fontSize: 17,
+    
+    fontFamily: "nunito" ,
+    textAlign:'center'
+
   },
   openCamera : {
     alignItems: "center",
@@ -58,4 +64,33 @@ textMaxsize : {
     color: '#606060',
     fontSize: 10, 
   },
+  searchSection: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius:8,
+    marginTop:5,
+    elevation:2,
+
+  },
+  text: {
+    alignSelf:'flex-start',
+    
+    textAlign: "left",
+    color: "black",
+    fontSize: 14,
+    textTransform: "uppercase",
+    //fontFamily: "sans-serif",
+    marginTop: 25,
+  },
+  foto:{
+    backgroundColor:buttonColor,
+    width:125,
+    height:35,
+    textAlign:'center',
+    paddingTop:3.5,
+    borderRadius:5
+}
 });
