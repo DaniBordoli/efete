@@ -1,28 +1,39 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { headerColor, buttonColor } from "../../Common/constans";
+import { headerColor, verdeTexto, deleteColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   titulo: {
     textAlign: "center",
     fontSize: 26,
-    fontFamily: "nunito",
+    fontFamily: "delgado",
     marginTop: 30,
     marginBottom: 15,
     color: `${headerColor}`,
-    fontWeight: "bold",
+    fontWeight:'bold'
+    
   },
   texto: {
     textAlign: "center",
     fontSize: 18,
-    fontFamily: "nunito",
-    fontWeight: "bold",
+    fontFamily: "sans-bold",
+    color:verdeTexto ,
+    
+  },
+  textoContainer:{
+    justifyContent: "center",
+    backgroundColor: "white",
+    height: 60,
+    width:"87%",
+    borderRadius:5,
+    borderColor:'#e6e3e3',
+    borderWidth:1
   },
 
   confirmar: {
     width: 167,
     height: 60,
-    backgroundColor: `${buttonColor}`,
-    marginTop: 50,
+    backgroundColor: `${deleteColor}`,
+    
     alignSelf: "center",
   },
   tituloConfirmar: {
@@ -34,11 +45,11 @@ export const style = StyleSheet.create({
   },
   mainAccount: {
     width: 250,
-    fontSize: 15,
+    fontSize: 16,
     textAlign: "center",
     textTransform: "uppercase",
     color: "#4F9FFF",
-    fontWeight: "400",
+    fontWeight: "500",
     alignSelf: "center",
   },
 
@@ -46,7 +57,7 @@ export const style = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 30,
-    marginBottom: 50,
+    marginBottom: 30,
     width: Dimensions.get("window").width - 50,
     backgroundColor: "#F7F5FE",
     elevation: 7,
