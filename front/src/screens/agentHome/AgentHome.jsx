@@ -4,8 +4,10 @@ import { style } from "./style";
 import * as Animatable from "react-native-animatable";
 import { Button } from "react-native-elements";
 import { Load } from "../../Common/loading";
+import { MaterialIcons } from '@expo/vector-icons'; 
+
 import { headerColor } from "../../Common/constans";
-export default ({ agentTransactions, navigation, loading, time, agent }) => {
+export default ({ agentTransactions, navigation, loading, time, agent,mode }) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {loading ? (
@@ -128,47 +130,47 @@ export default ({ agentTransactions, navigation, loading, time, agent }) => {
                 data={agentTransactions}
                 renderItem={({ item }) => {
                   return (
-                    <View style={{ height: 90, flex: 1 }}>
-                      <View
-                        style={{
-                          flexDirection: "row",
-                          height: 90,
-                          alignItems: "center",
-                          justifyContent: "space-between",
-                        }}
+                    <View style={{ height: 100, alignSelf:'center', width:'90%', marginTop:17}}>
+
+                      <TouchableOpacity
+                        style={style.single}
+                        onPress={() =>
+                          navigation.navigate("SingleAgentTransaction", {
+                            item,
+                          })
+                        }
                       >
-                        <View style={{ marginLeft: 17 }}>
-                          <Text>Monto: $ {item.amount}</Text>
-                          <Text>
-                            Banco:{" "}
-                            {item.originAccount[0].nameEntity[0].nameEntity}
+                      
+
+
+                        <View style={style.contenido}>
+                        <Text style={style.textoContenido}>
+                            Banco:{item.originAccount[0].nameEntity[0].nameEntity}
                           </Text>
-                          <Text>
-                            Numero de cuenta:{" "}
-                            {item.originAccount[0].accountNumber}
+                          <Text style={style.textoContenido}>
+                            Cuenta:{item.originAccount[0].accountNumber}
                           </Text>
-                          <Text>Extracción realizada</Text>
-                        </View>
-                        <View>
-                          <Button
-                            buttonStyle={{
-                              marginRight: 25,
-                              backgroundColor: "#629bcaa6",
-                              width: 90,
-                            }}
-                            title="Ver mas"
-                            onPress={() =>
-                              navigation.navigate("SingleAgentTransaction", {
-                                item,
-                              })
-                            }
-                          />
-                        </View>
-                        
+
+                        <Text style={style.textoContenido}>Agente: {item.agent[0].name}</Text>
+                        <Text style={{fontFamily:'regular',fontSize:13, color:'#94AFB6'}}>Extracción realizada</Text>
                       </View>
-                      <View style={style.hr} />
-                    </View>
-                  );
+                        
+
+
+                        <View style={style.monto}>
+                      <Text style={style.montoTexto}>${item.amount}</Text>
+                      </View>
+
+
+                        <View style={style.entrar}>
+                      <MaterialIcons name="keyboard-arrow-right" size={40} color="#94AFB6"/>
+                      </View>
+
+                        
+                      </TouchableOpacity>
+        {/* <View style={style.hr} />*/}                    
+                      </View>
+                  )
                 }}
               ></FlatList>
             ) : (

@@ -14,6 +14,12 @@ export default ({ navigation, route }) => {
   const userTransactions = useSelector(
     (state) => state.transactions.userTransactions
   );
+  
+  
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
+  
 
   const userRole = useSelector((state) => state.users.user.role);
 
@@ -32,6 +38,7 @@ export default ({ navigation, route }) => {
 
   return (
     <UserHome
+    mode={mode}
       navigation={navigation}
       loading={loading}
       userRole={userRole}

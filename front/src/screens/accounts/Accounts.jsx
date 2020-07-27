@@ -2,9 +2,7 @@ import React from "react";
 import {
   View,
   Text,
-  StyleSheet,
   FlatList,
-  ActivityIndicator,
   Image,
   TouchableOpacity,
 } from "react-native";
@@ -39,18 +37,18 @@ const Accounts = ({
                   <View style={style.wallet}>
                     <Image
                       source={require("../../../assets/iconos/wallet.png")}
-                      style={{ width: 50, height: 50 }}
+                      style={{ width: 50, height: 50}}
                     />
                   </View>
 
-                  <View style={{ alignContent: "center" }}>
+                  <View style={{ alignContent: "center"}}>
                     <View style={{ flexDirection: "row", marginBottom: 5 }}>
                       <Text style={style.negrita}>Entidad:</Text>
-                      <Text>{mainAccount.nameEntity[0].nameEntity}</Text>
+                      <Text style={style.tex}>{mainAccount.nameEntity[0].nameEntity}</Text>
                     </View>
                     <View style={{ flexDirection: "row" }}>
                       <Text style={style.negrita}>Cuenta:</Text>
-                      <Text>{mainAccount.accountNumber}</Text>
+                      <Text style={style.tex}> {mainAccount.accountNumber}</Text>
                     </View>
                   </View>
 
@@ -67,7 +65,7 @@ const Accounts = ({
                         handleMainDelete(mainAccount._id);
                       }}
                     >
-                      <AntDesign name="delete" size={24} color="grey" />
+                      <AntDesign name="delete" size={25} color="#454141" />
                     </TouchableOpacity>
                   </View>
                 </TouchableOpacity>
@@ -84,7 +82,8 @@ const Accounts = ({
             <Text style={style.asociadas}> CUENTAS ASOCIADAS</Text>
 
             <FlatList
-            
+            style={{ marginBottom:10 }}
+              showsVerticalScrollIndicator={false}
               keyExtractor={(accountsUser) => accountsUser._id}
               data={accountsUser}
               renderItem={({ item, index }) => {
@@ -111,7 +110,7 @@ const Accounts = ({
                             style={{ flexDirection: "row", marginBottom: 5 }}
                           >
                             <Text style={style.negrita}>Entidad:</Text>
-                            <Text>{item.nameEntity[0].nameEntity}</Text>
+                            <Text style={style.tex}>{item.nameEntity[0].nameEntity.substr(0,18)} ...</Text>
                           </View>
                           <View style={{ flexDirection: "row" }}>
                             <Text style={style.negrita}>Cuenta:</Text>
@@ -132,7 +131,7 @@ const Accounts = ({
                               handleDelete(item._id);
                             }}
                           >
-                            <AntDesign name="delete" size={24} color="grey" />
+                            <AntDesign name="delete" size={25} color="#454141" />
                           </TouchableOpacity>
                         </View>
                       </TouchableOpacity>

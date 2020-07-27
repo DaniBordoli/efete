@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Alert,
-  Animated,
-  
-} from "react-native";
+import { Text, View, StyleSheet, Alert, Animated } from "react-native";
 import { Button } from "react-native-elements";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { buttonColor, headerColor, fondoColor } from "../../Common/constans";
@@ -45,14 +38,13 @@ export default ({ navigation, route }) => {
   };
 
   const handleBarCodeScanned = ({ type, data }) => {
-    const agentId = data.slice(0, data.indexOf(","));
-    const destinationAccount = data.slice(data.indexOf(",") + 1);
+    const [agentId, destinationAccount, cbu] = data.split(",");
     setScanned(true);
-
     navigation.navigate("SelectAccount", {
       agentId: agentId,
       value: route.params.value,
       destinationAccount: destinationAccount,
+      cbu: cbu,
     });
   };
 
@@ -64,7 +56,7 @@ export default ({ navigation, route }) => {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor:'black' }}>
+    <View style={{ flex: 1, backgroundColor: "black" }}>
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={{ ...StyleSheet.absoluteFill }}
@@ -77,31 +69,28 @@ export default ({ navigation, route }) => {
           justifyContent: "center",
         }}
       >
-        <View style={{ width: 300, height: 300 }}  onLayout={(e) =>
-              setAnimationLineHeight(e.nativeEvent.layout.height)
-            }>
-        {!scanned && (
-              <Animated.View
-              
-                style={[
-                  style.animationLineStyle,
-                  
-                    
-                      {
-                        transform: [
-                          {
-                            translateY: focusLineAnimation.interpolate({
-                              inputRange: [0, 1],
-                              outputRange: [0, animationLineHeight],
-                            }),
-                          },
-                        ],
-                      },
-                    
-                
-                ]}
-              />
-            )}
+        <View
+          style={{ width: 300, height: 300 }}
+          onLayout={(e) => setAnimationLineHeight(e.nativeEvent.layout.height)}
+        >
+          {!scanned && (
+            <Animated.View
+              style={[
+                style.animationLineStyle,
+
+                {
+                  transform: [
+                    {
+                      translateY: focusLineAnimation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, animationLineHeight],
+                      }),
+                    },
+                  ],
+                },
+              ]}
+            />
+          )}
           <View style={{ flex: 1, flexDirection: "row" }}>
             <View style={{ flex: 1, ...leftTop }}></View>
             <View style={{ flex: 1 }} />
@@ -113,7 +102,6 @@ export default ({ navigation, route }) => {
             <View style={{ flex: 1 }} />
             <View style={{ flex: 1, ...rightBottom }}></View>
           </View>
-          
         </View>
         {scanned && (
           <Button
@@ -124,12 +112,9 @@ export default ({ navigation, route }) => {
           />
         )}
       </View>
-      
-        
-        </View>
-    
+    </View>
   );
-}; 
+};
 const style = StyleSheet.create({
   scanerButton: {
     width: 180,
@@ -137,7 +122,7 @@ const style = StyleSheet.create({
     backgroundColor: `${buttonColor}`,
     justifyContent: "center",
     alignSelf: "center",
-    marginTop:60
+    marginTop: 60,
   },
   scanerTitle: {
     fontSize: 20,
@@ -157,9 +142,8 @@ const style = StyleSheet.create({
   animationLineStyle: {
     height: 1.5,
     width: "100%",
-    backgroundColor: 'red',
+    backgroundColor: "red",
   },
-
 });
 const leftTop = {
   borderLeftWidth: 3,
@@ -184,6 +168,3 @@ const rightBottom = {
   borderBottomWidth: 3,
   borderColor: "white",
 };
-
-
-

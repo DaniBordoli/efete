@@ -66,10 +66,7 @@ export default class App extends React.Component {
     return (
         <View style={styles.container}>
           
-          <Button rounded style={styles.btn}>      
-                <Icon name="google" type="MaterialCommunityIcons" style={styles.icon}></Icon>
-                <Text style={styles.btnTxt}>Hacer login con Google</Text>
-            </Button>
+         
             <Button rounded style={[styles.btn, { marginTop: 20 }]} onPress={props.onFingurePress}>
                 <Icon name="fingerprint" type="MaterialIcons" style={styles.icon} />
                 <Text style={styles.btnTxt}>Iniciar con TouchID</Text>

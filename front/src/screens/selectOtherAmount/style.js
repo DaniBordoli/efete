@@ -22,7 +22,7 @@ export const style = StyleSheet.create({
     width: 167,
     height: 60,
     backgroundColor: `${buttonColor}`,
-    marginTop: 100,
+    marginTop: 10,
     alignSelf: "center",
   },
   tituloConfirmar: {
@@ -32,4 +32,27 @@ export const style = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
+  contBotones : {
+    marginTop:100,
+  flexDirection: 'row-reverse',
+  justifyContent:'space-evenly',
+
+
+},
+cancelar: {
+  width: 160,
+  height: 55,
+  backgroundColor: 'white',
+  marginTop: 10,
+  alignSelf: "center",
+  borderWidth: 1,
+  borderColor: buttonColor
+},
+tituloCancelar:{
+  fontSize: 18,
+  textAlign: "center",
+  textTransform: "uppercase",
+  color: buttonColor,
+  fontWeight: "bold",
+},
 });

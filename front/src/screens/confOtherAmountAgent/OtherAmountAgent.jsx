@@ -10,7 +10,7 @@ const OtherAmountAgent = ({
   navigation,
 }) => {
   return (
-    <View>
+    <View style={{backgroundColor:'#F1F3F6'}}>
 <Text style={style.monto}>Monto</Text>
 <View style={{flexDirection:'row' , justifyContent:'center'}}>
       <Text style={{fontSize:25}}>$</Text>
@@ -59,7 +59,7 @@ const OtherAmountAgent = ({
         titleStyle={style.tituloCancelar}
         title="Cancelar"
         onPress={() => {
-            handlerSubmit();
+            
             navigation.navigate("Agent", ); //Cancelar devuelve al home
           }}
     />
