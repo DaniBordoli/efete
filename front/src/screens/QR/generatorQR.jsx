@@ -19,7 +19,7 @@ export default () => {
 
   const userId = useSelector((state) => state.users.user._id);
   const agentId = useSelector((state) => state.agents.agent._id);
-  const mainAccount = useSelector((state) => state.accounts.mainAccount._id);
+  const mainAccount = useSelector((state) => state.accounts.mainAccount);
 
   /* const [user, userSet] = useState('')
   const [loading, setLoading] = useState(false); */
@@ -31,11 +31,7 @@ export default () => {
       </View>
       <View style={styles.container}>
         <QRCode
-          content={`${agentId},${mainAccount}`}
-          /* `${{
-            fecha: "132",
-            dato: "13132"
-          }}` */
+          content={`${agentId},${mainAccount._id},${mainAccount.accountNumber}`}
         />
       </View>
       <View style={{ flex: 1 }}></View>

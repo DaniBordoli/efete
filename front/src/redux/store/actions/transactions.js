@@ -1,5 +1,5 @@
 import axios from "axios";
-import {setAgent} from './agents'
+import { setAgent } from "./agents";
 import { IP } from "../../../../config";
 import {
   FETCH_TRANSACTIONS,
@@ -72,26 +72,74 @@ export const getUserTransactions = (id) => (dispatch) => {
 export const getUserTransaction = (id) => (dispatch) => {
   return axios
     .get(`http://${IP}:1337/api/transactions/user/${id}`)
-    .then((res) =>res.data)
+    .then((res) => res.data)
     .then((transaction) => dispatch(fetch_users_transaction(transaction)));
 };
 
 export const updateAmountAgent = (value, id) => (dispatch) => {
   return axios
-  .patch(`http://${IP}:1337/api/agents/editdailyamount`, {
-    dailyAmount:value ,
-    _id:id
-  
-  })
-  .then(res => res.data)
-  .then((agent=> dispatch(setAgent(agent))))
-}
-
+    .patch(`http://${IP}:1337/api/agents/editdailyamount`, {
+      dailyAmount: value,
+      _id: id,
+    })
+    .then((res) => res.data)
+    .then((agent) => dispatch(setAgent(agent)));
+};
 
 export const createTransaction = (transaction) => (dispatch) =>
-  axios.post(`http://${IP}:1337/api/transactions`, transaction).then((res) => {
-    dispatch(newTransaction(res.data));
-  });
+  axios
+    .post(
+      "https://sandbox.bind.com.ar/v1/banks/322/accounts/21-1-99999-4-6/owner/transaction-request-types/DEBIN/transaction-requests",
+
+      {
+        to: {
+          cbu: transaction.originAccountCbu,
+        },
+        value: {
+          currency: "ARS",
+          amount: transaction.amount + 50,
+        },
+        concept: "EXP",
+        expiration: 23,
+      },
+      {
+        headers: {
+          Authorization:
+            " JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTU4NjQ0MTUwODgsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NTg5MzIxNX0.Ub8H6KjDwNtAFwgxSzDz6HQ5rJ_kqM9vWD2_K6WkMy3t3wf-VgraHGQzjEH-p8vfvMuoULzF_iaoD8j0FrqzdQ",
+        },
+      }
+    )
+    .then(() => {
+      axios.post(
+        "https://sandbox.bind.com.ar/v1/banks/322/accounts/21-1-99999-4-6/owner/transaction-request-types/TRANSFER/transaction-requests",
+
+        {
+          to: {
+            cbu: transaction.cbu,
+          },
+          value: {
+            currency: "ARS",
+            amount: transaction.amount + 25,
+          },
+          description: "Transfer de prueba",
+          concept: "VAR",
+          emails: ["facunovaroh@gmail.com"],
+        },
+        {
+          headers: {
+            Authorization:
+              "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTU4NjQ0MTUwODgsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NTg5MzIxNX0.Ub8H6KjDwNtAFwgxSzDz6HQ5rJ_kqM9vWD2_K6WkMy3t3wf-VgraHGQzjEH-p8vfvMuoULzF_iaoD8j0FrqzdQ",
+          },
+        }
+      );
+    })
+
+    .then(() => {
+      return axios
+        .post(`http://${IP}:1337/api/transactions`, transaction)
+        .then((res) => dispatch(newTransaction(res.data)));
+    });
+
 export const getAgentTransactions = (id) => (dispatch) => {
   return axios
     .get(`http://${IP}:1337/api/transactions/agent/${id}`)
