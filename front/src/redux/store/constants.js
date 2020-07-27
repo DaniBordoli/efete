@@ -16,7 +16,7 @@ export const SET_AG_TRANSACTION_VALUE = "SET_AG_TRANSACTION_VALUE";
 
 //USERS
 export const LOGIN_USER = "LOGIN_USER";
-
+export const MODE = "MODE";
 //AGENTS
 export const CREATE_AGENT = "CREATE_AGENT";
 export const SET_AGENT = "SET_AGENT";

@@ -10,8 +10,9 @@ image : {
 },
 
 container : {
+  flex:1,
 alignItems: "center",
-backgroundColor: '#FAFBFF',
+backgroundColor: 'white',
 },
 title : {
     fontFamily: "nunito", 

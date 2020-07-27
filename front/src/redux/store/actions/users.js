@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IP } from "../../../../config";
-import { LOGIN_USER } from "../constants";
+import { LOGIN_USER , MODE} from "../constants";
 
 export const login_user = (user) => {
   return {
@@ -8,6 +8,15 @@ export const login_user = (user) => {
     user,
   };
 };
+
+
+export const mode = (mode) => {
+  return {
+    type: MODE,
+    mode,
+  };
+};
+
 
 export const logUser = (user) => (dispatch) => {
   return axios

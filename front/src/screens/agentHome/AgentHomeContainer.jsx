@@ -10,6 +10,7 @@ import moment from "moment";
 export default ({ navigation }) => {
   const dispatch = useDispatch();
 
+  const mode = useSelector((state) => state.users.mode);
   const [loading, setLoading] = useState(false);
   const [time, setTime] = useState("");
 
@@ -37,6 +38,7 @@ export default ({ navigation }) => {
 
   return (
     <AgentHome
+      mode={mode}
       agentTransactions={agentTransactions}
       navigation={navigation}
       loading={loading}

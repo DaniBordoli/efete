@@ -19,7 +19,7 @@ export default ({ handleValue, navigation, value }) => {
       />
       </View>
       
-
+      <View style={style.contBotones}>
       {value <= 0 ? (
         <Button
           buttonStyle={style.confirmar}
@@ -37,6 +37,18 @@ export default ({ handleValue, navigation, value }) => {
           }}
         />
       )}
+
+<Button
+        buttonStyle={style.cancelar}
+        titleStyle={style.tituloCancelar}
+        title="Cancelar"
+        onPress={() => {
+            
+            navigation.navigate("User"); //Cancelar devuelve al home
+          }}
+    />
+            </View>
+
     </View>
   );
 };

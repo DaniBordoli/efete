@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 13,
     textAlign: "center",
-    fontFamily: "nunito",
+    fontFamily: "nunito-bold",
     color: headerColor,
     textAlign: "center",
   },

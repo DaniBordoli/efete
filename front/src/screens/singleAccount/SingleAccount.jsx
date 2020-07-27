@@ -7,37 +7,52 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       {loading ? (
-        <View>
+        <View style={{ flex: 1 }}>
           {account._id ? (
-            <View>
-              <View style={style.accountContainer}>
-                <View>
-                  <Text style={style.titulo}>Entidad</Text>
-                  <Text style={style.texto}>
-                    {account.nameEntity[0].nameEntity}
-                  </Text>
+            <View style={{ flex: 1 }}>
+              <View style={{ flex: 2 }}>
+                <View style={style.accountContainer}>
+                  <View style={{ width: "100%", alignItems: "center" }}>
+                    <Text style={style.titulo}>Entidad</Text>
+                    <View
+                      style={style.textoContainer}
+                    >
+                    <Text style={style.texto}>
+                      {account.nameEntity[0].nameEntity.toUpperCase()}
+                    </Text>
+                    </View>
+
+                  </View>
+                  <View style={{ width: "100%", alignItems: "center",marginBottom:20 }}>
+                    <Text style={style.titulo}>Número de Cuenta</Text>
+                    <View
+                      style={style.textoContainer}
+                    >
+                      <Text style={style.texto}>
+                        xx-xxxx-xxxx-xxxx-xxxx-
+                        {account.accountNumber.toString().slice(5)}
+                      </Text>
+                    </View>
+                  </View>
                 </View>
-                <View>
-                  <Text style={style.titulo}>Número de Cuenta</Text>
-                  <Text style={style.texto}>
-                    xx-xxxx-xxxx-xxxx-xxxx-
-                    {account.accountNumber.toString().slice(5)}
+                <TouchableOpacity
+                  onPress={() => handleMainAccount(account._id)}
+                >
+                  <Text style={style.mainAccount}>
+                    ESTABLECER COMO PREDETERMINADA
                   </Text>
-                </View>
+                </TouchableOpacity>
               </View>
-              <TouchableOpacity onPress={() => handleMainAccount(account._id)}>
-                <Text style={style.mainAccount}>
-                  ESTABLECER COMO CUENTA PREDETERMINADA
-                </Text>
-              </TouchableOpacity>
-              <Button
-                buttonStyle={style.confirmar}
-                titleStyle={style.tituloConfirmar}
-                title="Eliminar Cuenta"
-                onPress={() => handleDelete(account._id)}
-              />
+              <View style={{ flex: 1, justifyContent: "center" }}>
+                <Button
+                  buttonStyle={style.confirmar}
+                  titleStyle={style.tituloConfirmar}
+                  title="Eliminar Cuenta"
+                  onPress={() => handleDelete(account._id)}
+                />
+              </View>
             </View>
           ) : null}
         </View>

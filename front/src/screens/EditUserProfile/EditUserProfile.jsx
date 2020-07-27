@@ -103,7 +103,12 @@ export default ({
           <View>
             <Button
               buttonStyle={style.boton}
-              titleStyle={{ fontWeight: "bold" }}
+              titleStyle={{
+                color: "#ffffff",
+                fontSize: 17,
+                fontFamily: "nunito",
+                textAlign: "center",
+              }}
               onPress={() => handleSubmit()}
               title="GUARDAR CAMBIOS"
               alert
