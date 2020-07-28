@@ -14,6 +14,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default ({ handleSubmit, handleChange, name, address, CUIL, navigation }) => {
   return (
+
+   <View style={style.mainContainer}> 
     <KeyboardAvoidingView behavior="height">
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={style.container}>
@@ -51,7 +53,7 @@ export default ({ handleSubmit, handleChange, name, address, CUIL, navigation })
               editable={false}
               placeholder="Ingrese su numero de CUIL"
               selectTextOnFocus={false}
-              defaultValue={`${CUIL}`}
+              defaultValue={CUIL}
               disable
             />
           </View>
@@ -82,5 +84,6 @@ export default ({ handleSubmit, handleChange, name, address, CUIL, navigation })
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
+  </View> 
   );
 };

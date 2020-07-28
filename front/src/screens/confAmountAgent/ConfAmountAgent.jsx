@@ -13,7 +13,7 @@ const ConfAmountAgent = ({
 
 
    return(
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 , backgroundColor:'white'}}>
          <Text style={style.monto}>Monto</Text>
          <Text style={style.valor}>{`$ ${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}</Text>
        <View style={style.montoContainer}>

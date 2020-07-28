@@ -153,10 +153,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
-        options={{
-          ...myHeader,
-          title: "Carga confirmada",
-        }}
+        options={{headerShown:false}}
       />
 
       <Stack.Screen

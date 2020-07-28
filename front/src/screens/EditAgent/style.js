@@ -2,27 +2,31 @@ import { StyleSheet } from "react-native";
 import { headerColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
- container : {
+ mainContainer : {
+  backgroundColor: "#FAFBFF",
+  height: '100%'
+ },
+  container : {
     alignItems: "center",
     backgroundColor: "#FAFBFF",
-    paddingBottom: 70,
-    height: 740
-
+    height: '100%'
   },
   containerTitle : {
     color: "#6F76E4",
     fontSize: 22,    
     fontFamily: "nunito", 
-    margin: 40,
+    marginTop: "12%",
+    marginBottom: "15%",
     textTransform: "uppercase"
   },
   title : {
-    marginBottom: 10,
-    color: '#424242'
+    marginBottom: '3%',
+    color: '#424242',
+    fontSize: 15
   },
   input : {
     backgroundColor: "#ffffff",
-    width: 340,
+    width: 300,
     padding: 5,
     marginBottom: 25,
     elevation: 2,
@@ -46,7 +50,7 @@ export const style = StyleSheet.create({
   },
   openCamera : {
     alignItems: "center",
-    marginTop: 20
+    marginTop: 20,
   },
 textOpenCamera : {
     margin: 15,
