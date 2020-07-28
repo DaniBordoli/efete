@@ -10,15 +10,15 @@ var agentSchema = new Schema({
     type: String,
     required: true,
   },
-  CUIL: {
-    type: Number,
+  cuil: {
+    type: String,
     default: false,
   },
   dailyAmount: {
     type: Number,
     default: 0,
   },
-  qrCode: {
+  imageUrl: {
     type: String,
     default: "",
   },

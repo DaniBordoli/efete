@@ -4,7 +4,6 @@ const initialState = {
   agent: {},
   agents: [],
   newAgent: {},
-  newStore: {}
 };
 
 export default (state = initialState, action) => {
@@ -12,10 +11,8 @@ export default (state = initialState, action) => {
     case SET_AGENT:
       return { ...state, agent: action.agent };
     case CREATE_AGENT:
-      return {...state, newAgent: action.newAgent}  
+      return { ...state, newAgent: action.newAgent };
     default:
       return state;
-      case CREATE_STORE:
-        return {state, newStore: action.newStore}
   }
 };

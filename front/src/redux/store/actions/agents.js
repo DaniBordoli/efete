@@ -18,13 +18,12 @@ const newAgent = (newAgent) => {
 };
 
 const createNewStore = (newStore) => {
-  return{
-    type : CREATE_STORE,
+  return {
+    type: CREATE_STORE,
     newStore,
-  }
-}
+  };
+};
 export const editAgent = (agentData) => (dispatch) => {
-
   return axios
     .patch(`http://${IP}:1337/api/agents/editprofile`, agentData)
     .then((res) => dispatch(setAgent(res.data)))
@@ -39,8 +38,7 @@ export const fetchAgent = (id) => (dispatch) =>
 export const changeDailyAmount = (amountTransaction) => () =>
   axios.patch(`http://${IP}:1337/api/agents/transaction`, amountTransaction);
 
-export const createAgent = (name, address, cuil, dailyAmount, codigoQr,user) => (
-
+export const createAgent = (name, address, cuil, dailyAmount, url, user) => (
   dispatch
 ) => {
   return axios
@@ -49,20 +47,20 @@ export const createAgent = (name, address, cuil, dailyAmount, codigoQr,user) => 
       address: address,
       cuil: cuil,
       dailyAmount: dailyAmount,
-      codigoQr: codigoQr,
-      user:user
-
+      imageUrl: url,
+      user: user,
     })
     .then((res) => {
       dispatch(login_user(res.data));
-      dispatch(newAgent(res.data));
-      dispatch(createNewStore({
-        name: name,
-        address: address,
-        cuil: cuil,
-        dailyAmount: dailyAmount,
-        codigoQr: codigoQr,
-        user:user
-      }))
+      dispatch(
+        newAgent({
+          name: name,
+          address: address,
+          cuil: cuil,
+          dailyAmount: dailyAmount,
+          imageUrl: url,
+          user: user,
+        })
+      );
     });
 };

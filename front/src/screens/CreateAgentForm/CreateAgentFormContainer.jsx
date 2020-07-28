@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { View } from "react-native";
 import CreateAgentForm from "./CreateAgentForm";
 import { createAgent } from "../../redux/store/actions/agents";
 import { useDispatch, useSelector } from "react-redux";
+import firebase from "../../firebase/index";
+import { Alert } from "react-native";
+import { YellowBox } from "react-native";
+import _ from "lodash";
+import uuid from "react-native-uuid";
 
-const CreateAgentFormContainer = ({ navigation , route}) => {
-
+const CreateAgentFormContainer = ({ navigation, route }) => {
   const [foto, setFoto] = useState("");
 
-  
-  useEffect(()=>{
-    route.params ? setFoto(route.params.capturarFoto) : "No hay fotos"
-  })
+  useEffect(() => {
+    route.params ? setFoto(route.params.capturarFoto) : "No hay fotos";
+  });
 
-  
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.users.user);
@@ -22,7 +23,6 @@ const CreateAgentFormContainer = ({ navigation , route}) => {
   const [address, setAddress] = useState("");
   const [cuil, setCuil] = useState(0);
   const [dailyAmount, setDailyAmount] = useState(0);
-  const [codigoQr, setCodigoQr] = useState("");
 
   function handlerName(text) {
     setName(text);
@@ -39,25 +39,52 @@ const CreateAgentFormContainer = ({ navigation , route}) => {
     setDailyAmount(Number(text));
   }
 
-  function handlerCodigo(text) {
-    setCodigoQr(text);
-  }
+  uploadImage = async (uri) => {
+    const response = await fetch(uri);
+    const blob = await response.blob();
+
+    let fotoUUID = uuid.v4();
+
+    var ref = firebase
+      .storage()
+      .ref()
+      .child("images/" + fotoUUID);
+
+    YellowBox.ignoreWarnings(["Setting a timer"]); //esto evita un warning por el await
+    const _console = _.clone(console);
+    console.warn = (message) => {
+      if (message.indexOf("Setting a timer") <= -1) {
+        _console.warn(message);
+      }
+    };
+
+    return ref.put(blob).then(async (snapshot) => {
+      await snapshot.ref.getDownloadURL().then((url) => {
+        console.log(url, "URL1");
+        dispatch(createAgent(name, address, cuil, dailyAmount, url, user._id));
+      });
+    });
+  };
 
   function handlerSubmit() {
-    dispatch(createAgent(name, address, cuil, dailyAmount, codigoQr, user._id));
+    uploadImage(foto).catch((error) => {
+      Alert.alert("Error al subir foto");
+    });
   }
 
   return (
-      <CreateAgentForm
-        handlerName={handlerName}
-        handlerAddress={handlerAddress}
-        handlerCuil={handlerCuil}
-        handlerDailyAmount={handlerDailyAmount}
-        handlerCodigo={handlerCodigo}
-        handlerSubmit={handlerSubmit}
-        navigation={navigation}
-        fotos={foto}
-      />
+    <CreateAgentForm
+      handlerName={handlerName}
+      handlerAddress={handlerAddress}
+      handlerCuil={handlerCuil}
+      handlerDailyAmount={handlerDailyAmount}
+      handlerSubmit={handlerSubmit}
+      navigation={navigation}
+      fotos={foto}
+      name={name}
+      address={address}
+      cuil={cuil}
+    />
   );
 };
 export default CreateAgentFormContainer;

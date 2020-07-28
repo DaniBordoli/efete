@@ -8,12 +8,12 @@ const editProfileAgent = (req, res) => {
       return Agent.findById(id);
     })
     .then((agentProfile) => {
+      console.log(agentProfile, "AGENTPROFILE");
       res.status(200).send(agentProfile);
     });
 };
 
 const editDailyAmount = (req, res) => {
-  console.log("BOOOOOOOODYYYY:",req.body)
   let id = req.body._id;
   Agent.findByIdAndUpdate(id, req.body, { new: true }).then((agentProfile) => {
     res.status(200).json(agentProfile);
@@ -62,8 +62,6 @@ const getAgent = (req, res) => {
     res.status(200).json(agent);
   });
 };
-
-
 
 module.exports = {
   editProfileAgent,
