@@ -63,7 +63,7 @@ export default ({ handleSubmit, handleChange, name, address, CUIL, navigation })
               editable={false}
               placeholder="Ingrese su numero de CUIL"
               selectTextOnFocus={false}
-              defaultValue={`${CUIL}`}
+              defaultValue={CUIL}
               disable
             />
           </View>
