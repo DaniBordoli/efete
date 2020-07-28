@@ -6,15 +6,16 @@ mainContainer : {
 backgroundColor: "#FAFBFF",
 height: '100%',
 },
-container : {
-  alignItems: "center",
-  backgroundColor: '#FAFBFF',
-  },
 imageCont : {
 width: "100%"   
 },
 image : {
  width: "100%"
+},
+container : {
+flex:1,
+alignItems: "center",
+backgroundColor: 'white',
 },
 title : {
   fontFamily: "nunito", 

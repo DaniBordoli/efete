@@ -53,12 +53,12 @@ export default class FingerPrintModal extends React.Component {
                     <View style={styles.iconView}>
                         <Icon name="fingerprint" type="MaterialIcons" style={styles.icon} />
                         <View style={{ marginTop: 40 }}>
-                            <Text style={styles.msgTxt}>Waiting for finger print</Text>
+                            <Text style={styles.msgTxt}>Esperando el lector de huella</Text>
                         </View>
                         {this.state.failedCount > 0 ?
                             <View style={{ marginTop: 40 }}>
                                 <TouchableOpacity onPress={this.scanFingerPrint}>
-                                    <Text style={[styles.msgTxt, { color: 'red' }]}>Please try again</Text>
+                                    <Text style={[styles.msgTxt, { color: 'red' }]}>Intenta de nuevo !</Text>
                                 </TouchableOpacity>
                             </View>
                             :
@@ -67,7 +67,7 @@ export default class FingerPrintModal extends React.Component {
                     </View>
                     <View style={styles.buttonView}>
                         <Button rounded style={styles.btn} onPress={this.closeModal}>
-                            <Text style={styles.btnTxt}>Cancel</Text>
+                            <Text style={styles.btnTxt}>Cancelar</Text>
                         </Button>
                     </View>
                 </View>

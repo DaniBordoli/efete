@@ -10,20 +10,19 @@ import {
   TouchableOpacity
 } from "react-native";
 import { style } from "./style.js";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons , MaterialIcons} from "@expo/vector-icons";
 
 export default ({ handleSubmit, handleChange, name, address, CUIL, navigation }) => {
   return (
-
-   <View style={style.mainContainer}> 
-    <KeyboardAvoidingView behavior="height">
-      <ScrollView showsVerticalScrollIndicator={false}>
+    
+      <ScrollView showsVerticalScrollIndicator={false} style={{flex:1, height:'100%', backgroundColor:'#FAFBFF'}}>
         <View style={style.container}>
 
           <Text style={style.containerTitle}>Datos de tu Negocio</Text>
+
+          <Text style={style.text}>Nombre del negocio</Text>
+          <View style={style.searchSection}>
           
-          <View>
-          <Text style={style.title}>Nombre del negocio</Text>
             <TextInput
               style={style.input}
               onChangeText={(e) => handleChange(e, "name")}
@@ -32,10 +31,16 @@ export default ({ handleSubmit, handleChange, name, address, CUIL, navigation })
               defaultValue={name}
               required
             />
+            <TouchableOpacity /* onPress={updateSecureTextEntry} */
+            style={{marginRight:10, marginRight:5}}>
+              <MaterialCommunityIcons name="pencil" size={20} color="black" />
+            </TouchableOpacity>
           </View>
 
-          <View>
-          <Text style={style.title}>Direccion</Text>
+
+          <Text style={style.text}>Direccion</Text>
+          <View style={style.searchSection}>
+          
             <TextInput
               style={style.input}
               onChangeText={(e) => handleChange(e, "address")}
@@ -44,10 +49,15 @@ export default ({ handleSubmit, handleChange, name, address, CUIL, navigation })
               defaultValue={address}
               required
             />
+             <TouchableOpacity /* onPress={updateSecureTextEntry} */
+            style={{marginRight:10, marginRight:5}}>
+              <MaterialCommunityIcons name="pencil" size={20} color="black" />
+            </TouchableOpacity>
           </View>
 
-          <View>
-          <Text style={style.title}>CUIL</Text>
+          <Text style={style.text}>CUIL</Text>
+          <View style={style.searchSection}>
+          
             <TextInput
               style={style.input}
               editable={false}
@@ -66,24 +76,20 @@ export default ({ handleSubmit, handleChange, name, address, CUIL, navigation })
             }}
             >
             <Text style={style.textOpenCamera}>Subir foto</Text>
-            <Image 
-            source={require("../../../assets/iconos/openCamera.png")}
-            />
+            <MaterialIcons name="camera-alt" size={27} color="white" style={style.foto}/>
             <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
           </TouchableOpacity>
       
           <TouchableOpacity
             style={style.confirmar}
             onPress={() => handleSubmit()}
-            title="Guardar cambios"
-            alert
+           
           >
-          <Text style={style.textConfirmar}>CONFIRMAR</Text>
+          <Text style={style.textConfirmar}>GUARDAR CAMBIOS</Text>
           </TouchableOpacity>
 
         </View>
       </ScrollView>
-    </KeyboardAvoidingView>
-  </View> 
+    
   );
 };

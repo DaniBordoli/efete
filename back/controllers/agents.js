@@ -33,6 +33,7 @@ const changeDailyAmount = (req, res) => {
   });
 };
 const createAgent = (req, res) => {
+  console.log("REQ.BODY.AGENTE:::::::::::", req.body)
   Agent.create(req.body)
     .then((agent) => {
       User.findOne({ _id: req.body.user }).then((user) => {

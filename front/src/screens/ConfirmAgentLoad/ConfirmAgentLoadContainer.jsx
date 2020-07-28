@@ -13,12 +13,10 @@ const ConfirmAgentLoadContainer = () => {
   const value = useSelector(state => state.agents.agent.dailyAmount )
 
   return(
-      <View>
         <ConfirmAgentLoad
          value={value}
          
         />
-      </View>
   )
 
 
