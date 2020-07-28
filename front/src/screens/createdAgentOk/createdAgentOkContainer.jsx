@@ -1,12 +1,22 @@
 import React from "react";
-import { View, Text, Button, Image, TouchableOpacity } from "react-native";
 import CreatedAgentOk from "./createdAgentOk";
 import { useSelector } from "react-redux";
-import { style } from "./style";
 
-const CreatedAgentOkContainer = ({ navigation }) => {
-  const agent = useSelector((state) => state.agents.newStore);
-  return <CreatedAgentOk agent={agent} navigation={navigation} />;
+const CreatedAgentOkContainer = ({ navigation, route }) => {
+  const agent = useSelector((state) => state.agents.newAgent);
+  console.log(route.params.fotos, "PARAMSFOTOS");
+  console.log(route.params, "PARAMS");
+
+  return (
+    <CreatedAgentOk
+      agent={agent}
+      navigation={navigation}
+      foto={route.params.fotos}
+      name={route.params.name}
+      address={route.params.address}
+      cuil={route.params.cuil}
+    />
+  );
 };
 
 export default CreatedAgentOkContainer;

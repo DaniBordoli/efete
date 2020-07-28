@@ -3,7 +3,6 @@ import { StyleSheet, Dimensions } from "react-native";
 export const style = StyleSheet.create({
   mainContainer: {
     alignItems: "center",
-    
   },
   container: {
     alignItems: "center",
@@ -42,7 +41,6 @@ export const style = StyleSheet.create({
     color: "#5A5A5A",
   },
   image: {
-    backgroundColor: "black",
     width: 150,
     height: 150,
     margin: 20,
