@@ -1,14 +1,15 @@
 import React from 'react'
 import { View, Text, FlatList, ScrollView } from "react-native";
+import {useSelector} from 'react-redux'
+import ConfirmValue from './confirmValue'
 
-import confirmValue from './confirmValue'
+const confirmValueContainer = (navigation, route) =>{
 
-const confirmValueContainer = (navigation) =>{
- 
-    
+
     return(
-        <confirmValue
+        <ConfirmValue
         navigation={navigation}
+        // value={route.params.value}
         />
     )
 }
