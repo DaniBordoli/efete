@@ -5,9 +5,9 @@ import Map from "../Map/map";
 import { fetchAgents } from "../../redux/store/actions/agents";
 import * as Location from "expo-location";
 
-export default () => {
+export default ({route, navigation}) => {
   const dispatch = useDispatch();
-  const [region, setRegion] = useState(null);
+  const [region, setRegion] = useState(null)
   const [ubicacion, setUbicacion] = useState({});
   const [markers, setMarkers] = useState([]);
 
@@ -17,8 +17,8 @@ export default () => {
 
   const agentes = useSelector((state) => state.agents.agents);
 
-  console.log("UBIIIIICAAAACIIOON:::::::::::::", ubicacion);
-
+/*   console.log("UBIIIIICAAAACIIOON:::::::::::::", ubicacion);
+ */
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestPermissionsAsync();
@@ -51,6 +51,8 @@ export default () => {
       agentes={agentes}
       ubicacion={region}
       notifyChange={(loc) => getCoordsFromName(loc)}
+      value={route.params.value}
+      navigation={navigation}
 
       /* marked={ubicacion}*/
     />

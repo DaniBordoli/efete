@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, Text, View, Dimensions , Image} from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -6,12 +6,16 @@ import Carousel from "react-native-snap-carousel";
 import { headerColor, buttonColor } from "../../Common/constans";
 import { Button } from "react-native-elements";
 
-export default ({ ubicacion, notifyChange, agentes, navigation, markers }) => {
-  console.log("AGEEEEEENTEEEEEEEEEEEESSSSS:", agentes);
+export default ({ ubicacion, agentes, navigation, markers , value}) => {
+/*   console.log("AGEEEEEENTEEEEEEEEEEEESSSSS:", agentes);
+ */
+const [ index , setIndex]= useState(null)
 
   const onCarouselItemChange = (index) => {
+    
     let location = agentes[index];
-
+    setIndex(agentes[index])
+    
     this._map.animateToRegion({
       latitude: location.ubicacion.latitude,
       longitude: location.ubicacion.longitude,
@@ -36,9 +40,11 @@ export default ({ ubicacion, notifyChange, agentes, navigation, markers }) => {
   return (
     <View style={styles.container}>
       <MapView
+    showsMyLocationButton={true}
         ref={(map) => (this._map = map)}
         initialRegion={ubicacion}
         showsUserLocation={true}
+      
         style={styles.mapStyle}
       >
         {agentes &&
@@ -50,7 +56,7 @@ export default ({ ubicacion, notifyChange, agentes, navigation, markers }) => {
             destinationAccount: destinationAccount,
           })} */
               
-              
+              icon={require('../../../assets/iconos/marker.png')}
               key={agente._id}
               ref={(ref) => (markers[index] = ref)}
               onPress={() => onMarkerPressed(agente, index)}
@@ -64,12 +70,8 @@ export default ({ ubicacion, notifyChange, agentes, navigation, markers }) => {
               }}
               title={agente.name}
               /* description={agente.address} */
-            >     
-            <View>
-              <Image source={require('../../../assets/iconos/marker.png')}/>
-            </View>
+            />     
             
-            </Marker>
           ))}
       </MapView>
       <View style={styles.carousel}>
@@ -79,7 +81,7 @@ export default ({ ubicacion, notifyChange, agentes, navigation, markers }) => {
           }}
           data={agentes}
           renderItem={({ item }) => {
-            console.log(item, "ITEMMM");
+            
             return (
               <View style={styles.cardContainer}>
                 <View style={{ flexDirection: "row", flex: 1 , alignItems:'center'}}>
@@ -98,6 +100,7 @@ export default ({ ubicacion, notifyChange, agentes, navigation, markers }) => {
 
                   <View style={{ flex: 1 }}>
                     <Button
+                    onPress={()=>{ navigation.navigate("confirmValue", {value, index})}}
                       titleStyle={{ fontSize: 14 }}
                       buttonStyle={{
                         width: 100,
@@ -136,6 +139,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   cardContainer: {
+    
     backgroundColor: "white" /* rgba(0, 0, 0, 0.6) */,
     height: 150,
     width: 300,
