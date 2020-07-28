@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
 import * as Permissions from "expo-permissions";
-import {useSelector , useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 import Map from "../Map/map";
-import {fetchAgents} from '../../redux/store/actions/agents'
+import { fetchAgents } from "../../redux/store/actions/agents";
 import * as Location from "expo-location";
 
 export default () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [region, setRegion] = useState(null);
   const [ubicacion, setUbicacion] = useState({});
+  const [markers, setMarkers] = useState([]);
 
-  const getCoordsFromName =(loc) =>{
-    setUbicacion({latitude:loc.lat, longitude:loc.lng})
+  /*  const getCoordsFromName = (loc) => {
+    setUbicacion({ latitude: loc.lat, longitude: loc.lng });
+  }; */
 
-  }
+  const agentes = useSelector((state) => state.agents.agents);
 
-  const agentes= useSelector(state =>  state.agents.agents)
-
-
-  console.log("UBIIIIICAAAACIIOON:::::::::::::", ubicacion)
-
+  console.log("UBIIIIICAAAACIIOON:::::::::::::", ubicacion);
 
   useEffect(() => {
     (async () => {
@@ -45,16 +42,17 @@ export default () => {
       dispatch(fetchAgents());
 
       setRegion(region);
-      
     })();
-
   }, []);
 
   return (
+    <Map
+      markers={markers}
+      agentes={agentes}
+      ubicacion={region}
+      notifyChange={(loc) => getCoordsFromName(loc)}
 
-
-  <Map agentes={agentes} ubicacion={region} marked={ubicacion} notifyChange={(loc)=> getCoordsFromName(loc)}/>
-
-
-  )
+      /* marked={ubicacion}*/
+    />
+  );
 };

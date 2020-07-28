@@ -30,8 +30,8 @@ export default ({
             <View style={style.searchSection}>
               <TextInput
                 style={style.input}
-                onChangeText={(e) => handleChange(e, "name")}
-                name="name"
+                onChangeText={(e) => handleChange(e, "firstName")}
+                firstName="firstName"
                 defaultValue={firstName}
                 required
               />
@@ -46,8 +46,8 @@ export default ({
             <View style={style.searchSection}>
               <TextInput
                 style={style.input}
-                onChangeText={(e) => handleChange(e, "name")}
-                name="name"
+                onChangeText={(e) => handleChange(e, "lastName")}
+                lastName="lastName"
                 defaultValue={lastName}
                 required
               />
