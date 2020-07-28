@@ -33,14 +33,14 @@ const ConfirmAgentLoad = ({ value }) => {
         <TouchableOpacity
         style={style.volver}
         title="Volver a Agente"
-        onPress={() => {;
+        onPress={() => {
         navigation.navigate("Agent");
         }}
          >
          <Text style={style.textConfirmar}>Volver a Agente</Text>  
         </TouchableOpacity>  
 
-        </View>
+    </View>
     )
 }
 

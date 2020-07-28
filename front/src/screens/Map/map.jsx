@@ -2,9 +2,8 @@
 import React from "react";
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
-export default ({ ubicacion, notifyChange, marked ,agentes, navigation}) => {
+export default ({ ubicacion, notifyChange, marked ,agentes, navigation, value}) => {
   console.log("MAAAAAAARKKKKKKKKKEEEEEEEED:", marked);
   console.log("AGEEEEEENTEEEEEEEEEEEESSSSS:", agentes);
 
@@ -33,9 +32,6 @@ export default ({ ubicacion, notifyChange, marked ,agentes, navigation}) => {
           title={agente.name}
           description={agente.address}
         />
-
-
-
         ))}
         
       </MapView>

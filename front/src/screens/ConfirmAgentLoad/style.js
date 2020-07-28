@@ -12,11 +12,13 @@ width: "100%"
 image : {
  width: "100%"
 },
+
 container : {
 flex:1,
 alignItems: "center",
 backgroundColor: 'white',
 },
+
 title : {
   fontFamily: "nunito", 
   color: "#6F76E4",
@@ -63,7 +65,6 @@ textConfirmar : {
 hr : {
   width: '80%',
   borderTopColor: '#808080',
-
   borderTopWidth: 1,
   
 }
