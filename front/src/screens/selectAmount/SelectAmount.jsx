@@ -50,7 +50,7 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
       titleStyle={style.tituloConfirmar}
       title="Confirmar"
       onPress={() => {
-      navigation.navigate("ScannerQR", { value: value });
+      navigation.navigate("Map", { value: value });
         }}
       />
       }

@@ -10,6 +10,8 @@ export const style = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
     borderRadius: 10,
+    width:'90%',
+    alignSelf:'center'
     
   },
   containerTitle: {
@@ -34,6 +36,13 @@ export const style = StyleSheet.create({
     shadowRadius: 4.0,
     shadowOpacity: 0.25,
     borderRadius: 3,
+  },
+  input2: {
+    
+    width: '100%',
+    backgroundColor:'#FAFBFF',
+    borderRadius: 3,
+    
   },
   confirmar: {
     backgroundColor: "#00CC96",

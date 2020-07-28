@@ -31,12 +31,13 @@ import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
 import OpenCameraContainer from "../camera/OpenCameraContainer";
+import Map from "../Map/mapContainer"
 
 const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Map">
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
@@ -52,6 +53,14 @@ export default ({ navigation }) => {
               onPress={() => navigation.navigate("InfoQR")}
             />
           ),
+        }}
+      />
+      <Stack.Screen
+        name="Map"
+        component={Map}
+        options={{
+          ...myHeader,
+          title: "Mapa",
         }}
       />
       <Stack.Screen

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 const CreateAgentFormContainer = ({ navigation , route}) => {
 
   const [foto, setFoto] = useState("");
+  const [ubicacion, setUbicacion] = useState({});
 
   
   useEffect(()=>{
@@ -17,7 +18,10 @@ const CreateAgentFormContainer = ({ navigation , route}) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.users.user);
+  const getCoordsFromName =(loc) =>{
+    setUbicacion({latitude:loc.lat, longitude:loc.lng})
 
+  }
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [cuil, setCuil] = useState(0);
@@ -28,7 +32,8 @@ const CreateAgentFormContainer = ({ navigation , route}) => {
     setName(text);
   }
   function handlerAddress(text) {
-    setAddress(text);
+    console.log("ADREEEEEEEEEEEEEEEEEEEEEEES", text.description)
+    setAddress(text.description);
   }
 
   function handlerCuil(text) {
@@ -44,7 +49,8 @@ const CreateAgentFormContainer = ({ navigation , route}) => {
   }
 
   function handlerSubmit() {
-    dispatch(createAgent(name, address, cuil, dailyAmount, codigoQr, user._id));
+    console.log("UBICACION::::::::::::",ubicacion)
+    dispatch(createAgent(name, address,ubicacion, cuil, dailyAmount, codigoQr, user._id));
   }
 
   return (
@@ -57,6 +63,7 @@ const CreateAgentFormContainer = ({ navigation , route}) => {
         handlerSubmit={handlerSubmit}
         navigation={navigation}
         fotos={foto}
+        notifyChange={(loc)=> getCoordsFromName(loc)}
       />
   );
 };

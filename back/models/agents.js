@@ -10,6 +10,9 @@ var agentSchema = new Schema({
     type: String,
     required: true,
   },
+  ubicacion:{
+    type: Object,
+  },
   CUIL: {
     type: Number,
     default: false,
