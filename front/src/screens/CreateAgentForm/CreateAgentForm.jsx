@@ -105,8 +105,8 @@ const CreateAgentForm = ({
 
         <View></View>
       </View>
-
-      {fotos ? <Image style={style.image} source={{ uri: fotos }} /> : null}
+      {/* 
+      {fotos ? <Image style={style.image} source={{ uri: fotos }} /> : null} */}
 
       <TouchableOpacity
         style={style.openCamera}

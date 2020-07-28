@@ -24,19 +24,18 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   };
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
-  const [cuil, setCuil] = useState(0);
+  const [cuil, setCuil] = useState("");
   const [dailyAmount, setDailyAmount] = useState(0);
 
   function handlerName(text) {
     setName(text);
   }
   function handlerAddress(text) {
-    console.log("ADREEEEEEEEEEEEEEEEEEEEEEES", text.description);
     setAddress(text.description);
   }
 
   function handlerCuil(text) {
-    setCuil(Number(text));
+    setCuil(text);
   }
 
   function handlerDailyAmount(text) {
@@ -69,11 +68,11 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
           createAgent(
             name,
             address,
+            ubicacion,
             cuil,
             dailyAmount,
             url,
-            user._id,
-            ubicacion
+            user._id
           )
         );
       });

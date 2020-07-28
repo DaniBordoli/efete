@@ -8,7 +8,6 @@ const editProfileAgent = (req, res) => {
       return Agent.findById(id);
     })
     .then((agentProfile) => {
-      console.log(agentProfile, "AGENTPROFILE");
       res.status(200).send(agentProfile);
     });
 };
@@ -33,7 +32,7 @@ const changeDailyAmount = (req, res) => {
   });
 };
 const createAgent = (req, res) => {
-  console.log("REQ.BODY.AGENTE:::::::::::", req.body)
+  console.log("REQ.BODY.AGENTE:::::::::::", req.body);
   Agent.create(req.body)
     .then((agent) => {
       User.findOne({ _id: req.body.user }).then((user) => {

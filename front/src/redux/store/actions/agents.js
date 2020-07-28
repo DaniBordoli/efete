@@ -51,14 +51,16 @@ export const changeDailyAmount = (amountTransaction) => () =>
   axios.patch(`http://${IP}:1337/api/agents/transaction`, amountTransaction);
 
 export const createAgent = (
-  url,
   name,
   address,
   ubicacion,
   cuil,
   dailyAmount,
+  url,
   user
 ) => (dispatch) => {
+  console.log(url, "URLACA");
+  console.log(name, "NAMEACA");
   return axios
     .post(`http://${IP}:1337/api/agents/createagent`, {
       name: name,
@@ -88,7 +90,6 @@ export const createAgent = (
           ubicacion: ubicacion,
           cuil: cuil,
           dailyAmount: dailyAmount,
-          codigoQr: codigoQr,
           user: user,
         })
       );
