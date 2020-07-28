@@ -114,9 +114,9 @@ export default ({ agentTransactions, navigation, loading, time, agent,mode }) =>
                     titleStyle={{ color: "#6f76e4" }}
                     title="Ver todo"
                     onPress={() =>
-                      navigation.navigate("AllAgentTransactions", {
+                      navigation.navigate("AllAgentTransactions"), {
                         agentTransactions,
-                      })
+                      }
                     }
                   />
                 ) : null}

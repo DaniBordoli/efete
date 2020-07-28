@@ -9,7 +9,6 @@ const ConfirmAgentLoad = ({ value }) => {
     const navigation = useNavigation();
 
     return(
-
     <View style={style.container}>
       
       <View style={style.imageCont}>
@@ -17,28 +16,31 @@ const ConfirmAgentLoad = ({ value }) => {
         style={style.image}
         /> 
         </View>
-         
-          
+        
           <Text style={style.title}>Confirmación de carga</Text>
           <Image
           style={style.icon}
           source={require("../../../assets/icon.png")}
           />
+
+         <View style={style.hr}></View>
+          
           <Text style={style.text}>Felicitaciones has realizado una recarga de </Text> 
-         <Text style={style.valor}>{value}</Text>          
+         <Text style={style.valor}>${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Text>          
+
+         <View style={style.hr}></View>
         
         <TouchableOpacity
         style={style.volver}
         title="Volver a Agente"
-        onPress={() => {;
+        onPress={() => {
         navigation.navigate("Agent");
         }}
          >
          <Text style={style.textConfirmar}>Volver a Agente</Text>  
         </TouchableOpacity>  
 
-        </View>
-
+    </View>
     )
 }
 

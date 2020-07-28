@@ -12,8 +12,11 @@ var agentSchema = new Schema({
   },
   cuil: {
     type: String,
-    default: false,
   },
+  ubicacion: {
+    type: Object,
+  },
+
   dailyAmount: {
     type: Number,
     default: 0,

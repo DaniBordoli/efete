@@ -10,6 +10,7 @@ import uuid from "react-native-uuid";
 
 const CreateAgentFormContainer = ({ navigation, route }) => {
   const [foto, setFoto] = useState("");
+  const [ubicacion, setUbicacion] = useState({});
 
   useEffect(() => {
     route.params ? setFoto(route.params.capturarFoto) : "No hay fotos";
@@ -18,7 +19,9 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.users.user);
-
+  const getCoordsFromName = (loc) => {
+    setUbicacion({ latitude: loc.lat, longitude: loc.lng });
+  };
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [cuil, setCuil] = useState(0);
@@ -28,7 +31,8 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
     setName(text);
   }
   function handlerAddress(text) {
-    setAddress(text);
+    console.log("ADREEEEEEEEEEEEEEEEEEEEEEES", text.description);
+    setAddress(text.description);
   }
 
   function handlerCuil(text) {
@@ -61,7 +65,17 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
     return ref.put(blob).then(async (snapshot) => {
       await snapshot.ref.getDownloadURL().then((url) => {
         console.log(url, "URL1");
-        dispatch(createAgent(name, address, cuil, dailyAmount, url, user._id));
+        dispatch(
+          createAgent(
+            name,
+            address,
+            cuil,
+            dailyAmount,
+            url,
+            user._id,
+            ubicacion
+          )
+        );
       });
     });
   };
@@ -84,6 +98,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
       name={name}
       address={address}
       cuil={cuil}
+      notifyChange={(loc) => getCoordsFromName(loc)}
     />
   );
 };

@@ -3,15 +3,12 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   Image,
-  KeyboardAvoidingView,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
 import { style } from "./style.js";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-import { editAgent } from "../../redux/store/actions/agents.js";
 
 export default ({
   handleSubmit,

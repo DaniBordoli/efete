@@ -7,10 +7,13 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  SafeAreaView,
+  KeyboardAvoidingView,
 } from "react-native";
 import { style } from "./style";
-import { MaterialIcons } from "@expo/vector-icons";
 import storage from "../../firebase/index";
+import { MaterialIcons } from "@expo/vector-icons";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 const CreateAgentForm = ({
   handlerDailyAmount,
@@ -23,26 +26,70 @@ const CreateAgentForm = ({
   name,
   address,
   cuil,
+  notifyChange,
 }) => {
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
+
       <View style={style.container}>
+        <Text
+          style={{
+            alignSelf: "flex-start",
+            marginLeft: 10,
+            marginBottom: 10,
+            color: "#424242",
+          }}
+        >
+          Dirección
+        </Text>
+
+        <View
+          style={{
+            backgroundColor: "white",
+            width: "100%",
+            flexDirection: "row",
+            marginBottom: 18,
+          }}
+        >
+          <GooglePlacesAutocomplete
+            styles={{
+              textInputContainer: {
+                width: "95%",
+                alignSelf: "center",
+                elevation: 3,
+                backgroundColor: "white",
+                borderRadius: 5,
+              },
+              textInput: {
+                marginBottom: 0,
+                marginTop: 0,
+                marginLeft: 0,
+                marginRight: 0,
+                height: "100%",
+              },
+            }}
+            enablePoweredByContainer={false}
+            placeholder="Buscar direccion"
+            returnKeyType={"search"}
+            listViewDisplayed="auto"
+            fetchDetails={true}
+            onPress={(data, detail = null) => {
+              notifyChange(detail.geometry.location);
+              handlerAddress(data);
+            }}
+            query={{ key: "AIzaSyBV-TT8w7N3TC9LDFGIQOk9BmN1iX10arg" }}
+            nearbyPlacesAPI="GooglePlacesSearch"
+            debounce={200}
+          />
+        </View>
+
         <View>
           <Text style={style.title}>Nombre</Text>
           <TextInput
             style={style.input}
             onChangeText={(text) => handlerName(text)}
             placeholder="Ingrese el nombre del establecimiento"
-          />
-        </View>
-
-        <View>
-          <Text style={style.title}>Dirección</Text>
-          <TextInput
-            style={style.input}
-            onChangeText={(text) => handlerAddress(text)}
-            placeholder="Indique la dirección"
           />
         </View>
 
@@ -55,6 +102,8 @@ const CreateAgentForm = ({
             placeholder="Ingrese su numero de CUIL"
           />
         </View>
+
+        <View></View>
       </View>
 
       {fotos ? <Image style={style.image} source={{ uri: fotos }} /> : null}
@@ -91,7 +140,7 @@ const CreateAgentForm = ({
       >
         <Text style={style.textConfirmar}>CONFIRMAR</Text>
       </TouchableOpacity>
-    </ScrollView>
+    </View>
   );
 };
 
