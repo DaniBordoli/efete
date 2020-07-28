@@ -63,6 +63,32 @@ const getAgent = (req, res) => {
   });
 };
 
+const findAllAgentsUser = (req,res) => {
+  Agent.find({user:req.params.id})
+    .populate('user')
+    .then((agents)=>{
+      res.send(agents);
+    })
+    .catch ((err)=>{
+      res.status(500).send(err)
+    })
+};
+
+const deleteAgent = (req,res) => {
+  Agent.deleteOne ({_id: req.params.id})
+  .then (()=>{
+    Agent.find ({user: req.params.userId})
+    .populate('user')
+    .then ((agents)=> {
+      res.send(agents);
+    })
+    .catch((err)=> {
+      res.status(500).send(err);
+    })
+  })
+}
+
+
 
 
 module.exports = {
@@ -72,4 +98,6 @@ module.exports = {
   createAgent,
   getAllUsers,
   getAgent,
+  findAllAgentsUser,
+  deleteAgent,
 };
