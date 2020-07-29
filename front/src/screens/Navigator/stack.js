@@ -24,6 +24,7 @@ import ConfirmAgentLoadContainer from "../ConfirmAgentLoad/ConfirmAgentLoadConta
 import SelectAccountContainer from "../selectAccount/SelectAccountContainer";
 import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
+import AllAgentsContainer from "../allAgents/AllAgentsContainer"
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
 import createdAgentOkContainer from "../createdAgentOk/createdAgentOkContainer";
@@ -305,7 +306,12 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Accounts"
         component={AccountsContainer}
-        options={{ ...myHeader, title: "Mis cuentas" }}
+        options={{ ...myHeader, title: "Mis Cuentas" }}
+      />
+      <Stack.Screen
+        name="AllAgents"
+        component={AllAgentsContainer}
+        options={{ ...myHeader, title: "Mis Negocios" }}
       />
       <Stack.Screen
         name="SingleAccount"

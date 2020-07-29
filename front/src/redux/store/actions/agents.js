@@ -1,11 +1,15 @@
 import axios from "axios";
 import { IP } from "../../../../config";
+<<<<<<< HEAD
+import { SET_AGENT, CREATE_AGENT, CREATE_STORE,GET_USER_AGENTS } from "../constants";
+=======
 import {
   SET_AGENT,
   CREATE_AGENT,
   CREATE_STORE,
   SET_AGENTS,
 } from "../constants";
+>>>>>>> d6136235ed51e375c1edd47b6c14fab7c36fe26b
 import { login_user } from "../actions/users";
 
 export const setAgent = (agent) => {
@@ -33,8 +37,21 @@ const createNewStore = (newStore) => {
   return {
     type: CREATE_STORE,
     newStore,
+<<<<<<< HEAD
+  }
+}
+
+const get_user_agents = (agents) => {
+  return {
+    type: GET_USER_AGENTS,
+    agents,
+  }
+}
+
+=======
   };
 };
+>>>>>>> d6136235ed51e375c1edd47b6c14fab7c36fe26b
 export const editAgent = (agentData) => (dispatch) => {
   return axios
     .patch(`http://${IP}:1337/api/agents/editprofile`, agentData)
@@ -96,6 +113,17 @@ export const createAgent = (
     });
 };
 
+export const fetchUserAgents = (id) => (dispatch) =>
+  axios
+    .get(`http://${IP}:1337/api/agents/user/${id}`)
+    .then((res) => {console.log("OTRO", res.data)
+    dispatch(get_user_agents(res.data))});
+
+
+export const deleteAgents = (id, userId) => (dispatch) =>
+  axios.delete(`http://${IP}:1337/api/agents/${id}/${userId}`).then((res) => {
+      dispatch(get_user_agents(res.data));
+    });
 export const fetchAgents = () => (dispatch) => {
   axios
     .get(`http://${IP}:1337/api/agents`)
