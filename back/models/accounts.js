@@ -14,7 +14,7 @@ var accountSchema = new Schema({
     },
   ],
   accountNumber: {
-    type: Number,
+    type: String,
     required: true,
   },
   cbu_cvu: {

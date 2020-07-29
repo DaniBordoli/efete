@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IP } from "../../../../config";
-import { LOGIN_USER } from "../constants";
+import { LOGIN_USER , MODE} from "../constants";
 
 export const login_user = (user) => {
   return {
@@ -8,6 +8,15 @@ export const login_user = (user) => {
     user,
   };
 };
+
+
+export const mode = (mode) => {
+  return {
+    type: MODE,
+    mode,
+  };
+};
+
 
 export const logUser = (user) => (dispatch) => {
   return axios
@@ -37,7 +46,7 @@ export const register = (firstName, lastName, dni, password, username) => (
     .then((res) => dispatch(login_user(res.data)));
 };
 
-export const editUser = (userData) => () => {
+export const editUser = (userData) => (dispatch) => {
   return axios
     .patch(`http://${IP}:1337/api/users/editprofile`, userData)
     .then((res) => dispatch(login_user(res.data)))

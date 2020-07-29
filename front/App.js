@@ -30,9 +30,14 @@ const customDarkTheme={
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'nunito': require("./assets/fonts/Nunito-Black.ttf"),
+    'nunito-bold': require("./assets/fonts/Nunito-Black.ttf"),
+    'nunito': require("./assets/fonts/Nunito-Bold.ttf"),
+    
     'delgado': require("./assets/fonts/OpenSans-Light.ttf"),
-    'regular': require("./assets/fonts/OpenSans-Regular.ttf")
+    'regular': require("./assets/fonts/OpenSans-Regular.ttf"),
+    'sans': require("./assets/fonts/IBMPlexSans-Regular.ttf"),
+    'sans-bold': require("./assets/fonts/IBMPlexSans-Bold.ttf"),
+    'lato': require("./assets/fonts/Lato-Regular.ttf"),
   });
 };
 

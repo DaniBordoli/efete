@@ -10,20 +10,28 @@ import {
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Switch } from "react-native-gesture-handler";
 import { useSelector, useDispatch } from "react-redux";
-import { logOutUser } from "../../redux/store/actions/users";
+import { logOutUser, mode } from "../../redux/store/actions/users";
 
 const Drawer = createDrawerNavigator();
 
 export default (props) => {
   const [modoDark, setModoDark] = useState(false);
+
   const cambiarModo = () => {
     setModoDark(!modoDark);
+    dispatch(mode(modoDark));
   };
+
+  const modee = useSelector((state) => state.users.mode);
+
   const userRole = useSelector((state) => state.users.user.role);
   const dispatch = useDispatch();
 
   return (
-    <DrawerContentScrollView {...props}>
+    <DrawerContentScrollView
+      {...props}
+      style={{ backgroundColor: modee ? "white" : "#151e21" }}
+    >
       <View>
         <Text
           onPress={() => props.navigation.closeDrawer()}
@@ -36,7 +44,7 @@ export default (props) => {
       <View>
         <DrawerItem
           icon={user}
-          labelStyle={style.label}
+          labelStyle= {modee ? style.label : style.labelDark}
           label="Mi perfil"
           onPress={() =>
             props.navigation.navigate("Root", { screen: "User" }, props)
@@ -45,7 +53,7 @@ export default (props) => {
 
         <DrawerItem
           icon={bank}
-          labelStyle={style.label}
+          labelStyle= {modee ? style.label : style.labelDark}
           label="Mis cuentas"
           onPress={() =>
             props.navigation.navigate("Root", { screen: "Accounts" }, props)
@@ -55,7 +63,7 @@ export default (props) => {
         {userRole === "agent" ? (
           <DrawerItem
             icon={agent}
-            labelStyle={style.label}
+            labelStyle= {modee ? style.label : style.labelDark}
             label="Perfil agente"
             onPress={() =>
               props.navigation.navigate("Root", { screen: "Agent" }, props)
@@ -64,7 +72,7 @@ export default (props) => {
         ) : (
           <DrawerItem
             icon={agent}
-            labelStyle={style.label}
+            labelStyle= {modee ? style.label : style.labelDark}
             label="Convertite en Agente"
             onPress={() =>
               props.navigation.navigate(
@@ -79,7 +87,7 @@ export default (props) => {
         <DrawerItem
           icon={info}
           label="Acerca de la App"
-          labelStyle={style.label}
+          labelStyle={modee ? style.label : style.labelDark}
           onPress={() =>
             props.navigation.navigate("Root", { screen: "ScannerQR" }, props)
           }
@@ -103,7 +111,9 @@ export default (props) => {
           }}
         >
           <View style={style.modoOscuro}>
-            <Text style={style.textMode}>Modo oscuro</Text>
+            <Text style={modee ? style.textMode : style.textModeDark}>
+              Modo oscuro
+            </Text>
             <View pointerEvents="none">
               <Switch value={modoDark} />
             </View>
@@ -114,7 +124,7 @@ export default (props) => {
 
         <DrawerItem
           icon={exit}
-          labelStyle={style.label}
+          labelStyle={modee ? style.label : style.labelDark}
           label="Cerrar sesion"
           onPress={() => {
             dispatch(logOutUser());
@@ -137,15 +147,19 @@ const style = StyleSheet.create({
   },
   titulo: {
     fontSize: 47,
-    fontFamily: "nunito",
+    fontFamily: "nunito-bold",
     textAlign: "center",
     marginTop: 20,
     marginBottom: 10,
-    color: `${headerColor}`,
+    color: headerColor,
   },
   label: {
     fontSize: 16,
     color: "#3B414B",
+  },
+  labelDark: {
+    fontSize: 16,
+    color: "white",
   },
   modoOscuro: {
     flexDirection: "row",
@@ -157,6 +171,11 @@ const style = StyleSheet.create({
   textMode: {
     fontSize: 16,
     color: "#3B414B",
+    fontWeight: "500",
+  },
+  textModeDark: {
+    fontSize: 16,
+    color: "white",
     fontWeight: "500",
   },
 });

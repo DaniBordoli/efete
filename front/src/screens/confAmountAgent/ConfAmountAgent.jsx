@@ -13,9 +13,9 @@ const ConfAmountAgent = ({
 
 
    return(
-    <View style={{ flex: 1 , backgroundColor:'white'}}>
+    <View style={{ flex: 1 , backgroundColor:'#F1F3F6'}}>
          <Text style={style.monto}>Monto</Text>
-         <Text style={style.valor}>{`$ ${value}`}</Text>
+         <Text style={style.valor}>{`$ ${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}</Text>
        <View style={style.montoContainer}>
               <FlatList
               keyExtractor={(amount) => amount}

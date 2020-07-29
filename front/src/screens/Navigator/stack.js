@@ -31,6 +31,8 @@ import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
 import OpenCameraContainer from "../camera/OpenCameraContainer";
+import Map from "../Map/mapContainer"
+import confirmValueContainer from '../confirmValue/confirmValuecontainer'
 
 const Stack = createStackNavigator();
 
@@ -52,6 +54,14 @@ export default ({ navigation }) => {
               onPress={() => navigation.navigate("InfoQR")}
             />
           ),
+        }}
+      />
+      <Stack.Screen
+        name="Map"
+        component={Map}
+        options={{
+          ...myHeader,
+          title: "Mapa",
         }}
       />
       <Stack.Screen
@@ -80,6 +90,12 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="createdAgentOk"
         component={createdAgentOkContainer}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="confirmValue"
+        component={confirmValueContainer}
         options={{ headerShown: false }}
       />
 

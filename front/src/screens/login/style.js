@@ -5,7 +5,7 @@ export const style = StyleSheet.create({
     fontSize: 64,
     color: "#6F76E4",
     textAlign: "center",
-    fontFamily: "nunito",
+    fontFamily: "nunito-bold",
     marginTop: 50,
   },
   iniciarSesion: {
