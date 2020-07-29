@@ -98,12 +98,13 @@ export default ({
         {user.message ? (
           <Text>{user.message}</Text>
         ) : user._id && !user.isVerified ? (
-          <View>
-            <Text>Tu cuenta no ha sido verificada.</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={style.alerta}>Tu cuenta no ha sido verificada.</Text>
             <Text
               onPress={() => {
                 handleVerifyAccount();
               }}
+              style={{ ...style.alerta, color: "#6F76E4" }}
             >
               Verificar cuenta
             </Text>
