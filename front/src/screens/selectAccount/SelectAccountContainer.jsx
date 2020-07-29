@@ -40,8 +40,7 @@ export default ({ navigation, route }) => {
         cbu: route.params.cbu,
         originAccountCbu: selectedAccount.accountNumber,
       })
-    )
-      .then((res) => {
+    ).then((res) => {
         navigation.navigate("TransactionOk", { transaction: res.transaction });
       })
       .then(() => {
