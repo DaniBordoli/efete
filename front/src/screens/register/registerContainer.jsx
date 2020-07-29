@@ -34,7 +34,7 @@ export default ({ navigation }) => {
   function handleSubmit() {
     dispatch(register(firstName, lastName, dni, password, username)).then(
       (data) => {
-        if (data.user._id) {
+        if (data.user === "OK") {
           setFirstName("");
           setLastName("");
           setDni(0);

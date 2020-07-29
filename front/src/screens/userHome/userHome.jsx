@@ -66,18 +66,6 @@ export default ({
               </TouchableOpacity>
             )}
 
-            {/* <Button
-            title="ver todas las operaciones"
-            onPress={() =>
-              navigation.navigate("AllUserTransactions", {
-                userTransactions,
-              })
-            }
-          />
-          <Button
-          title='Mis cuentas'
-          onPress={()=> navigation.navigate('Accounts')}
-          /> */}
           </View>
 
           <Animatable.View
@@ -86,9 +74,33 @@ export default ({
           >
             <Text style={style.movimientos}>Movimientos</Text>
             <Text style={style.time}>{time.toUpperCase()}</Text>
+            {/* <Button>Ver Todo</Button> */}          
+            
+            
+          <View style={{alignItems: "center"}}>
+           {userTransactions[0] 
+           ?
+           (
+           <Button
+           buttonStyle={{
+            backgroundColor: "white",
+            borderWidth: 1,
+            borderColor: "#6f76e4",
+            width: 200,
+            marginBottom: 10,
+           }}
+           titleStyle={{ color: "#6f76e4" }}
+           title="Ver todas las transacciones"
+           onPress={() => navigation.navigate('AllUserTransactions', {userTransactions})}
+           />
+           ) :
+           <Text>
+             No hay transacciones
+           </Text>
+           }
+           </View>
 
-            <View style={style.hr} />
-
+           <View style={style.hr} />
             <FlatList
               showsVerticalScrollIndicator={false}
               keyExtractor={(userTransactions) => userTransactions._id}

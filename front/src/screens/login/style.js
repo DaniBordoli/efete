@@ -22,14 +22,14 @@ export const style = StyleSheet.create({
     borderRadius: 20,
     height: 130,
     marginTop: 30,
-   /*  shadowColor: "#000",
+    /*  shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 5,
     },
     shadowOpacity: 0.1,
     shadowRadius: 18, */
-    elevation:7
+    elevation: 7,
   },
   botonRegister: {
     backgroundColor: "#F1F3F6",
@@ -46,7 +46,7 @@ export const style = StyleSheet.create({
     borderBottomWidth: 1,
     display: "flex",
     alignSelf: "center",
-    width: '100%',
+    width: "100%",
   },
   botonIniciar: {
     backgroundColor: "#5352EC",
@@ -57,7 +57,7 @@ export const style = StyleSheet.create({
     color: "#FFFFFF",
     textTransform: "uppercase",
     fontFamily: "nunito",
-    fontWeight:'normal'
+    fontWeight: "normal",
   },
   searchSection: {
     flex: 1,
@@ -89,6 +89,14 @@ export const style = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     borderRadius: 10,
-    marginRight:15
+    marginRight: 15,
+  },
+  alerta: {
+    marginTop: 5,
+    fontSize: 15,
+    color: "#DDDDDD",
+    fontStyle: "italic",
+    fontWeight: "bold",
+    paddingLeft: 10,
   },
 });

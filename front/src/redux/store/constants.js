@@ -23,3 +23,4 @@ export const CREATE_AGENT = "CREATE_AGENT";
 export const SET_AGENT = "SET_AGENT";
 export const CREATE_STORE = 'CREATE_STORE'
 export const GET_USER_AGENTS = "GET_USER_AGENTS"
+export const SET_AGENTS = 'SET_AGENTS'

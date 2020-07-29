@@ -101,6 +101,18 @@ export default (props) => {
             props.navigation.navigate("Root", { screen: "ScannerQR" }, props)
           }
         />
+        <DrawerItem
+          icon={edit}
+          label="Datos Personales"
+          labelStyle={style.label}
+          onPress={() =>
+            props.navigation.navigate(
+              "Root",
+              { screen: "EditUserProfile" },
+              props
+            )
+          }
+        />
         <View style={style.hr} />
         <TouchableOpacity
           onPress={() => {
@@ -190,5 +202,7 @@ const exit = () => (
 );
 const shop = () => (
   <Entypo name="shop" size={25} color="#929292" />
-  
+)
+const edit = () => (
+  <MaterialCommunityIcons name="account-edit" size={24} color="black" />
 );
