@@ -1,5 +1,5 @@
 import axios from "axios";
-import {setAgent} from './agents'
+import { setAgent } from "./agents";
 import { IP } from "../../../../config";
 import {
   FETCH_TRANSACTIONS,
@@ -10,6 +10,7 @@ import {
   SET_TRANSACTION,
   FETCH_AGENT_TRANSACTIONS,
 } from "../constants";
+import Axios from "axios";
 
 export const fetch_transactions = (transactions) => {
   return {
@@ -72,26 +73,48 @@ export const getUserTransactions = (id) => (dispatch) => {
 export const getUserTransaction = (id) => (dispatch) => {
   return axios
     .get(`http://${IP}:1337/api/transactions/user/${id}`)
-    .then((res) =>res.data)
+    .then((res) => res.data)
     .then((transaction) => dispatch(fetch_users_transaction(transaction)));
 };
 
 export const updateAmountAgent = (value, id) => (dispatch) => {
   return axios
-  .patch(`http://${IP}:1337/api/agents/editdailyamount`, {
-    dailyAmount:value ,
-    _id:id
-  
-  })
-  .then(res => res.data)
-  .then((agent=> dispatch(setAgent(agent))))
-}
-
+    .patch(`http://${IP}:1337/api/agents/editdailyamount`, {
+      dailyAmount: value,
+      _id: id,
+    })
+    .then((res) => res.data)
+    .then((agent) => dispatch(setAgent(agent)));
+};
 
 export const createTransaction = (transaction) => (dispatch) =>
-  axios.post(`http://${IP}:1337/api/transactions`, transaction).then((res) => {
-    dispatch(newTransaction(res.data));
-  });
+  axios
+    .post(
+      `
+https://sandbox.bind.com.ar/v1/banks/322/accounts/21-1-99999-4-6/owner/transaction-request-types/TRANSFER/transaction-requests
+
+`,
+      {
+        to: {
+          cbu: transaction.destinationAccount,
+        },
+        value: {
+          currency: "ARS",
+          amount: transaction.amount,
+        },
+        description: "Transfer de prueba",
+        concept: "VAR",
+        emails: ["facunovaroh@gmail.com"],
+      }
+    )
+    .then(() => {
+      axios
+        .post(`http://${IP}:1337/api/transactions`, transaction)
+        .then((res) => {
+          dispatch(newTransaction(res.data));
+        });
+    });
+
 export const getAgentTransactions = (id) => (dispatch) => {
   return axios
     .get(`http://${IP}:1337/api/transactions/agent/${id}`)

@@ -20,7 +20,7 @@ const userRegister = (req, res, next) => {
               })
               .then((user) => {
                 SendMail(user);
-                res.send(user);
+                res.sendStatus(200);
               });
           }
         });
