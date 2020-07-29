@@ -22,4 +22,4 @@ export const MODE = "MODE";
 export const CREATE_AGENT = "CREATE_AGENT";
 export const SET_AGENT = "SET_AGENT";
 export const CREATE_STORE = 'CREATE_STORE'
-export const FETCH_AGENTS = "FETCH_AGENTS"
+export const GET_USER_AGENTS = "GET_USER_AGENTS"
