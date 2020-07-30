@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import MapView, { Marker } from "react-native-maps";
-import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { StyleSheet, Text, View, Dimensions, Linking } from "react-native";
+import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import Carousel from "react-native-snap-carousel";
-import { headerColor, buttonColor } from "../../Common/constans";
+import { headerColor, buttonColor, grisClaro } from "../../Common/constans";
 import { Button } from "react-native-elements";
+import { Load } from "../../Common/loading";
+import { mapStyle } from "./mapDark";
 
-export default ({ ubicacion, agentes, navigation, markers, value }) => {
+export default ({ ubicacion, agentes, navigation, markers, value, mode, loading }) => {
   const [index, setIndex] = useState(null);
 
   const onCarouselItemChange = (index) => {
     let location = agentes[index];
     setIndex(agentes[index]);
+    console.log("AGENTEEEEES:", agentes);
 
     this._map.animateToRegion({
       latitude: location.ubicacion.latitude,
@@ -35,8 +38,10 @@ export default ({ ubicacion, agentes, navigation, markers, value }) => {
   };
 
   return (
-    <View style={styles.container}>
+    loading ? 
+    (<View style={styles.container}>
       <MapView
+        customMapStyle={mode ? null : mapStyle}
         showsMyLocationButton={true}
         ref={(map) => (this._map = map)}
         initialRegion={ubicacion}
@@ -70,75 +75,149 @@ export default ({ ubicacion, agentes, navigation, markers, value }) => {
           ))}
       </MapView>
       <View style={styles.carousel}>
-        <Carousel
-          ref={(c) => {
-            this._carousel = c;
-          }}
-          data={agentes}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.cardContainer}>
+        {agentes && agentes.length > 0 ? (
+          <Carousel
+            ref={(c) => {
+              this._carousel = c;
+            }}
+            data={
+              agentes
+                ? agentes
+                : [
+                    {
+                      address: "No existe ningun Agente",
+                      name: "No existe ningun Agente",
+                    },
+                  ]
+            }
+            renderItem={({ item }) => {
+              console.log(":::::::::::::::::::::::::::::::::ITEEEM: ", item);
+              return (
                 <View
-                  style={{
-                    flexDirection: "row",
-                    flex: 1,
-                    alignItems: "center",
-                  }}
+                  style={mode ? styles.cardContainer : styles.cardContainerDark}
                 >
-                  <FontAwesome5 name="store" size={30} color={headerColor} />
-                  <Text
+                  <View
                     style={{
-                      marginLeft: 25,
-                      fontSize: 15,
-                      fontFamily: "nunito-bold",
+                      flexDirection: "row",
+                      flex: 1,
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    Nombre:
-                  </Text>
-                  <Text style={{ fontSize: 15, marginLeft: 5 }}>
-                    {item.name}
-                  </Text>
-                </View>
+                    <View style={{ flex: 1 }}>
+                      <FontAwesome5
+                        name="store"
+                        size={30}
+                        color={headerColor}
+                      />
+                    </View>
 
-                <View style={styles.hr} />
-
-                <View
-                  style={{
-                    flex: 1,
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <View style={{ flex: 2 }}>
-                    <Text style={styles.textoAddress}>{item.address}</Text>
+                    <View
+                      style={{
+                        flexDirection: "column-reverse",
+                        flex: 5,
+                        alignItems: "flex-start",
+                      }}
+                    >
+                      <View style={{ alignSelf: "center", paddingRight: 5 }}>
+                        <Text style={styles.textoAddress}>
+                          {item.address.split(",")[0]}
+                        </Text>
+                      </View>
+                      <View
+                        style={{ flexDirection: "row", alignSelf: "center" }}
+                      >
+                        <Text
+                          style={{
+                            fontSize: 18,
+                            fontFamily: "nunito",
+                            alignSelf: "center",
+                            color: mode ? "black" : grisClaro,
+                          }}
+                        >
+                          Nombre:
+                        </Text>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            marginLeft: 5,
+                            alignSelf: "center",
+                            color: mode ? "black" : grisClaro,
+                          }}
+                        >
+                          {item.name}
+                        </Text>
+                      </View>
+                    </View>
                   </View>
 
-                  <View style={{ flex: 1 }}>
-                    <Button
-                      onPress={() => {
-                        navigation.navigate("confirmValue", { value, index });
-                      }}
-                      titleStyle={{ fontSize: 14 }}
-                      buttonStyle={{
-                        width: 100,
-                        height: 39,
-                        alignSelf: "center",
-                        backgroundColor: buttonColor,
-                      }}
-                      title="Como llegar"
-                    />
+                  <View style={mode ? styles.hr : styles.hrDark} />
+
+                  <View
+                    style={{
+                      flex: 1,
+                      flexDirection: "row",
+                      alignItems: "flex-end",
+                      paddingBottom: 2,
+                    }}
+                  >
+                    <View style={{ flex: 1 }}>
+                      <Button
+                        titleStyle={{
+                          fontSize: 14,
+                          color: mode ? buttonColor : "#B8B6FD",
+                        }}
+                        buttonStyle={{
+                          width: 109,
+                          height: 39,
+                          alignSelf: "center",
+                          backgroundColor: mode ? "white" : "#131212",
+                          borderColor: mode ? buttonColor : "#B8B6FD",
+                          borderWidth: 1,
+                        }}
+                        title="COMO LLEGAR"
+                        onPress={() =>
+                          Linking.openURL(
+                            `https://www.google.com/maps/dir/?api=1&travelmode=driving&dir_action=navigate&destination=${item.ubicacion.latitude}, ${item.ubicacion.longitude}`
+                          )
+                        }
+                      />
+                    </View>
+
+                    <View style={{ flex: 1 }}>
+                      <Button
+                        onPress={() => {
+                          navigation.navigate("confirmValue", { value, index });
+                        }}
+                        titleStyle={{ fontSize: 14 }}
+                        buttonStyle={{
+                          width: 109,
+                          height: 39,
+                          alignSelf: "center",
+                          backgroundColor: mode ? buttonColor : headerColor,
+                        }}
+                        title="CONFIRMAR"
+                      />
+                    </View>
                   </View>
                 </View>
-              </View>
-            );
-          }}
-          sliderWidth={Dimensions.get("window").width}
-          itemWidth={300}
-          removeClippedSubviews={false}
-          onSnapToItem={(index) => onCarouselItemChange(index)}
-        />
+              );
+            }}
+            sliderWidth={Dimensions.get("window").width}
+            itemWidth={300}
+            removeClippedSubviews={false}
+            onSnapToItem={(index) => onCarouselItemChange(index)}
+          />
+        ) : (
+          <View style={styles.noAgentes}>
+            <Text style={styles.noAgentesText}>
+              NO EXISTEN AGENTES EN TU ZONA
+            </Text>
+          </View>
+        )}
       </View>
-    </View>
+    </View>) :
+    (<Load/>)
   );
 };
 
@@ -162,12 +241,18 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
   },
+  cardContainerDark: {
+    backgroundColor: "#131212" /* rgba(0, 0, 0, 0.6) */,
+    height: 150,
+    width: 300,
+    padding: 15,
+    borderRadius: 10,
+  },
 
   textoAddress: {
-    color: "black",
-    fontSize: 12,
+    color: "grey",
+    fontSize: 15,
     alignSelf: "center",
-    marginRight: 5,
   },
   hr: {
     borderBottomColor: "#DDDDDD",
@@ -176,4 +261,36 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: "95%",
   },
+  hrDark: {
+    borderBottomColor: headerColor,
+    borderBottomWidth: 1,
+    display: "flex",
+    alignSelf: "center",
+    width: "95%",
+  },
+  noAgentes: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "red",
+    marginBottom: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    borderRadius: 6,
+  },
+  noAgentesText: {
+    height: 140,
+    color: "white",
+    textAlign: "center",
+    textAlignVertical: "center",
+    fontSize: 40,
+  },
 });
+
+{
+  /* <View style={styles.noAgentes}>
+            <Text style={styles.noAgentesText}>
+              NO EXISTEN AGENTES EN TU ZONA
+            </Text>
+          </View> */
+}

@@ -33,7 +33,7 @@ export default ({ navigation, route }) => {
   useEffect(() => {
     dispatch(getUserTransactions(route.params.user)).then(() =>
       setLoader(true)
-    );
+    )
   }, []);
 
   return (

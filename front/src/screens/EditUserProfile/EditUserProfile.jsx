@@ -23,7 +23,7 @@ export default ({
   return (
     <KeyboardAvoidingView behavior="height">
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
+        <View style={style.container}>
           <Text style={style.movimientos}>Datos Personales</Text>
           <View style={{ margin: 20 }}>
             <Text style={style.text}>Nombre</Text>
@@ -86,7 +86,7 @@ export default ({
                 style={style.input}
                 onChangeText={(e) => handleChange(e, "password")}
                 name="password"
-                defaultValue={password}
+                // defaultValue={password}
                 required
               />
               <TouchableOpacity

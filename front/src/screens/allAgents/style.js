@@ -33,7 +33,7 @@ export const style = StyleSheet.create({
     width: 370,
   },
   parent: {
-    flex: 3,
+    flex: 1,
     backgroundColor: "white",
     borderRadius: 12,
     alignSelf: "center",
@@ -67,7 +67,7 @@ export const style = StyleSheet.create({
     fontSize: 17,
   },
 
-  wallet: {
+  negocio: {
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",

@@ -52,7 +52,7 @@ const CreatedAgentOk = ({ navigation, foto, name, address, cuil }) => {
 
           <View style={style.caja}>
             <Text style={style.info}>Dirección:</Text>
-            <Text style={style.description}> {address} </Text>
+            <Text style={style.description}> {address.split(',')[0]} </Text>
           </View>
 
           <View style={style.caja}>

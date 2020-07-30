@@ -78,7 +78,7 @@ const Accounts = ({
           </View>
           <View style={style.hr} />
 
-          <View style={{ flex: 2 }}>
+            <View style={{ flex: 2 }}>
             <Text style={style.asociadas}> CUENTAS ASOCIADAS</Text>
 
             <FlatList
@@ -86,7 +86,7 @@ const Accounts = ({
               showsVerticalScrollIndicator={false}
               keyExtractor={(accountsUser) => accountsUser._id}
               data={accountsUser}
-              renderItem={({ item, index }) => {
+              renderItem={({ item }) => {
                 return (
                   <View >
                     {!item.mainAccount ? (
@@ -107,14 +107,15 @@ const Accounts = ({
 
                         <View style={{ alignContent: "center" }}>
                           <View
-                            style={{ flexDirection: "row", marginBottom: 5 }}
-                          >
+                            style={{ flexDirection: "row", marginBottom:5, marginRight:-10
+                           }}
+                            >
                             <Text style={style.negrita}>Entidad:</Text>
                             <Text style={style.tex}>{item.nameEntity[0].nameEntity.substr(0,18)} ...</Text>
                           </View>
                           <View style={{ flexDirection: "row" }}>
                             <Text style={style.negrita}>Cuenta:</Text>
-                            <Text style={style.tex}> {item.accountNumber}</Text>
+                            <Text>{item.accountNumber.toLocaleString().substr(0,22)}</Text>
                           </View>
                         </View>
 
