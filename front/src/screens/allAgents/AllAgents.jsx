@@ -42,7 +42,7 @@ const AllAgents = ({
                               })
                             }
                           >
-                            <View style={style.wallet}>
+                            <View style={style.negocio}>
                               <Image
                                 source={mode ? require("../../../assets/iconos/negocio.png") : require("../../../assets/iconos/negocios.png") }
                                 style={{ width: 50, height: 50 }}
@@ -90,6 +90,15 @@ const AllAgents = ({
           ) : (
             <Load />
           )}
+          <Button
+              buttonStyle={style.botonAgregar}
+              titleStyle={style.tituloAgregar}
+              title="AGREGAR NEGOCIO"
+              onPress={() =>
+                navigation.navigate("CreateAgentForm")
+              }
+            />
+            
         </View>
       );
 

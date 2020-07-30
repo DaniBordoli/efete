@@ -4,6 +4,14 @@ import { Camera } from "expo-camera";
 import OpenCamera from "./OpenCamera";
 import * as Permissions from "expo-permissions";
 import * as MediaLibrary from "expo-media-library";
+import firebase from "../../firebase/index";
+import { Alert } from "react-native";
+import { YellowBox } from "react-native";
+import _ from "lodash";
+import { validateIdentity, editUser } from "../../redux/store/actions/users";
+import { useSelector, useDispatch } from "react-redux";
+import * as FileSystem from "expo-file-system";
+import * as ImageManipulator from "expo-image-manipulator";
 
 export default function OpenCameraContainer({ navigation, route }) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -11,7 +19,12 @@ export default function OpenCameraContainer({ navigation, route }) {
   const [dataFoto, setDataFoto] = useState({});
   const [open, setOpen] = useState(false);
 
+  const dispatch = useDispatch();
+
   const camRef = useRef(null);
+
+  const user = useSelector((state) => state.users.user);
+  const token = useSelector((state) => state.users.token);
 
   useEffect(() => {
     (async () => {
@@ -56,11 +69,42 @@ export default function OpenCameraContainer({ navigation, route }) {
     setOpen(false);
   };
 
+  const imageResize = async () =>
+    await ImageManipulator.manipulateAsync(
+      (`${capturarFoto}`,
+      [],
+      { compress: 0.5, format: ImageManipulator.SaveFormat.JPEG })
+    ).then((data) => {
+      console.log(data, "IMAGEN RESIZE");
+    });
+
+  const uriEncoded = async () =>
+    await FileSystem.readAsStringAsync(capturarFoto, {
+      encoding: FileSystem.EncodingType.Base64,
+    });
+
   const handleConfirm = (e) => {
-    {
-      route.params
-        ? navigation.navigate("EditAgentProfile", { capturarFoto })
-        : navigation.navigate("CreateAgentForm", { capturarFoto });
+    setOpen(false);
+    if (route.params.identity) {
+      navigation.navigate("WaitingValidation");
+      dispatch(
+        editUser({
+          _id: user._id,
+          processVerification: true,
+        })
+      )
+        .then(() => {
+          imageResize();
+          return uriEncoded();
+        })
+        .then((uri) => {
+          console.log("URI64", uri.slice(0, 50));
+          dispatch(validateIdentity(uri, "37245882", "M", token));
+        });
+    } else if (route.params.edit) {
+      navigation.navigate("EditAgentProfile", { capturarFoto });
+    } else {
+      navigation.navigate("CreateAgentForm", { capturarFoto });
     }
   };
 

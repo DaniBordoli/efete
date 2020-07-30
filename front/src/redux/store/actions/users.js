@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IP } from "../../../../config";
-import { LOGIN_USER , MODE} from "../constants";
+import { LOGIN_USER, MODE, TOKEN } from "../constants";
 
 export const login_user = (user) => {
   return {
@@ -9,6 +9,12 @@ export const login_user = (user) => {
   };
 };
 
+export const setToken = (token) => {
+  return {
+    type: TOKEN,
+    token,
+  };
+};
 
 export const mode = (mode) => {
   return {
@@ -17,15 +23,11 @@ export const mode = (mode) => {
   };
 };
 
-
 export const logUser = (user) => (dispatch) => {
   console.log("USUARIO",user)
   return axios
     .post(`http://${IP}:1337/api/users/login`, user, {
       withCredentials: true,
-      /* headers: {
-        "Content-Type": "application/json",
-      }, */
     })
     .then((res) => dispatch(login_user(res.data)))
     .catch(() => {
@@ -33,9 +35,14 @@ export const logUser = (user) => (dispatch) => {
     });
 };
 
-export const register = (firstName, lastName, dni, password, username) => (
-  dispatch
-) => {
+export const register = (
+  firstName,
+  lastName,
+  dni,
+  password,
+  username,
+  gender
+) => (dispatch) => {
   return axios
     .post(`http://${IP}:1337/api/users/register`, {
       firstName: firstName,
@@ -43,6 +50,7 @@ export const register = (firstName, lastName, dni, password, username) => (
       dni: dni,
       username: username,
       password: password,
+      gender: gender,
     })
     .then((res) => dispatch(login_user(res.data)));
 };
@@ -61,3 +69,41 @@ export const logOutUser = () => (dispatch) =>
   axios
     .post(`http://${IP}:1337/api/users/logout`)
     .then(() => dispatch(login_user({})));
+
+export const generateToken = () => (dispatch) => {
+  return axios
+    .post(
+      " http://150.136.1.69:8011/CHUTROFINAL/API_ABIS/Autorizacion/token.php",
+
+      "username=plataforma5rostro&password=ghRSl3tb8Axwp4P",
+
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      }
+    )
+    .then((res) => {
+      dispatch(setToken(res.data.data.token));
+    });
+};
+
+export const validateIdentity = (url, dni, gender, token) => (dispatch) => {
+  console.log(dni, gender, token, "DATOOOSACA");
+  return axios
+    .post(
+      "http://150.136.1.69:8011/CHUTROFINAL/API_ABIS/apiInline_v3.php",
+
+      { imagen: url, dni: dni, sexo: gender },
+
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .then((res) => {
+      console.log(res.data, "RESDATACA");
+    });
+};

@@ -89,7 +89,7 @@ export const style = StyleSheet.create({
   },
 
 
-  wallet: {
+  negocio: {
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
