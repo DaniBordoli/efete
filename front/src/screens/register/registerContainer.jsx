@@ -3,6 +3,7 @@ import { register } from "../../redux/store/actions/users";
 import Register from "./register";
 import { useDispatch, useSelector } from "react-redux";
 
+
 export default ({ navigation }) => {
   const dispatch = useDispatch();
 
@@ -33,7 +34,7 @@ export default ({ navigation }) => {
   function handleSubmit() {
     dispatch(register(firstName, lastName, dni, password, username)).then(
       (data) => {
-        if (data.user._id) {
+        if (data.user === "OK") {
           setFirstName("");
           setLastName("");
           setDni(0);

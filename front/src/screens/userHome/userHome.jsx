@@ -44,7 +44,7 @@ export default ({
               <TouchableOpacity
               style={mode ? style.agente : style.agenteDark}
                 activeOpacity={0.5}
-                onPress={() => navigation.navigate("Agent")}
+                onPress={() => navigation.navigate("AllAgents")}
               >
                 <Image
                   source={ mode ? require("../../../assets/iconos/agente.png") : require("../../../assets/iconos/agenteDark.png") }
