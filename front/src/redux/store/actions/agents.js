@@ -97,7 +97,7 @@ export const createAgent = (
 };
 
 export const fetchAgents = () => (dispatch) => {
-  axios
-    .get(`http://${IP}:1337/api/agents`)
-    .then((res) => dispatch(setAgents(res.data)));
+  return axios.get(`http://${IP}:1337/api/agents`).then((res) => {
+    return dispatch(setAgents(res.data));
+  });
 };
