@@ -48,7 +48,7 @@ const header = mode ? myHeader : myHeaderDark
   )
 
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="EditAgentProfile">
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
