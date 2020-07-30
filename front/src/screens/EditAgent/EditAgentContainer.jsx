@@ -16,7 +16,23 @@ export default ({ navigation, route }) => {
 
   const dispatch = useDispatch();
 
+
+  const agentInfo = useSelector((state) => state.agents.agent);
   const userId = useSelector((state) => state.users.user._id);
+
+  const [agent, setAgent] = useState(agentInfo);
+  
+  const [ubicacion, setUbicacion] = useState({});
+  const getCoordsFromName = (loc) => {
+    console.log('HANDLER UBICATION',loc)
+    setUbicacion({ latitude: loc.lat, longitude: loc.lng });
+  };
+
+  const [address, setAddress] = useState("");
+  function handlerAddress(text) {
+    console.log('HANDLER ANDRESS', text.description)
+    setAddress(text.description);
+  }
 
   useEffect(() => {
     //dispatch(fetchAgent(agentInfo._id));
@@ -52,7 +68,8 @@ export default ({ navigation, route }) => {
         dispatch(
           editAgent({
             name: agent.name,
-            address: agent.address,
+            address,
+            ubicacion,
             imageUrl: url,
             cuil: agent.cuil,
             _id: agent._id,
@@ -70,7 +87,8 @@ export default ({ navigation, route }) => {
         dispatch(
           editAgent({
             name: agent.name,
-            address: agent.address,
+            address,
+            ubicacion,
             cuil: agent.cuil,
             _id: agent._id,
           })
@@ -97,6 +115,8 @@ export default ({ navigation, route }) => {
       cuil={agent.cuil}
       navigation={navigation}
       image={agent.imageUrl}
+      notifyChange={(loc) => getCoordsFromName(loc)}
+      handlerAddress={handlerAddress}
     />
   );
 };
