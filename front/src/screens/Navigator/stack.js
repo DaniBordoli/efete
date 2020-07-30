@@ -318,7 +318,13 @@ export default ({ navigation }) => {
         component={SingleAccountContainer}
         options={{ ...myHeader, title: "Detalle" }}
       />
+      <Stack.Screen
+        name="EditAgent"
+        component={EditAgentContainer}
+        options={{ ...myHeader, title: "Detalle" }}
+      />
     </Stack.Navigator>
+    
   );
 };
 
