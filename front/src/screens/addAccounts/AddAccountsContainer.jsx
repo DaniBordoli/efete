@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddAccounts from "../addAccounts/AddAccounts";
-import { View } from "react-native";
 import { addAccounts, fetchBanks, fetchMainAccount } from "../../redux/store/actions/accounts";
 
 export default ({ navigation }) => {
   const user = useSelector((state) => state.users.user);
   const banks = useSelector((state) => state.accounts.banks);
-
+  
   const dispatch = useDispatch();
 
   const [bankId, setBankId] = useState("");
@@ -22,13 +21,20 @@ export default ({ navigation }) => {
     setCbu(cbu);
   };
 
-  const [accountNumber, setAccountNumber] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
+
+  const [accountNumber, setAccountNumber] = useState('');
   const handleAccountNumber = (accountNumber) => {
     setAccountNumber(accountNumber);
+    accountNumber.length == 22
+    ? setIsValid(true)
+    : setIsValid(false);
+    
   };
 
+  
   useEffect(() => {
-    //dispatch(fetchUserAccounts("5f0f14c1830a243382d6c6aa"))
     dispatch(fetchBanks());
   }, []);
 
@@ -36,9 +42,9 @@ export default ({ navigation }) => {
     dispatch(addAccounts(bankId, cbu, accountNumber, user._id))
     .then(()=>dispatch(fetchMainAccount(user._id)))
     
-
-    // dispatch(addAccounts(name, cbu, accountNumber, "5f0f14c1830a243382d6c6aa"));
   };
+
+  
 
   return (
     <AddAccounts
@@ -50,6 +56,7 @@ export default ({ navigation }) => {
       navigation={navigation}
       cbu={cbu}
       accountNumber={accountNumber}
+      isValid={isValid}
     />
   );
 };

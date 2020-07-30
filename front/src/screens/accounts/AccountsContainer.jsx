@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Accounts from "../accounts/Accounts";
-import { View } from "react-native";
 import {
   fetchUserAccounts,
   deleteAccounts,
