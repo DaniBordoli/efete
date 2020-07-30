@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { buttonColor, verdeTexto } from "../../Common/constans";
+import { buttonColor, verdeTexto, cardDark, lilaDark, azulClaro, azulDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   botonAgregar: {
@@ -47,6 +47,21 @@ export const style = StyleSheet.create({
     marginTop: 15,
     marginBottom: 10,
   },
+  parentDark: {
+    flex: 1,
+    backgroundColor: cardDark,
+    borderRadius: 12,
+    alignSelf: "center",
+    height: 96,
+    width: "90%",
+    flexDirection: "row",
+    alignItems: "center",
+    shadowOpacity: 0.25,
+    shadowRadius: 8.0,
+    elevation: 5,
+    marginTop: 15,
+    marginBottom: 10,
+  },
   parentOnly: {
     backgroundColor: "white",
     borderRadius: 12,
@@ -66,6 +81,13 @@ export const style = StyleSheet.create({
     marginRight: 5,
     fontSize: 17,
   },
+  negritaDark: {
+    fontWeight: "bold",
+    marginRight: 5,
+    fontSize: 17,
+    color:lilaDark
+  },
+
 
   negocio: {
     flexDirection: "column",
@@ -76,6 +98,10 @@ export const style = StyleSheet.create({
   },
   tex: {
     color: verdeTexto,
+    fontSize: 17,
+  },
+  texDark: {
+    color: azulDark,
     fontSize: 17,
   },
 });

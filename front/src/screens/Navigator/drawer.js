@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 /* cle */
-import { headerColor } from "../../Common/constans";
-import { MaterialIcons, MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
+import { headerColor, buttonDark } from "../../Common/constans";
+import {
+  MaterialIcons,
+  MaterialCommunityIcons,
+  AntDesign,
+  Entypo,
+} from "@expo/vector-icons";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -30,21 +35,27 @@ export default (props) => {
   return (
     <DrawerContentScrollView
       {...props}
-      style={{ backgroundColor: modee ? "white" : "#151e21" }}
+      style={{ backgroundColor: modee ? "white" : buttonDark }}
     >
       <View>
-        <Text
-          //onPress={() => props.navigation.closeDrawer()}
-          style={style.titulo}
+        <TouchableOpacity
+          style={modee ? style.back : style.backDark}
+          onPress={() => props.navigation.closeDrawer()}
         >
-          Efete
-        </Text>
+          <MaterialCommunityIcons
+            name="backburger"
+            size={30}
+            color={mode ? "#929292" : "white"}
+          />
+        </TouchableOpacity>
+
+        <Text style={style.titulo}>Efete</Text>
       </View>
       <View style={style.hr} />
       <View>
         <DrawerItem
           icon={user}
-          labelStyle= {modee ? style.label : style.labelDark}
+          labelStyle={modee ? style.label : style.labelDark}
           label="Mi perfil"
           onPress={() =>
             props.navigation.navigate("Root", { screen: "User" }, props)
@@ -53,7 +64,7 @@ export default (props) => {
 
         <DrawerItem
           icon={bank}
-          labelStyle= {modee ? style.label : style.labelDark}
+          labelStyle={modee ? style.label : style.labelDark}
           label="Mis cuentas"
           onPress={() =>
             props.navigation.navigate("Root", { screen: "Accounts" }, props)
@@ -62,7 +73,7 @@ export default (props) => {
 
         <DrawerItem
           icon={shop}
-          labelStyle= {modee ? style.label : style.labelDark}
+          labelStyle={modee ? style.label : style.labelDark}
           label="Mis Negocios"
           onPress={() =>
             props.navigation.navigate("Root", { screen: "AllAgents" }, props)
@@ -72,7 +83,7 @@ export default (props) => {
         {userRole === "agent" ? (
           <DrawerItem
             icon={agent}
-            labelStyle= {modee ? style.label : style.labelDark}
+            labelStyle={modee ? style.label : style.labelDark}
             label="Perfil agente"
             onPress={() =>
               props.navigation.navigate("Root", { screen: "Agent" }, props)
@@ -81,7 +92,7 @@ export default (props) => {
         ) : (
           <DrawerItem
             icon={agent}
-            labelStyle= {modee ? style.label : style.labelDark}
+            labelStyle={modee ? style.label : style.labelDark}
             label="Convertite en Agente"
             onPress={() =>
               props.navigation.navigate(
@@ -104,7 +115,7 @@ export default (props) => {
         <DrawerItem
           icon={edit}
           label="Datos Personales"
-          labelStyle={style.label}
+          labelStyle={modee ? style.label : style.labelDark}
           onPress={() =>
             props.navigation.navigate(
               "Root",
@@ -140,18 +151,6 @@ export default (props) => {
             props.navigation.navigate("Root", { screen: "Login" }, props);
           }}
         />
-
-        <DrawerItem
-          icon={back}
-          labelStyle={modee ? style.label : style.labelDark}
-          label="Volver"
-          // onPress={() => {
-          //   dispatch(logOutUser());
-          //   props.navigation.navigate("Root", { screen: "Login" }, props);
-          // }}
-          onPress={() => props.navigation.closeDrawer()}
-        />
-
       </View>
     </DrawerContentScrollView>
   );
@@ -170,13 +169,28 @@ const style = StyleSheet.create({
     fontSize: 47,
     fontFamily: "nunito-bold",
     textAlign: "center",
-    marginTop: 20,
     marginBottom: 10,
     color: headerColor,
   },
   label: {
     fontSize: 16,
     color: "#3B414B",
+  },
+  back: {
+    fontSize: 16,
+    color: "#3B414B",
+    alignSelf: "flex-end",
+    marginRight: 10,
+    marginTop: 5,
+
+  },
+  backDark: {
+    fontSize: 16,
+    color: "#3B414B",
+    alignSelf: "flex-end",
+    marginTop: 5,
+
+    marginRight: 10,
   },
   labelDark: {
     fontSize: 16,
@@ -206,21 +220,13 @@ const bank = () => (
   <MaterialCommunityIcons name="bank" size={24} color="#929292" />
 );
 const agent = () => (
-  <MaterialIcons name="person-pin-circle" size={24} color="#929292" />
+  <MaterialIcons name="person-pin-circle" size={25} color="#929292" />
 );
 const info = () => <MaterialIcons name="info" size={24} color="#929292" />;
 const exit = () => (
   <MaterialIcons name="exit-to-app" size={25} color="#929292" />
 );
-const shop = () => (
-  <Entypo name="shop" size={25} color="#929292" />
-);
+const shop = () => <Entypo name="shop" size={25} color="#929292" />;
 const edit = () => (
-  <MaterialCommunityIcons name="account-edit" size={24} color="black" />
+  <MaterialCommunityIcons name="account-edit" size={25} color="#929292" />
 );
-
-const back = () => (
-  <Entypo name="back" size={25} color="#929292" />
-)
-
-

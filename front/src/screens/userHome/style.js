@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { headerColor } from "../../Common/constans";
+import { headerColor, buttonDark, textButtonDark, cardDark, headerColorDark, movimientosDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   movimientos: {
@@ -9,6 +9,14 @@ export const style = StyleSheet.create({
     textAlign: "center",
     fontFamily: "nunito",
     color: `${headerColor}`,
+  },
+  movimientosDark: {
+    fontSize: 30,
+    marginTop: 15,
+    marginBottom: 5,
+    textAlign: "center",
+    fontFamily: "nunito",
+    color: movimientosDark,
   },
 
   movimientosContainer: {
@@ -28,7 +36,7 @@ export const style = StyleSheet.create({
   },
   movimientosContainerDark: {
     flex: 1,
-    backgroundColor: "#2e363e",
+    backgroundColor: headerColorDark,
     borderTopRightRadius: 28,
     borderTopLeftRadius: 28,
     width: "94%",
@@ -61,7 +69,7 @@ export const style = StyleSheet.create({
   agenteDark: {
     width: 164,
     height: 140,
-    backgroundColor: "#2e363e",
+    backgroundColor: buttonDark,
     margin: 13,
     justifyContent: "center",
     alignItems: "center",
@@ -92,7 +100,7 @@ export const style = StyleSheet.create({
   },
   textDark: {
     textAlign: "center",
-    color: "#B8B6FD",
+    color: textButtonDark,
     fontSize: 14,
     textTransform: "uppercase",
     //fontFamily: "sans-serif",
@@ -125,7 +133,7 @@ export const style = StyleSheet.create({
     marginBottom:5
   },
   singleDark: {
-    backgroundColor: "#80A2C5" /* #629bcaa6 */,
+    backgroundColor: cardDark /* #629bcaa6 */,
     flexDirection: "row",
     height: 90,
     alignItems: "center",
@@ -156,7 +164,7 @@ export const style = StyleSheet.create({
   montoTextoDark: {
     fontFamily: "lato",
     fontSize: 21,
-    color: "#D4D6FC",
+    color: "white",
     marginLeft: 20,
   },
   entrar: {

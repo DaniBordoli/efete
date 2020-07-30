@@ -13,7 +13,7 @@ export const style = StyleSheet.create({
     color: "black",
     fontSize: 14,
     textTransform: "uppercase",
-    fontFamily: "nunito",
+    fontFamily: "sans",
     fontWeight: "bold",
     marginTop: '6%',
     marginBottom: '2%',
