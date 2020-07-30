@@ -38,7 +38,7 @@ export default ({ navigation, route }) => {
 
   return (
     <UserHome
-    mode={mode}
+      mode={mode}
       navigation={navigation}
       loading={loading}
       userRole={userRole}
