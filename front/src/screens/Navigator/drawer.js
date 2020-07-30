@@ -140,6 +140,17 @@ export default (props) => {
             props.navigation.navigate("Root", { screen: "Login" }, props);
           }}
         />
+
+        <DrawerItem
+          icon={back}
+          labelStyle={modee ? style.label : style.labelDark}
+          label="Volver"
+          onPress={() => {
+            dispatch(logOutUser());
+            props.navigation.navigate("Root", { screen: "Login" }, props);
+          }}
+        />
+
       </View>
     </DrawerContentScrollView>
   );
@@ -202,7 +213,13 @@ const exit = () => (
 );
 const shop = () => (
   <Entypo name="shop" size={25} color="#929292" />
-)
+);
 const edit = () => (
   <MaterialCommunityIcons name="account-edit" size={24} color="black" />
 );
+
+const back = () => (
+  <Entypo name="back" size={25} color="#929292" />
+)
+
+
