@@ -6,7 +6,9 @@ import AgentHome from "./AgentHome";
 import { fetchAgent } from "../../redux/store/actions/agents";
 import moment from "moment";
 
-export default ({ navigation }) => {
+export default ({ navigation,route }) => {
+  console.log("ROUTE",route.params)
+  
   const dispatch = useDispatch();
 
   const mode = useSelector((state) => state.users.mode);
@@ -28,7 +30,7 @@ export default ({ navigation }) => {
   });
 
   useEffect(() => {
-    dispatch(fetchAgent(userId)).then((agent) => {
+    dispatch(fetchAgent(route.params.agent._id)).then((agent) => {
       dispatch(getAgentTransactions(agent.agent._id)).then(() =>
         setLoading(true)
       );

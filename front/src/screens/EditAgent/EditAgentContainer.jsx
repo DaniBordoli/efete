@@ -10,6 +10,7 @@ import { YellowBox } from "react-native";
 
 export default ({ navigation, route }) => {
   const agentInfo = useSelector((state) => state.agents.agent);
+  console.log("INFO",agentInfo)
 
   const [agent, setAgent] = useState(agentInfo);
 
@@ -18,7 +19,7 @@ export default ({ navigation, route }) => {
   const userId = useSelector((state) => state.users.user._id);
 
   useEffect(() => {
-    dispatch(fetchAgent(userId));
+    //dispatch(fetchAgent(agentInfo._id));
     route.params
       ? setAgent({ ...agent, imageUrl: route.params.capturarFoto })
       : null;
