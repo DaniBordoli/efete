@@ -5,6 +5,7 @@ import { style } from "./style.js";
 import { Load } from "../../Common/loading";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { Button } from "react-native-elements";
+import { lilaDark, verdeDark, buttonDark, textButtonDark, headerColorDark } from "../../Common/constans.js";
 
 export default ({
   // userTransactions,
@@ -72,7 +73,7 @@ export default ({
             animation="fadeInUpBig"
             style={mode? style.movimientosContainer : style.movimientosContainerDark}
           >
-            <Text style={style.movimientos}>Movimientos</Text>
+            <Text style={ mode ? style.movimientos : style.movimientosDark}>Movimientos</Text>
             <Text style={style.time}>{time.toUpperCase()}</Text>
             {/* <Button>Ver Todo</Button> */}          
             
@@ -83,13 +84,13 @@ export default ({
            (
            <Button
            buttonStyle={{
-            backgroundColor: "white",
+            backgroundColor: mode ? "white" : headerColorDark,
             borderWidth: 1,
-            borderColor: "#6f76e4",
+            borderColor: mode? "#6f76e4" : lilaDark,
             width: 200,
             marginBottom: 10,
            }}
-           titleStyle={{ color: "#6f76e4" }}
+           titleStyle={{ color: mode? "#6f76e4" : lilaDark}}
            title="Ver todas las transacciones"
            onPress={() => navigation.navigate('AllUserTransactions', {userTransactions})}
            />
@@ -118,8 +119,8 @@ export default ({
                       }
                     >
                       <View style={style.contenido}>
-                        <Text style={{fontFamily:'lato', fontSize:16, color:mode? '#3D5E87' : '#101113'}}>Agente: {item.agent[0].name}</Text>
-                        <Text style={{marginTop:3, fontFamily:'regular',fontSize:14, color:mode? '#94AFB6' : '#D3EBF1'}}>Extracción realizada</Text>
+                        <Text style={{fontFamily:'lato', fontSize:16, color:mode? '#3D5E87' : lilaDark}}>Agente: {item.agent[0].name}</Text>
+                        <Text style={{marginTop:3, fontFamily:'regular',fontSize:14, color:mode? '#94AFB6' : verdeDark}}>Extracción realizada</Text>
                       </View>
 
                       <View style={style.monto}>

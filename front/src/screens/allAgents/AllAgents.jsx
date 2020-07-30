@@ -10,21 +10,19 @@ import { Button, Icon } from "react-native-elements";
 import { style } from "./style";
 import { AntDesign } from "@expo/vector-icons";
 import { Load } from "../../Common/loading";
+import { fondoColor } from "../../Common/constans";
 
 const AllAgents = ({
     agentsUser,
     loading,
     navigation,
-    handleDelete
+    handleDelete,
+    mode
 }) => {
-    console.log("AQUI",agentsUser)
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 , backgroundColor:mode? fondoColor : "black"}}>
           {loading ? (
-            <View style={{ flex: 1 }}>
-              
-              <View style={style.hr} />
-    
+            <View style={{ flex: 1, backgroundColor:mode? fondoColor : "black" }}>
                 <View style={{ flex: 2 }}>
                 <Text style={style.asociadas}>NEGOCIOS</Text>
     
@@ -35,10 +33,9 @@ const AllAgents = ({
                         data={agentsUser}
                         renderItem={({ item }) => {
                     return (
-                      <View >
-                        
+                        <View>
                           <TouchableOpacity
-                            style={style.parent}
+                            style={ mode ? style.parent : style.parentDark}
                             onPress={() =>
                               navigation.navigate("Agent", {
                                 agent: item,
@@ -47,7 +44,7 @@ const AllAgents = ({
                           >
                             <View style={style.wallet}>
                               <Image
-                                source={require("../../../assets/iconos/negocio.png")}
+                                source={mode ? require("../../../assets/iconos/negocio.png") : require("../../../assets/iconos/negocios.png") }
                                 style={{ width: 50, height: 50 }}
                               />
                             </View>
@@ -56,12 +53,12 @@ const AllAgents = ({
                               <View
                                 style={{ flexDirection: "row", marginBottom: 5 }}
                               >
-                                <Text style={style.negrita}>Nombre:</Text>
-                                <Text style={style.tex}>{item.name} </Text>
+                                <Text style={mode? style.negrita : style.negritaDark}>Nombre:</Text>
+                                <Text style={ mode ? style.tex : style.texDark}>{item.name} </Text>
                               </View>
                               <View style={{ flexDirection: "row" }}>
-                                <Text style={style.negrita}>Dirección:</Text>
-                                <Text>{item.address.substr(0,18)} ...</Text>
+                                <Text style={mode? style.negrita : style.negritaDark}>Dirección:</Text>
+                                <Text style={ mode ? style.tex : style.texDark} >{item.address.substr(0,18)} ...</Text>
                               </View>
                             </View>
     
@@ -78,7 +75,7 @@ const AllAgents = ({
                                   handleDelete(item._id);
                                 }}
                               >
-                                <AntDesign name="delete" size={25} color="#454141" />
+                                <AntDesign name="delete" size={25} color={mode? "#454141" : 'white'} />
                               </TouchableOpacity>
                             </View>
                           </TouchableOpacity>

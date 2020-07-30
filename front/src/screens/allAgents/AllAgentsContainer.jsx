@@ -12,7 +12,11 @@ export default ({navigation}) => {
 
     const dispatch = useDispatch();
     const [loading, setLoader] = useState(false);
-
+  
+    const mode = useSelector(
+      (state) => state.users.mode
+    );
+  
     const agentsUser = useSelector((state) => state.agents.agents);
     const user = useSelector((state) => state.users.user);
 
@@ -33,6 +37,7 @@ export default ({navigation}) => {
           agentsUser={agentsUser}
           loading={loading}
           handleDelete={handleDelete}
+          mode={mode}
           
         />
     );

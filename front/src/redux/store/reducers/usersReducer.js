@@ -2,7 +2,7 @@ import { LOGIN_USER , MODE} from "../constants";
 
 const initialState = {
   user: {},
-  mode: true,
+  mode: false, // true
 };
 
 export default (state = initialState, action) => {
