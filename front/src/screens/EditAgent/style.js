@@ -4,8 +4,9 @@ import { buttonColor, verdeTexto } from "../../Common/constans";
 export const style = StyleSheet.create({
   container: {
     alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#FAFBFF",
-    flex: 1,
+    // flex: 1,
     height: "100%",
     width: "100%",
     paddingBottom: '5%'
@@ -40,13 +41,14 @@ export const style = StyleSheet.create({
     width: '80%',
   },
   input: {
-  fontSize: 16,
   padding: '3%',
   backgroundColor: "#ffffff",
   borderRadius: 8,
   elevation: 3,
   shadowOpacity: 0.5,
   shadowRadius: 2,
+  flexDirection: 'row',
+  justifyContent: 'space-between'
   },
   image: {
     marginTop: '5%',
@@ -58,8 +60,12 @@ export const style = StyleSheet.create({
     shadowColor: "#000",
   },
   openCamera: {
-    alignItems: "center",
-    marginTop: '2%',
+    backgroundColor: buttonColor,
+    width: 125,
+    height: 35,
+    textAlign: "center",
+    paddingTop: 3.5,
+    borderRadius: 5,
   },
   textOpenCamera: {
     marginBottom: '2%',
@@ -72,14 +78,6 @@ export const style = StyleSheet.create({
     color: "#606060",
     fontSize: 10,
   },
-  // foto: {
-  //   backgroundColor: buttonColor,
-  //   width: 125,
-  //   height: 35,
-  //   textAlign: "center",
-  //   paddingTop: 3.5,
-  //   borderRadius: 5,
-  // },
   confirmar: {
     backgroundColor: "#00CC96",
     borderRadius: 5,
@@ -96,5 +94,5 @@ export const style = StyleSheet.create({
     paddingRight: '4%',
     paddingBottom: '2%',
     paddingTop:'2%'
-  }
+  },
 });
