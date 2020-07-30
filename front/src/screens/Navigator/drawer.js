@@ -34,7 +34,7 @@ export default (props) => {
     >
       <View>
         <Text
-          onPress={() => props.navigation.closeDrawer()}
+          //onPress={() => props.navigation.closeDrawer()}
           style={style.titulo}
         >
           Efete
@@ -145,10 +145,11 @@ export default (props) => {
           icon={back}
           labelStyle={modee ? style.label : style.labelDark}
           label="Volver"
-          onPress={() => {
-            dispatch(logOutUser());
-            props.navigation.navigate("Root", { screen: "Login" }, props);
-          }}
+          // onPress={() => {
+          //   dispatch(logOutUser());
+          //   props.navigation.navigate("Root", { screen: "Login" }, props);
+          // }}
+          onPress={() => props.navigation.closeDrawer()}
         />
 
       </View>

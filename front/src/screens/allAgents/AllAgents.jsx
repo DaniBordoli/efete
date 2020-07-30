@@ -40,12 +40,12 @@ const AllAgents = ({
                           <TouchableOpacity
                             style={style.parent}
                             onPress={() =>
-                              navigation.navigate("Agent", {
+                              navigation.navigate("EditAgent", {
                                 agent: item,
                               })
                             }
                           >
-                            <View style={style.wallet}>
+                            <View style={style.negocio}>
                               <Image
                                 source={require("../../../assets/iconos/negocio.png")}
                                 style={{ width: 50, height: 50 }}
@@ -93,6 +93,15 @@ const AllAgents = ({
           ) : (
             <Load />
           )}
+          <Button
+              buttonStyle={style.botonAgregar}
+              titleStyle={style.tituloAgregar}
+              title="AGREGAR NEGOCIO"
+              onPress={() =>
+                navigation.navigate("CreateAgentForm")
+              }
+            />
+            
         </View>
       );
 

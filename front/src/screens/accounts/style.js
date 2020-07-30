@@ -33,7 +33,7 @@ export const style = StyleSheet.create({
     width: 370,
   },
   parent: {
-    flex: 1,
+    flex: 3,
     backgroundColor: "white",
     borderRadius: 12,
     alignSelf: "center",
