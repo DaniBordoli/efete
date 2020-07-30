@@ -32,6 +32,7 @@
     "expo-permissions": "^9.0.1",
     "expo-status-bar": "^1.0.2",
     "firebase": "^7.17.1",
+    "link": "^0.1.5",
     "lodash.remove": "^4.7.0",
     "moment": "^2.27.0",
     "native-base": "^2.13.12",
