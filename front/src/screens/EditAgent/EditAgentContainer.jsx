@@ -9,6 +9,10 @@ import firebase from "../../firebase/index";
 import { YellowBox } from "react-native";
 
 export default ({ navigation, route }) => {
+  const agentInfo = useSelector((state) => state.agents.agent);
+  console.log("INFO",agentInfo)
+
+  const [agent, setAgent] = useState(agentInfo);
 
   const dispatch = useDispatch();
 
@@ -31,7 +35,7 @@ export default ({ navigation, route }) => {
   }
 
   useEffect(() => {
-    dispatch(fetchAgent(userId));
+    //dispatch(fetchAgent(agentInfo._id));
     route.params
       ? setAgent({ ...agent, imageUrl: route.params.capturarFoto })
       : null;

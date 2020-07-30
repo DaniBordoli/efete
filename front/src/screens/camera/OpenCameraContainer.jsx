@@ -85,7 +85,7 @@ export default function OpenCameraContainer({ navigation, route }) {
 
   const handleConfirm = (e) => {
     setOpen(false);
-    if (route.params.identity) {
+    if (route.params && route.params.identity !== undefined) {
       navigation.navigate("WaitingValidation");
       dispatch(
         editUser({
@@ -101,7 +101,7 @@ export default function OpenCameraContainer({ navigation, route }) {
           console.log("URI64", uri.slice(0, 50));
           dispatch(validateIdentity(uri, "37245882", "M", token));
         });
-    } else if (route.params.edit) {
+    } else if (route.params && route.params.edit !== undefined) {
       navigation.navigate("EditAgentProfile", { capturarFoto });
     } else {
       navigation.navigate("CreateAgentForm", { capturarFoto });

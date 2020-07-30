@@ -8,6 +8,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import { lilaDark, verdeDark, buttonDark, textButtonDark, headerColorDark } from "../../Common/constans.js";
 export default ({ agentTransactions, navigation, loading, time, agent,mode }) => {
+  console.log("AGENT", agent)
   return (
     <View style={{ flex: 1,  backgroundColor:mode?'#F1F3F6' : 'black'  }}>
       {loading ? (
