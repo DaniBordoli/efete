@@ -2,13 +2,22 @@ import { StyleSheet } from "react-native";
 import { headerColor, verdeTexto } from "../../Common/constans";
 
 export const style = StyleSheet.create({
+  container: {
+  flex: 1, 
+  backgroundColor: "#F1F3F6",
+  margin: '7%' 
+  },
+
   text: {
     textAlign: "left",
     color: "black",
     fontSize: 14,
     textTransform: "uppercase",
-    //fontFamily: "sans-serif",
-    marginTop: 25,
+    fontFamily: "sans-serif",
+    fontWeight: "bold",
+    marginTop: '6%',
+    marginBottom: '2%',
+    marginLeft: '1%'
   },
 
   icon: {
@@ -19,9 +28,9 @@ export const style = StyleSheet.create({
   },
 
   movimientos: {
-    fontSize: 28,
-    marginTop: 40,
-    marginBottom: 13,
+    fontSize: 30,
+    marginTop: '5%',
+    marginBottom: '7%',
     textAlign: "center",
     fontFamily: "nunito",
     color: `${headerColor}`,
@@ -39,13 +48,10 @@ export const style = StyleSheet.create({
   },
 
   input: {
-    
     borderRadius:8,
     fontSize: 18,
     flex: 1,
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 5,
+    padding: '4%',
     backgroundColor: "#fff",
     color: verdeTexto,
   },

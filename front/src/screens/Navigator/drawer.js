@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 /* cle */
 import { headerColor } from "../../Common/constans";
-import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons, MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 import {
   createDrawerNavigator,
   DrawerContentScrollView,
@@ -57,6 +57,15 @@ export default (props) => {
           label="Mis cuentas"
           onPress={() =>
             props.navigation.navigate("Root", { screen: "Accounts" }, props)
+          }
+        />
+
+        <DrawerItem
+          icon={shop}
+          labelStyle= {modee ? style.label : style.labelDark}
+          label="Mis Negocios"
+          onPress={() =>
+            props.navigation.navigate("Root", { screen: "AllAgents" }, props)
           }
         />
 
@@ -131,6 +140,17 @@ export default (props) => {
             props.navigation.navigate("Root", { screen: "Login" }, props);
           }}
         />
+
+        <DrawerItem
+          icon={back}
+          labelStyle={modee ? style.label : style.labelDark}
+          label="Volver"
+          onPress={() => {
+            dispatch(logOutUser());
+            props.navigation.navigate("Root", { screen: "Login" }, props);
+          }}
+        />
+
       </View>
     </DrawerContentScrollView>
   );
@@ -191,6 +211,15 @@ const info = () => <MaterialIcons name="info" size={24} color="#929292" />;
 const exit = () => (
   <MaterialIcons name="exit-to-app" size={25} color="#929292" />
 );
+const shop = () => (
+  <Entypo name="shop" size={25} color="#929292" />
+);
 const edit = () => (
   <MaterialCommunityIcons name="account-edit" size={24} color="black" />
 );
+
+const back = () => (
+  <Entypo name="back" size={25} color="#929292" />
+)
+
+
