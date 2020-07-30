@@ -40,6 +40,23 @@ var userSchema = new Schema({
       "https://www.festivalclaca.cat/imgfv/b/500-5009697_no-profile-picture-icon-circle.png",
   },
   role: { type: String, enum: ["user", "agent", "admin"], default: "user" },
+  processVerification: {
+    type: Boolean,
+    default: false,
+  },
+  validatedIdentity: {
+    type: Boolean,
+    default: false,
+  },
+
+  gender: {
+    type: String,
+    required: true,
+  },
+
+  tcn: {
+    type: String,
+  },
 });
 
 userSchema.pre("save", async function save(next) {

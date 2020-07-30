@@ -73,9 +73,15 @@ export default ({
           />
         </View>
 
-        <View>
-          <Image style={style.image} source={{ uri: image }} />
-        </View>
+        {image !== "" ? (
+          <View>
+            <Image style={style.image} source={{ uri: image }} />
+          </View>
+        ) : (
+          <View>
+            <Text style={style.text}>La imagen se está cargando</Text>
+          </View>
+        )}
 
         <Text style={style.textOpenCamera}>Subir foto</Text>
 

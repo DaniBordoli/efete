@@ -32,8 +32,8 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(morgan("dev"));
 
 //Body Parser
-app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb" }));
 
 app.use(passport.initialize());
 app.use(passport.session());

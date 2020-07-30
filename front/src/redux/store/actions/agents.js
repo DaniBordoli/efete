@@ -60,11 +60,8 @@ export const createAgent = (
   ubicacion,
   cuil,
   dailyAmount,
-  url,
   user
 ) => (dispatch) => {
-  console.log(url, "URLACA");
-  console.log(name, "NAMEACA");
   return axios
     .post(`http://${IP}:1337/api/agents/createagent`, {
       name: name,
@@ -72,22 +69,21 @@ export const createAgent = (
       ubicacion: ubicacion,
       cuil: cuil,
       dailyAmount: dailyAmount,
-      imageUrl: url,
       user: user,
     })
     .then((res) => {
-      dispatch(login_user(res.data));
+      console.log(res.data, "RESDATAA");
+      dispatch(login_user(res.data.userUpdated));
       dispatch(
         newAgent({
           name: name,
           address: address,
           cuil: cuil,
           dailyAmount: dailyAmount,
-          imageUrl: url,
           user: user,
         })
       );
-      dispatch(
+      return dispatch(
         createNewStore({
           name: name,
           address: address,
@@ -95,6 +91,7 @@ export const createAgent = (
           cuil: cuil,
           dailyAmount: dailyAmount,
           user: user,
+          id: res.data.agentCreated._id,
         })
       );
     });
