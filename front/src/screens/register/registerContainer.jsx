@@ -11,6 +11,7 @@ export default ({ navigation }) => {
   const [dni, setDni] = useState(0);
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [gender, setGender] = useState("");
 
   const user = useSelector((state) => state.users.user);
 
@@ -31,18 +32,23 @@ export default ({ navigation }) => {
   }
 
   function handleSubmit() {
-    dispatch(register(firstName, lastName, dni, password, username)).then(
-      (data) => {
-        if (data.user === "OK") {
-          setFirstName("");
-          setLastName("");
-          setDni(0);
-          setPassword("");
-          setUsername("");
-          navigation.navigate("Verificar");
-        }
+    dispatch(
+      register(firstName, lastName, dni, password, username, gender)
+    ).then((data) => {
+      if (data.user === "OK") {
+        setFirstName("");
+        setLastName("");
+        setDni(0);
+        setPassword("");
+        setUsername("");
+        setGender("");
+        navigation.navigate("Verificar");
       }
-    );
+    });
+  }
+
+  function handleGender(sexo) {
+    setGender(sexo);
   }
 
   return (
@@ -55,6 +61,7 @@ export default ({ navigation }) => {
       handleSubmit={handleSubmit}
       navigation={navigation}
       user={user}
+      handleGender={handleGender}
     />
   );
 };

@@ -12,14 +12,14 @@ import { style } from "./style";
 import { buttonColor } from "../../Common/constans";
 import { Load } from "../../Common/loading";
 
-const CreatedAgentOk = ({ agent, navigation, foto, name, address, cuil }) => {
+const CreatedAgentOk = ({ navigation, foto, name, address, cuil }) => {
   return (
     <ScrollView>
       <View>
         <TouchableOpacity
           style={style.clearIcon}
           onPress={() => {
-            navigation.navigate("Agent");
+            navigation.navigate("User");
           }}
         >
           <MaterialCommunityIcons

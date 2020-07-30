@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CreateAgentForm from "./CreateAgentForm";
-import { createAgent } from "../../redux/store/actions/agents";
+import { createAgent, editAgent } from "../../redux/store/actions/agents";
 import { useDispatch, useSelector } from "react-redux";
 import firebase from "../../firebase/index";
 import { Alert } from "react-native";
 import { YellowBox } from "react-native";
 import _ from "lodash";
-import uuid from "react-native-uuid";
+
+/* import uuid from "react-native-uuid"; */
 
 const CreateAgentFormContainer = ({ navigation, route }) => {
   const [foto, setFoto] = useState("");
@@ -42,16 +43,16 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
     setDailyAmount(Number(text));
   }
 
-  uploadImage = async (uri) => {
+  uploadImage = async (uri, agentId) => {
     const response = await fetch(uri);
     const blob = await response.blob();
 
-    let fotoUUID = uuid.v4();
+    /* let fotoUUID = uuid.v4(); */
 
     var ref = firebase
       .storage()
       .ref()
-      .child("images/" + fotoUUID);
+      .child("images/" + user._id + "-" + address);
 
     YellowBox.ignoreWarnings(["Setting a timer"]); //esto evita un warning por el await
     const _console = _.clone(console);
@@ -63,26 +64,24 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
 
     return ref.put(blob).then(async (snapshot) => {
       await snapshot.ref.getDownloadURL().then((url) => {
-        console.log(url, "URL1");
         dispatch(
-          createAgent(
-            name,
-            address,
-            ubicacion,
-            cuil,
-            dailyAmount,
-            url,
-            user._id
-          )
+          editAgent({
+            imageUrl: url,
+            _id: agentId,
+          })
         );
       });
     });
   };
 
   function handlerSubmit() {
-    uploadImage(foto).catch((error) => {
-      Alert.alert("Error al subir foto");
-    });
+    dispatch(createAgent(name, address, ubicacion, cuil, dailyAmount, user._id))
+      .then((data) => {
+        uploadImage(foto, data.newStore.id);
+      })
+      .catch((error) => {
+        Alert.alert("Error al subir foto");
+      });
   }
 
   return (

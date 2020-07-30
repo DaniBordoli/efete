@@ -35,6 +35,7 @@ const createAgent = (req, res) => {
   console.log("REQ.BODY.AGENTE:::::::::::", req.body);
   Agent.create(req.body)
     .then((agent) => {
+      const agentCreated = agent;
       User.findOne({ _id: req.body.user }).then((user) => {
         user
           .updateOne({ role: "agent" })
@@ -42,7 +43,7 @@ const createAgent = (req, res) => {
             return User.findOne({ _id: req.body.user });
           })
           .then((userUpdated) => {
-            res.status(201).json(userUpdated);
+            res.status(201).json({ userUpdated, agentCreated });
           });
       });
     })

@@ -31,8 +31,10 @@ import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
 import OpenCameraContainer from "../camera/OpenCameraContainer";
-import Map from "../Map/mapContainer"
-import confirmValueContainer from '../confirmValue/confirmValuecontainer'
+import Map from "../Map/mapContainer";
+import confirmValueContainer from "../confirmValue/confirmValuecontainer";
+import ValidarIdentidadContainer from "../validarIdentidad/ValidarIdentidadContainer";
+import WaitingValidationContainer from "../waitingValidation/WaitingValidationContainer";
 
 const Stack = createStackNavigator();
 
@@ -169,7 +171,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
-        options={{headerShown:false}}
+        options={{ headerShown: false }}
       />
 
       <Stack.Screen
@@ -311,6 +313,18 @@ export default ({ navigation }) => {
         name="SingleAccount"
         component={SingleAccountContainer}
         options={{ ...myHeader, title: "Detalle" }}
+      />
+
+      <Stack.Screen
+        name="ValidateIdentity"
+        component={ValidarIdentidadContainer}
+        options={{ ...myHeader, title: "Validar identidad" }}
+      />
+
+      <Stack.Screen
+        name="WaitingValidation"
+        component={WaitingValidationContainer}
+        options={{ ...myHeader, title: "Esperar aprobación" }}
       />
     </Stack.Navigator>
   );

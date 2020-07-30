@@ -2,8 +2,8 @@
 export const ADD_ACCOUNT = "ADD_ACCOUNT";
 export const GET_USER_ACCOUNTS = "GET_USER_ACCOUNTS";
 export const GET_USER_SINGLE_ACCOUNT = "GET_USER_SINGLE_ACCOUNT";
-export const FETCH_BANKS = "FETCH_BANKS"; 
-export const  SET_MAIN_ACCOUNT = "SET_MAIN_ACCOUNT"
+export const FETCH_BANKS = "FETCH_BANKS";
+export const SET_MAIN_ACCOUNT = "SET_MAIN_ACCOUNT";
 
 //TRANSACTIONS
 export const FETCH_TRANSACTIONS = "FETCH_TRANSACTIONS";
@@ -20,5 +20,8 @@ export const MODE = "MODE";
 //AGENTS
 export const CREATE_AGENT = "CREATE_AGENT";
 export const SET_AGENT = "SET_AGENT";
-export const CREATE_STORE = 'CREATE_STORE'
-export const SET_AGENTS = 'SET_AGENTS'
+export const CREATE_STORE = "CREATE_STORE";
+export const SET_AGENTS = "SET_AGENTS";
+
+//TOKEN
+export const TOKEN = "TOKEN";
