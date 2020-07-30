@@ -91,7 +91,7 @@ export default ({
            }}
            titleStyle={{ color: "#6f76e4" }}
            title="Ver todas las transacciones"
-           onPress={() => navigation.navigate('AllUserTransactions'), {userTransactions}}
+           onPress={() => navigation.navigate('AllUserTransactions', {userTransactions})}
            />
            ) :
            <Text>

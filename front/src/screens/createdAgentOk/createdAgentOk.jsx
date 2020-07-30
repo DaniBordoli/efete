@@ -7,11 +7,12 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { style } from "./style";
-import {buttonColor} from '../../Common/constans'
+import { buttonColor } from "../../Common/constans";
+import { Load } from "../../Common/loading";
 
-const CreatedAgentOk = ({ agent, navigation }) => {
+const CreatedAgentOk = ({ agent, navigation, foto, name, address, cuil }) => {
   return (
     <ScrollView>
       <View>
@@ -21,8 +22,11 @@ const CreatedAgentOk = ({ agent, navigation }) => {
             navigation.navigate("Agent");
           }}
         >
-          <MaterialCommunityIcons name="close-circle-outline" size={35} color= {buttonColor} />
-
+          <MaterialCommunityIcons
+            name="close-circle-outline"
+            size={35}
+            color={buttonColor}
+          />
         </TouchableOpacity>
       </View>
       <View style={style.mainContainer}>
@@ -39,21 +43,21 @@ const CreatedAgentOk = ({ agent, navigation }) => {
 
         <View style={style.datos}>
           <Text style={style.datosTitle}>DATOS DE ESTABLECIMIENTO</Text>
-          <Image style={style.image}></Image>
+          <Image style={style.image} source={{ uri: foto }}></Image>
 
           <View style={style.caja}>
             <Text style={style.info}>Nombre:</Text>
-            <Text style={style.description}> {agent.name} </Text>
+            <Text style={style.description}> {name} </Text>
           </View>
 
           <View style={style.caja}>
             <Text style={style.info}>Dirección:</Text>
-            <Text style={style.description}> {agent.address} </Text>
+            <Text style={style.description}> {address} </Text>
           </View>
 
           <View style={style.caja}>
             <Text style={style.info}>CUIL:</Text>
-            <Text style={style.description}> {agent.cuil} </Text>
+            <Text style={style.description}> {cuil} </Text>
           </View>
         </View>
       </View>

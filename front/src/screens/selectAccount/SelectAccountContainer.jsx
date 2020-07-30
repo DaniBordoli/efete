@@ -30,6 +30,18 @@ export default ({ navigation, route }) => {
   };
   //Esta hardocdeado el id del agente porque no tenemos el mapa para la selección. Una vez que se tenga el mapa, se pasa e ldato por route.params.
   const handleSubmit = () => {
+    console.log(
+      ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;',
+      "amount:",route.params.value,
+      'originAccount:', selectedAccount._id,
+     ' user:',user._id,
+     ' agent:',route.params.agentId,
+      'destinationAccount:', route.params.destinationAccount,
+     ' cbu:;;;;;;;;;;', route.params.cbu,
+      'originAccountCbu:',selectedAccount.accountNumber,
+      ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;'
+      )
+
     dispatch(
       createTransaction({
         amount: route.params.value,
@@ -39,8 +51,9 @@ export default ({ navigation, route }) => {
         destinationAccount: route.params.destinationAccount,
         cbu: route.params.cbu,
         originAccountCbu: selectedAccount.accountNumber,
-      })
-    ).then((res) => {
+      }))
+      .then((res) => {
+        console.log('REEEEEEEEEEEEEEEEESSSSSS::::::::::::::::::',res)
         navigation.navigate("TransactionOk", { transaction: res.transaction });
       })
       .then(() => {

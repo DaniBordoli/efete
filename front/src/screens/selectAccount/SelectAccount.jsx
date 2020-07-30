@@ -95,6 +95,7 @@ export default ({
               title="Realizar Transacción"
               onPress={() => {
                 handleSubmit();
+                /* navigation.navigate("Accounts"); */
               }}
             />
             <Button

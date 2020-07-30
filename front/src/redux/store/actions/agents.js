@@ -1,6 +1,11 @@
 import axios from "axios";
 import { IP } from "../../../../config";
-import { SET_AGENT, CREATE_AGENT, CREATE_STORE , SET_AGENTS} from "../constants";
+import {
+  SET_AGENT,
+  CREATE_AGENT,
+  CREATE_STORE,
+  SET_AGENTS,
+} from "../constants";
 import { login_user } from "../actions/users";
 
 export const setAgent = (agent) => {
@@ -9,7 +14,6 @@ export const setAgent = (agent) => {
     agent,
   };
 };
-
 
 export const setAgents = (agents) => {
   return {
@@ -52,9 +56,11 @@ export const createAgent = (
   ubicacion,
   cuil,
   dailyAmount,
-  codigoQr,
+  url,
   user
 ) => (dispatch) => {
+  console.log(url, "URLACA");
+  console.log(name, "NAMEACA");
   return axios
     .post(`http://${IP}:1337/api/agents/createagent`, {
       name: name,
@@ -62,12 +68,21 @@ export const createAgent = (
       ubicacion: ubicacion,
       cuil: cuil,
       dailyAmount: dailyAmount,
-      codigoQr: codigoQr,
+      imageUrl: url,
       user: user,
     })
     .then((res) => {
       dispatch(login_user(res.data));
-      dispatch(newAgent(res.data));
+      dispatch(
+        newAgent({
+          name: name,
+          address: address,
+          cuil: cuil,
+          dailyAmount: dailyAmount,
+          imageUrl: url,
+          user: user,
+        })
+      );
       dispatch(
         createNewStore({
           name: name,
@@ -75,7 +90,6 @@ export const createAgent = (
           ubicacion: ubicacion,
           cuil: cuil,
           dailyAmount: dailyAmount,
-          codigoQr: codigoQr,
           user: user,
         })
       );

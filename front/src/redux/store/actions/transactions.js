@@ -105,7 +105,7 @@ export const createTransaction = (transaction) => (dispatch) =>
       {
         headers: {
           Authorization:
-            " JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTU4NjQ0MTUwODgsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NTg5MzIxNX0.Ub8H6KjDwNtAFwgxSzDz6HQ5rJ_kqM9vWD2_K6WkMy3t3wf-VgraHGQzjEH-p8vfvMuoULzF_iaoD8j0FrqzdQ",
+            "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTU5NzI0NzYwMjcsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjAwMTI3Nn0.LG5GHFiMdJXN7Wj5-6DVCxyCJt83AvuIZdA6NmbEAMy-NHcGFPsxaFLKvwrEJ2fc0t4RcKDQbGaB-ky4zALWkQ",
         },
       }
     )
@@ -128,7 +128,7 @@ export const createTransaction = (transaction) => (dispatch) =>
         {
           headers: {
             Authorization:
-              "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTU4NjQ0MTUwODgsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NTg5MzIxNX0.Ub8H6KjDwNtAFwgxSzDz6HQ5rJ_kqM9vWD2_K6WkMy3t3wf-VgraHGQzjEH-p8vfvMuoULzF_iaoD8j0FrqzdQ",
+              "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTU5NzI0NzYwMjcsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjAwMTI3Nn0.LG5GHFiMdJXN7Wj5-6DVCxyCJt83AvuIZdA6NmbEAMy-NHcGFPsxaFLKvwrEJ2fc0t4RcKDQbGaB-ky4zALWkQ",
           },
         }
       );

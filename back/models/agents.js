@@ -10,18 +10,18 @@ var agentSchema = new Schema({
     type: String,
     required: true,
   },
-  ubicacion:{
+  cuil: {
+    type: String,
+  },
+  ubicacion: {
     type: Object,
   },
-  CUIL: {
-    type: Number,
-    default: false,
-  },
+
   dailyAmount: {
     type: Number,
     default: 0,
   },
-  qrCode: {
+  imageUrl: {
     type: String,
     default: "",
   },
