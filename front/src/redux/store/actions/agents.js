@@ -112,7 +112,7 @@ export const deleteAgents = (id, userId) => (dispatch) =>
       dispatch(get_user_agents(res.data));
     });
 export const fetchAgents = () => (dispatch) => {
-  axios
-    .get(`http://${IP}:1337/api/agents`)
-    .then((res) => dispatch(setAgents(res.data)));
+  return axios.get(`http://${IP}:1337/api/agents`).then((res) => {
+    return dispatch(setAgents(res.data));
+  });
 };

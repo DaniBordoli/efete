@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
 
-const ConfirmValue = ({ navigation, value, agente }) => {
+const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
   return (
     <View style={style.mainContainer}>
       <View style={style.imageContainer}>
@@ -18,11 +18,11 @@ const ConfirmValue = ({ navigation, value, agente }) => {
 
       <View style={style.hr}></View>
 
-      <Text style={style.text}>{agente.name}</Text>
+      <Text style={style.text}>{agente === null? agenteUnico.name : agente.name}</Text>
 
-      <Text style={style.text1}>{agente.address} </Text>
+      <Text style={style.text1}>{agente === null? agenteUnico.address : agente.address} </Text>
 
-      <Text style={style.text2}>{value}</Text>
+      <Text style={style.text2}>${value}</Text>
 
       <View style={style.hr}></View>
 
