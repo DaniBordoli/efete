@@ -38,7 +38,7 @@ const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="EditAgentProfile">
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
