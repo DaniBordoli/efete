@@ -20,10 +20,11 @@
     "@react-navigation/native": "^5.7.0",
     "@react-navigation/stack": "^5.7.0",
     "axios": "^0.19.2",
-    "expo": "~38.0.8",
+    "expo": "^38.0.8",
     "expo-barcode-scanner": "~8.2.1",
     "expo-camera": "~8.3.1",
     "expo-face-detector": "~8.2.1",
+    "expo-file-system": "~9.0.1",
     "expo-font": "~8.2.1",
     "expo-linear-gradient": "~8.2.1",
     "expo-local-authentication": "~9.1.1",
@@ -47,6 +48,8 @@
     "react-native-elements": "^2.0.4",
     "react-native-gesture-handler": "~1.6.0",
     "react-native-google-places-autocomplete": "^1.8.0",
+    "react-native-image-base64": "^0.1.4",
+    "react-native-image-resizer": "^1.2.3",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-maps": "0.27.1",
     "react-native-material-dropdown": "^0.11.1",
@@ -66,7 +69,8 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "expo-image-manipulator": "~8.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

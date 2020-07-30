@@ -23,8 +23,9 @@ export default ({
   handleSubmit,
   navigation,
   user,
+  handleGender,
 }) => (
-  <KeyboardAvoidingView  style={{flex:1}} behavior="height">
+  <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{ flex: 8 }}>
         <Text style={style.titulo}>Efeté</Text>
@@ -78,6 +79,18 @@ export default ({
               <Text style={style.alerta}>{user.messageDni}</Text>
             </View>
           ) : null}
+
+          <DropDownPicker
+            labelStyle={{ fontSize: 14, color: "#6F76E4" }}
+            items={[
+              { label: "Sexo", value: "", selected: true },
+              { label: "Femenino", value: "F" },
+              { label: "Masculino", value: "M" },
+            ]}
+            defaultIndex={0}
+            onChangeItem={(item) => handleGender(item.value)}
+          />
+
           <View style={style.hr} />
           <View style={style.searchSection}>
             <Icon

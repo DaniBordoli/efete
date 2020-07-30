@@ -2,14 +2,15 @@ import React from "react";
 import { View, Text, FlatList, ScrollView } from "react-native";
 import { style } from "./style.js";
 import { Button } from "react-native-elements";
+import { headerColorDark } from "../../Common/constans.js";
 
-export default ({ handleValue, navigation, handleSubmit, value }) => {
+export default ({ handleValue, navigation, mode, value }) => {
   const data = ['100', '200', '500', '1000', '2000'];
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 , backgroundColor: mode? "#F1F3F6" : "black"}}>
       <Text style={style.monto}>Monto</Text>
-      <Text style={style.valor}>{`$ ${value}`}</Text>
-      <View style={style.montoContainer}>
+      <Text style={mode ?style.valor : style.valorDark}>{`$ ${value}`}</Text>
+      <View style={ style.montoContainer }>
         <FlatList
           keyExtractor={(data) => data}
           data={data}
@@ -17,8 +18,8 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
             return (
               <View>
                 <Button
-                  buttonStyle={{ backgroundColor: "white", height: 60 }}
-                  titleStyle={{ fontSize: 20, color: "black" }}
+                  buttonStyle={{ backgroundColor: mode? "white": headerColorDark, height: 60 }}
+                  titleStyle={{ fontSize: 20, color:mode? "black": 'white' }}
                   title={`$ ${item}`}
                   on
                   onPress={() => handleValue(item)}
@@ -29,8 +30,8 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
           }}
         />
         <Button
-          buttonStyle={style.otroMonto}
-          titleStyle={style.otroMontoTitulo}
+          buttonStyle={mode ?style.otroMonto : style.otroMontoDark}
+          titleStyle={mode ? style.otroMontoTitulo : style.otroMontoTituloDark}
           title="Seleccionar otro monto"
           onPress={() => navigation.navigate("SelectOtherAmount")}
         />
@@ -56,8 +57,8 @@ export default ({ handleValue, navigation, handleSubmit, value }) => {
       }
 
       <Button
-        buttonStyle={style.cancelar}
-        titleStyle={style.tituloCancelar}
+        buttonStyle={mode ? style.cancelar : style.cancelarDark}
+        titleStyle={mode ? style.tituloCancelar : style.tituloCancelarDark}
         title="Cancelar"
         onPress={() => {
         navigation.navigate("User");

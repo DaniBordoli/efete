@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAgentTransactions } from "../../redux/store/actions/transactions";
 import AgentHome from "./AgentHome";
-import { View } from "react-native";
 import { fetchAgent } from "../../redux/store/actions/agents";
 import moment from "moment";
 

@@ -4,7 +4,7 @@ import EditAgent from "./EditAgent";
 import { useDispatch, useSelector } from "react-redux";
 import { editAgent, fetchAgent } from "../../redux/store/actions/agents";
 import _ from "lodash";
-import uuid from "react-native-uuid";
+/* import uuid from "react-native-uuid"; */
 import firebase from "../../firebase/index";
 import { YellowBox } from "react-native";
 
@@ -44,12 +44,12 @@ export default ({ navigation, route }) => {
     const response = await fetch(uri);
     const blob = await response.blob();
 
-    let fotoUUID = uuid.v4();
+    /* let fotoUUID = uuid.v4(); */
 
     var ref = firebase
       .storage()
       .ref()
-      .child("images/" + fotoUUID);
+      .child("images/" + userId + "-" + agent.address);
 
     YellowBox.ignoreWarnings(["Setting a timer"]); //esto evita un warning por el await
     const _console = _.clone(console);

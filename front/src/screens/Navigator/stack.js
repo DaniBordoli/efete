@@ -1,5 +1,6 @@
 import React from "react";
-import { headerColor } from "../../Common/constans";
+import {useSelector} from 'react-redux'
+import { headerColor, headerColorDark } from "../../Common/constans";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../home/home";
@@ -24,7 +25,7 @@ import ConfirmAgentLoadContainer from "../ConfirmAgentLoad/ConfirmAgentLoadConta
 import SelectAccountContainer from "../selectAccount/SelectAccountContainer";
 import TransactionOkContainer from "../transactionOk/TransactionOkContainer";
 import AccountsContainer from "../accounts/AccountsContainer";
-import AllAgentsContainer from "../allAgents/AllAgentsContainer"
+import AllAgentsContainer from "../allAgents/AllAgentsContainer";
 import SingleAccountContainer from "../singleAccount/SingleAccountContainer";
 import CreateAgentFormContainer from "../CreateAgentForm/CreateAgentFormContainer";
 import createdAgentOkContainer from "../createdAgentOk/createdAgentOkContainer";
@@ -32,19 +33,27 @@ import ScannerQR from "../QR/scanner";
 import GeneratorQR from "../QR/generatorQR";
 import InfoQR from "../QR/infoQR";
 import OpenCameraContainer from "../camera/OpenCameraContainer";
-import Map from "../Map/mapContainer"
-import confirmValueContainer from '../confirmValue/confirmValuecontainer'
+import Map from "../Map/mapContainer";
+import confirmValueContainer from "../confirmValue/confirmValuecontainer";
+import ValidarIdentidadContainer from "../validarIdentidad/ValidarIdentidadContainer";
+import WaitingValidationContainer from "../waitingValidation/WaitingValidationContainer";
 
 const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
+const header = mode ? myHeader : myHeaderDark
+    
+  const mode = useSelector(
+    (state) => state.users.mode
+  )
+
   return (
     <Stack.Navigator initialRouteName="EditAgentProfile">
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
         options={{
-          ...myHeader,
+          ...header,
           title: "Cobrar con QR",
           headerRight: () => (
             <Feather
@@ -61,7 +70,7 @@ export default ({ navigation }) => {
         name="Map"
         component={Map}
         options={{
-          ...myHeader,
+          ...header,
           title: "Mapa",
         }}
       />
@@ -69,7 +78,7 @@ export default ({ navigation }) => {
         name="ScannerQR"
         component={ScannerQR}
         options={{
-          ...myHeader,
+          ...header,
           title: "Escaner QR",
         }}
       />
@@ -77,7 +86,7 @@ export default ({ navigation }) => {
         name="InfoQR"
         component={InfoQR}
         options={{
-          ...myHeader,
+          ...header,
           title: "Todo sobre QR",
         }}
       />
@@ -104,7 +113,7 @@ export default ({ navigation }) => {
         name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Transaccion",
         }}
       />
@@ -130,7 +139,7 @@ export default ({ navigation }) => {
               onPress={() => navigation.openDrawer()}
             />
           ),
-          ...myHeader,
+          ...header,
 
           headerTitleAlign: "center",
           title: "Perfil usuario",
@@ -138,10 +147,10 @@ export default ({ navigation }) => {
       />
       <Stack.Screen
         name="SingleUserTransaction"
-        options={{ ...myHeader, title: "Transaccion" }}
+        options={{ ...header, title: "Transaccion" }}
         component={SingleUserTransactionContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Ver transacción",
         }}
       />
@@ -150,7 +159,7 @@ export default ({ navigation }) => {
         name="CreateAgentForm"
         component={CreateAgentFormContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Tu Negocio",
         }}
       />
@@ -162,7 +171,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SelectOtherAmountAgent"
         options={{
-          ...myHeader,
+          ...header,
           title: "Seleccionar otro monto",
         }}
         component={OtherAmountAgentContainer}
@@ -170,7 +179,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="ConfirmAgentLoad"
         component={ConfirmAgentLoadContainer}
-        options={{headerShown:false}}
+        options={{ headerShown: false }}
       />
 
       <Stack.Screen
@@ -182,7 +191,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SelectAmount"
         options={{
-          ...myHeader,
+          ...header,
           title: "Seleccionar monto",
         }}
         component={SelectAmountContainer}
@@ -191,7 +200,7 @@ export default ({ navigation }) => {
         name="ConfAmountAgent"
         component={ConfAmountAgentContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Seleccionar monto",
         }}
       />
@@ -208,7 +217,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SelectOtherAmount"
         options={{
-          ...myHeader,
+          ...header,
           title: "Seleccionar otro monto",
         }}
         component={SelectOtherAmountContainer}
@@ -216,7 +225,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="OpenCamera"
         options={{
-          ...myHeader,
+          ...header,
           title: "Tomar Foto",
         }}
         component={OpenCameraContainer}
@@ -225,7 +234,7 @@ export default ({ navigation }) => {
         name="EditUserProfile"
         component={EditUserProfileContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Mi perfil",
         }}
       />
@@ -233,7 +242,7 @@ export default ({ navigation }) => {
         name="EditAgentProfile"
         component={EditAgentContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Tu negocio",
         }}
       />
@@ -257,7 +266,7 @@ export default ({ navigation }) => {
               onPress={() => navigation.openDrawer()}
             />
           ),
-          ...myHeader,
+          ...header,
 
           headerTitleAlign: "center",
           title: "Perfil agente",
@@ -268,7 +277,7 @@ export default ({ navigation }) => {
         name="AllAgentTransactions"
         component={AllAgentTransactionsContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Transacciones",
         }}
       />
@@ -276,7 +285,7 @@ export default ({ navigation }) => {
         name="AllUserTransactions"
         component={AllUserTransactionsContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Transacciones",
         }}
       />
@@ -285,7 +294,7 @@ export default ({ navigation }) => {
         name="AddAccounts"
         component={AddAccountsContainer}
         options={{
-          ...myHeader,
+          ...header,
           title: "Nueva Cuenta",
         }}
       />
@@ -293,7 +302,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SelectAccount"
         options={{
-          ...myHeader,
+          ...header,
           title: "Seleccionar Cuenta",
         }}
         component={SelectAccountContainer}
@@ -306,17 +315,29 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Accounts"
         component={AccountsContainer}
-        options={{ ...myHeader, title: "Mis Cuentas" }}
+        options={{ ...header, title: "Mis Cuentas" }}
       />
       <Stack.Screen
         name="AllAgents"
         component={AllAgentsContainer}
-        options={{ ...myHeader, title: "Mis Negocios" }}
+        options={{ ...header, title: "Mis Negocios" }}
       />
       <Stack.Screen
         name="SingleAccount"
         component={SingleAccountContainer}
-        options={{ ...myHeader, title: "Detalle" }}
+        options={{ ...header, title: "Detalle" }}
+      />
+
+      <Stack.Screen
+        name="ValidateIdentity"
+        component={ValidarIdentidadContainer}
+        options={{ ...myHeader, title: "Validar identidad" }}
+      />
+
+      <Stack.Screen
+        name="WaitingValidation"
+        component={WaitingValidationContainer}
+        options={{ ...myHeader, title: "Esperar aprobación" }}
       />
     </Stack.Navigator>
   );
@@ -330,5 +351,16 @@ const myHeader = {
   },
   headerStyle: {
     backgroundColor: headerColor,
+  },
+};
+
+const myHeaderDark = {
+  headerTintColor: "white",
+  headerTitleStyle: {
+    color: "white",
+    fontFamily: "regular",
+  },
+  headerStyle: {
+    backgroundColor: headerColorDark,
   },
 };

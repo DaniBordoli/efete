@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 
 const CreatedAgentOkContainer = ({ navigation, route }) => {
   const agent = useSelector((state) => state.agents.newAgent);
-  console.log(route.params.fotos, "PARAMSFOTOS");
-  console.log(route.params, "PARAMS");
 
   return (
     <CreatedAgentOk
