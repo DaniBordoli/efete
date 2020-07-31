@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { headerColor, buttonColor } from "../../Common/constans";
+import { headerColor, buttonColor , grisClaro, verdeTexto} from "../../Common/constans";
 
 export const style = StyleSheet.create({
     
@@ -35,20 +35,19 @@ export const style = StyleSheet.create({
       borderRadius: 5,
       marginBottom: 10
     },
-    description : {
-      fontFamily: "nunito",  
-      backgroundColor: "#FFFFFF",
-      color: '#505050',
-      padding: 15,
-      fontSize: 18,
-      width: 300,
-      textAlign: "center",
-      borderWidth:0.5,
-      borderColor:'#aaaaac',
-      shadowRadius: 4.0,
-      shadowOpacity: 0.25,
-      borderRadius:3
-
+    description: {
+      fontFamily: "sans-bold",  
+        backgroundColor: "#FFFFFF",
+        color: verdeTexto,
+        padding: 15,
+        fontSize: 18,
+        width: 300,
+        textAlign: "center",
+        borderWidth:1,
+        borderColor:grisClaro,
+        shadowRadius: 4.0,
+        shadowOpacity: 0.25,
+        borderRadius:3
     },
     confirmar: {
         width: 167,

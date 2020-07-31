@@ -55,7 +55,7 @@ export default ({
                         </Text>
                         <Text style={style.account}>
                           xxxx-xxxx-xxxx-
-                          {item.accountNumber.toString().slice(6)}
+                          {item.accountNumber.toString().slice(18, 22)}
                         </Text>
                       </View>
 

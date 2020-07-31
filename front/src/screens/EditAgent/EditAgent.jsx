@@ -6,9 +6,12 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  SafeAreaView,
 } from "react-native";
 import { style } from "./style.js";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 export default ({
   handleSubmit,
@@ -18,98 +21,131 @@ export default ({
   cuil,
   navigation,
   image,
+  handlerAddress,
+  notifyChange,
 }) => {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-    >
+    <View style={{ flex: 1 }}>
+      
+
+      
+      <Text style={style.containerTitle}>Datos de tu Negocio</Text>
       <View style={style.container}>
-        <Text style={style.containerTitle}>Datos de tu Negocio</Text>
-        
-        <View style={style.searchSection}>
-        <Text style={style.text}>Nombre del negocio</Text>
-
-          <TextInput
-            style={style.input}
-            onChangeText={(e) => handleChange(e, "name")}
-            name="name"
-            placeholder="Ingrese el nombre del establecimiento"
-            defaultValue={name}
-            required
-          />
-          {/* <TouchableOpacity onPress={updateSecureTextEntry} 
-            style={{ marginRight: 10, marginRight: 5 }}
-          >
-            <MaterialCommunityIcons name="pencil" size={20} color="black" />
-          </TouchableOpacity> */}
-        </View>
-        
-        <View style={style.searchSection}>
-        <Text style={style.text}>Direccion</Text>
-          <TextInput
-            style={style.input}
-            onChangeText={(e) => handleChange(e, "address")}
-            name="address"
-            placeholder="Indique la dirección"
-            defaultValue={address}
-            required
-          />
-          {/* <TouchableOpacity onPress={updateSecureTextEntry} 
-            style={{ marginRight: 10, marginRight: 5 }}
-          >
-            <MaterialCommunityIcons name="pencil" size={20} color="black" />
-          </TouchableOpacity> */}
-        </View>
-        
-        <View style={style.searchSection}>
-        <Text style={style.text}>CUIL</Text>
-          <TextInput
-            style={style.input}
-            onChangeText={(e) => handleChange(e, "cuil")}
-            name="cuil"
-            placeholder="Ingrese su numero de CUIL"
-            defaultValue={cuil}
-            required
-          />
-        </View>
-
-        {image !== "" ? (
-          <View>
-            <Image style={style.image} source={{ uri: image }} />
-          </View>
-        ) : (
-          <View>
-            <Text style={style.text}>La imagen se está cargando</Text>
-          </View>
-        )}
-
-        <Text style={style.textOpenCamera}>Subir foto</Text>
-
-        <TouchableOpacity
-          style={style.openCamera}
-          title="Open Camera"
-          onPress={() => {
-            navigation.navigate("OpenCamera", { edit: true });
+        <Text
+          style={{
+            alignSelf: "flex-start",
+            marginLeft: 10,
+            marginBottom: 10,
+            color: "#424242",
           }}
         >
-        <Image source={require('../../../assets/iconos/openCamera.png')}/>  
-        </TouchableOpacity>
- 
-          {/* <MaterialIcons
-            name="camera-alt"
-            size={27}
-            color="white"
-            style={style.foto}
-          /> */}
-          <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
-
-        <TouchableOpacity
-          style={style.confirmar}
-          onPress={() => handleSubmit()}
+          Direccion
+        </Text>
+        <View
+          style={{
+            backgroundColor: "white",
+            width: "100%",
+            flexDirection: "row",
+            marginBottom: 18,
+          }}
         >
-          <Text style={style.textConfirmar}>GUARDAR CAMBIOS</Text>
-        </TouchableOpacity>
+        <GooglePlacesAutocomplete
+          styles={{
+            textInputContainer: {
+              width: "95%",
+              alignSelf: "center",
+              elevation: 3,
+              backgroundColor: "white",
+              borderRadius: 5,
+            },
+            textInput: {
+              marginBottom: 0,
+              marginTop: 0,
+              marginLeft: 0,
+              marginRight: 0,
+              height: "100%",
+            },
+          }}
+          enablePoweredByContainer={false}
+          placeholder="Editar Ubicacion"
+          returnKeyType={"search"}
+          listViewDisplayed="auto"
+          fetchDetails={true}
+          onPress={(data, detail = null) => {
+            notifyChange(detail.geometry.location);
+            handlerAddress(data);
+          }}
+          query={{ key: "AIzaSyBV-TT8w7N3TC9LDFGIQOk9BmN1iX10arg" }}
+          nearbyPlacesAPI="GooglePlacesSearch"
+          debounce={200}
+        />
+    </View>
+
+        <View>
+          <Text style={style.title}>Nombre del negocio</Text>
+
+          
+            <TextInput
+              onChangeText={(e) => handleChange(e, "name")}
+              name="name"
+              placeholder="Editar Establecimiento"
+              defaultValue={name}
+              style={style.input}
+              required
+            />
+          
+        </View>
+
+        <View >
+          <Text style={style.title}>CUIL</Text>
+
+         
+            <TextInput
+              onChangeText={(e) => handleChange(e, "cuil")}
+              name="cuil"
+              style={style.input}
+              defaultValue={cuil}
+              required
+            />
+       
+        </View>
       </View>
-    </ScrollView>
+      
+      
+      
+      {image !== "" ? (
+        <View style={{alignSelf:'center'}}>
+          <Image style={style.image} source={{ uri: image }} />
+        </View>
+      ) : (
+        <View style={{alignSelf:'center'}}>
+          <Text style={style.text}>La imagen se está cargando</Text>
+        </View>
+      )}
+
+      <Text style={style.textOpenCamera}>Subir foto</Text>
+
+      <TouchableOpacity
+      style={{alignSelf:'center'}}
+        title="Open Camera"
+        onPress={() => {
+          navigation.navigate("OpenCamera", { edit: true });
+        }}
+      >
+        <MaterialIcons
+          name="camera-alt"
+          size={27}
+          color="white"
+          style={style.openCamera}
+        />
+      </TouchableOpacity>
+
+      <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
+
+      <TouchableOpacity style={style.confirmar} onPress={() => handleSubmit()}>
+        <Text style={style.textConfirmar}>GUARDAR CAMBIOS</Text>
+      </TouchableOpacity>
+    </View>
+    
   );
 };

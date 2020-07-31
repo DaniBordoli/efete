@@ -32,7 +32,7 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                     >
                       <Text style={style.texto}>
                         xx-xxxx-xxxx-xxxx-xxxx-
-                        {account.accountNumber.toString().slice(5)}
+                        {account.accountNumber.toString().slice(18, 22)}
                       </Text>
                     </View>
                   </View>
