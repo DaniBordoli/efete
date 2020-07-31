@@ -74,6 +74,7 @@ export default ({
             style={mode? style.movimientosContainer : style.movimientosContainerDark}
           >
             <Text style={ mode ? style.movimientos : style.movimientosDark}>Movimientos</Text>
+            
             <Text style={style.time}>{time.toUpperCase()}</Text>
             {/* <Button>Ver Todo</Button> */}          
             

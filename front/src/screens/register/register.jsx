@@ -81,18 +81,26 @@ export default ({
             </View>
           ) : null}
 
-          <DropDownPicker
-            labelStyle={{ fontSize: 14, color: "#6F76E4" }}
-            items={[
-              { label: "Sexo", value: "", selected: true },
-              { label: "Femenino", value: "F" },
-              { label: "Masculino", value: "M" },
-            ]}
-            defaultIndex={0}
-            onChangeItem={(item) => handleGender(item.value)}
-          />
-
-          <View style={style.hr} />
+          <View style={{ height: 56, flex: 1 }}>
+            <DropDownPicker
+              style={{
+                flex: 1,
+                paddingTop: 10,
+                paddingRight: 10,
+                paddingBottom: 40,
+                paddingLeft: 0,
+              }}
+              labelStyle={{ fontSize: 14, color: "#6F76E4", height: 30 }}
+              items={[
+                { label: "Sexo", value: "", selected: true },
+                { label: "Femenino", value: "F" },
+                { label: "Masculino", value: "M" },
+              ]}
+              defaultIndex={0}
+              onChangeItem={(item) => handleGender(item.value)}
+            />
+          </View>
+          {/* <View style={style.hr} /> */}
           <View style={style.searchSection}>
             <Icon
               style={style.searchIcon}

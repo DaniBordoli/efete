@@ -22,7 +22,7 @@ const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
 
       <Text style={style.text1}>{agente === null? agenteUnico.address : agente.address} </Text>
 
-      <Text style={style.text2}>${value}</Text>
+      <Text style={style.text2}>${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Text>
 
       <View style={style.hr}></View>
 
@@ -34,7 +34,7 @@ const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
             navigation.navigate("User");
           }}
         >
-          <Text style={style.textCancelar}>Cancelar</Text>
+          <Text style={style.textCancelar}>CANCELAR</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -44,7 +44,7 @@ const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
             navigation.navigate("ScannerQR", { value });
           }}
         >
-          <Text style={style.textConfirmar}>Confirmar</Text>
+          <Text style={style.textConfirmar}>CONFIRMAR</Text>
         </TouchableOpacity>
       </View>
     </View>

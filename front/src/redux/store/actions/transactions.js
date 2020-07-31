@@ -105,7 +105,7 @@ export const createTransaction = (transaction) => (dispatch) =>
       {
         headers: {
           Authorization:
-            "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTYxNDg4OTc4NjMsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjE3NzY5N30.OuKE1lkInal3W6qgWkXE9XqgxE111dRBGzH7NZZlR6gHFIqrmH5XLgGfhQ8k6mckgLcary-NTkHapE1QPSkaUA",
+            "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTYyMDQzMTMxNzQsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjIzMzExM30.-jdvZ6I5Murkgf48torDr7Oi3Tkt1OtSZpBj80qsXx-7aAJM9wSonEPG_FGCOC0XiKU3ah40AjQAPhACzrMfGg",
         },
       }
     )
@@ -128,7 +128,7 @@ export const createTransaction = (transaction) => (dispatch) =>
         {
           headers: {
             Authorization:
-              "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTYxNDg4OTc4NjMsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjE3NzY5N30.OuKE1lkInal3W6qgWkXE9XqgxE111dRBGzH7NZZlR6gHFIqrmH5XLgGfhQ8k6mckgLcary-NTkHapE1QPSkaUA",
+              "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTYyMDQzMTMxNzQsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjIzMzExM30.-jdvZ6I5Murkgf48torDr7Oi3Tkt1OtSZpBj80qsXx-7aAJM9wSonEPG_FGCOC0XiKU3ah40AjQAPhACzrMfGg",
           },
         }
       );
