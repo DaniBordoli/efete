@@ -22,7 +22,7 @@ const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
 
       <Text style={style.text1}>{agente === null? agenteUnico.address : agente.address} </Text>
 
-      <Text style={style.text2}>${value}</Text>
+      <Text style={style.text2}>${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Text>
 
       <View style={style.hr}></View>
 
