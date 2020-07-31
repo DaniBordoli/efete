@@ -64,6 +64,12 @@ const getAllUsers = (req, res) => {
   });
 };
 
+const setTcn = (req, res) => {
+  User.update({ _id: req.body._id }, req.body).then(() => {
+    res.sendStatus(200);
+  });
+};
+
 module.exports = {
   userRegister,
   userLogin,
@@ -71,4 +77,5 @@ module.exports = {
   editProfileUser,
   userVerify,
   getAllUsers,
+  setTcn,
 };

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IP } from "../../../../config";
-import { LOGIN_USER, MODE, TOKEN } from "../constants";
+import { LOGIN_USER, MODE, TOKEN, TCN } from "../constants";
 
 export const login_user = (user) => {
   return {
@@ -16,6 +16,13 @@ export const setToken = (token) => {
   };
 };
 
+export const setTcn = (tcn) => {
+  return {
+    type: TCN,
+    tcn,
+  };
+};
+
 export const mode = (mode) => {
   return {
     type: MODE,
@@ -24,7 +31,7 @@ export const mode = (mode) => {
 };
 
 export const logUser = (user) => (dispatch) => {
-  console.log("USUARIO",user)
+  console.log("USUARIO", user);
   return axios
     .post(`http://${IP}:1337/api/users/login`, user, {
       withCredentials: true,
@@ -88,8 +95,9 @@ export const generateToken = () => (dispatch) => {
     });
 };
 
-export const validateIdentity = (url, dni, gender, token) => (dispatch) => {
-  console.log(dni, gender, token, "DATOOOSACA");
+export const validateIdentity = (url, dni, gender, token, userId) => (
+  dispatch
+) => {
   return axios
     .post(
       "http://150.136.1.69:8011/CHUTROFINAL/API_ABIS/apiInline_v3.php",
@@ -104,6 +112,14 @@ export const validateIdentity = (url, dni, gender, token) => (dispatch) => {
       }
     )
     .then((res) => {
-      console.log(res.data, "RESDATACA");
+      axios
+        .patch(`http://${IP}:1337/api/users/validateIdentity`, {
+          tcn: res.data.transactionControlNumber,
+          _id: userId,
+        })
+
+        .then(() => {
+          dispatch(setTcn(res.data.transactionControlNumber));
+        });
     });
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import { headerColor, headerColorDark } from "../../Common/constans";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -41,11 +41,9 @@ import WaitingValidationContainer from "../waitingValidation/WaitingValidationCo
 const Stack = createStackNavigator();
 
 export default ({ navigation }) => {
-const header = mode ? myHeader : myHeaderDark
-    
-  const mode = useSelector(
-    (state) => state.users.mode
-  )
+  const header = mode ? myHeader : myHeaderDark;
+
+  const mode = useSelector((state) => state.users.mode);
 
   return (
     <Stack.Navigator initialRouteName="Login">
