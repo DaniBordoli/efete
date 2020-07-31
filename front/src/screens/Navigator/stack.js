@@ -1,5 +1,5 @@
 import React from "react";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import { headerColor, headerColorDark } from "../../Common/constans";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
