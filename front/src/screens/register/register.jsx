@@ -11,6 +11,7 @@ import { Button } from "react-native-elements";
 import { ButtonPrimary, Texto } from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import Icons from "react-native-vector-icons/FontAwesome";
+import DropDownPicker from "react-native-dropdown-picker";
 
 import { style } from "./style.js";
 
