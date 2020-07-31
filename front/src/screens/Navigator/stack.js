@@ -48,7 +48,7 @@ export default ({ navigation }) => {
   )
 
   return (
-    <Stack.Navigator initialRouteName="EditAgentProfile">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
