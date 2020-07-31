@@ -14,7 +14,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   const [ubicacion, setUbicacion] = useState({});
 
   useEffect(() => {
-    route.params ? setFoto(route.params.capturarFoto) : "No hay fotos";
+    route.params ? setFoto(route.params.uriFoto) : "No hay fotos";
   });
 
   const dispatch = useDispatch();

@@ -4,6 +4,7 @@ const initialState = {
   user: {},
   mode: true,
   token: "",
+  tcn: "",
 };
 
 export default (state = initialState, action) => {
@@ -14,6 +15,8 @@ export default (state = initialState, action) => {
       return { ...state, mode: action.mode };
     case TOKEN:
       return { ...state, token: action.token };
+    case TCN:
+      return { ...state, tcn: action.tcn };
     default:
       return state;
   }
