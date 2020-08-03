@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Modal,
-  TouchableHighlight
+  TouchableHighlight,
 } from "react-native";
 import { Button, Icon } from "react-native-elements";
 import { style } from "./style";
@@ -19,7 +19,7 @@ const Accounts = ({
   handleDelete,
   navigation,
   mainAccount,
-  handleMainDelete
+  handleMainDelete,
 }) => {
   console.log(mainAccount, "MAIN");
   const [modalVisible, setModalVisible] = useState(false);
@@ -34,24 +34,31 @@ const Accounts = ({
                 <TouchableOpacity
                   style={style.parentOnly}
                   onPress={() =>
-                    navigation.navigate("SingleAccount", { account: mainAccount })
+                    navigation.navigate("SingleAccount", {
+                      account: mainAccount,
+                    })
                   }
                 >
                   <View style={style.wallet}>
                     <Image
                       source={require("../../../assets/iconos/wallet.png")}
-                      style={{ width: 50, height: 50}}
+                      style={{ width: 50, height: 50 }}
                     />
                   </View>
 
-                  <View style={{ alignContent: "center"}}>
+                  <View style={{ alignContent: "center" }}>
                     <View style={{ flexDirection: "row", marginBottom: 5 }}>
                       <Text style={style.negrita}>Entidad:</Text>
-                      <Text style={style.tex}>{mainAccount.nameEntity[0].nameEntity}</Text>
+                      <Text style={style.tex}>
+                        {mainAccount.nameEntity[0].nameEntity}
+                      </Text>
                     </View>
                     <View style={{ flexDirection: "row" }}>
                       <Text style={style.negrita}>Cuenta:</Text>
-                      <Text style={style.tex}> {mainAccount.accountNumber}</Text>
+                      <Text style={style.tex}>
+                        {" "}
+                        {mainAccount.accountNumber}
+                      </Text>
                     </View>
                   </View>
 
@@ -71,65 +78,75 @@ const Accounts = ({
                       <AntDesign name="delete" size={25} color="#454141" />
                     </TouchableOpacity>
 
-
                     <View style={style.centeredView}>
-                                    <Modal
-                                      animationType="slide"
-                                      transparent={true}
-                                      visible={modalVisible}
-                                      onRequestClose={() => {
-                                        Alert.alert("Modal has been closed.");
-                                      }}
-                                    >
-                                      <View style={style.centeredView}>
-                                        <View style={style.modalView}>
-                                          <Text style={style.modalText}>Seguro desea ELIMINAR su negocio?</Text>
+                      <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                          Alert.alert("Modal has been closed.");
+                        }}
+                      >
+                        <View style={style.centeredView}>
+                          <View style={style.modalView}>
+                            <Text style={style.modalText}>
+                              Seguro desea ELIMINAR su negocio?
+                            </Text>
 
-                                          <TouchableHighlight
-                                            style={{ ...style.openButton, backgroundColor: "#00CC96" }}
-                                            onPress={() => {
-                                              handleDelete(item._id);
-                                            }}
-                                          >
-                                            <Text style={style.textStyle}>Confirmar</Text>
-                                          </TouchableHighlight>
-                                          <TouchableHighlight
-                                            style={{ ...style.openButton, backgroundColor: "#DD1919",marginTop:10 }}
-                                            onPress={() => {
-                                              setModalVisible(!modalVisible);
-                                            }}
-                                          >
-                                            <Text style={{...style.textStyle}}>Cancelar</Text>
-                                          </TouchableHighlight>
-                                        </View>
-                                      </View>
-                                    </Modal>
-                            </View>
-
-
-
+                            <TouchableHighlight
+                              style={{
+                                ...style.openButton,
+                                backgroundColor: "#00CC96",
+                              }}
+                              onPress={() => {
+                                handleMainDelete(item._id);
+                              }}
+                            >
+                              <Text style={style.textStyle}>Confirmar</Text>
+                            </TouchableHighlight>
+                            <TouchableHighlight
+                              style={{
+                                ...style.openButton,
+                                backgroundColor: "#DD1919",
+                                marginTop: 10,
+                              }}
+                              onPress={() => {
+                                setModalVisible(!modalVisible);
+                              }}
+                            >
+                              <Text style={{ ...style.textStyle }}>
+                                Cancelar
+                              </Text>
+                            </TouchableHighlight>
+                          </View>
+                        </View>
+                      </Modal>
+                    </View>
                   </View>
                 </TouchableOpacity>
               </View>
             ) : (
               <View>
-                <Text style={{textAlign:'center'}}> Seleccionar una cuenta principal</Text>
+                <Text style={{ textAlign: "center" }}>
+                  {" "}
+                  Seleccionar una cuenta principal
+                </Text>
               </View>
             )}
           </View>
           <View style={style.hr} />
 
-            <View style={{ flex: 2 }}>
+          <View style={{ flex: 2 }}>
             <Text style={style.asociadas}> CUENTAS ASOCIADAS</Text>
 
             <FlatList
-            style={{ marginBottom:10 }}
+              style={{ marginBottom: 10 }}
               showsVerticalScrollIndicator={false}
               keyExtractor={(accountsUser) => accountsUser._id}
               data={accountsUser}
               renderItem={({ item }) => {
                 return (
-                  <View >
+                  <View>
                     {!item.mainAccount ? (
                       <TouchableOpacity
                         style={style.parent}
@@ -148,15 +165,24 @@ const Accounts = ({
 
                         <View style={{ alignContent: "center" }}>
                           <View
-                            style={{ flexDirection: "row", marginBottom:5, marginRight:-10
-                           }}
-                            >
+                            style={{
+                              flexDirection: "row",
+                              marginBottom: 5,
+                              marginRight: -10,
+                            }}
+                          >
                             <Text style={style.negrita}>Entidad:</Text>
-                            <Text style={style.tex}>{item.nameEntity[0].nameEntity.substr(0,18)} ...</Text>
+                            <Text style={style.tex}>
+                              {item.nameEntity[0].nameEntity.substr(0, 18)} ...
+                            </Text>
                           </View>
                           <View style={{ flexDirection: "row" }}>
                             <Text style={style.negrita}>Cuenta:</Text>
-                            <Text>{item.accountNumber.toLocaleString().substr(0,22)}</Text>
+                            <Text>
+                              {item.accountNumber
+                                .toLocaleString()
+                                .substr(0, 22)}
+                            </Text>
                           </View>
                         </View>
 
@@ -173,43 +199,59 @@ const Accounts = ({
                               setModalVisible(true);
                             }}
                           >
-                            <AntDesign name="delete" size={25} color="#454141" />
+                            <AntDesign
+                              name="delete"
+                              size={25}
+                              color="#454141"
+                            />
                           </TouchableOpacity>
 
                           <View style={style.centeredView}>
-                                    <Modal
-                                      animationType="slide"
-                                      transparent={true}
-                                      visible={modalVisible}
-                                      onRequestClose={() => {
-                                        Alert.alert("Modal has been closed.");
-                                      }}
-                                    >
-                                      <View style={style.centeredView}>
-                                        <View style={style.modalView}>
-                                          <Text style={style.modalText}>Seguro desea ELIMINAR la cuenta?</Text>
+                            <Modal
+                              animationType="slide"
+                              transparent={true}
+                              visible={modalVisible}
+                              onRequestClose={() => {
+                                Alert.alert("Modal has been closed.");
+                              }}
+                            >
+                              <View style={style.centeredView}>
+                                <View style={style.modalView}>
+                                  <Text style={style.modalText}>
+                                    Seguro desea ELIMINAR la cuenta?
+                                  </Text>
 
-                                          <TouchableHighlight
-                                            style={{ ...style.openButton, backgroundColor: "#00CC96" }}
-                                            onPress={() => {
-                                              handleDelete(item._id);
-                                            }}
-                                          >
-                                            <Text style={style.textStyle}>Confirmar</Text>
-                                          </TouchableHighlight>
-                                          <TouchableHighlight
-                                            style={{ ...style.openButton, backgroundColor: "#DD1919",marginTop:10 }}
-                                            onPress={() => {
-                                              setModalVisible(!modalVisible);
-                                            }}
-                                          >
-                                            <Text style={{...style.textStyle}}>Cancelar</Text>
-                                          </TouchableHighlight>
-                                        </View>
-                                      </View>
-                                    </Modal>
-                            </View>
-
+                                  <TouchableHighlight
+                                    style={{
+                                      ...style.openButton,
+                                      backgroundColor: "#00CC96",
+                                    }}
+                                    onPress={() => {
+                                      handleDelete(item._id);
+                                    }}
+                                  >
+                                    <Text style={style.textStyle}>
+                                      Confirmar
+                                    </Text>
+                                  </TouchableHighlight>
+                                  <TouchableHighlight
+                                    style={{
+                                      ...style.openButton,
+                                      backgroundColor: "#DD1919",
+                                      marginTop: 10,
+                                    }}
+                                    onPress={() => {
+                                      setModalVisible(!modalVisible);
+                                    }}
+                                  >
+                                    <Text style={{ ...style.textStyle }}>
+                                      Cancelar
+                                    </Text>
+                                  </TouchableHighlight>
+                                </View>
+                              </View>
+                            </Modal>
+                          </View>
                         </View>
                       </TouchableOpacity>
                     ) : null}

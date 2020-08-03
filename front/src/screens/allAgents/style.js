@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { buttonColor, verdeTexto, cardDark, lilaDark, azulClaro, azulDark } from "../../Common/constans";
+import { buttonColor, verdeTexto, cardDark, lilaDark, azulDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   botonAgregar: {
