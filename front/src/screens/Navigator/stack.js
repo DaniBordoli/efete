@@ -46,7 +46,7 @@ export default ({ navigation }) => {
   const mode = useSelector((state) => state.users.mode);
 
   return (
-    <Stack.Navigator initialRouteName="Home" >
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
@@ -418,13 +418,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="WaitingValidation"
         component={WaitingValidationContainer}
-        options={{
-          ...myHeader,
-          headerStyle: {
-            backgroundColor: mode ? headerColor : headerColorDark,
-          },
-          title: "Esperar aprobación",
-        }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

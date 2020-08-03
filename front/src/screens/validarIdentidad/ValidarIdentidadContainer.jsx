@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ValidarIdentidad from "./ValidarIdentidad";
-import { useDispatch , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { generateToken } from "../../redux/store/actions/users";
 
 const ValidarIdentidadContainer = ({ navigation }) => {
   const dispatch = useDispatch();
-  
-  const mode = useSelector(
-    (state) => state.users.mode
-  );
-  const handleToken = () => {
-    dispatch(generateToken());
-    navigation.navigate("OpenCamera", { identity: true });
-  };
+  const view = "ValidateIdentity";
 
-  return <ValidarIdentidad mode={mode} handleToken={handleToken} />;
+  useEffect(() => {
+    dispatch(generateToken());
+  }, []);
+
+  return <ValidarIdentidad view={view} navigation={navigation} mode={mode} />;
 };
 
 export default ValidarIdentidadContainer;
