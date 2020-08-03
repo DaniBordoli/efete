@@ -4,7 +4,7 @@ import { Button } from "react-native-elements";
 import { style } from "./style";
 import { useNavigation } from "@react-navigation/native";
 
-export default ({ handleToken }) => {
+export default ({ handleToken,mode }) => {
   return (
     <View>
       <Text>Para poder utilizar la App tenes que validar tu identidad</Text>

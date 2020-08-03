@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { headerColor, buttonColor } from "../../Common/constans";
+import { headerColor, buttonColor, buttonDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   monto: {
@@ -18,6 +18,16 @@ export const style = StyleSheet.create({
     alignSelf: "center",
     borderColor: "#807fc7",
   },
+  inputDark: {
+    textAlign: "center",
+    fontSize: 24,
+    borderBottomWidth: 1,
+    width: "35%",
+    alignSelf: "center",
+    borderColor: "white",
+    color:'white'
+  },
+
   confirmar: {
     width: 167,
     height: 60,
@@ -53,6 +63,22 @@ tituloCancelar:{
   textAlign: "center",
   textTransform: "uppercase",
   color: buttonColor,
+  fontWeight: "bold",
+},
+cancelarDark: {
+  width: 160,
+  height: 55,
+  backgroundColor: buttonDark,
+  marginTop: 10,
+  alignSelf: "center",
+  borderWidth: 1,
+  borderColor: headerColor
+},
+tituloCancelarDark:{
+  fontSize: 18,
+  textAlign: "center",
+  textTransform: "uppercase",
+  color: headerColor,
   fontWeight: "bold",
 },
 });

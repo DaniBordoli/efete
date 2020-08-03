@@ -11,6 +11,9 @@ import { useNavigation } from '@react-navigation/native'
 const SingleUserTransactionContainer = ({ navigation, route})=>{
     const dispacth = useDispatch();
 
+    const mode = useSelector(
+        (state) => state.users.mode
+      );
     const getOneUserTransaction = useSelector((state) => state.transactions.userTransaction)
     const getOneTransAccount = useSelector((state) => state.transactions.userTransaction.originAccount)
 
@@ -26,6 +29,7 @@ const SingleUserTransactionContainer = ({ navigation, route})=>{
          getOneUserTransaction={getOneUserTransaction}
          navigation={navigation}
          getOneTransAccount={getOneTransAccount}
+         mode={mode}
          />
        </View>
     )

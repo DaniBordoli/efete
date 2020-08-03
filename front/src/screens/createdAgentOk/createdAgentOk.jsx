@@ -12,7 +12,7 @@ import { style } from "./style";
 import { buttonColor } from "../../Common/constans";
 import { Load } from "../../Common/loading";
 
-const CreatedAgentOk = ({ navigation, foto, name, address, cuil }) => {
+const CreatedAgentOk = ({ navigation, foto, name, address, cuil , mode}) => {
   return (
     <ScrollView>
       <View>

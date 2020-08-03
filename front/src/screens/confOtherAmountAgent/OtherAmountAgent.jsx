@@ -1,25 +1,26 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
-import { headerColor, buttonColor } from "../../Common/constans";
-import {Button} from 'react-native-elements'
+import { headerColor, buttonColor, fondoColor, buttonDark } from "../../Common/constans";
+import { Button } from "react-native-elements";
 
 const OtherAmountAgent = ({
   handlerValue,
   handlerSubmit,
   value,
   navigation,
+  mode,
 }) => {
   return (
-    <View style={{backgroundColor:'#F1F3F6'}}>
-<Text style={style.monto}>Monto</Text>
-<View style={{flexDirection:'row' , justifyContent:'center'}}>
-      <Text style={{fontSize:25}}>$</Text>
-      <TextInput
-        style={style.input}
-        keyboardType="numeric"
-        onChangeText={(value) => handlerValue(value)}
-        value={value.toString()}
-      />
+    <View style={{ flex: 1, backgroundColor: mode ? fondoColor : "black" }}>
+      <Text style={style.monto}>Monto</Text>
+      <View style={{ flexDirection: "row", justifyContent: "center" }}>
+        <Text style={{ fontSize: 25, color: mode ? "black" : "white" }}>$</Text>
+        <TextInput
+          style={mode ? style.input : style.inputDark} 
+          keyboardType="numeric"
+          onChangeText={(value) => handlerValue(value)}
+          value={value.toString()}
+        />
       </View>
       {/* {value < 100 ? (
         <Text> Monto: ${value} - El monto debe ser mayor a $100</Text>
@@ -33,46 +34,40 @@ const OtherAmountAgent = ({
          :
          <Text> Monto: ${value}</Text>
          } */}
-        <View style={style.contBotones}>
-      {value < 100 ? (
-         <Button
-         buttonStyle={style.confirmar}
-         titleStyle={style.tituloConfirmar}
-         title="Confirmar"
-         disabled={true}
-       />
-      ) : (
+      <View style={style.contBotones}>
+        {value < 100 ? (
+          <Button
+            buttonStyle={style.confirmar}
+            titleStyle={style.tituloConfirmar}
+            title="Confirmar"
+            disabled={true}
+          />
+        ) : (
+          <Button
+            buttonStyle={style.confirmar}
+            titleStyle={style.tituloConfirmar}
+            title="Confirmar"
+            onPress={() => {
+              handlerSubmit();
+              navigation.navigate("ConfirmAgentLoad"); // Deberia llevar a una vista de confirmación
+            }}
+          />
+        )}
+
         <Button
-          buttonStyle={style.confirmar}
-          titleStyle={style.tituloConfirmar}
-          title="Confirmar"
+          buttonStyle={mode ? style.cancelar : style.cancelarDark}
+          titleStyle={mode ? style.tituloCancelar : style.tituloCancelarDark}
+          title="Cancelar"
           onPress={() => {
-            handlerSubmit();
-            navigation.navigate("ConfirmAgentLoad"); // Deberia llevar a una vista de confirmación
+            navigation.navigate("Agent"); //Cancelar devuelve al home
           }}
         />
-      )}
-
-
-        <Button
-        buttonStyle={style.cancelar}
-        titleStyle={style.tituloCancelar}
-        title="Cancelar"
-        onPress={() => {
-            
-            navigation.navigate("Agent", ); //Cancelar devuelve al home
-          }}
-    />
-
-        
       </View>
-      </View>
-    
+    </View>
   );
 };
 
 export default OtherAmountAgent;
-
 
 const style = StyleSheet.create({
   monto: {
@@ -91,6 +86,15 @@ const style = StyleSheet.create({
     alignSelf: "center",
     borderColor: "#807fc7",
   },
+  inputDark: {
+    textAlign: "center",
+    fontSize: 24,
+    borderBottomWidth: 1,
+    width: "35%",
+    alignSelf: "center",
+    borderColor: "white",
+    color:'white'
+  },
   confirmar: {
     width: 160,
     height: 55,
@@ -108,24 +112,38 @@ const style = StyleSheet.create({
   cancelar: {
     width: 160,
     height: 55,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginTop: 10,
     alignSelf: "center",
     borderWidth: 1,
-    borderColor: buttonColor
+    borderColor: buttonColor,
   },
-  tituloCancelar:{
+  tituloCancelar: {
     fontSize: 18,
     textAlign: "center",
     textTransform: "uppercase",
     color: buttonColor,
     fontWeight: "bold",
   },
-  contBotones : {
-      marginTop:100,
-    flexDirection: 'row-reverse',
-    justifyContent:'space-evenly',
- 
- 
+  contBotones: {
+    marginTop: 100,
+    flexDirection: "row-reverse",
+    justifyContent: "space-evenly",
+  },
+  cancelarDark: {
+    width: 160,
+    height: 55,
+    backgroundColor: buttonDark,
+    marginTop: 10,
+    alignSelf: "center",
+    borderWidth: 1,
+    borderColor: headerColor
+  },
+  tituloCancelarDark:{
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    color: headerColor,
+    fontWeight: "bold",
   },
 });
