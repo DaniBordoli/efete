@@ -17,7 +17,8 @@ const Accounts = ({
   handleDelete,
   navigation,
   mainAccount,
-  handleMainDelete
+  handleMainDelete,
+  mode
 }) => {
   console.log(mainAccount, "MAIN");
   return (

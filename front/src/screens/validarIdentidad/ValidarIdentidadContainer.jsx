@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ValidarIdentidad from "./ValidarIdentidad";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { generateToken } from "../../redux/store/actions/users";
 
 const ValidarIdentidadContainer = ({ navigation }) => {
@@ -11,7 +11,7 @@ const ValidarIdentidadContainer = ({ navigation }) => {
     dispatch(generateToken());
   }, []);
 
-  return <ValidarIdentidad view={view} navigation={navigation} />;
+  return <ValidarIdentidad view={view} navigation={navigation} mode={mode} />;
 };
 
 export default ValidarIdentidadContainer;

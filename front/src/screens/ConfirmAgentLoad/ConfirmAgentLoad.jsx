@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 import { style } from './style'
 
 
-const ConfirmAgentLoad = ({ value }) => {
+const ConfirmAgentLoad = ({ value , mode}) => {
 
     const navigation = useNavigation();
 

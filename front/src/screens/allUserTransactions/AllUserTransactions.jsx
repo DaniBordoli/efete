@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, Image, Link, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { style } from "./style.js";
 import { Card, Button } from "react-native-elements";
-import { headerColor, buttonColor } from "../../Common/constans.js";
+import { buttonColor } from "../../Common/constans.js";
 
-export default ({ navigation, userTransactions }) => {
+export default ({ navigation, userTransactions, mode }) => {
   //Tiene sentido poner un ternario si no estoy buscando algo al back y la info la paso por props?
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>

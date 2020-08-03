@@ -13,6 +13,7 @@ import { style } from "./style.js";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import OpenCamera from "../camera/OpenCameraContainer.jsx";
+import { fondoColor, inputDark, headerColor } from "../../Common/constans.js";
 
 export default ({
   handleSubmit,
@@ -25,9 +26,10 @@ export default ({
   handlerAddress,
   notifyChange,
   view,
+  mode,
 }) => {
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: mode ? fondoColor : "black" }}>
       <Text style={style.containerTitle}>Datos de tu Negocio</Text>
       <View style={style.container}>
         <Text
@@ -35,29 +37,35 @@ export default ({
             alignSelf: "flex-start",
             marginLeft: 10,
             marginBottom: 10,
-            color: "#424242",
+            fontSize: 15,
+            color: mode ? "#424242" : "white",
           }}
         >
           Direccion
         </Text>
         <View
           style={{
-            backgroundColor: "white",
-            width: "100%",
+            backgroundColor: mode ? "white" : inputDark,
+            color: mode ? "black" : "white",
+            width: "95%",
             flexDirection: "row",
-            marginBottom: 18,
+            marginBottom: 25,
+            borderRadius: 5,
           }}
         >
           <GooglePlacesAutocomplete
             styles={{
               textInputContainer: {
-                width: "95%",
+                width: "100%",
                 alignSelf: "center",
+                color: mode ? "black" : "white",
                 elevation: 3,
-                backgroundColor: "white",
+                backgroundColor: mode ? "white" : inputDark,
                 borderRadius: 5,
               },
               textInput: {
+                color: mode ? "black" : "white",
+                backgroundColor: mode ? "white" : inputDark,
                 marginBottom: 0,
                 marginTop: 0,
                 marginLeft: 0,
@@ -81,25 +89,27 @@ export default ({
         </View>
 
         <View>
-          <Text style={style.title}>Nombre del negocio</Text>
+          <Text style={mode ? style.title : style.titleDark}>
+            Nombre del negocio
+          </Text>
 
           <TextInput
             onChangeText={(e) => handleChange(e, "name")}
             name="name"
             placeholder="Editar Establecimiento"
             defaultValue={name}
-            style={style.input}
+            style={mode ? style.input : style.inputDark}
             required
           />
         </View>
 
         <View>
-          <Text style={style.title}>CUIL</Text>
+          <Text style={mode ? style.title : style.titleDark}>CUIL</Text>
 
           <TextInput
             onChangeText={(e) => handleChange(e, "cuil")}
             name="cuil"
-            style={style.input}
+            style={mode ? style.input : style.inputDark}
             defaultValue={cuil}
             required
           />
@@ -107,8 +117,17 @@ export default ({
       </View>
 
       {image !== "" ? (
-        <View style={{ alignSelf: "center" }}>
-          <Image style={style.image} source={{ uri: image }} />
+        <View
+          style={{
+            flexDirection: "row",
+            alignSelf: "center",
+            marginLeft: "10%",
+          }}
+        >
+          <Image
+            style={mode ? style.image : style.imageDark}
+            source={{ uri: image }}
+          />
         </View>
       ) : (
         <View style={{ alignSelf: "center" }}>

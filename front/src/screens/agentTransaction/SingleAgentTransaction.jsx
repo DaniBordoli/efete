@@ -1,10 +1,9 @@
 import React from "react";
-import { View, Text, Button, Image, Link, ScrollView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { Load } from "../../Common/loading";
+import { View, Text, ScrollView } from "react-native";
+
 import { style } from "./style";
 
-export default ({ navigation, transaction }) => {
+export default ({ mode, transaction }) => {
   console.log(transaction, "WALLY");
   return (
       <ScrollView style={style.mainContainer} showsVerticalScrollIndicator={false}>

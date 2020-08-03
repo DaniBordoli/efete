@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
-import { buttonColor, verdeTexto } from "../../Common/constans";
+import { buttonColor, verdeTexto, inputDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: "#FAFBFF",
+    /* backgroundColor: "#FAFBFF", */
+
     paddingBottom: 5,
     paddingTop: 20,
     marginLeft: 15,
@@ -17,15 +18,20 @@ export const style = StyleSheet.create({
     color: "#6F76E4",
     fontSize: 22,
     fontFamily: "nunito",
-    margin: 20,
+    marginBottom: 20,
+    marginTop: 20,
     textAlign: "center",
     textTransform: "uppercase",
   },
   title: {
     alignSelf: "flex-start",
-
     marginBottom: 10,
     color: "#424242",
+  },
+  titleDark: {
+    alignSelf: "flex-start",
+    marginBottom: 10,
+    color: "white",
   },
   text: {
     color: "black",
@@ -53,6 +59,18 @@ export const style = StyleSheet.create({
     shadowOpacity: 0.25,
     borderRadius: 3,
   },
+  inputDark: {
+    backgroundColor: inputDark,
+    color: "white",
+    width: 350,
+    padding: 5,
+    marginBottom: 25,
+    elevation: 2,
+    height: 40,
+    shadowRadius: 4.0,
+    shadowOpacity: 0.25,
+    borderRadius: 3,
+  },
   image: {
     marginTop: "5%",
     width: 150,
@@ -62,13 +80,14 @@ export const style = StyleSheet.create({
     borderColor: "black",
     shadowColor: "#000",
   },
-  openCamera: {
-    backgroundColor: buttonColor,
-    width: 125,
-    height: 35,
-    textAlign: "center",
-    paddingTop: 3.5,
-    borderRadius: 5,
+  imageDark: {
+    marginTop: "5%",
+    width: 200,
+    height: 150,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: "white",
+    shadowColor: "#000",
   },
   textOpenCamera: {
     marginBottom: "2%",
@@ -86,7 +105,8 @@ export const style = StyleSheet.create({
   confirmar: {
     backgroundColor: "#00CC96",
     borderRadius: 5,
-    marginTop: "4%",
+    marginTop: "5%",
+    marginBottom: "5%",
     alignSelf: "center",
     justifyContent: "center",
   },

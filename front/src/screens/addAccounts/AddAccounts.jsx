@@ -13,7 +13,8 @@ const AddAccount = ({
   navigation,
   handleBank,
   isValid,
-  accountNumber
+  accountNumber,
+  mode
 }) => {
   return (
     <KeyboardAvoidingView style={{ flex: 1}} behavior="height">

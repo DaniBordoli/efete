@@ -1,128 +1,93 @@
-import React from 'react';
-import {
-    Text,
-    View,
-    Image,
-    Dimensions
-} from 'react-native';
-import { Button, Icon, Toast, Root } from 'native-base';
-import * as LocalAuthentication from 'expo-local-authentication';
-import FingerPrintModal from './finger';
-const WIDTH = Dimensions.get('screen').width;
+import React, { Component } from 'react';
+import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
+import Modal from 'react-native-modal';
 
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            authenticated: false,
-        };
-        this.modalRef = React.createRef();
-        this.openScanner = this.openScanner.bind(this);
-    }
-    async componentDidMount() {
-        this.setState({ authenticated: false });
-        try {
-            let results = await LocalAuthentication.hasHardwareAsync();
-            if (results) {
-                console.log(results);
-            } else {
-                console.log(results);
-                Toast.show({
-                    text: "Finger print authentication is not available in this device",
-                    duration: 5000,
-                    type: 'danger'
-                });
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    }
-    openScanner() {
-        this.modalRef.current.setModalVisible(true);
-    }
-    onSuccessAuth(val) {
-        this.setState({ authenticated: val });
-    }
-    render() {
-        return (
-            <Root>
-                <View style={styles.container}>
+export default class Example extends Component {
+  
 
-                    {this.state.authenticated ?
-                        <SUCCESS_SCREEN /> // ver por que no entra em LOGIN
-                        :
-                        <HOME_SCREEN onFingurePress={this.openScanner} />
-                    }
-                    <FingerPrintModal ref={this.modalRef} onSuccess={(val) => this.onSuccessAuth(val)} />
-                </View>
-            </Root>
-        );
-    }
-}
-
-
-
-  const HOME_SCREEN = (props) => {
+  render() {
     return (
-        <View style={styles.container}>
-          
-         
-            <Button rounded style={[styles.btn, { marginTop: 20 }]} onPress={props.onFingurePress}>
-                <Icon name="fingerprint" type="MaterialIcons" style={styles.icon} />
-                <Text style={styles.btnTxt}>Iniciar con TouchID</Text>
-            </Button>
-        </View>
-    )
+      <View style={styles.container}>
+        {/* {this._renderButton('Default modal', () =>
+          this.setState({ visibleModal: 1 })
+        )}
+        
+        {this._renderButton('A slower modal', () =>
+          this.setState({ visibleModal: 3 })
+        )}
+        {this._renderButton('Fancy modal!', () =>
+          this.setState({ visibleModal: 4 })
+        )}
+        {this._renderButton('Bottom half modal', () =>
+          this.setState({ visibleModal: 5 })
+        )}
+        <Modal isVisible={this.state.visibleModal === 1}>
+          {this._renderModalContent()}
+        </Modal>
+        <Modal
+          isVisible={this.state.visibleModal === 2}
+          animationIn={'slideInLeft'}
+          animationOut={'slideOutRight'}>
+          {this._renderModalContent()}
+        </Modal> */}
+        <Modal
+          isVisible={true}
+          animationInTiming={2000}
+          animationOutTiming={2000}
+          backdropTransitionInTiming={2000}
+          backdropTransitionOutTiming={2000}>
+          <View style={styles.modalContent}>
+      <Text>Hello!</Text>
+      
+    </View>
+        </Modal>
+       {/*  <Modal
+          isVisible={this.state.visibleModal === 4}
+          backdropColor={'red'}
+          backdropOpacity={1}
+          animationIn={'zoomInDown'}
+          animationOut={'zoomOutUp'}
+          animationInTiming={1000}
+          animationOutTiming={1000}
+          backdropTransitionInTiming={1000}
+          backdropTransitionOutTiming={1000}>
+          {this._renderModalContent()}
+        </Modal>
+        <Modal
+          isVisible={this.state.visibleModal === 5}
+          style={styles.bottomModal}>
+          {this._renderModalContent()}
+        </Modal> */}
+      </View>
+    );
+  }
 }
-
-const SUCCESS_SCREEN = (props) => {
-    return (
-        <View style={styles.container}>
-            <View>
-                <Image style={styles.img} source={require('../../../assets/iconos/wallet.png')} resizeMode="contain" />
-            </View>
-            <View style={{ marginTop: 50 }}>
-                <Text style={styles.msgTxt}>Pantalla principal EFETE !!</Text>
-            </View>
-        </View>
-    )
-}
-
-
-
-
-
-
-import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    img: {
-        width: 120,
-        height: 120
-    },
-    msgTxt: {
-        fontSize: 16,
-        color: 'black',
-        fontStyle: 'italic'
-    },
-    btn: {
-        width: WIDTH * 0.8,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    btnTxt: {
-        color: '#fff',
-        fontSize: 14,
-        fontStyle: 'italic'
-    },
-    icon: {
-        fontSize: 15,
-        color: '#fff'
-    }
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: 'lightblue',
+    padding: 12,
+    margin: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  bottomModal: {
+    justifyContent: 'flex-end',
+    margin: 0,
+  },
 });

@@ -3,7 +3,6 @@ import { register } from "../../redux/store/actions/users";
 import Register from "./register";
 import { useDispatch, useSelector } from "react-redux";
 
-
 export default ({ navigation }) => {
   const dispatch = useDispatch();
 
@@ -14,6 +13,7 @@ export default ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [gender, setGender] = useState("");
 
+  const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
 
   function usernameChange(text) {
@@ -63,6 +63,7 @@ export default ({ navigation }) => {
       navigation={navigation}
       user={user}
       handleGender={handleGender}
+      mode={mode}
     />
   );
 };

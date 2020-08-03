@@ -8,6 +8,9 @@ export default () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.users.user);
 
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
   const [user, setUser] = useState(userInfo);
 
   function handleChange(e, name) {
@@ -37,6 +40,7 @@ export default () => {
       lastName={user.lastName}
       username={user.username}
       password={user.password}
+      mode={mode}
     />
   );
 };

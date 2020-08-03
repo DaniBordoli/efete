@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
 import OpenCamera from "../camera/OpenCameraContainer";
 
-export default ({ view, navigation }) => {
+export default ({ view, navigation, mode }) => {
   return (
     <View style={style.mainContainer}>
       <View style={style.imageContainer}>
