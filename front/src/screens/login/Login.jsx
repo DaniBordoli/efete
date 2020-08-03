@@ -94,6 +94,7 @@ export default ({
             </TouchableOpacity>
           </View>
         </View>
+      
 
         {user.message ? (
           <Text>{user.message}</Text>

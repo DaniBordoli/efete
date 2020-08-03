@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserTransactions } from "../../redux/store/actions/transactions";
 import UserHome from "./userHome";
-import moment from "moment";
+import moment from "moment/min/moment-with-locales";
+import esLocale from 'moment/locale/es'
 
 export default ({ navigation, route }) => {
   const dispatch = useDispatch();
@@ -19,13 +20,13 @@ export default ({ navigation, route }) => {
   const mode = useSelector(
     (state) => state.users.mode
   );
-  
+
 
   const userRole = useSelector((state) => state.users.user.role);
 
   useEffect(() => {
     var date = moment();
-    var fecha = date.locale("es").format("dddd MM-MMMM");
+    var fecha = date.locale('es', esLocale).format("dddd MM-MMMM");
 
     setTime(fecha);
   });
@@ -38,7 +39,7 @@ export default ({ navigation, route }) => {
 
   return (
     <UserHome
-    mode={mode}
+      mode={mode}
       navigation={navigation}
       loading={loading}
       userRole={userRole}

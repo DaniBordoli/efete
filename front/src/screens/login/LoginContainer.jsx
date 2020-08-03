@@ -50,7 +50,7 @@ export default ({ navigation }) => {
   const handleSubmit = () => {
     dispatch(logUser({ username: username, password: password })).then(
       (data) => {
-        /* if (
+         /*if (
           data.user._id &&
           !data.user.validatedIdentity &&
           data.user.processVerification

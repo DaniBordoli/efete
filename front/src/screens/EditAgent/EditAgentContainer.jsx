@@ -9,29 +9,27 @@ import firebase from "../../firebase/index";
 import { YellowBox } from "react-native";
 
 export default ({ navigation, route }) => {
-
   const dispatch = useDispatch();
-
 
   const agentInfo = useSelector((state) => state.agents.agent);
   const userId = useSelector((state) => state.users.user._id);
 
   const [agent, setAgent] = useState(agentInfo);
-  
+
   const [ubicacion, setUbicacion] = useState({});
   const getCoordsFromName = (loc) => {
-    console.log('HANDLER UBICATION',loc)
+    console.log("HANDLER UBICATION", loc);
     setUbicacion({ latitude: loc.lat, longitude: loc.lng });
   };
 
   const [address, setAddress] = useState("");
   function handlerAddress(text) {
-    console.log('HANDLER ANDRESS', text.description)
+    console.log("HANDLER ANDRESS", text.description);
     setAddress(text.description);
   }
 
   useEffect(() => {
-    dispatch(fetchAgent(userId));
+    //dispatch(fetchAgent(agentInfo._id));
     route.params
       ? setAgent({ ...agent, imageUrl: route.params.capturarFoto })
       : null;

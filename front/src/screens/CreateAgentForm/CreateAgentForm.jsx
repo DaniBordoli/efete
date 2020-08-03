@@ -31,7 +31,6 @@ const CreateAgentForm = ({
   return (
     <View style={{ flex: 1 }}>
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
-
       <View style={style.container}>
         <Text
           style={{
@@ -103,7 +102,7 @@ const CreateAgentForm = ({
           />
         </View>
 
-        <View></View>
+        
       </View>
       {/* 
       {fotos ? <Image style={style.image} source={{ uri: fotos }} /> : null} */}

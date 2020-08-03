@@ -11,7 +11,7 @@ export const style = StyleSheet.create({
     color: "#6F76E4",
     fontSize: 64,
     alignItems: "center",
-    fontFamily: "nunito",
+    fontFamily: "nunito-bold",
   },
   text2: {
     marginTop: 100,
@@ -21,6 +21,8 @@ export const style = StyleSheet.create({
     fontFamily: "nunito",
   },
   text3: {
+    marginLeft:10,
+    marginRight:10,
     marginTop: 150,
     color: "#A3A3A3",
     fontSize: 30,

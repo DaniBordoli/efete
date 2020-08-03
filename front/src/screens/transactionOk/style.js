@@ -53,5 +53,6 @@ export const style = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     fontFamily: "nunito",
+    textAlign:'center'
   },
 });

@@ -11,7 +11,7 @@ export default () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAgent(userId));
+    //dispatch(fetchAgent());
     dispatch(fetchMainAccount(userId));
     /*     setLoading(true)
      */

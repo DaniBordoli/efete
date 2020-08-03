@@ -42,7 +42,8 @@ const get_user_agents = (agents) => {
 export const editAgent = (agentData) => (dispatch) => {
   return axios
     .patch(`http://${IP}:1337/api/agents/editprofile`, agentData)
-    .then((res) => dispatch(setAgent(res.data)))
+    .then((res) => {console.log("SET",res.data)
+    dispatch(setAgent(res.data))})
     .catch((err) => console.log(err, "ERROR"));
 };
 

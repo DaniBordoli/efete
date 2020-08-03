@@ -31,7 +31,7 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                       style={style.textoContainer}
                     >
                       <Text style={style.texto}>
-                        xxxx-xxxx-xxxx-xxxx-
+                        xx-xxxx-xxxx-xxxx-xxxx-
                         {account.accountNumber.toString().slice(18, 22)}
                       </Text>
                     </View>

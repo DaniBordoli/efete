@@ -34,7 +34,7 @@ const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
             navigation.navigate("User");
           }}
         >
-          <Text style={style.textCancelar}>Cancelar</Text>
+          <Text style={style.textCancelar}>CANCELAR</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -44,7 +44,7 @@ const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
             navigation.navigate("ScannerQR", { value });
           }}
         >
-          <Text style={style.textConfirmar}>Confirmar</Text>
+          <Text style={style.textConfirmar}>CONFIRMAR</Text>
         </TouchableOpacity>
       </View>
     </View>
