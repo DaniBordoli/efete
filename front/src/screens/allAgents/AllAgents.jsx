@@ -1,11 +1,21 @@
-import React from "react";
-import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
-import { Button, Icon } from "react-native-elements";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Modal,
+  TouchableHighlight,
+} from "react-native";
+import { Button } from "react-native-elements";
 import { style } from "./style";
 import { AntDesign } from "@expo/vector-icons";
 import { Load } from "../../Common/loading";
 import { fondoColor } from "../../Common/constans";
+
 const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={{ flex: 1, backgroundColor: mode ? fondoColor : "black" }}>
       {loading ? (
@@ -72,7 +82,7 @@ const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
                       >
                         <TouchableOpacity
                           onPress={() => {
-                            handleDelete(item._id);
+                            setModalVisible(true);
                           }}
                         >
                           <AntDesign
@@ -81,6 +91,51 @@ const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
                             color={mode ? "#454141" : "white"}
                           />
                         </TouchableOpacity>
+
+                        <View style={style.centeredView}>
+                          <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={modalVisible}
+                            onRequestClose={() => {
+                              Alert.alert("Modal has been closed.");
+                            }}
+                          >
+                            <View style={style.centeredView}>
+                              <View style={style.modalView}>
+                                <Text style={style.modalText}>
+                                  Seguro desea ELIMINAR su negocio?
+                                </Text>
+
+                                <TouchableHighlight
+                                  style={{
+                                    ...style.openButton,
+                                    backgroundColor: "#00CC96",
+                                  }}
+                                  onPress={() => {
+                                    handleDelete(item._id);
+                                  }}
+                                >
+                                  <Text style={style.textStyle}>Confirmar</Text>
+                                </TouchableHighlight>
+                                <TouchableHighlight
+                                  style={{
+                                    ...style.openButton,
+                                    backgroundColor: "#DD1919",
+                                    marginTop: 10,
+                                  }}
+                                  onPress={() => {
+                                    setModalVisible(!modalVisible);
+                                  }}
+                                >
+                                  <Text style={{ ...style.textStyle }}>
+                                    Cancelar
+                                  </Text>
+                                </TouchableHighlight>
+                              </View>
+                            </View>
+                          </Modal>
+                        </View>
                       </View>
                     </TouchableOpacity>
                   </View>
