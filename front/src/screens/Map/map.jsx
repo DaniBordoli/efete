@@ -14,7 +14,7 @@ export default ({ ubicacion, agentes, navigation, markers, value, mode, loading 
   const onCarouselItemChange = (index) => {
     let location = agentes[index];
     setIndex(agentes[index]);
-    console.log("AGENTEEEEES:", agentes);
+    
 
     this._map.animateToRegion({
       latitude: location.ubicacion.latitude,

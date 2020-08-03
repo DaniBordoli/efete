@@ -19,6 +19,7 @@ export default ({
   lastName,
   username,
   password,
+  mode
 }) => {
   return (
     <KeyboardAvoidingView behavior="height">

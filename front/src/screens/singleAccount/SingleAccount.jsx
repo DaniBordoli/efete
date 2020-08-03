@@ -5,7 +5,7 @@ import { Load } from "../../Common/loading";
 import { style } from "./style";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
+const Accounts = ({ account, handleDelete, loading, handleMainAccount , mode}) => {
   return (
     <View style={{ flex: 1 }}>
       {loading ? (

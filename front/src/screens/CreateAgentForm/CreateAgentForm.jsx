@@ -14,6 +14,7 @@ import { style } from "./style";
 import storage from "../../firebase/index";
 import { MaterialIcons } from "@expo/vector-icons";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import OpenCamera from "../camera/OpenCameraContainer";
 
 const CreateAgentForm = ({
   handlerDailyAmount,
@@ -27,9 +28,10 @@ const CreateAgentForm = ({
   address,
   cuil,
   notifyChange,
+  mode
 }) => {
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView>
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
       <View style={style.container}>
         <Text
@@ -101,45 +103,31 @@ const CreateAgentForm = ({
             placeholder="Ingrese su numero de CUIL"
           />
         </View>
-
-        
       </View>
-      {/* 
-      {fotos ? <Image style={style.image} source={{ uri: fotos }} /> : null} */}
 
-      <TouchableOpacity
-        style={style.openCamera}
-        title="Open Camera"
-        onPress={() => {
-          navigation.navigate("OpenCamera");
-        }}
-      >
+      {fotos ? <Image style={style.image} source={{ uri: fotos }} /> : null}
+      <View>
         <Text style={style.textOpenCamera}>Subir foto</Text>
-        <MaterialIcons
-          name="camera-alt"
-          size={27}
-          color="white"
-          style={style.foto}
-        />
-        <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={style.confirmar}
-        title="Confirmar"
-        onPress={() => {
-          handlerSubmit();
-          navigation.navigate("createdAgentOk", {
-            fotos: fotos,
-            name: name,
-            address: address,
-            cuil: cuil,
-          });
-        }}
-      >
-        <Text style={style.textConfirmar}>CONFIRMAR</Text>
-      </TouchableOpacity>
-    </View>
+      </View>
+      <OpenCamera navigation={navigation} view="CreateAgentForm" />
+      <View>
+        <TouchableOpacity
+          style={style.confirmar}
+          title="Confirmar"
+          onPress={() => {
+            handlerSubmit();
+            navigation.navigate("createdAgentOk", {
+              fotos: fotos,
+              name: name,
+              address: address,
+              cuil: cuil,
+            });
+          }}
+        >
+          <Text style={style.textConfirmar}>CONFIRMAR</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 

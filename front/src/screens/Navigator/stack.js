@@ -430,13 +430,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="WaitingValidation"
         component={WaitingValidationContainer}
-        options={{
-          ...myHeader,
-          headerStyle: {
-            backgroundColor: mode ? headerColor : headerColorDark,
-          },
-          title: "Esperar aprobación",
-        }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
