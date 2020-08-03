@@ -152,10 +152,10 @@ export default ({ agentTransactions, navigation, loading, time, agent,mode }) =>
 
                         <View style={style.contenido}>
                         <Text style={ mode ? style.textoContenido : style.textoContenidoDark}>
-                            Banco:{item.originAccount[0].nameEntity[0].nameEntity}
+                            Banco:{item.originAccount[0].nameEntity[0].nameEntity.substr(0,15)}
                           </Text>
                           <Text style={ mode ? style.textoContenido : style.textoContenidoDark}>
-                            Cuenta:{item.originAccount[0].accountNumber}
+                            Cuenta:{item.originAccount[0].accountNumber.substr(0,10)}
                           </Text>
 
                         <Text style={ mode ? style.textoContenido : style.textoContenidoDark}>Agente: {item.agent[0].name}</Text>

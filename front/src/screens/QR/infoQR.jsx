@@ -1,8 +1,13 @@
 import React from "react";
-import { headerColor } from "../../Common/constans";
+import { useSelector } from 'react-redux'
 import { StyleSheet, View, Text , Image} from "react-native";
 
 export default () => {
+  
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
+
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 1.3, justifyContent:'center'}}>

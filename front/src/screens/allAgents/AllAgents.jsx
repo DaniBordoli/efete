@@ -48,7 +48,6 @@ const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
                           style={{ width: 50, height: 50 }}
                         />
                       </View>
-
                       <View style={{ alignContent: "center" }}>
                         <View style={{ flexDirection: "row", marginBottom: 5 }}>
                           <Text
@@ -57,7 +56,9 @@ const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
                             Nombre:
                           </Text>
                           <Text style={mode ? style.tex : style.texDark}>
-                            {item.name}{" "}
+                            {item.name.length > 18
+                              ? `${item.name.substr(0, 16)}...`
+                              : item.name}
                           </Text>
                         </View>
                         <View style={{ flexDirection: "row" }}>
@@ -67,11 +68,10 @@ const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
                             Dirección:
                           </Text>
                           <Text style={mode ? style.tex : style.texDark}>
-                            {item.address.substr(0, 18)} ...
+                            {item.address.substr(0, 16)}...
                           </Text>
                         </View>
                       </View>
-
                       <View
                         style={{
                           marginRight: 15,
@@ -156,5 +156,4 @@ const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
     </View>
   );
 };
-
 export default AllAgents;

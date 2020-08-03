@@ -37,6 +37,7 @@ import Map from "../Map/mapContainer";
 import confirmValueContainer from "../confirmValue/confirmValuecontainer";
 import ValidarIdentidadContainer from "../validarIdentidad/ValidarIdentidadContainer";
 import WaitingValidationContainer from "../waitingValidation/WaitingValidationContainer";
+import DeleteProfileContainer from "../deleteProfile/DeleteprofileContainer";
 
 const Stack = createStackNavigator();
 
@@ -51,7 +52,10 @@ export default ({ navigation }) => {
         name="QRgenerator"
         component={GeneratorQR}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Cobrar con QR",
           headerRight: () => (
             <Feather
@@ -68,15 +72,32 @@ export default ({ navigation }) => {
         name="Map"
         component={Map}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Mapa",
+        }}
+      />
+      <Stack.Screen
+        name="DeleteProfile"
+        component={DeleteProfileContainer}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Eliminar perfil",
         }}
       />
       <Stack.Screen
         name="ScannerQR"
         component={ScannerQR}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Escaner QR",
         }}
       />
@@ -84,7 +105,10 @@ export default ({ navigation }) => {
         name="InfoQR"
         component={InfoQR}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Todo sobre QR",
         }}
       />
@@ -111,7 +135,10 @@ export default ({ navigation }) => {
         name="SingleAgentTransaction"
         component={SingleAgentTransactionContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Transaccion",
         }}
       />
@@ -137,7 +164,10 @@ export default ({ navigation }) => {
               onPress={() => navigation.openDrawer()}
             />
           ),
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
 
           headerTitleAlign: "center",
           title: "Perfil usuario",
@@ -145,10 +175,12 @@ export default ({ navigation }) => {
       />
       <Stack.Screen
         name="SingleUserTransaction"
-        options={{ ...header, title: "Transaccion" }}
         component={SingleUserTransactionContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Ver transacción",
         }}
       />
@@ -157,7 +189,10 @@ export default ({ navigation }) => {
         name="CreateAgentForm"
         component={CreateAgentFormContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Tu Negocio",
         }}
       />
@@ -169,7 +204,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SelectOtherAmountAgent"
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Seleccionar otro monto",
         }}
         component={OtherAmountAgentContainer}
@@ -189,7 +227,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SelectAmount"
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Seleccionar monto",
         }}
         component={SelectAmountContainer}
@@ -198,7 +239,10 @@ export default ({ navigation }) => {
         name="ConfAmountAgent"
         component={ConfAmountAgentContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Seleccionar monto",
         }}
       />
@@ -215,7 +259,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SelectOtherAmount"
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Seleccionar otro monto",
         }}
         component={SelectOtherAmountContainer}
@@ -223,7 +270,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="OpenCamera"
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Tomar Foto",
         }}
         component={OpenCameraContainer}
@@ -232,7 +282,10 @@ export default ({ navigation }) => {
         name="EditUserProfile"
         component={EditUserProfileContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Mi perfil",
         }}
       />
@@ -240,7 +293,10 @@ export default ({ navigation }) => {
         name="EditAgentProfile"
         component={EditAgentContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Tu negocio",
         }}
       />
@@ -264,7 +320,10 @@ export default ({ navigation }) => {
               onPress={() => navigation.openDrawer()}
             />
           ),
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
 
           headerTitleAlign: "center",
           title: "Perfil agente",
@@ -275,7 +334,10 @@ export default ({ navigation }) => {
         name="AllAgentTransactions"
         component={AllAgentTransactionsContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Transacciones",
         }}
       />
@@ -283,7 +345,10 @@ export default ({ navigation }) => {
         name="AllUserTransactions"
         component={AllUserTransactionsContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Transacciones",
         }}
       />
@@ -292,7 +357,10 @@ export default ({ navigation }) => {
         name="AddAccounts"
         component={AddAccountsContainer}
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Nueva Cuenta",
         }}
       />
@@ -300,7 +368,10 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="SelectAccount"
         options={{
-          ...header,
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
           title: "Seleccionar Cuenta",
         }}
         component={SelectAccountContainer}
@@ -313,29 +384,53 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Accounts"
         component={AccountsContainer}
-        options={{ ...header, title: "Mis Cuentas" }}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Mis Cuentas",
+        }}
       />
       <Stack.Screen
         name="AllAgents"
         component={AllAgentsContainer}
-        options={{ ...header, title: "Mis Negocios" }}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Mis Negocios",
+        }}
       />
       <Stack.Screen
         name="SingleAccount"
         component={SingleAccountContainer}
-        options={{ ...header, title: "Detalle" }}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Detalle",
+        }}
       />
 
       <Stack.Screen
         name="ValidateIdentity"
         component={ValidarIdentidadContainer}
-        options={{ ...myHeader, title: "Validar identidad" }}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Validar identidad",
+        }}
       />
 
       <Stack.Screen
         name="WaitingValidation"
         component={WaitingValidationContainer}
-        options={{ ...myHeader, title: "Esperar aprobación" }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
@@ -346,9 +441,6 @@ const myHeader = {
   headerTitleStyle: {
     color: "white",
     fontFamily: "regular",
-  },
-  headerStyle: {
-    backgroundColor: headerColor,
   },
 };
 

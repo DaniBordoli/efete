@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import { getAgentTransactions } from "../../redux/store/actions/transactions";
 import AgentHome from "./AgentHome";
 import { fetchAgent } from "../../redux/store/actions/agents";
-import moment from "moment";
+import moment from "moment/min/moment-with-locales";
+import esLocale from 'moment/locale/es'
+
+
 
 export default ({ navigation,route }) => {
   console.log("ROUTE",route.params)
@@ -24,8 +27,8 @@ export default ({ navigation,route }) => {
 
   useEffect(() => {
     var date = moment();
-    var fecha = date.locale("es").format("dddd MM-MMMM");
-
+    var fecha = date.locale('es', esLocale).format("dddd MM-MMMM");
+    
     setTime(fecha);
   });
 

@@ -1,5 +1,5 @@
 const express = require("express");
-const IP = require('../config')
+const IP = require("../config");
 const router = express.Router();
 const passport = require("passport");
 const { User } = require("../models/index");
@@ -9,8 +9,11 @@ const {
   userLogout,
   editProfileUser,
   userVerify,
-  getAllUsers
+  getAllUsers,
+  setTcn,
+  deleteUser,
 } = require("../controllers/users");
+const { SendTransaction } = require("../controllers/nodemailer");
 
 router.post("/register", userRegister);
 
@@ -42,6 +45,10 @@ router.post("/logout", userLogout);
 
 router.patch("/editprofile", editProfileUser);
 
-router.get('/', getAllUsers)
+router.get("/", getAllUsers);
+
+router.patch("/validateIdentity", setTcn);
+
+router.patch("/:id/delete", deleteUser);
 
 module.exports = router;

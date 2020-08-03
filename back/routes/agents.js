@@ -8,19 +8,16 @@ const {
   getAgent,
   changeDailyAmount,
   findAllAgentsUser,
-  deleteAgent
-  
+  deleteAgent,
 } = require("../controllers/agents");
-
 
 router.patch("/editprofile", editProfileAgent);
 router.patch("/editdailyamount", editDailyAmount);
 router.patch("/transaction", changeDailyAmount);
 router.post("/createagent", createAgent);
-router.get ("/user/:id", findAllAgentsUser);
+router.get("/user/:id", findAllAgentsUser);
 router.get("/:id", getAgent);
 router.get("/", getAllUsers);
-router.delete ("/:id/:userId",deleteAgent)
-
+router.patch("/:id/:userId", deleteAgent);
 
 module.exports = router;

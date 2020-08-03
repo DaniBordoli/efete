@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text, Button, Image, Link, FlatList } from "react-native";
-import { Card } from "react-native-elements";
+import { View, Text, FlatList } from "react-native";
+import { Card, Button } from "react-native-elements";
 import { style } from "./style.js";
+import { buttonColor } from "../../Common/constans.js";
 
-export default ({ navigation, agentTransactions }) => {
+export default ({ navigation, agentTransactions , mode}) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {agentTransactions[0] !== undefined ? (
@@ -16,20 +17,18 @@ export default ({ navigation, agentTransactions }) => {
               return (
                 <View>
                   <Card>
-                    <Text>Monto: $ {item.amount}</Text>
-                    <Text>
+                    <Text style={style.text}>Monto: $ {item.amount}</Text>
+                    <Text style={style.text}>
                       Banco: {item.originAccount[0].nameEntity[0].nameEntity}
                     </Text>
-                    <Text>
+                    <Text style={style.text}>
                       Numero de cuenta: {item.originAccount[0].accountNumber}
                     </Text>
 
                     <Button
-                      buttonStyle={{
-                        marginRight: 25,
-                        backgroundColor: "#629bcaa6",
-                      }}
-                      title="ver transaccion"
+                       buttonStyle={style.ver}
+                       titleStyle={{color:buttonColor}}
+                        title="VER TRANSACCION"
                       onPress={() =>
                         navigation.navigate("SingleAgentTransaction", {
                           item,

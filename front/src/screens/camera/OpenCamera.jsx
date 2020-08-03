@@ -2,139 +2,69 @@ import React from "react";
 import {
   Text,
   View,
-  TouchableOpacity,
   Button,
-  Modal,
   Image,
-  StyleSheet,
+  TouchableOpacity,
+  Modal,
 } from "react-native";
-import { Camera } from "expo-camera";
-import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
-import { headerColor, buttonColor } from "../../Common/constans";
+import { Entypo } from "@expo/vector-icons";
+import { style } from "./style";
+import { AntDesign } from "@expo/vector-icons";
+
 export default ({
-  hasPermission,
-  camRef,
-  tomaFoto,
-  capturarFoto,
-  open,
-  handleClose,
+  takePicture,
+  uriFoto,
   handleConfirm,
-  guardarFoto,
+  openGallery,
+  handleCancel,
+  modal,
 }) => {
   return (
-    <View style={{ flex: 1 }}>
-      <Camera
-        ref={camRef}
-        style={{ flex: 1 }}
-        type={Camera.Constants.Type.back}
-      >
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "transparent",
-            flexDirection: "row",
-          }}
-        ></View>
-        <TouchableOpacity style={style.buttonCamara} onPress={() => tomaFoto()}>
-          <FontAwesome name="camera" size={30} color={"white"} />
-        </TouchableOpacity>
-      </Camera>
+    <View>
+      {uriFoto ? (
+        <View style={style.modalContainer}>
+          <Modal animationType="slide" transparent={true} visible={modal}>
+            <View style={style.modal}>
+              <Image source={{ uri: uriFoto }} style={style.image} />
 
-      {capturarFoto && (
-        <Modal
-          animationType="fade"
-          transparent={false}
-          visible={open}
-          statusBarTranslucent={true}
-        >
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "black",
-            }}
-          >
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: "black",
-                width: "100%",
-                height: "90%",
-                justifyContent: "center",
-              }}
-            >
-              <View style={{ flexDirection: "row", alignSelf: "flex-end" }}>
-                <TouchableOpacity
-                  style={{
-                    justifyContent: "flex-end",
-                    marginRight: 10,
-                    marginBottom: 10,
-                  }}
-                  onPress={() => {
-                    handleClose();
-                  }}
-                >
-                  <MaterialCommunityIcons
-                    name="close"
-                    size={45}
-                    color="#DD1919"
-                  />
-                </TouchableOpacity>
-              </View>
-              <Image
-                style={{
-                  width: "100%",
-                  height: "70%",
-                  borderRadius: 5,
-                  alignSelf: "center",
-                }}
-                source={{ uri: capturarFoto }}
-              />
-
-              <View style={{ flexDirection: "row", justifyContent: "center" }}>
-                <TouchableOpacity
-                  style={style.button}
-                  onPress={() => {
-                    //guardarFoto();
-                    handleConfirm();
-                  }}
-                >
-                  <MaterialCommunityIcons
-                    name="upload"
-                    size={35}
-                    color={"white"}
-                  />
-                </TouchableOpacity>
+              <View style={style.buttonsContainer}>
+                <View>
+                  <TouchableOpacity
+                    onPress={() => handleCancel()}
+                    title="Cancelar"
+                  >
+                    <Entypo
+                      name="circle-with-cross"
+                      size={50}
+                      color="#DD1919"
+                    />
+                  </TouchableOpacity>
+                </View>
+                <View>
+                  <TouchableOpacity onPress={() => handleConfirm()}>
+                    <AntDesign name="checkcircleo" size={50} color="#00CC96" />
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
+          </Modal>
+        </View>
+      ) : (
+        <View style={style.buttonsContainer}>
+          <View style={style.button}>
+            <TouchableOpacity onPress={() => openGallery()}>
+              <Entypo name="image" size={50} color="#6F76E4" />
+              <Text>Galería</Text>
+            </TouchableOpacity>
           </View>
-        </Modal>
+          <View style={style.button}>
+            <TouchableOpacity onPress={() => takePicture()}>
+              <Entypo name="camera" size={50} color="#6F76E4" />
+              <Text>Cámara</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       )}
     </View>
   );
 };
-
-const style = StyleSheet.create({
-  buttonCamara: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: 50,
-    backgroundColor: buttonColor,
-    width: 75,
-    height: 75,
-    borderRadius: 60,
-    marginBottom: 15,
-    alignSelf: "center",
-  },
-  button: {
-    justifyContent: "center",
-    alignItems: "center",
-    height: 50,
-    backgroundColor: buttonColor,
-    width: 75,
-    height: 75,
-    borderRadius: 60,
-    marginTop: 10,
-  },
-});

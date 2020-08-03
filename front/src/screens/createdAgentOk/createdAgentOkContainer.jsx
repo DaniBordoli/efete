@@ -4,6 +4,10 @@ import { useSelector } from "react-redux";
 
 const CreatedAgentOkContainer = ({ navigation, route }) => {
   const agent = useSelector((state) => state.agents.newAgent);
+  
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
 
   return (
     <CreatedAgentOk
@@ -13,6 +17,7 @@ const CreatedAgentOkContainer = ({ navigation, route }) => {
       name={route.params.name}
       address={route.params.address}
       cuil={route.params.cuil}
+      mode={mode}
     />
   );
 };

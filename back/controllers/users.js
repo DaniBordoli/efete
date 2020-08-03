@@ -43,7 +43,6 @@ const userLogout = (req, res) => {
 
 const editProfileUser = (req, res) => {
   let id = req.body._id;
-  console.log(req.body, "REQBODYYYYY");
   User.findByIdAndUpdate(id, req.body, { new: true }).then((userProfile) => {
     res.status(200).send(userProfile);
   });
@@ -59,8 +58,24 @@ const userVerify = (req, res, next) => {
 };
 
 const getAllUsers = (req, res) => {
-  User.find().then((users) => {
+  User.find({ isEliminated: false }).then((users) => {
     res.json(users);
+  });
+};
+
+const setTcn = (req, res) => {
+  console.log(req.body, "REQ BODY TCN");
+  User.updateOne({ _id: req.body._id }, req.body).then(() => {
+    User.findById(req.body._id).then((user) => {
+      res.send(user);
+    });
+  });
+};
+
+const deleteUser = (req, res) => {
+  User.updateOne({ _id: req.params.id }, { isEliminated: true }).then(() => {
+    console.log("USUARIO ELIMINADO");
+    res.sendStatus(200);
   });
 };
 
@@ -71,4 +86,6 @@ module.exports = {
   editProfileUser,
   userVerify,
   getAllUsers,
+  setTcn,
+  deleteUser,
 };

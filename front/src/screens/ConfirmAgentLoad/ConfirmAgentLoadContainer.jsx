@@ -1,26 +1,13 @@
-import  React, {useState} from "react";
-import  { View, Button } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
-import ConfirmAgentLoad from './ConfirmAgentLoad'
-import { useNavigation } from '@react-navigation/native'
-
+import React from "react";
+import { useSelector } from "react-redux";
+import ConfirmAgentLoad from "./ConfirmAgentLoad";
 
 const ConfirmAgentLoadContainer = () => {
+  const mode = useSelector((state) => state.users.mode);
 
-  const navigation = useNavigation();
+  const value = useSelector((state) => state.agents.agent.dailyAmount);
 
-  
-  const value = useSelector(state => state.agents.agent.dailyAmount )
-
-  return(
-        <ConfirmAgentLoad
-         value={value}
-         
-        />
-  )
-
-
-}
-
+  return <ConfirmAgentLoad value={value} mode={mode} />;
+};
 
 export default ConfirmAgentLoadContainer;

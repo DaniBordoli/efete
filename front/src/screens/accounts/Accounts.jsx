@@ -20,6 +20,7 @@ const Accounts = ({
   navigation,
   mainAccount,
   handleMainDelete,
+  mode
 }) => {
   console.log(mainAccount, "MAIN");
   const [modalVisible, setModalVisible] = useState(false);
@@ -49,16 +50,11 @@ const Accounts = ({
                   <View style={{ alignContent: "center" }}>
                     <View style={{ flexDirection: "row", marginBottom: 5 }}>
                       <Text style={style.negrita}>Entidad:</Text>
-                      <Text style={style.tex}>
-                        {mainAccount.nameEntity[0].nameEntity}
-                      </Text>
+                      <Text style={style.tex}>{mainAccount.nameEntity[0].nameEntity.substr(0,22)}...</Text>
                     </View>
                     <View style={{ flexDirection: "row" }}>
                       <Text style={style.negrita}>Cuenta:</Text>
-                      <Text style={style.tex}>
-                        {" "}
-                        {mainAccount.accountNumber}
-                      </Text>
+                      <Text style={style.tex}> {mainAccount.accountNumber.substr(0,18)}...</Text>
                     </View>
                   </View>
 
@@ -172,17 +168,11 @@ const Accounts = ({
                             }}
                           >
                             <Text style={style.negrita}>Entidad:</Text>
-                            <Text style={style.tex}>
-                              {item.nameEntity[0].nameEntity.substr(0, 18)} ...
-                            </Text>
+                            <Text style={style.tex}>{item.nameEntity[0].nameEntity.length > 20 ? `${item.nameEntity[0].nameEntity.substr(0,21)}...` : item.nameEntity[0].nameEntity }</Text>
                           </View>
                           <View style={{ flexDirection: "row" }}>
                             <Text style={style.negrita}>Cuenta:</Text>
-                            <Text>
-                              {item.accountNumber
-                                .toLocaleString()
-                                .substr(0, 22)}
-                            </Text>
+                            <Text style={style.tex}>{item.accountNumber.toLocaleString().substr(0,18)}...</Text>
                           </View>
                         </View>
 

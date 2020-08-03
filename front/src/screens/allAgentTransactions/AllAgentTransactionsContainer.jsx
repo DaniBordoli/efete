@@ -1,8 +1,12 @@
 import React from "react";
 import AllAgentTransactions from "./AllAgentTransactions";
-import { View } from "react-native";
+import { useSelector } from "react-redux";
 
 const AllAgentTransactionsContainer = ({ navigation, route }) => {
+  
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
   return (
     <AllAgentTransactions
       navigation={navigation}

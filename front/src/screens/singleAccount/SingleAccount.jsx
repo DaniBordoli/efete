@@ -40,7 +40,7 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                     <View style={style.textoContainer}>
                       <Text style={style.texto}>
                         xx-xxxx-xxxx-xxxx-xxxx-
-                        {account.accountNumber.toString().slice(5)}
+                        {account.accountNumber.toString().slice(18, 22)}
                       </Text>
                     </View>
                   </View>
@@ -59,12 +59,6 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                   buttonStyle={style.confirmar}
                   titleStyle={style.tituloConfirmar}
                   title="Eliminar Cuenta"
-                  // onPress={() =>
-                  //   //handleDelete(account._id)
-                  //   {
-                  //     setModalVisible(true);
-                  //   }
-                  // }
                   onPress={() => {
                     setModalVisible(true);
                   }}

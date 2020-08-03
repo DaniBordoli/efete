@@ -4,13 +4,15 @@ import EditAgent from "./EditAgent";
 import { useDispatch, useSelector } from "react-redux";
 import { editAgent, fetchAgent } from "../../redux/store/actions/agents";
 import _ from "lodash";
-/* import uuid from "react-native-uuid"; */
 import firebase from "../../firebase/index";
 import { YellowBox } from "react-native";
 
 export default ({ navigation, route }) => {
   const dispatch = useDispatch();
 
+  const view = "EditAgentProfile";
+
+  const mode = useSelector((state) => state.users.mode);
   const agentInfo = useSelector((state) => state.agents.agent);
   const userId = useSelector((state) => state.users.user._id);
 
@@ -29,9 +31,8 @@ export default ({ navigation, route }) => {
   }
 
   useEffect(() => {
-    //dispatch(fetchAgent(agentInfo._id));
     route.params
-      ? setAgent({ ...agent, imageUrl: route.params.capturarFoto })
+      ? setAgent({ ...agent, imageUrl: route.params.uriFoto })
       : null;
   }, [route.params]);
 
@@ -41,8 +42,6 @@ export default ({ navigation, route }) => {
   uploadImage = async (uri) => {
     const response = await fetch(uri);
     const blob = await response.blob();
-
-    /* let fotoUUID = uuid.v4(); */
 
     var ref = firebase
       .storage()
@@ -76,7 +75,7 @@ export default ({ navigation, route }) => {
   function handleSubmit() {
     if (agent.name.length > 0 && agent.address.length > 0) {
       if (route.params) {
-        uploadImage(route.params.capturarFoto);
+        uploadImage(route.params.uriFoto);
       } else {
         dispatch(
           editAgent({
@@ -111,6 +110,8 @@ export default ({ navigation, route }) => {
       image={agent.imageUrl}
       notifyChange={(loc) => getCoordsFromName(loc)}
       handlerAddress={handlerAddress}
+      view={view}
+      mode={mode}
     />
   );
 };

@@ -1,9 +1,12 @@
 import React ,{useState} from "react";
+import {useSelector} from 'react-redux'
 
 import { View, Text, Linking } from "react-native";
 import {style} from './style'
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
+import { Button } from "react-native-elements";
+import { buttonColor } from "../../Common/constans";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -14,6 +17,10 @@ const fetchFonts = () => {
 
 export default ({ navigation }) => {
   const [dataload, setDataload]= useState(false)
+
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
 
   if(!dataload){
     return (
@@ -32,8 +39,13 @@ export default ({ navigation }) => {
       <View style={{display:"flex",flexDirection:"row", justifyContent:'center' , marginTop:150}}>
       <Text style={style.text4}>Para verificar tu Email</Text>
       <Text style={style.input} onPress={() => Linking.openURL('https://mail.google.com/')}>Ingrese Aqui</Text> 
-      <Text style={style.input}  onPress={() => navigation.navigate('Login')}>Ingrese aqui</Text> 
+      
       </View>
+      <Button 
+      buttonStyle={{width:160, height:60, backgroundColor:buttonColor, marginTop:45}}
+      title='ACCEDER'
+      titleStyle={{color:'white', fontSize:20}}
+      onPress={() => navigation.navigate('Login')}>Acceder</Button> 
     </View>
   )
 }

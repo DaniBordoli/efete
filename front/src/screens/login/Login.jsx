@@ -1,18 +1,14 @@
 import React from "react";
-import { View, Text, TextInput, KeyboardAvoidingView } from "react-native";
+import { View, Text, TextInput, KeyboardAvoidingView , Dimensions} from "react-native";
 import { ButtonPrimary, Texto } from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from "react-native-elements";
+
 import { style } from "./style.js";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { fondoColor } from "../../Common/constans";
 
-//funcion para ver los bordes
-const borde = function (color) {
-  return {
-    borderColor: color,
-    borderWidth: 3,
-  };
-};
+
 
 export default ({
   handleValueUsername,
@@ -26,28 +22,33 @@ export default ({
   handleVerifyAccount,
   updateSecureTextEntry,
   data,
+  mode
 }) => {
+ 
+  var height = Dimensions.get('screen').height;  // window
+
   return (
-    <View style={style.container}>
+    <View style={{height:height, backgroundColor: mode? fondoColor : "black"}}>
       <View
         style={{
-          flex: 8,
+          height:height*.9,
+          
         }}
       >
         <Text style={style.titulo}>Efeté</Text>
         <Text style={style.iniciarSesion}>Acceder</Text>
-        <View style={style.inputContainer}>
-          <View style={style.searchSection}>
+        <View style={ mode? style.inputContainer : style.inputContainerDark}>
+          <View style={mode ? style.searchSection : style.searchSectionDark}>
             <Icon
               style={style.searchIcon}
               name="email-outline"
               size={24}
-              color="#94AFB6"
+              color= {mode ? "#94AFB6" :'white'}
             />
             <TextInput
               autoCapitalize="none"
               keyboardType="email-address"
-              style={style.input}
+              style={mode ? style.input : style.inputDark}
               value={username}
               placeholder="Email"
               onChangeText={(username) => {
@@ -58,17 +59,17 @@ export default ({
 
           <View style={style.hr} />
 
-          <View style={style.searchSection}>
+          <View style={mode ? style.searchSection : style.searchSectionDark}>
             <Icon
               style={style.searchIcon}
               name="lock-outline"
               size={24}
-              color="#94AFB6"
+              color= {mode ? "#94AFB6" :'white'}
             />
             <TextInput
               autoCapitalize="none"
               secureTextEntry={data.secureTextEntry ? true : false}
-              style={style.input}
+              style={mode ? style.input : style.inputDark}
               value={password}
               placeholder="Contraseña"
               onChangeText={(password) => {
@@ -78,17 +79,17 @@ export default ({
             <TouchableOpacity onPress={updateSecureTextEntry}>
               {data.secureTextEntry ? (
                 <Icon
-                  style={style.eyeLock}
+                  style={ mode? style.eyeLock : style.eyeLockDark}
                   name="eye-off"
                   size={22}
-                  color="#94AFB6"
+                  color={mode ? "#94AFB6" :'white'}
                 />
               ) : (
                 <Icon
-                  style={style.eyeLock}
+                style={ mode? style.eyeLock : style.eyeLockDark}
                   name="eye"
                   size={22}
-                  color="#94AFB6"
+                  color={mode ? "#94AFB6" :'white'}
                 />
               )}
             </TouchableOpacity>
@@ -104,20 +105,57 @@ export default ({
               onPress={() => {
                 handleVerifyAccount();
               }}
-              style={{ ...style.alerta, color: "#6F76E4" }}
+              style={{ ...style.alerta, color: mode? "#6F76E4" : 'white' , textAlign:'center' , fontSize:16}}
             >
               Verificar cuenta
             </Text>
           </View>
         ) : null}
+
+
+<View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            paddingTop: 20,
+          }}
+        >
+          <Button
+            icon={
+              <Icon
+                style={{ margin: 10 }}
+                name="google"
+                size={20}
+                color="#d94821"
+              />
+            }
+            buttonStyle={ mode? style.border : style.borderDark}
+            titleStyle={{ color:mode? "#d94821": 'white', fontSize: 15 }}
+            title="GOOGLE"
+          />
+
+          <Button
+            icon={
+              <Icon
+                style={{ marginRight: 10 }}
+                name="facebook"
+                size={20}
+                color="#2F80ED"
+              />
+            }
+            buttonStyle={ mode? style.border : style.borderDark}
+            titleStyle={{ color: mode? "#3a5aa0" : 'white', fontSize: 15 }}
+            title="FACEBOOK"
+          />
+        </View>
       </View>
 
       <View
         style={{
           flexDirection: "row-reverse",
           justifyContent: "center",
-          flex: 1,
-          zIndex: -1,
+          height:height*.2,
+          
         }}
       >
         <Button
@@ -131,8 +169,8 @@ export default ({
         />
 
         <Button
-          buttonStyle={style.botonRegister}
-          titleStyle={style.tituloRegister}
+          buttonStyle={mode ?style.botonRegister : style.botonRegisterDark}
+          titleStyle={mode? style.tituloRegister : style.tituloRegisterDark}
           title="Registrarte"
           onPress={() => {
             navigation.navigate("Register");

@@ -3,16 +3,17 @@ import { View, Text, TextInput } from "react-native";
 import { Button } from "react-native-elements";
 
 import { style } from "./style.js";
+import { fondoColor } from "../../Common/constans.js";
 
-export default ({ handleValue, navigation, value }) => {
+export default ({ handleValue, navigation, value, mode }) => {
   return (
-    <View>
+    <View style={{flex:1 ,backgroundColor: mode ?  fondoColor : "black"}}>
       <Text style={style.monto}>Monto</Text>
 
       <View style={{flexDirection:'row' , justifyContent:'center'}}>
-      <Text style={{fontSize:25}}>$</Text>
+      <Text style={{fontSize:25 , color: mode? "black" : 'white'}}>$</Text>
       <TextInput
-        style={style.input}
+        style={mode ? style.input : style.inputDark} 
         keyboardType="numeric"
         onChangeText={(value) => handleValue(value)}
         value={value.toString()}
@@ -39,8 +40,8 @@ export default ({ handleValue, navigation, value }) => {
       )}
 
 <Button
-        buttonStyle={style.cancelar}
-        titleStyle={style.tituloCancelar}
+        buttonStyle={mode ? style.cancelar : style.cancelarDark}
+        titleStyle={mode ? style.tituloCancelar : style.tituloCancelarDark}
         title="Cancelar"
         onPress={() => {
             

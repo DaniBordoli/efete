@@ -1,5 +1,6 @@
 import React ,{useState} from "react";
-
+import {useSelector} from 'react-redux'
+ 
 import { View, Text, TextInput } from "react-native";
 import {style} from './style'
 import * as Font from 'expo-font';
@@ -11,9 +12,14 @@ const fetchFonts = () => {
   });
   };
 
+  
 
 export default ({ navigation }) => {
   const [dataload, setDataload]= useState(false)
+
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
 
   if(!dataload){
     return (
