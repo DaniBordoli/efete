@@ -3,11 +3,12 @@ import { QRCode } from "react-native-custom-qr-codes-expo";
 import { Text } from "react-native";
 import { fetchAgent } from "../../redux/store/actions/agents";
 import { headerColor } from "../../Common/constans";
-import { StyleSheet, View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMainAccount } from "../../redux/store/actions/accounts";
+import { style } from "../allAgentTransactions/style";
 
-export default () => {
+export default ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default () => {
   }, []);
 
   const userId = useSelector((state) => state.users.user._id);
-  const agentId = useSelector((state) => state.agents.agent._id);
+  const agentId = useSelector((state) => state.agents.agent._id)
   const mainAccount = useSelector((state) => state.accounts.mainAccount);
 
   /* const [user, userSet] = useState('')
@@ -30,9 +31,24 @@ export default () => {
         <Text style={styles.texto}>Escanea el codigo y retira tu dinero</Text>
       </View>
       <View style={styles.container}>
-        <QRCode
-          content={`${agentId},${mainAccount._id},${mainAccount.accountNumber}`}
-        />
+      
+      {mainAccount._id 
+      ? (        
+      <QRCode 
+      content={`${agentId},${mainAccount._id},${mainAccount.accountNumber}`}
+      />
+      ) :(
+      <View style={styles.container}> 
+      <Text style={styles.description}>Tienes que tener una cuenta creada o elegir una cuenta predeterminada para continuar</Text>
+      <TouchableOpacity
+      style={styles.boton}
+      onPress={()=> navigation.navigate('AddAccounts')}
+      >
+      <Text style={styles.botonTxt}>Ir a cuentas</Text>
+      </TouchableOpacity>
+      </View>)
+      }
+
       </View>
       <View style={{ flex: 1 }}></View>
     </View>
@@ -67,4 +83,23 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: "center",
   },
+  description:{
+    textAlign: 'center',
+    fontSize: 15,
+    margin: '2%'
+  },
+  boton:{
+  borderColor: '#6F76E4',
+  borderWidth: 1,
+  margin: '2%'
+  },
+  botonTxt:{
+   fontFamily: 'nunito',
+   fontSize: 15, 
+   color: '#6F76E4',
+   paddingLeft: '4%',
+   paddingRight: '4%',
+   paddingTop: '2%',
+   paddingBottom: '2%'
+  }
 });

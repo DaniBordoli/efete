@@ -25,5 +25,6 @@ export const CREATE_STORE = "CREATE_STORE";
 export const SET_AGENTS = "SET_AGENTS";
 export const GET_USER_AGENTS = "GET_USER_AGENTS";
 
-//TOKEN
+//VLIDATION
 export const TOKEN = "TOKEN";
+export const TCN = "TCN";

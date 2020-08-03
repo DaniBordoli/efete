@@ -69,6 +69,7 @@ export default ({
           enablePoweredByContainer={false}
           placeholder="Editar Ubicacion"
           returnKeyType={"search"}
+          // required
           listViewDisplayed="auto"
           fetchDetails={true}
           onPress={(data, detail = null) => {

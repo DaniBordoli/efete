@@ -32,7 +32,7 @@ export default ({ navigation, userTransactions }) => {
                   </View>
 
                  <View style={style.addressCont}>
-                 <Text style={style.address}>San Juan 2705</Text>
+                 <Text style={style.address}>{item.agent[0].address.split(',')[0]}</Text>
                  </View>   
 
 
@@ -69,4 +69,3 @@ export default ({ navigation, userTransactions }) => {
   );
 };
 
-// - {item.agent[0].address.split(',')[0]}

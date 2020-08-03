@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { style } from "./style";
 
 const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
   return (
+  <ScrollView>  
     <View style={style.mainContainer}>
       <View style={style.imageContainer}>
         <Image
@@ -48,6 +49,7 @@ const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
         </TouchableOpacity>
       </View>
     </View>
+  </ScrollView>
   );
 };
 

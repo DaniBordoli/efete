@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { style } from "./style";
 // import { useTheme } from '@react-native/navigation'
 import { colors, Button } from "react-native-elements";
@@ -9,6 +9,7 @@ import { buttonColor } from "../../Common/constans";
 export default ({ navigation, transaction }) => {
   console.log("Transacciones1", transaction);
   return (
+    <ScrollView>
     <View>
       <TouchableOpacity
         style={style.clearIcon}
@@ -51,5 +52,6 @@ export default ({ navigation, transaction }) => {
         />
       </View>
     </View>
+  </ScrollView>
   );
 };
