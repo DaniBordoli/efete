@@ -1,6 +1,4 @@
-import React, { useState, useEffect, userRef, useRef } from "react";
-import { Text, View } from "react-native";
-import { Camera } from "expo-camera";
+import React, { useState } from "react";
 import OpenCamera from "./OpenCamera";
 import * as Permissions from "expo-permissions";
 import _ from "lodash";
@@ -41,7 +39,7 @@ export default function OpenCameraContainer({ navigation, route }) {
       base64: true,
       allowsEditing: false,
       aspect: [4, 3],
-      quality: 0.5,
+      quality: 0.3,
     });
 
     if (!cancelled) {
@@ -60,7 +58,7 @@ export default function OpenCameraContainer({ navigation, route }) {
         })
       ).then(() => {
         dispatch(
-          validateIdentity(base64Foto, "37245882", "M", token, user._id)
+          validateIdentity(base64Foto, user.dni, user.gender, token, user._id)
         );
       });
     } else if (route.params.edit) {

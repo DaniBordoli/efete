@@ -1,10 +1,10 @@
-import { LOGIN_USER, MODE, TOKEN } from "../constants";
+import { LOGIN_USER, MODE, TOKEN, TCN } from "../constants";
 
 const initialState = {
   user: {},
   mode: true,
   token: "",
-  tcn: "",
+  tcn: null,
 };
 
 export default (state = initialState, action) => {

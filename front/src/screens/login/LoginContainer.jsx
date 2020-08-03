@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  logUser,
-  verifyEmail,
-  editUser,
-} from "../../redux/store/actions/users";
+import { logUser, verifyEmail } from "../../redux/store/actions/users";
 import Login from "./Login";
-
-import { View } from "react-native";
-import { set } from "react-native-reanimated";
 
 export default ({ navigation }) => {
   const dispatch = useDispatch();
@@ -50,24 +43,12 @@ export default ({ navigation }) => {
   const handleSubmit = () => {
     dispatch(logUser({ username: username, password: password })).then(
       (data) => {
-        /* if (
-          data.user._id &&
-          !data.user.validatedIdentity &&
-          data.user.processVerification
-        ) {
-          dispatch(checkValidation()).then((data) => {
-            if (validada) {
-              dispatch(editUser({ validatedIdentity: true }));
-              navigation.navigate("User", { user: data.user._id });
-            } else navigation.navigate("WaitingValidation");
-          });
-        } */
-        if (data.user._id && data.user.isVerified) {
+        if (data.user && data.user.isVerified && !data.user.validatedIdentity) {
+          navigation.navigate("ValidateIdentity");
+        }
+        if (data.user && data.user.isVerified && data.user.validatedIdentity) {
           navigation.navigate("User", { user: data.user._id });
         }
-        /*  if (data.user._id && !data.user.processVerification) {
-          navigation.navigate("ValidateIdentity");
-        } */
       }
     );
   };
