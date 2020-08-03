@@ -43,7 +43,6 @@ const userLogout = (req, res) => {
 
 const editProfileUser = (req, res) => {
   let id = req.body._id;
-  console.log(req.body, "REQBODYYYYY");
   User.findByIdAndUpdate(id, req.body, { new: true }).then((userProfile) => {
     res.status(200).send(userProfile);
   });
@@ -65,8 +64,11 @@ const getAllUsers = (req, res) => {
 };
 
 const setTcn = (req, res) => {
-  User.update({ _id: req.body._id }, req.body).then(() => {
-    res.sendStatus(200);
+  console.log(req.body, "REQ BODY TCN");
+  User.updateOne({ _id: req.body._id }, req.body).then(() => {
+    User.findById(req.body._id).then((user) => {
+      res.send(user);
+    });
   });
 };
 

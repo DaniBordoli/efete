@@ -31,14 +31,15 @@ export const mode = (mode) => {
 };
 
 export const logUser = (user) => (dispatch) => {
-  console.log("USUARIO", user);
   return axios
     .post(`http://${IP}:1337/api/users/login`, user, {
       withCredentials: true,
     })
     .then((res) => dispatch(login_user(res.data)))
     .catch(() => {
-      dispatch(login_user({ message: "Alguno de los datos es inválido" }));
+      return dispatch(
+        login_user({ message: "Alguno de los datos es inválido" })
+      );
     });
 };
 
@@ -114,12 +115,39 @@ export const validateIdentity = (url, dni, gender, token, userId) => (
     .then((res) => {
       axios
         .patch(`http://${IP}:1337/api/users/validateIdentity`, {
-          tcn: res.data.transactionControlNumber,
+          tcn: res.data.data.notificacion.transactionControlNumber,
           _id: userId,
         })
 
         .then(() => {
-          dispatch(setTcn(res.data.transactionControlNumber));
+          dispatch(setTcn(res.data.data.notificacion.transactionControlNumber));
         });
+    });
+};
+
+export const fetchValidation = (id, tcn, token) => (dispatch) => {
+  return axios
+    .get(
+      `http://150.136.1.69:8011/CHUTROFINAL/API_ABIS/resultadoTCN.php?id=${tcn}`,
+      {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .then((res) => {
+      console.log(res.data, "RES DATA ACA");
+      if (
+        res.data.data.notificacion &&
+        res.data.data.notificacion.status === "HIT"
+      )
+        axios
+          .patch(`http://${IP}:1337/api/users/validateIdentity`, {
+            _id: id,
+            validatedIdentity: true,
+          })
+          .then((res) => dispatch(login_user(res.data)));
+      else null;
     });
 };

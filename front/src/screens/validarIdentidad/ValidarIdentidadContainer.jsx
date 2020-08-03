@@ -7,7 +7,6 @@ const ValidarIdentidadContainer = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const handleToken = () => {
-    console.log("LLEGUE A HANDLETOKEN");
     dispatch(generateToken());
     navigation.navigate("OpenCamera", { identity: true });
   };
