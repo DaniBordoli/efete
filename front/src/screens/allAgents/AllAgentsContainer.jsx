@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import AllAgents from "../allAgents/AllAgents";
 import {
     fetchUserAgents,
     deleteAgents,
   
 } from "../../redux/store/actions/agents";
+
 
 export default ({navigation}) => {
 
@@ -30,6 +30,8 @@ export default ({navigation}) => {
     const handleDelete = (agentId) => {
         dispatch(deleteAgents(agentId, user._id))
       };
+
+    
 
     return (
         <AllAgents

@@ -1,31 +1,37 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     View,
     Text,
     FlatList,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    Modal,
+    TouchableHighlight
 } from "react-native";
-import { Button, Icon } from "react-native-elements";
+import { Button } from "react-native-elements";
 import { style } from "./style";
 import { AntDesign } from "@expo/vector-icons";
 import { Load } from "../../Common/loading";
 import { fondoColor } from "../../Common/constans";
+
+
 
 const AllAgents = ({
     agentsUser,
     loading,
     navigation,
     handleDelete,
-    mode
+    mode,
+  
+
 }) => {
+    const [modalVisible, setModalVisible] = useState(false);
     return (
         <View style={{ flex: 1 , backgroundColor:mode? fondoColor : "black"}}>
           {loading ? (
             <View style={{ flex: 1, backgroundColor:mode? fondoColor : "black" }}>
                 <View style={{ flex: 2 }}>
                 <Text style={style.asociadas}>NEGOCIOS</Text>
-    
                 <FlatList
                     style={{ marginBottom:10 }}
                         showsVerticalScrollIndicator={false}
@@ -72,14 +78,47 @@ const AllAgents = ({
                             >
                               <TouchableOpacity
                                 onPress={() => {
-                                  handleDelete(item._id);
+                                  setModalVisible(true);
                                 }}
                               >
                                 <AntDesign name="delete" size={25} color={mode? "#454141" : 'white'} />
                               </TouchableOpacity>
+                            
+                              <View style={style.centeredView}>
+                                    <Modal
+                                      animationType="slide"
+                                      transparent={true}
+                                      visible={modalVisible}
+                                      onRequestClose={() => {
+                                        Alert.alert("Modal has been closed.");
+                                      }}
+                                    >
+                                      <View style={style.centeredView}>
+                                        <View style={style.modalView}>
+                                          <Text style={style.modalText}>Seguro desea ELIMINAR su negocio?</Text>
+
+                                          <TouchableHighlight
+                                            style={{ ...style.openButton, backgroundColor: "#00CC96" }}
+                                            onPress={() => {
+                                              handleDelete(item._id);
+                                            }}
+                                          >
+                                            <Text style={style.textStyle}>Confirmar</Text>
+                                          </TouchableHighlight>
+                                          <TouchableHighlight
+                                            style={{ ...style.openButton, backgroundColor: "#DD1919",marginTop:10 }}
+                                            onPress={() => {
+                                              setModalVisible(!modalVisible);
+                                            }}
+                                          >
+                                            <Text style={{...style.textStyle}}>Cancelar</Text>
+                                          </TouchableHighlight>
+                                        </View>
+                                      </View>
+                                    </Modal>
+                            </View>
                             </View>
                           </TouchableOpacity>
-                        
                       </View>
                     );
                   }}
@@ -87,21 +126,19 @@ const AllAgents = ({
                 
               </View>
             </View>
-          ) : (
-            <Load />
-          )}
-          <Button
-              buttonStyle={style.botonAgregar}
-              titleStyle={style.tituloAgregar}
-              title="AGREGAR NEGOCIO"
-              onPress={() =>
-                navigation.navigate("CreateAgentForm")
-              }
-            />
-            
-        </View>
+                ) : (
+                  <Load />
+                )}
+                <Button
+                    buttonStyle={style.botonAgregar}
+                    titleStyle={style.tituloAgregar}
+                    title="AGREGAR NEGOCIO"
+                    onPress={() =>
+                      navigation.navigate("CreateAgentForm")
+                    }
+                  />
+            </View>
       );
-
 }
 
 export default AllAgents
