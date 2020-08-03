@@ -5,7 +5,6 @@ export const style = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: "#FAFBFF",
-
     paddingBottom: 5,
     paddingTop: 20,
     marginLeft: 15,
@@ -18,11 +17,11 @@ export const style = StyleSheet.create({
     color: "#6F76E4",
     fontSize: 22,
     fontFamily: "nunito",
-    margin: 40,
+    margin: 20,
     textAlign: "center",
     textTransform: "uppercase",
   },
-  title:{
+  title: {
     alignSelf: "flex-start",
 
     marginBottom: 10,
@@ -56,8 +55,8 @@ export const style = StyleSheet.create({
   },
   image: {
     marginTop: "5%",
-    width: 200,
-    height: 150,
+    width: 150,
+    height: 125,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: "black",
@@ -76,13 +75,13 @@ export const style = StyleSheet.create({
     marginTop: "2%",
     color: "#A4A4A4",
     fontSize: 15,
-    textAlign:'center'
+    textAlign: "center",
   },
   textMaxsize: {
     margin: "2%",
     color: "#606060",
     fontSize: 10,
-    textAlign:'center'
+    textAlign: "center",
   },
   confirmar: {
     backgroundColor: "#00CC96",

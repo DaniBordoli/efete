@@ -27,6 +27,7 @@ export const style = StyleSheet.create({
     height: 150,
     marginTop: "4%",
     marginBottom: "6%",
+    alignSelf: "center",
   },
   text: {
     fontFamily: "nunito",
@@ -40,7 +41,7 @@ export const style = StyleSheet.create({
     marginLeft: "10%",
     marginRight: "10%",
     fontFamily: "nunito",
-    textAlign: "left",
+    textAlign: "center",
   },
   text2: {
     fontSize: 50,
@@ -52,6 +53,7 @@ export const style = StyleSheet.create({
     width: "80%",
     borderTopColor: "#808080",
     borderTopWidth: 1,
+    alignSelf: "center",
   },
   volver: {
     padding: "1%",
@@ -74,7 +76,9 @@ export const style = StyleSheet.create({
     backgroundColor: "#00CC96",
     padding: "1%",
     borderRadius: 5,
-    marginTop: "5%",
+    marginTop: "10%",
+    width: 250,
+    alignSelf: "center",
   },
   textConfirmar: {
     color: "white",
@@ -84,6 +88,7 @@ export const style = StyleSheet.create({
     paddingBottom: "3%",
     paddingTop: "2%",
     fontFamily: "nunito",
+    alignSelf: "center",
   },
   botonesCont: {
     flexDirection: "row",

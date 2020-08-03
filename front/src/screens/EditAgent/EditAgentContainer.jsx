@@ -11,6 +11,8 @@ import { YellowBox } from "react-native";
 export default ({ navigation, route }) => {
   const dispatch = useDispatch();
 
+  const view = "EditAgentProfile";
+
   const agentInfo = useSelector((state) => state.agents.agent);
   const userId = useSelector((state) => state.users.user._id);
 
@@ -111,6 +113,7 @@ export default ({ navigation, route }) => {
       image={agent.imageUrl}
       notifyChange={(loc) => getCoordsFromName(loc)}
       handlerAddress={handlerAddress}
+      view={view}
     />
   );
 };

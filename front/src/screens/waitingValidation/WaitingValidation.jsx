@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
 import { Load } from "../../Common/loading";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default ({ navigation, loading, user }) => {
   return (
@@ -45,23 +46,21 @@ export default ({ navigation, loading, user }) => {
             ) : (
               <View>
                 <Text style={style.title}>
-                  Tu identidad no pudo ser validada. Por favor, intenta
-                  nuevamente.{" "}
+                  Tu identidad no pudo ser validada.
                 </Text>
 
                 <View style={style.hr}></View>
 
-                <Image
-                  style={style.icon}
-                  source={require("../../../assets/icon.png")}
+                <MaterialCommunityIcons
+                  name="emoticon-sad-outline"
+                  style={{ alignSelf: "center", color: "#DD1919" }}
+                  size={100}
+                  color="black"
                 />
 
                 <View style={style.hr}></View>
 
-                <Text style={style.text1}>
-                  Tu identidad no pudo ser validada. Por favor, intenta
-                  nuevamente.
-                </Text>
+                <Text style={style.text1}>Por favor, intenta nuevamente.</Text>
 
                 <TouchableOpacity
                   style={style.confirmar}
