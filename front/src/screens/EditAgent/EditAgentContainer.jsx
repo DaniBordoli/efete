@@ -34,7 +34,7 @@ export default ({ navigation, route }) => {
   useEffect(() => {
     //dispatch(fetchAgent(agentInfo._id));
     route.params
-      ? setAgent({ ...agent, imageUrl: route.params.capturarFoto })
+      ? setAgent({ ...agent, imageUrl: route.params.uriFoto })
       : null;
   }, [route.params]);
 
@@ -79,7 +79,7 @@ export default ({ navigation, route }) => {
   function handleSubmit() {
     if (agent.name.length > 0 && agent.address.length > 0) {
       if (route.params) {
-        uploadImage(route.params.capturarFoto);
+        uploadImage(route.params.uriFoto);
       } else {
         dispatch(
           editAgent({

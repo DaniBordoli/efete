@@ -10,7 +10,6 @@ const ValidarIdentidadContainer = ({ navigation }) => {
     (state) => state.users.mode
   );
   const handleToken = () => {
-    console.log("LLEGUE A HANDLETOKEN");
     dispatch(generateToken());
     navigation.navigate("OpenCamera", { identity: true });
   };

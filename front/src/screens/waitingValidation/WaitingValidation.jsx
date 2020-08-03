@@ -1,31 +1,84 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Button } from "react-native-elements";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
-import { useNavigation } from "@react-navigation/native";
+import { Load } from "../../Common/loading";
 
-export default () => {
+export default ({ navigation, loading, user }) => {
   return (
-    <View>
-      {esperando ? (
-        <View>
-          ( condicion ? (
+    <View style={style.mainContainer}>
+      <View style={style.imageContainer}>
+        {loading ? (
           <View>
-            <Text>Tu identidad se valido correctamente</Text>
+            <View>
+              <Image
+                source={require("../../../assets/iconos/arriba.png")}
+                style={style.image}
+              />
+            </View>
+            {user.validatedIdentity ? (
+              <View>
+                <Text style={style.title}>
+                  Tu identidad se validó correctamente
+                </Text>
 
-            <Button>Iniciar sesion</Button>
-          </View>
-          ) : (
-          <View>
-            <Text>Acceso denegado</Text>
+                <View style={style.hr}></View>
 
-            <Button>Tomar foto nuevamente</Button>
+                <Image
+                  style={style.icon}
+                  source={require("../../../assets/icon.png")}
+                />
+
+                <View style={style.hr}></View>
+
+                <Text style={style.text1}>Ya estás listo para Efetear</Text>
+
+                <TouchableOpacity
+                  style={style.confirmar}
+                  title="Iniciar sesión"
+                  onPress={() => {
+                    navigation.navigate("Login");
+                  }}
+                >
+                  <Text style={style.textConfirmar}>Iniciar sesión</Text>
+                </TouchableOpacity>
+              </View>
+            ) : (
+              <View>
+                <Text style={style.title}>
+                  Tu identidad no pudo ser validada. Por favor, intenta
+                  nuevamente.{" "}
+                </Text>
+
+                <View style={style.hr}></View>
+
+                <Image
+                  style={style.icon}
+                  source={require("../../../assets/icon.png")}
+                />
+
+                <View style={style.hr}></View>
+
+                <Text style={style.text1}>
+                  Tu identidad no pudo ser validada. Por favor, intenta
+                  nuevamente.
+                </Text>
+
+                <TouchableOpacity
+                  style={style.confirmar}
+                  title="Validar Identidad"
+                  onPress={() => {
+                    navigation.navigate("ValidateIdentity");
+                  }}
+                >
+                  <Text style={style.textConfirmar}>Validar Identidad</Text>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
-          ))
-        </View>
-      ) : (
-        <Load />
-      )}
+        ) : (
+          <Load />
+        )}
+      </View>
     </View>
   );
 };
