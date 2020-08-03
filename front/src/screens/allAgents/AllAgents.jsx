@@ -54,11 +54,11 @@ const AllAgents = ({
                                 style={{ flexDirection: "row", marginBottom: 5 }}
                               >
                                 <Text style={mode? style.negrita : style.negritaDark}>Nombre:</Text>
-                                <Text style={ mode ? style.tex : style.texDark}>{item.name} </Text>
+                                <Text style={ mode ? style.tex : style.texDark}>{item.name.length>18 ?`${item.name.substr(0,16)}...`: item.name}</Text>
                               </View>
                               <View style={{ flexDirection: "row" }}>
                                 <Text style={mode? style.negrita : style.negritaDark}>Dirección:</Text>
-                                <Text style={ mode ? style.tex : style.texDark} >{item.address.substr(0,18)} ...</Text>
+                                <Text style={ mode ? style.tex : style.texDark} >{item.address.substr(0,16)}...</Text>
                               </View>
                             </View>
     

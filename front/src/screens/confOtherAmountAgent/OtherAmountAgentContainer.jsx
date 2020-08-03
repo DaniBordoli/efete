@@ -9,6 +9,9 @@ const OtherAmountContainer = ({ navigation }) => {
   const dispatch =  useDispatch();
   const agent = useSelector(state => state.agents.agent)
 
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
   const [value, setValue] = useState(0)
 
   const handlerValue = (value) =>{
@@ -19,15 +22,16 @@ const OtherAmountContainer = ({ navigation }) => {
     dispatch(updateAmountAgent(value,agent._id))  }
 
     return(
-        <View>
+        
           <OtherAmountAgent
           //  onChangeInput={onChangeInput}
           handlerValue={handlerValue}
           handlerSubmit={handlerSubmit}
           navigation={navigation}
           value={value}
+          mode={mode}
           />
-        </View>
+        
     )
 }
 

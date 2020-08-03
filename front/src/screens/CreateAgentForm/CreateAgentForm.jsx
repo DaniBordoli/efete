@@ -27,6 +27,7 @@ const CreateAgentForm = ({
   address,
   cuil,
   notifyChange,
+  mode
 }) => {
   return (
     <View style={{ flex: 1 }}>

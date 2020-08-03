@@ -5,22 +5,30 @@ import {
   createTransaction,
   getUserTransactions,
 } from "../../redux/store/actions/transactions";
-import { changeDailyAmount } from "../../redux/store/actions/agents";
+import { changeDailyAmount , fetchAgent} from "../../redux/store/actions/agents";
 import SelectAccount from "./SelectAccount";
 
-import { View } from "react-native";
 
 export default ({ navigation, route }) => {
   const dispatch = useDispatch();
 
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
   useEffect(() => {
+    
     dispatch(fetchUserAccounts(user._id)).then(() => {
       setLoading(true);
     });
   }, []);
 
+  useEffect(()=>{
+    dispatch(fetchAgent(route.params.agentId))
+  },[])
+
   const userAccounts = useSelector((state) => state.accounts.accounts);
   const user = useSelector((state) => state.users.user);
+  const agent = useSelector((state) => state.agents.agent);
 
   const [selectedAccount, setSelectedAccount] = useState({});
   const [loading, setLoading] = useState(false);
@@ -30,18 +38,6 @@ export default ({ navigation, route }) => {
   };
   //Esta hardocdeado el id del agente porque no tenemos el mapa para la selección. Una vez que se tenga el mapa, se pasa e ldato por route.params.
   const handleSubmit = () => {
-    console.log(
-      ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;',
-      "amount:",route.params.value,
-      'originAccount:', selectedAccount._id,
-     ' user:',user._id,
-     ' agent:',route.params.agentId,
-      'destinationAccount:', route.params.destinationAccount,
-     ' cbu:;;;;;;;;;;', route.params.cbu,
-      'originAccountCbu:',selectedAccount.accountNumber,
-      ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;'
-      )
-
     dispatch(
       createTransaction({
         amount: route.params.value,
@@ -53,7 +49,6 @@ export default ({ navigation, route }) => {
         originAccountCbu: selectedAccount.accountNumber,
       }))
       .then((res) => {
-        console.log('REEEEEEEEEEEEEEEEESSSSSS::::::::::::::::::',res)
         navigation.navigate("TransactionOk", { transaction: res.transaction });
       })
       .then(() => {
@@ -79,6 +74,11 @@ export default ({ navigation, route }) => {
       navigation={navigation}
       transactionValue={route.params.value}
       loading={loading}
+      mode={mode}
+      agenteScanner={route.params.agentId}
+      agenteMapa={route.params.agenteMap}
+      agent={agent}
+      
       // handleAgentDailyAmount={handleAgentDailyAmount}
     />
   );

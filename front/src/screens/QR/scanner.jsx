@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet, Alert, Animated } from "react-native";
 import { Button } from "react-native-elements";
+import { useDispatch, useSelector } from "react-redux";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { buttonColor, headerColor, fondoColor } from "../../Common/constans";
 import { RotationGestureHandler } from "react-native-gesture-handler";
 
+
 export default ({ navigation, route }) => {
+  const dispatch = useDispatch();
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [animationLineHeight, setAnimationLineHeight] = useState(0);
@@ -18,9 +21,13 @@ export default ({ navigation, route }) => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === "granted");
     })();
-
     animateLine();
   }, []);
+  
+
+  
+
+  const agente = useSelector((state) => state.agents.agent);
 
   const animateLine = () => {
     Animated.sequence([
@@ -38,13 +45,16 @@ export default ({ navigation, route }) => {
   };
 
   const handleBarCodeScanned = ({ type, data }) => {
+    console.log(data,':::::::::::::::::::DESTINO')
     const [agentId, destinationAccount, cbu] = data.split(",");
-    setScanned(true);
+    
+    setScanned(true)
     navigation.navigate("SelectAccount", {
       agentId: agentId,
       value: route.params.value,
       destinationAccount: destinationAccount,
       cbu: cbu,
+      agenteMap:route.params.agenteMap
     });
   };
 

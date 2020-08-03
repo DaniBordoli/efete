@@ -2,7 +2,7 @@ import { LOGIN_USER, MODE, TOKEN, TCN } from "../constants";
 
 const initialState = {
   user: {},
-  mode: true,
+  mode: true, // true
   token: "",
   tcn: null,
 };

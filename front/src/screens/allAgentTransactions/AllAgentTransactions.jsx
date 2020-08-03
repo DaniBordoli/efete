@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text, Image, Link, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import { Card, Button } from "react-native-elements";
 import { style } from "./style.js";
 import { buttonColor } from "../../Common/constans.js";
 
-export default ({ navigation, agentTransactions }) => {
+export default ({ navigation, agentTransactions , mode}) => {
   return (
     <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
       {agentTransactions[0] !== undefined ? (

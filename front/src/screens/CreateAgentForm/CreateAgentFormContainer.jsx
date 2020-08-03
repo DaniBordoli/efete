@@ -12,6 +12,10 @@ import _ from "lodash";
 const CreateAgentFormContainer = ({ navigation, route }) => {
   const [foto, setFoto] = useState("");
   const [ubicacion, setUbicacion] = useState({});
+  
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
 
   useEffect(() => {
     route.params ? setFoto(route.params.uriFoto) : "No hay fotos";
@@ -96,6 +100,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
       name={name}
       address={address}
       cuil={cuil}
+      mode={mode}
       notifyChange={(loc) => getCoordsFromName(loc)}
     />
   );
