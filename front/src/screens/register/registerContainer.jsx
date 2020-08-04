@@ -36,7 +36,7 @@ export default ({ navigation }) => {
     dispatch(
       register(firstName, lastName, dni, password, username, gender)
     ).then((data) => {
-      if (data.user === "OK") {
+      if (data.user && data.user._id) {
         setFirstName("");
         setLastName("");
         setDni(0);

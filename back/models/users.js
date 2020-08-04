@@ -17,6 +17,10 @@ var userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  verifCode: {
+    type: Number,
+    default: 0,
+  },
   dniFront: {
     type: String,
     default: "https://i.imgur.com/Z0869Hm.jpg",
@@ -72,7 +76,6 @@ userSchema.pre("save", async function save(next) {
 
 userSchema.methods.validatePassword = async function validatePassword(data) {
   const result = await bcrypt.compare(data, this.password);
-  console.log(result, "RESULTADO");
   return result;
 };
 

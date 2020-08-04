@@ -20,7 +20,7 @@ const userRegister = (req, res, next) => {
               })
               .then((user) => {
                 SendMail(user);
-                res.sendStatus(200);
+                res.send(user);
               });
           }
         });
@@ -64,7 +64,6 @@ const getAllUsers = (req, res) => {
 };
 
 const setTcn = (req, res) => {
-  console.log(req.body, "REQ BODY TCN");
   User.updateOne({ _id: req.body._id }, req.body).then(() => {
     User.findById(req.body._id).then((user) => {
       res.send(user);

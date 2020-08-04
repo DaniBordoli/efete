@@ -16,7 +16,7 @@ export default ({
   navigation,
   user,
   handleGender,
-  mode
+  mode,
 }) => {
   var height = Dimensions.get("screen").height;
 

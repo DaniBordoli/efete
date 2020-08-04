@@ -17,23 +17,20 @@ const { SendTransaction } = require("../controllers/nodemailer");
 router.post("/register", userRegister);
 
 router.get("/verify", function (req, res) {
-  if (req.protocol + "://" + req.get("host") == `http://${IP}:1337`) {
-    User.findById(req.query.id).then((user) => {
+  User.findOne({ _id: req.query.id, verifCode: req.query.code }).then(
+    (user) => {
       if (user) {
         user.isVerified = true;
-        user.save().then(() => {
+        user.save().then((user) => {
           console.log("email is verified");
-
-          res.redirect(`http://${IP}:19006`);
+          res.send(user);
         });
       } else {
         console.log("email is not verified");
-        res.send("<h1>Bad Request</h1>");
+        res.sendStatus(401);
       }
-    });
-  } else {
-    res.send("<h1>Request is from unknown source");
-  }
+    }
+  );
 });
 
 router.get("/sendVerificationEmail/:id", userVerify);

@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, TextInput, KeyboardAvoidingView , Dimensions} from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  KeyboardAvoidingView,
+  Dimensions,
+} from "react-native";
 import { ButtonPrimary, Texto } from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from "react-native-elements";
@@ -7,8 +13,6 @@ import { Button } from "react-native-elements";
 import { style } from "./style.js";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { fondoColor } from "../../Common/constans";
-
-
 
 export default ({
   handleValueUsername,
@@ -22,28 +26,28 @@ export default ({
   handleVerifyAccount,
   updateSecureTextEntry,
   data,
-  mode
+  mode,
+  notVerified,
 }) => {
- 
-  var height = Dimensions.get('screen').height;  // window
-
+  var height = Dimensions.get("screen").height; // window
   return (
-    <View style={{height:height, backgroundColor: mode? fondoColor : "black"}}>
+    <View
+      style={{ height: height, backgroundColor: mode ? fondoColor : "black" }}
+    >
       <View
         style={{
-          height:height*.9,
-          
+          height: height * 0.9,
         }}
       >
         <Text style={style.titulo}>Efeté</Text>
         <Text style={style.iniciarSesion}>Acceder</Text>
-        <View style={ mode? style.inputContainer : style.inputContainerDark}>
+        <View style={mode ? style.inputContainer : style.inputContainerDark}>
           <View style={mode ? style.searchSection : style.searchSectionDark}>
             <Icon
               style={style.searchIcon}
               name="email-outline"
               size={24}
-              color= {mode ? "#94AFB6" :'white'}
+              color={mode ? "#94AFB6" : "white"}
             />
             <TextInput
               autoCapitalize="none"
@@ -64,7 +68,7 @@ export default ({
               style={style.searchIcon}
               name="lock-outline"
               size={24}
-              color= {mode ? "#94AFB6" :'white'}
+              color={mode ? "#94AFB6" : "white"}
             />
             <TextInput
               autoCapitalize="none"
@@ -79,17 +83,17 @@ export default ({
             <TouchableOpacity onPress={updateSecureTextEntry}>
               {data.secureTextEntry ? (
                 <Icon
-                  style={ mode? style.eyeLock : style.eyeLockDark}
+                  style={mode ? style.eyeLock : style.eyeLockDark}
                   name="eye-off"
                   size={22}
-                  color={mode ? "#94AFB6" :'white'}
+                  color={mode ? "#94AFB6" : "white"}
                 />
               ) : (
                 <Icon
-                style={ mode? style.eyeLock : style.eyeLockDark}
+                  style={mode ? style.eyeLock : style.eyeLockDark}
                   name="eye"
                   size={22}
-                  color={mode ? "#94AFB6" :'white'}
+                  color={mode ? "#94AFB6" : "white"}
                 />
               )}
             </TouchableOpacity>
@@ -98,22 +102,26 @@ export default ({
 
         {user.message ? (
           <Text>{user.message}</Text>
-        ) : user._id && !user.isVerified ? (
+        ) : user._id && notVerified ? (
           <View style={{ flexDirection: "row" }}>
             <Text style={style.alerta}>Tu cuenta no ha sido verificada.</Text>
             <Text
               onPress={() => {
                 handleVerifyAccount();
               }}
-              style={{ ...style.alerta, color: mode? "#6F76E4" : 'white' , textAlign:'center' , fontSize:16}}
+              style={{
+                ...style.alerta,
+                color: mode ? "#6F76E4" : "white",
+                textAlign: "center",
+                fontSize: 16,
+              }}
             >
               Verificar cuenta
             </Text>
           </View>
         ) : null}
 
-
-<View
+        <View
           style={{
             flexDirection: "row",
             justifyContent: "center",
@@ -129,8 +137,8 @@ export default ({
                 color="#d94821"
               />
             }
-            buttonStyle={ mode? style.border : style.borderDark}
-            titleStyle={{ color:mode? "#d94821": 'white', fontSize: 15 }}
+            buttonStyle={mode ? style.border : style.borderDark}
+            titleStyle={{ color: mode ? "#d94821" : "white", fontSize: 15 }}
             title="GOOGLE"
           />
 
@@ -143,8 +151,8 @@ export default ({
                 color="#2F80ED"
               />
             }
-            buttonStyle={ mode? style.border : style.borderDark}
-            titleStyle={{ color: mode? "#3a5aa0" : 'white', fontSize: 15 }}
+            buttonStyle={mode ? style.border : style.borderDark}
+            titleStyle={{ color: mode ? "#3a5aa0" : "white", fontSize: 15 }}
             title="FACEBOOK"
           />
         </View>
@@ -154,8 +162,7 @@ export default ({
         style={{
           flexDirection: "row-reverse",
           justifyContent: "center",
-          height:height*.2,
-          
+          height: height * 0.2,
         }}
       >
         <Button
@@ -169,8 +176,8 @@ export default ({
         />
 
         <Button
-          buttonStyle={mode ?style.botonRegister : style.botonRegisterDark}
-          titleStyle={mode? style.tituloRegister : style.tituloRegisterDark}
+          buttonStyle={mode ? style.botonRegister : style.botonRegisterDark}
+          titleStyle={mode ? style.tituloRegister : style.tituloRegisterDark}
           title="Registrarte"
           onPress={() => {
             navigation.navigate("Register");
