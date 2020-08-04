@@ -161,7 +161,7 @@ export default ({
             }}
           >
             <Button
-              //disabled={!isValid}
+              disabled={!isValid}
               buttonStyle={style.botonIniciar}
               titleStyle={style.tituloIniciar}
               title="Registrarse"
