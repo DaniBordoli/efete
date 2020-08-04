@@ -6,9 +6,10 @@ import { validateIdentity, editUser } from "../../redux/store/actions/users";
 import { useSelector, useDispatch } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
 
-export default function OpenCameraContainer({ navigation, route }) {
+export default function OpenCameraContainer({ navigation, route, view }) {
   const [base64Foto, setBase64Foto] = useState(null);
   const [uriFoto, setUriFoto] = useState(null);
+  const [modal, setModal] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -30,6 +31,7 @@ export default function OpenCameraContainer({ navigation, route }) {
     if (!cancelled) {
       setBase64Foto(base64);
       setUriFoto(uri);
+      setModal(true);
     }
   };
 
@@ -45,11 +47,13 @@ export default function OpenCameraContainer({ navigation, route }) {
     if (!cancelled) {
       setBase64Foto(base64);
       setUriFoto(uri);
+      setModal(true);
     }
   };
 
   const handleConfirm = (e) => {
-    if (route.params.identity) {
+    if (view === "ValidateIdentity") {
+      setModal(false);
       navigation.navigate("WaitingValidation");
       dispatch(
         editUser({
@@ -61,11 +65,18 @@ export default function OpenCameraContainer({ navigation, route }) {
           validateIdentity(base64Foto, user.dni, user.gender, token, user._id)
         );
       });
-    } else if (route.params.edit) {
+    } else if (view === "EditAgentProfile") {
+      setModal(false);
+
       navigation.navigate("EditAgentProfile", { uriFoto });
     } else {
+      setModal(false);
       navigation.navigate("CreateAgentForm", { uriFoto });
     }
+  };
+
+  const handleCancel = () => {
+    setUriFoto(null);
   };
 
   return (
@@ -74,6 +85,8 @@ export default function OpenCameraContainer({ navigation, route }) {
       uriFoto={uriFoto}
       handleConfirm={handleConfirm}
       openGallery={openGallery}
+      handleCancel={handleCancel}
+      modal={modal}
     />
   );
 }

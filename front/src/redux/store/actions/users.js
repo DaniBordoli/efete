@@ -152,3 +152,8 @@ export const fetchValidation = (id, tcn, token) => (dispatch) => {
       else null;
     });
 };
+
+export const deleteUser = (id) => () =>
+  axios.patch(`http://${IP}:1337/api/users/${id}/delete`).then((res) => {
+    console.log("Usuario eliminado");
+  });

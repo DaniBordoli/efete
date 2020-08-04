@@ -18,7 +18,7 @@ export const style = StyleSheet.create({
     color: "#6F76E4",
     fontSize: 22,
     fontFamily: "nunito",
-    margin: 40,
+    margin: 20,
     textAlign: "center",
     textTransform: "uppercase",
   },
@@ -44,10 +44,8 @@ export const style = StyleSheet.create({
   },
   confirmar: {
     backgroundColor: "#00CC96",
-
     borderRadius: 5,
     marginTop: 30,
-    marginBottom: 30,
     width: "50%",
     alignSelf: "center",
   },
@@ -68,6 +66,7 @@ export const style = StyleSheet.create({
     marginBottom: 5,
     color: "#A4A4A4",
     fontSize: 15,
+    textAlign: "center",
   },
   textMaxsize: {
     margin: 5,
@@ -75,8 +74,8 @@ export const style = StyleSheet.create({
     fontSize: 10,
   },
   image: {
-    width: 150,
-    height: 300,
+    width: 100,
+    height: 100,
     borderRadius: 20,
     marginTop: 30,
     alignSelf: "center",

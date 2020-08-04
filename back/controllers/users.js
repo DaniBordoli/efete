@@ -78,7 +78,7 @@ const userVerify = (req, res, next) => {
 };
 
 const getAllUsers = (req, res) => {
-  User.find().then((users) => {
+  User.find({ isEliminated: false }).then((users) => {
     res.json(users);
   });
 };
@@ -92,6 +92,13 @@ const setTcn = (req, res) => {
   });
 };
 
+const deleteUser = (req, res) => {
+  User.updateOne({ _id: req.params.id }, { isEliminated: true }).then(() => {
+    console.log("USUARIO ELIMINADO");
+    res.sendStatus(200);
+  });
+};
+
 module.exports = {
   userRegister,
   userLogin,
@@ -100,4 +107,5 @@ module.exports = {
   userVerify,
   getAllUsers,
   setTcn,
+  deleteUser,
 };
