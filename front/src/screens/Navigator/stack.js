@@ -46,7 +46,7 @@ export default ({ navigation }) => {
   const mode = useSelector((state) => state.users.mode);
 
   return (
-    <Stack.Navigator initialRouteName="Home" >
+    <Stack.Navigator initialRouteName="Login" >
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}

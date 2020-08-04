@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, FlatList, Modal, TouchableHighlight } from "react-native";
+import { View, Text, FlatList, TouchableHighlight } from "react-native";
+import Modal from 'react-native-modal';
 import { style } from "./style";
 import { Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -94,9 +95,12 @@ export default ({
           ) : (
             <View style={{ flex: 6 , backgroundColor: fondoColor}}>
               <Modal
-                animationType='slide'
-                transparent={true}
-              >
+              isVisible={true}
+              animationInTiming={2000}
+              animationOutTiming={2000}
+              backdropTransitionInTiming={2000}
+              backdropTransitionOutTiming={2000}>
+               
                 <View style={style.centeredView}>
                   <View style={style.modalView}>
                     <Octicons
@@ -108,9 +112,9 @@ export default ({
                     <Text style={style.modalText}>
                       Tu plata no está acá, te espera en:
                     </Text>
-                    <Text style={style.negrita}>{agent.name}</Text>
+                    <Text style={style.negrita}>{agent.name}Kiosco Recoleta</Text>
                     <Text style={style.modalText}>Con direccion en:</Text>
-                    <Text style={style.negrita}>{agent.address}</Text>
+                    <Text style={style.negrita}>{agent.address}Coronel Domingo Trole 363, Ituzaingó, Buenos Aires Province, Argentina</Text>
                     <TouchableHighlight
                       style={{ ...style.openButton }}
                       onPress={() => {

@@ -29,8 +29,8 @@ export const style = StyleSheet.create({
   },
 
   confirmar: {
-    width: 167,
-    height: 60,
+    width: 160,
+    height: 55,
     backgroundColor: `${buttonColor}`,
     marginTop: 10,
     alignSelf: "center",
