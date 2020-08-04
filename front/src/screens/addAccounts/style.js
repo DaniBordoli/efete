@@ -26,6 +26,19 @@ export const style = StyleSheet.create({
     justifyContent:'center'
 
   },
+  input2: {
+    fontSize: 14,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius:4,
+    height: 50,
+    backgroundColor: "white",
+    color: "#424242",
+    borderWidth:0.5,
+    borderColor:'#c8c8c8',
+    flexDirection:'row'
+
+  },
   text: {
     textAlign: "center",
     fontSize: 15,

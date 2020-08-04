@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import SingleAccount from "./SingleAccount";
-import { View } from "react-native";
 import {
   deleteAccounts,
   fetchUserSingleAccount,
