@@ -9,28 +9,15 @@ const charmander = {
   dni:23456782,
   username: 'jesus@gmail.com',
   password:'1234',
+  role:'user',
+  validatedIdentity:true,
+  gender:'M',
+  tcn:'',
+  isEliminated:false
 
 }
 
-const bulbasaur = {
-  firstName: "Juan",
-  lastName: "Cor",
-  isVerified: true,
-  dni: 34456879,
-  username: "juan@gmail.com",
-  password: "1234",
-};
-
-const squirtle = {
-  firstName: "Victoria",
-  lastName: "Di Liscia",
-  isVerified: true,
-  dni: 40458289,
-  username: "vico@gmail.com",
-  password: "1234",
-};
-
-User.insertMany([charmander, bulbasaur, squirtle]).then(() => {
+User.insertMany([charmander]).then(() => {
   console.log("Ready to go!");
 
   process.exit();
