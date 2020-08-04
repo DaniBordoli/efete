@@ -16,7 +16,8 @@ export default ({
   navigation,
   user,
   handleGender,
-  mode
+  mode,
+  isValid,
 }) => {
   var height = Dimensions.get("screen").height;
 
@@ -90,7 +91,7 @@ export default ({
                     { label: "Femenino", value: "F" },
                     { label: "Masculino", value: "M" },
                   ]}
-                  defaultIndex={0}
+                  // defaultIndex={0}
                   onChangeItem={(item) => handleGender(item.value)}
                 />
               </View>
@@ -160,6 +161,7 @@ export default ({
             }}
           >
             <Button
+              disabled={!isValid}
               buttonStyle={style.botonIniciar}
               titleStyle={style.tituloIniciar}
               title="Registrarse"

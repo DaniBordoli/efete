@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import OpenCamera from "./OpenCamera";
 import * as Permissions from "expo-permissions";
 import _ from "lodash";
-import { validateIdentity, editUser } from "../../redux/store/actions/users";
+import {
+  validateIdentity,
+  userValidation,
+} from "../../redux/store/actions/users";
 import { useSelector, useDispatch } from "react-redux";
 import * as ImagePicker from "expo-image-picker";
 
@@ -54,9 +57,10 @@ export default function OpenCameraContainer({ navigation, route, view }) {
   const handleConfirm = (e) => {
     if (view === "ValidateIdentity") {
       setModal(false);
+      setUriFoto(null);
       navigation.navigate("WaitingValidation");
       dispatch(
-        editUser({
+        userValidation({
           _id: user._id,
           processVerification: true,
         })

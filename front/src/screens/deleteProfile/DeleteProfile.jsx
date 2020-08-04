@@ -1,55 +1,57 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Modal,
+  TouchableHighlight,
+} from "react-native";
 import { style } from "./style";
-import { Load } from "../../Common/loading";
 
 export default ({ navigation, handleSubmit }) => {
   return (
-    <View style={style.mainContainer}>
-      <View style={style.imageContainer}>
-        <View>
-          <View>
-            <Image
-              source={require("../../../assets/iconos/arriba.png")}
-              style={style.image}
-            />
-          </View>
-
-          <View>
-            <Text style={style.title}>
-              ¿Estás seguro que querés eliminar tu cuenta?
+    <View style={style.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={true}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+        }}
+      >
+        <View style={style.centeredView}>
+          <View style={style.modalView}>
+            <Text style={style.modalText}>
+              Seguro desea ELIMINAR su cuenta?
             </Text>
 
-            <View style={style.hr}></View>
-
-            <Image
-              style={style.icon}
-              source={require("../../../assets/icon.png")}
-            />
-
-            <View style={style.hr}></View>
-
-            <TouchableOpacity
-              style={style.confirmar}
-              title="Confirmar"
+            <TouchableHighlight
+              style={{
+                ...style.openButton,
+                backgroundColor: "#00CC96",
+              }}
               onPress={() => {
                 handleSubmit();
               }}
             >
-              <Text style={style.textConfirmar}>Confirmar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={style.confirmar}
-              title="Cancelar"
+              <Text style={style.textStyle}>Confirmar</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={{
+                ...style.openButton,
+                backgroundColor: "#DD1919",
+                marginTop: 10,
+              }}
               onPress={() => {
                 navigation.navigate("User");
               }}
             >
-              <Text style={style.textConfirmar}>Cancelar</Text>
-            </TouchableOpacity>
+              <Text style={{ ...style.textStyle }}>Cancelar</Text>
+            </TouchableHighlight>
           </View>
         </View>
-      </View>
+      </Modal>
     </View>
   );
 };
