@@ -1,4 +1,4 @@
-const { User } = require("../models/index");
+const { User, Agent } = require("../models/index");
 const { SendMail } = require("../controllers/nodemailer");
 const { findById } = require("../models/users");
 
@@ -20,7 +20,7 @@ const userRegister = (req, res, next) => {
               })
               .then((user) => {
                 SendMail(user);
-                res.sendStatus(200);
+                res.send(user);
               });
           }
         });
@@ -43,29 +43,38 @@ const userLogout = (req, res) => {
 
 const editProfileUser = async (req, res) => {
   // let id = req.body._id;
-  console.log('REQ.BODY.PASSWORD', req.body.password)
+  console.log("REQ.BODY.PASSWORD", req.body.password);
   let user = await User.findOne({
-    _id : req.body._id
-  })
-  let newPassword = await user.hashPasswordUser(req.body.password)
-  console.log('NEW PASS!!!!!!', newPassword, 'USER!!!!!', user)
-  let updtatedUser =  await user.updateOne({
+    _id: req.body._id,
+  });
+  let newPassword = await user.hashPasswordUser(req.body.password);
+  console.log("NEW PASS!!!!!!", newPassword, "USER!!!!!", user);
+  let updtatedUser = await user.updateOne({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     // isVerified:
-    // dniFront: 
-    // dniBack: 
-    // dni: 
+    // dniFront:
+    // dniBack:
+    // dni:
     username: req.body.username,
-    password: newPassword
-    // profilePicture: 
-    // role: 
-    // validatedIdentity: 
-    // gender: 
-    // tcn: 
+    password: newPassword,
+    // profilePicture:
+    // role:
+    // validatedIdentity:
+    // gender:
+    // tcn:
+  });
+  res.status(200).json(updtatedUser);
+};
 
-  })
-  res.status(200).json(updtatedUser)
+const userValidation = (req, res) => {
+  console.log(req.body, "REQ BODY");
+  User.updateOne({ _id: req.body._id }, req.body).then(() => {
+    return User.findById(req.body._id).then((user) => {
+      console.log(user, "USER");
+      res.send(user);
+    });
+  });
 };
 
 const userVerify = (req, res, next) => {
@@ -84,7 +93,6 @@ const getAllUsers = (req, res) => {
 };
 
 const setTcn = (req, res) => {
-  console.log(req.body, "REQ BODY TCN");
   User.updateOne({ _id: req.body._id }, req.body).then(() => {
     User.findById(req.body._id).then((user) => {
       res.send(user);
@@ -94,8 +102,12 @@ const setTcn = (req, res) => {
 
 const deleteUser = (req, res) => {
   User.updateOne({ _id: req.params.id }, { isEliminated: true }).then(() => {
-    console.log("USUARIO ELIMINADO");
-    res.sendStatus(200);
+    Agent.updateMany({ user: req.params.id }, { isEliminated: true }).then(
+      () => {
+        console.log("USUARIO ELIMINADO");
+        res.sendStatus(200);
+      }
+    );
   });
 };
 
@@ -108,4 +120,5 @@ module.exports = {
   getAllUsers,
   setTcn,
   deleteUser,
+  userValidation,
 };
