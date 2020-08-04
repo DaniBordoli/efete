@@ -64,6 +64,7 @@ export const register = (
 };
 
 export const editUser = (userData) => (dispatch) => {
+  console.log('QUE ES USER DATA', userData)
   return axios
     .patch(`http://${IP}:1337/api/users/editprofile`, userData)
     .then((res) => {

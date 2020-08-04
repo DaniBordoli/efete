@@ -7,7 +7,6 @@ export default ({ navigation }) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.users.user);
-
   const mode = useSelector((state) => state.users.mode);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

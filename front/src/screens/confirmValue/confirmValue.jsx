@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
-import { ScrollView } from "react-native-gesture-handler";
+
 
 const ConfirmValue = ({ navigation, value, agente, agenteUnico, mode }) => {
   return (
