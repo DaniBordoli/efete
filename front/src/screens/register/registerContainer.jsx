@@ -16,7 +16,7 @@ export default ({ navigation }) => {
   const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
 
-  const [isValid, setIsValid] = useState(false);
+  //const [isValid, setIsValid] = useState(false);
 
   function usernameChange(text) {
     setUsername(text);
@@ -66,7 +66,7 @@ export default ({ navigation }) => {
       user={user}
       handleGender={handleGender}
       mode={mode}
-      isValid={isValid}
+      //isValid={isValid}
     />
   );
 };
