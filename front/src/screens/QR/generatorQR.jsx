@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { QRCode } from "react-native-custom-qr-codes-expo";
 import { Text } from "react-native";
 import { fetchAgent } from "../../redux/store/actions/agents";
-import { headerColor } from "../../Common/constans";
+import { headerColor, fondoColor } from "../../Common/constans";
 import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchMainAccount } from "../../redux/store/actions/accounts";
@@ -11,6 +11,7 @@ import { style } from "../allAgentTransactions/style";
 export default ({navigation}) => {
   const dispatch = useDispatch();
 
+  const mode = useSelector((state) => state.users.mode);
   useEffect(() => {
     //dispatch(fetchAgent());
     dispatch(fetchMainAccount(userId));
@@ -26,7 +27,7 @@ export default ({navigation}) => {
   const [loading, setLoading] = useState(false); */
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 , backgroundColor: mode ? fondoColor : 'black'}}>
       <View style={{ flex: 1, justifyContent: "center" }}>
         <Text style={styles.texto}>Escanea el codigo y retira tu dinero</Text>
       </View>
@@ -44,7 +45,7 @@ export default ({navigation}) => {
       style={styles.boton}
       onPress={()=> navigation.navigate('AddAccounts')}
       >
-      <Text style={styles.botonTxt}>Ir a cuentas</Text>
+      <Text style={styles.botonTxt}>IR A CUENTAS</Text>
       </TouchableOpacity>
       </View>)
       }

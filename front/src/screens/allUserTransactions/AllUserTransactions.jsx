@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, Image, Link, FlatList, TouchableOpacity, ScrollView } from "react-native";
 import {style} from './style'
+import { buttonColor } from "../../Common/constans.js";
 import { Button } from "react-native-elements"
-export default ({ navigation, userTransactions }) => {
+export default ({ navigation, userTransactions, mode }) => {
   //Tiene sentido poner un ternario si no estoy buscando algo al back y la info la paso por props?
   return (
     <View style={{height: '100%', backgroundColor: 'white'}}>

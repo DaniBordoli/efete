@@ -6,7 +6,7 @@ import { colors, Button } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { buttonColor } from "../../Common/constans";
 
-export default ({ navigation, transaction }) => {
+export default ({ navigation, transaction ,mode}) => {
   console.log("Transacciones1", transaction);
   return (
     <ScrollView>

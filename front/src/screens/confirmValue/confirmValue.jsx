@@ -2,7 +2,8 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { style } from "./style";
 
-const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
+const ConfirmValue = ({ navigation, value, agente, agenteUnico , mode}) => {
+  
   return (
   <ScrollView>  
     <View style={style.mainContainer}>
@@ -42,7 +43,7 @@ const ConfirmValue = ({ navigation, value, agente, agenteUnico }) => {
           style={style.confirmar}
           title="Confirmar"
           onPress={() => {
-            navigation.navigate("ScannerQR", { value });
+            navigation.navigate("ScannerQR", { value , agenteMap:agente._id});
           }}
         >
           <Text style={style.textConfirmar}>CONFIRMAR</Text>

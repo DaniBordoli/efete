@@ -14,6 +14,9 @@ export default ({ navigation }) => {
   const dispatch = useDispatch();
   const [loading, setLoader] = useState(false);
 
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
   const accountsUser = useSelector((state) => state.accounts.accounts);
   const user = useSelector((state) => state.users.user);
   const mainAccount = useSelector((state)=>state.accounts.mainAccount)
@@ -46,6 +49,7 @@ export default ({ navigation }) => {
       handleDelete={handleDelete}
       mainAccount={mainAccount}
       handleMainDelete={handleMainDelete}
+      mode={mode}
     />
   );
 };

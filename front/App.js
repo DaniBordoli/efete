@@ -8,25 +8,6 @@ import DrawerMenu from "./src/screens/Navigator/drawer";
 import Root from "./src/screens/Navigator/stack";
 import { NavigationContainer, DarkTheme } from "@react-navigation/native";
 
-const customDarkTheme={
-  ...DarkTheme,
-  colors:{
-    ...DarkTheme.colors,
-    headerColor: '#f7c548'
-
-  }
-}
-
-// const customDefaultTheme={
-//   ...DefaultTheme,
-//   colors:{
-//     ...DefaultTheme.colors,
-//     headerColor: '#437c90'
-
-//   }
-// }
-
-
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -54,7 +35,7 @@ export default () => {
   }
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <NavigationContainer >
         <Drawer.Navigator
           initialRouteName="Root"
           drawerType="slide"

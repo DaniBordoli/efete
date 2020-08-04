@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
 
-export default ({ handleToken }) => {
+export default ({ handleToken,mode }) => {
   return (
     <View style={style.mainContainer}>
       <View style={style.imageContainer}>

@@ -8,6 +8,9 @@ export default ({ navigation }) => {
 
   const user = useSelector((state) => state.users.user);
 
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isData, setIsData] = useState(true);
@@ -82,6 +85,7 @@ export default ({ navigation }) => {
       handleVerifyAccount={handleVerifyAccount}
       updateSecureTextEntry={updateSecureTextEntry}
       data={data}
+      mode={mode}
     />
   );
 };

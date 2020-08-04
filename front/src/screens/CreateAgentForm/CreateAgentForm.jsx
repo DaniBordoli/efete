@@ -27,8 +27,10 @@ const CreateAgentForm = ({
   address,
   cuil,
   notifyChange,
+  mode
 }) => {
   return (
+  <ScrollView>
     <View style={{ flex: 1 }}>
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
       <View style={style.container}>
@@ -140,6 +142,7 @@ const CreateAgentForm = ({
         <Text style={style.textConfirmar}>CONFIRMAR</Text>
       </TouchableOpacity>
     </View>
+  </ScrollView>
   );
 };
 

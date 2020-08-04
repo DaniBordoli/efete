@@ -4,7 +4,7 @@ import { Card, Button } from "react-native-elements";
 import { style } from "./style.js";
 import { buttonColor } from "../../Common/constans.js";
 
-export default ({ navigation, agentTransactions }) => {
+export default ({ navigation, agentTransactions , mode}) => {
   return (
    <View style={{backgroundColor: 'white', height: '100%'}}> 
     <ScrollView>

@@ -32,11 +32,12 @@ export const style = StyleSheet.create({
     fontFamily: "nunito",
   },
   inputContainer: {
+    borderRadius: 20,
     backgroundColor: "#FFFFFF",
     marginLeft: 15,
     marginRight: 15,
-    borderRadius: 20,
-    height: 320,
+    height: "50%",
+    
     marginTop: 30,
     justifyContent: "center",
     shadowColor: "#000",
@@ -82,13 +83,14 @@ export const style = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderRadius: 10,
+    borderRadius: 20,
   },
   searchIcon: {
     padding: 10,
   },
   input: {
     fontSize: 18,
+    borderRadius: 20,
     flex: 1,
     paddingTop: 10,
     paddingRight: 10,

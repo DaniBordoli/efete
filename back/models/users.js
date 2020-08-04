@@ -70,9 +70,13 @@ userSchema.pre("save", async function save(next) {
   }
 });
 
+userSchema.methods.hashPasswordUser = async (password) => {
+  const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
+  return await bcrypt.hash(password, salt)
+};
+
 userSchema.methods.validatePassword = async function validatePassword(data) {
   const result = await bcrypt.compare(data, this.password);
-  console.log(result, "RESULTADO");
   return result;
 };
 

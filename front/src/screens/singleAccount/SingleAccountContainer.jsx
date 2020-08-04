@@ -13,6 +13,9 @@ import {
 export default ({ navigation, route }) => {
   const dispatch = useDispatch();
 
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
   const user = useSelector((state) => state.users.user);
   const account = useSelector((state) => state.accounts.account);
   const [loading, setLoading] = useState(false);
@@ -41,6 +44,7 @@ export default ({ navigation, route }) => {
       handleDelete={handleDelete}
       loading={loading}
       handleMainAccount={handleMainAccount}
+      mode={mode}
     />
   );
 };

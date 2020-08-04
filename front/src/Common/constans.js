@@ -6,6 +6,8 @@ export const deleteColor="#DD1919"
 export const verdeTexto="#3D6670"
 export const grisClaro="#e6e3e3"
 export const azulClaro="#F4F9FE"
+export const rojo="#DD1919"
+
 
 
 export const headerColorDark="#252525"
@@ -16,3 +18,4 @@ export const azulDark="#A8C3EC"
 export const verdeDark="#D3EBF1"
 export const lilaDark='#D4D6FC'
 export const cardDark="#464646"
+export const inputDark="#3F3F3F"

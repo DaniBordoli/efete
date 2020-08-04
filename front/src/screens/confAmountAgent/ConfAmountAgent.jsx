@@ -2,21 +2,23 @@ import React from "react";
 import { style } from './style'
 import { View, Text, FlatList, ScrollView } from "react-native";
 import { Button } from 'react-native-elements'
+import { headerColorDark } from "../../Common/constans";
 
 const ConfAmountAgent = ({
   handlerValue,
   handlerSubmit,
   navigation,
   value,
+  mode
 }) => {
   const amount = ["1000", "2000", "5000", "10000", "20000"];
 
 
    return(
     <ScrollView>
-    <View style={{ flex: 1 , backgroundColor:'#F1F3F6'}}>
+    <View style={{ flex: 1 , backgroundColor:mode ? '#F1F3F6' : 'black'}}>
          <Text style={style.monto}>Monto</Text>
-         <Text style={style.valor}>{`$ ${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}</Text>
+         <Text style={mode ?style.valor : style.valorDark}>{`$ ${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}</Text>
        <View style={style.montoContainer}>
               <FlatList
               keyExtractor={(amount) => amount}
@@ -25,8 +27,8 @@ const ConfAmountAgent = ({
                   return(
                   <View>
                       <Button
-                      buttonStyle={{ backgroundColor: "white", height: 60 }}
-                      titleStyle={{ fontSize: 20, color: "black" }}
+                      buttonStyle={{  backgroundColor: mode? "white": headerColorDark, height: 60 }}
+                      titleStyle={{ fontSize: 20, color:mode? "black": 'white'  }}
                       title={`$ ${item}`}
                       onPress={()=> handlerValue(item)}
                       />
@@ -36,8 +38,8 @@ const ConfAmountAgent = ({
               }}
             />
              <Button
-            buttonStyle={style.otroMonto}
-            titleStyle={style.otroMontoTitulo}
+           buttonStyle={mode ?style.otroMonto : style.otroMontoDark}
+           titleStyle={mode ? style.otroMontoTitulo : style.otroMontoTituloDark}
             title='Seleccionar otro monto'
             onPress={()=> navigation.navigate('SelectOtherAmountAgent')}
             />
@@ -64,8 +66,8 @@ const ConfAmountAgent = ({
       }
 
         <Button
-        buttonStyle={style.cancelar}
-        titleStyle={style.tituloCancelar}
+        buttonStyle={mode ? style.cancelar : style.cancelarDark}
+        titleStyle={mode ? style.tituloCancelar : style.tituloCancelarDark}
         title="Cancelar"
         onPress={() => {
         navigation.navigate("Agent"); //Cancelar devuelve al home

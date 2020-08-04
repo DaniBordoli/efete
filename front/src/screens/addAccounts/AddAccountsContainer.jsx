@@ -9,6 +9,9 @@ export default ({ navigation }) => {
   
   const dispatch = useDispatch();
 
+  const mode = useSelector(
+    (state) => state.users.mode
+  );
   const [bankId, setBankId] = useState("");
   const handleBank = (id) => {
     console.log("id", id);
@@ -57,6 +60,7 @@ export default ({ navigation }) => {
       cbu={cbu}
       accountNumber={accountNumber}
       isValid={isValid}
+      mode={mode}
     />
   );
 };
