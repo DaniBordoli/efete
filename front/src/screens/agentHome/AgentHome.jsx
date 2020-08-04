@@ -147,12 +147,11 @@ export default ({ agentTransactions, navigation, loading, time, agent,mode }) =>
                           })
                         }
                       >
-                      
-
 
                         <View style={style.contenido}>
                         <Text style={ mode ? style.textoContenido : style.textoContenidoDark}>
                             Banco:{item.originAccount[0].nameEntity[0].nameEntity.substr(0,15)}
+                            {console.log("ITEEEEEEEEM",item)}
                           </Text>
                           <Text style={ mode ? style.textoContenido : style.textoContenidoDark}>
                             Cuenta:{item.originAccount[0].accountNumber.substr(0,10)}

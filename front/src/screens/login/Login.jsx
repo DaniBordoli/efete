@@ -86,7 +86,7 @@ export default ({
                 />
               ) : (
                 <Icon
-                style={ mode? style.eyeLock : style.eyeLockDark}
+                  style={ mode? style.eyeLock : style.eyeLockDark}
                   name="eye"
                   size={22}
                   color={mode ? "#94AFB6" :'white'}
@@ -95,6 +95,7 @@ export default ({
             </TouchableOpacity>
           </View>
         </View>
+      
 
         {user.message ? (
           <Text>{user.message}</Text>

@@ -1,11 +1,13 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
+import { Button } from "react-native-elements"
 import {style} from './style'
 
 export default ( {getOneUserTransaction, mode, getOneTransAccount} ) =>{
 
 
  return(
+<ScrollView>
    <View style={style.mainContainer}>
         <View style={style.container}>
         { getOneUserTransaction.agent ?  (
@@ -37,6 +39,7 @@ export default ( {getOneUserTransaction, mode, getOneTransAccount} ) =>{
      }
        </View>
    </View>
+  </ScrollView>
     )
 
 }
