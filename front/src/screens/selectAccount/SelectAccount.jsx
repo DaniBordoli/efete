@@ -112,9 +112,9 @@ export default ({
                     <Text style={style.modalText}>
                       Tu plata no está acá, te espera en:
                     </Text>
-                    <Text style={style.negrita}>{agent.name}Kiosco Recoleta</Text>
+                    <Text style={style.negrita}>{agent.name}</Text>
                     <Text style={style.modalText}>Con direccion en:</Text>
-                    <Text style={style.negrita}>{agent.address}Coronel Domingo Trole 363, Ituzaingó, Buenos Aires Province, Argentina</Text>
+                    <Text style={style.negrita}>{agent.address}</Text>
                     <TouchableHighlight
                       style={{ ...style.openButton }}
                       onPress={() => {

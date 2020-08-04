@@ -5,9 +5,13 @@ const charmander = {
   firstName: "Joaquin",
   lastName: "Gaona",
   isVerified: true,
-  dni: 23456783,
-  username: "joaco@gmail.com",
+  dni: "37245882",
+  username: "joaquinngaona@gmail.com",
   password: "1234",
+  role: "user",
+  validatedIdentity: true,
+  gender: "M",
+  processVerification: true,
 };
 
 User.insertMany([charmander]).then(() => {

@@ -12,6 +12,7 @@ import {
 import { style } from "./style.js";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import OpenCamera from "../camera/OpenCameraContainer.jsx";
 import { fondoColor, inputDark, headerColor } from "../../Common/constans.js";
 
 export default ({
@@ -24,10 +25,11 @@ export default ({
   image,
   handlerAddress,
   notifyChange,
+  view,
   mode,
 }) => {
   return (
-    <View style={{ flex: 1, backgroundColor: mode ? fondoColor : "black" }}>
+    <ScrollView style={{ backgroundColor: mode ? fondoColor : "black" }}>
       <Text style={style.containerTitle}>Datos de tu Negocio</Text>
       <View style={style.container}>
         <Text
@@ -35,7 +37,7 @@ export default ({
             alignSelf: "flex-start",
             marginLeft: 10,
             marginBottom: 10,
-            fontSize:15,
+            fontSize: 15,
             color: mode ? "#424242" : "white",
           }}
         >
@@ -114,41 +116,39 @@ export default ({
         </View>
       </View>
 
-      <View style={{ flexDirection: "row", alignSelf: "center" , marginLeft:"10%"}}>
-        {image !== "" ? (
-          <View style={{ alignSelf: "center" }}>
-            <Image
-              style={mode ? style.image : style.imageDark}
-              source={{ uri: image }}
-            />
-          </View>
-        ) : (
-          <View style={{ alignSelf: "center" }}>
-            <Text style={style.text}>La imagen se está cargando</Text>
-          </View>
-        )}
-
-        <View style={{ marginTop:'2%', marginLeft: 15 }}>
-          <TouchableOpacity
-            style={{ alignSelf: "center" }}
-            title="Open Camera"
-            onPress={() => {
-              navigation.navigate("OpenCamera", { edit: true });
-            }}
-          >
-            <MaterialIcons
-              name="edit"
-              size={27}
-              color="white"
-              style={{ backgroundColor: headerColor, borderRadius: 20 , padding:5}}
-            />
-          </TouchableOpacity>
+      {image !== "" ? (
+        <View
+          style={{
+            flexDirection: "row",
+            alignSelf: "center",
+            marginLeft: "10%",
+          }}
+        >
+          <Image
+            style={mode ? style.image : style.imageDark}
+            source={{ uri: image }}
+          />
         </View>
-      </View>
+      ) : (
+        <View style={{ alignSelf: "center" }}>
+          <Text style={style.text}>La imagen se está cargando</Text>
+        </View>
+      )}
 
-      <TouchableOpacity style={style.confirmar} onPress={() => handleSubmit()}>
-        <Text style={style.textConfirmar}>GUARDAR CAMBIOS</Text>
-      </TouchableOpacity>
-    </View>
+      <Text style={style.textOpenCamera}>Subir foto</Text>
+
+      <OpenCamera view={view} navigation={navigation} />
+      <View style={{ alignItems: "center" }}>
+        <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
+      </View>
+      <View>
+        <TouchableOpacity
+          style={style.confirmar}
+          onPress={() => handleSubmit()}
+        >
+          <Text style={style.textConfirmar}>GUARDAR CAMBIOS</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };

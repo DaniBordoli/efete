@@ -1,10 +1,19 @@
 import React from "react";
-import { View, TextInput, Text, ScrollView, Dimensions } from "react-native";
+import {
+  View,
+  TextInput,
+  Text,
+  ScrollView,
+  Dimensions,
+  CheckBox,
+  Picker,
+} from "react-native";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import DropDownPicker from "react-native-dropdown-picker";
 
 import { style } from "./style.js";
+import { grisClaro } from "../../Common/constans.js";
 
 export default ({
   firstNameChange,
@@ -16,7 +25,8 @@ export default ({
   navigation,
   user,
   handleGender,
-  mode
+  mode,
+  gender,
 }) => {
   var height = Dimensions.get("screen").height;
 
@@ -74,25 +84,28 @@ export default ({
             <View style={style.hr} />
             <View style={{ flexDirection: "row", flex: 1 }}>
               <Icon
-                style={{ paddingBottom: 10, paddingTop: 10, paddingLeft: 10 }}
+                style={{
+                  paddingBottom: 10,
+                  paddingTop: 10,
+                  paddingLeft: 10,
+                  alignSelf: "center",
+                }}
                 name="account-circle-outline"
                 size={24}
                 color="#94AFB6"
               />
-              <View style={{ width: "85%" }}>
-                <DropDownPicker
-                  style={{
-                    borderColor: "white",
-                  }}
-                  labelStyle={{ fontSize: 18, color: "#c2c0c0" }}
-                  items={[
-                    { label: "Sexo", value: "", selected: true },
-                    { label: "Femenino", value: "F" },
-                    { label: "Masculino", value: "M" },
-                  ]}
-                  defaultIndex={0}
-                  onChangeItem={(item) => handleGender(item.value)}
-                />
+
+              <View style={{ alignSelf: "center" }}>
+                <Picker
+                  style={{ height: 50, width: 170 }}
+                  onValueChange={(item) => handleGender(item)}
+                  selectedValue={gender}
+                  
+                >
+                  <Picker.Item value="" label="Indicar genero" color="#b6b6b6" />
+                  <Picker.Item label="Femenino" value="F"   />
+                  <Picker.Item label="Masculino" value="M"  />
+                </Picker>
               </View>
             </View>
 

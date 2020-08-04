@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { buttonColor, verdeTexto } from "../../Common/constans";
+import { buttonColor, verdeTexto,azulDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   botonAgregar: {
@@ -48,6 +48,7 @@ export const style = StyleSheet.create({
     marginBottom: 10,
   },
   parentOnly: {
+    flex:1,
     backgroundColor: "white",
     borderRadius: 12,
     alignSelf: "center",
@@ -71,11 +72,51 @@ export const style = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    marginRight: 25,
-    marginLeft: 7,
+    marginRight: 20,
+    marginLeft: 10,
+    flex:1,
+    
   },
   tex: {
     color: verdeTexto,
     fontSize: 17,
   },
+  texDark: {
+    color: azulDark,
+    fontSize: 17,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 10,
+    padding: 25,
+    alignItems: "center",
+    elevation: 5
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 5,
+    padding: 10,
+    elevation: 2,
+    margin:10,
+    width:"40%"
+  },
+  textStyle: {
+    color: "white",
+    fontFamily:'regular',
+    textAlign: "center",
+    fontSize:18
+  },
+  modalText: {
+    fontSize:22,
+    fontFamily:'nunito',
+    marginBottom: 15,
+    textAlign: "center"
+  }
 });

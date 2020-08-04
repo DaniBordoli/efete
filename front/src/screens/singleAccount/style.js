@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { headerColor, verdeTexto, deleteColor } from "../../Common/constans";
+import { headerColor, verdeTexto, deleteColor, azulDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   titulo: {
@@ -65,4 +65,46 @@ export const style = StyleSheet.create({
     paddingBottom: 30,
     borderRadius: 20,
   },
+  tex: {
+    color: verdeTexto,
+    fontSize: 17,
+  },
+  texDark: {
+    color: azulDark,
+    fontSize: 17,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 10,
+    padding: 25,
+    alignItems: "center",
+    elevation: 5
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 5,
+    padding: 10,
+    elevation: 2,
+    margin:10,
+    width:"40%"
+  },
+  textStyle: {
+    color: "white",
+    fontFamily:'regular',
+    textAlign: "center",
+    fontSize:18
+  },
+  modalText: {
+    fontSize:22,
+    fontFamily:'nunito',
+    marginBottom: 15,
+    textAlign: "center"
+  }
 });

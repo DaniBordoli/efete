@@ -64,6 +64,7 @@ export default ({ navigation }) => {
       user={user}
       handleGender={handleGender}
       mode={mode}
+      gender={gender}
     />
   );
 };

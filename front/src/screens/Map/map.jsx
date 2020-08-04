@@ -25,6 +25,7 @@ export default ({
   loading,
 }) => {
   const [index, setIndex] = useState(null);
+  console.log(":::::::::::::::::::::::::::::::::INDEEEX: ", index);
 
   const onCarouselItemChange = (index) => {
     let location = agentes[index];
@@ -200,7 +201,7 @@ export default ({
                     <View style={{ flex: 1 }}>
                       <Button
                         onPress={() => {
-                          navigation.navigate("confirmValue", { value, index });
+                          navigation.navigate("confirmValue", { value, item });
                         }}
                         titleStyle={{ fontSize: 14 }}
                         buttonStyle={{

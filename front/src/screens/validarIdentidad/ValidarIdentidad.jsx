@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style";
+import OpenCamera from "../camera/OpenCameraContainer";
 
-export default ({ handleToken,mode }) => {
+export default ({ view, navigation, mode }) => {
   return (
     <View style={style.mainContainer}>
       <View style={style.imageContainer}>
@@ -29,15 +30,7 @@ export default ({ handleToken,mode }) => {
       <View style={style.hr}></View>
 
       <View style={style.botonesCont}>
-        <TouchableOpacity
-          style={style.confirmar}
-          title="Tomar foto"
-          onPress={() => {
-            handleToken();
-          }}
-        >
-          <Text style={style.textConfirmar}>Tomar foto</Text>
-        </TouchableOpacity>
+        <OpenCamera view={view} navigation={navigation} />
       </View>
     </View>
   );

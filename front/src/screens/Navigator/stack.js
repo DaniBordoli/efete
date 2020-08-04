@@ -37,6 +37,7 @@ import Map from "../Map/mapContainer";
 import confirmValueContainer from "../confirmValue/confirmValuecontainer";
 import ValidarIdentidadContainer from "../validarIdentidad/ValidarIdentidadContainer";
 import WaitingValidationContainer from "../waitingValidation/WaitingValidationContainer";
+import DeleteProfileContainer from "../deleteProfile/DeleteprofileContainer";
 
 const Stack = createStackNavigator();
 
@@ -76,6 +77,17 @@ export default ({ navigation }) => {
             backgroundColor: mode ? headerColor : headerColorDark,
           },
           title: "Mapa",
+        }}
+      />
+      <Stack.Screen
+        name="DeleteProfile"
+        component={DeleteProfileContainer}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Eliminar perfil",
         }}
       />
       <Stack.Screen
@@ -418,13 +430,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="WaitingValidation"
         component={WaitingValidationContainer}
-        options={{
-          ...myHeader,
-          headerStyle: {
-            backgroundColor: mode ? headerColor : headerColorDark,
-          },
-          title: "Esperar aprobación",
-        }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

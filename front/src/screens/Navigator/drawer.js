@@ -124,6 +124,18 @@ export default (props) => {
             )
           }
         />
+        <DrawerItem
+          icon={edit}
+          label="Eliminar cuenta"
+          labelStyle={modee ? style.label : style.labelDark}
+          onPress={() =>
+            props.navigation.navigate(
+              "Root",
+              { screen: "DeleteProfile" },
+              props
+            )
+          }
+        />
         <View style={style.hr} />
         <TouchableOpacity
           onPress={() => {
@@ -182,7 +194,6 @@ const style = StyleSheet.create({
     alignSelf: "flex-end",
     marginRight: 10,
     marginTop: 5,
-
   },
   backDark: {
     fontSize: 16,

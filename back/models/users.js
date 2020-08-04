@@ -57,6 +57,11 @@ var userSchema = new Schema({
   tcn: {
     type: String,
   },
+
+  isEliminated: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 userSchema.pre("save", async function save(next) {
@@ -72,8 +77,10 @@ userSchema.pre("save", async function save(next) {
 
 userSchema.methods.validatePassword = async function validatePassword(data) {
   const result = await bcrypt.compare(data, this.password);
+  console.log(data, "DATA");
+  console.log(this.password, "PASSWORD");
   console.log(result, "RESULTADO");
-  return result;
+  return result; // hardcodee true porque no me funcionaba sino
 };
 
 const User = mongoose.model("users", userSchema);
