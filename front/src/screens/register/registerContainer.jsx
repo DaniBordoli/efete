@@ -16,6 +16,8 @@ export default ({ navigation }) => {
   const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
 
+  const [isValid, setIsValid] = useState(false);
+
   function usernameChange(text) {
     setUsername(text);
   }
@@ -34,7 +36,7 @@ export default ({ navigation }) => {
 
   function handleSubmit() {
     dispatch(
-      register(firstName, lastName, dni, password, username, gender)
+      register(firstName, lastName, dni, password, username, 'M')
     ).then((data) => {
       if (data.user === "OK") {
         setFirstName("");
@@ -64,6 +66,7 @@ export default ({ navigation }) => {
       user={user}
       handleGender={handleGender}
       mode={mode}
+      isValid={isValid}
     />
   );
 };
