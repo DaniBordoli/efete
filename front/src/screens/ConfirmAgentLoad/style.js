@@ -51,11 +51,12 @@ volver : {
     backgroundColor: "#00CC96",
     padding: '1%',
     borderRadius: 5,
-    marginTop: "15%" 
+    marginTop: "15%", 
+    marginBottom: '5%'
 },
 textConfirmar : {
     color: "#ffffff",
-    fontSize: 20,
+    fontSize: 15,
     paddingLeft: '10%',
     paddingRight: "10%",
     paddingBottom: "3%",
