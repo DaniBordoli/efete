@@ -12,18 +12,11 @@ export default () => {
   const mode = useSelector((state) => state.users.mode
   ); 
 
-  const [user, setUser] = useState(userInfo);
+  const [user, setUser] = useState({firstName: userInfo.firstName, lastName: userInfo.lastName, username: userInfo.username, password: "", _id: userInfo._id });
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isData, setIsData] = useState(true);
   const [data, setData] = useState({ secureTextEntry: true });
-
-  const handleValueUsername = (username) => {
-    setUsername(username);
-    username.length > 0 && password.length > 0
-      ? setIsData(false)
-      : setIsData(true);
-  };
 
   const updateSecureTextEntry = () => {
     setData({
@@ -33,10 +26,8 @@ export default () => {
   };
 
   const handleValuePassword = (password) => {
-    console.log('PASSWOORD', password)
     setPassword(password);
-    setUser({...user, ['password']: password})
-    console.log('User!!!!! Cont', user)
+    setUser({...user, ["password"]: password})
     username.length > 0 && password.length > 0
       ? setIsData(false)
       : setIsData(true);
@@ -56,9 +47,10 @@ export default () => {
   }
 
   function handleSubmit() {
-    if (user.username.length > 0 && user.password.length > 0) {
+console.log('USER!!!!!!', user)
+    if (user.username.length > 0) {
       dispatch(editUser(user));
-      console.log("UserInfo!!!!!!!!!!!!", user)
+      console.log("Entreee Loco user", user)
       Alert.alert(
         "Datos actualizados",
         "Tus datos se actualiazaron correctamente",

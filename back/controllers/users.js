@@ -44,28 +44,31 @@ const userLogout = (req, res) => {
 const editProfileUser = async (req, res) => {
   // let id = req.body._id;
   console.log('REQ.BODY.PASSWORD', req.body.password)
+  try{
   let user = await User.findOne({
     _id : req.body._id
   })
-  let newPassword = await user.hashPasswordUser(req.body.password)
-  console.log('NEW PASS!!!!!!', newPassword, 'USER!!!!!', user)
-  let updtatedUser =  await user.updateOne({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    // isVerified:
-    // dniFront: 
-    // dniBack: 
-    // dni: 
-    username: req.body.username,
-    password: newPassword
-    // profilePicture: 
-    // role: 
-    // validatedIdentity: 
-    // gender: 
-    // tcn: 
-
-  })
-  res.status(200).json(updtatedUser)
+  if(req.body.password){
+    let newPassword = await user.hashPasswordUser(req.body.password)
+    console.log('NEW PASS!!!!!!', newPassword, 'USER!!!!!', user)
+    let updtatedUser =  await user.updateOne({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      password: newPassword
+    })  
+    res.status(200).json(updtatedUser)
+  }else{
+    let updtatedUser =  await user.updateOne({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+    })  
+    res.status(200).json(updtatedUser)
+  }
+   }catch(err){
+    console.log(err)
+  }
 };
 
 const userVerify = (req, res, next) => {
