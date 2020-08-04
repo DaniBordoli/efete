@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, FlatList, Modal, TouchableHighlight } from "react-native";
+import { View, Text, FlatList, TouchableHighlight } from "react-native";
+import Modal from 'react-native-modal';
 import { style } from "./style";
 import { Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -94,9 +95,12 @@ export default ({
           ) : (
             <View style={{ flex: 6 , backgroundColor: fondoColor}}>
               <Modal
-                animationType='slide'
-                transparent={true}
-              >
+              isVisible={true}
+              animationInTiming={2000}
+              animationOutTiming={2000}
+              backdropTransitionInTiming={2000}
+              backdropTransitionOutTiming={2000}>
+               
                 <View style={style.centeredView}>
                   <View style={style.modalView}>
                     <Octicons

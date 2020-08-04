@@ -3,18 +3,33 @@ import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, Text, View, Dimensions, Linking } from "react-native";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import Carousel from "react-native-snap-carousel";
-import { headerColor, buttonColor, grisClaro } from "../../Common/constans";
+import {
+  headerColor,
+  buttonColor,
+  grisClaro,
+  rojo,
+} from "../../Common/constans";
 import { Button } from "react-native-elements";
 import { Load } from "../../Common/loading";
 import { mapStyle } from "./mapDark";
+import Modal from "react-native-modal";
+import { style } from "../userHome/style";
 
-export default ({ ubicacion, agentes, navigation, markers, value, mode, loading }) => {
+export default ({
+  ubicacion,
+  agentes,
+  navigation,
+  markers,
+  value,
+  mode,
+  loading,
+}) => {
   const [index, setIndex] = useState(null);
+  console.log(":::::::::::::::::::::::::::::::::INDEEEX: ", index);
 
   const onCarouselItemChange = (index) => {
     let location = agentes[index];
     setIndex(agentes[index]);
-    
 
     this._map.animateToRegion({
       latitude: location.ubicacion.latitude,
@@ -37,9 +52,8 @@ export default ({ ubicacion, agentes, navigation, markers, value, mode, loading 
     this._carousel.snapToItem(index);
   };
 
-  return (
-    loading ? 
-    (<View style={styles.container}>
+  return loading ? (
+    <View style={styles.container}>
       <MapView
         customMapStyle={mode ? null : mapStyle}
         showsMyLocationButton={true}
@@ -187,7 +201,7 @@ export default ({ ubicacion, agentes, navigation, markers, value, mode, loading 
                     <View style={{ flex: 1 }}>
                       <Button
                         onPress={() => {
-                          navigation.navigate("confirmValue", { value, index });
+                          navigation.navigate("confirmValue", { value, item });
                         }}
                         titleStyle={{ fontSize: 14 }}
                         buttonStyle={{
@@ -209,15 +223,41 @@ export default ({ ubicacion, agentes, navigation, markers, value, mode, loading 
             onSnapToItem={(index) => onCarouselItemChange(index)}
           />
         ) : (
-          <View style={styles.noAgentes}>
-            <Text style={styles.noAgentesText}>
-              NO EXISTEN AGENTES EN TU ZONA
-            </Text>
+          <View style={styles.containerM}>
+            <Modal
+              isVisible={true}
+              backdropColor={headerColor}
+              backdropOpacity={1}
+              animationIn={"zoomInDown"}
+              animationOut={"zoomOutUp"}
+              animationInTiming={1000}
+              animationOutTiming={1000}
+              backdropTransitionInTiming={1000}
+              backdropTransitionOutTiming={1000}
+            >
+              <View style={styles.modalContent}>
+                <MaterialCommunityIcons
+                  name="map-marker-alert-outline"
+                  size={60}
+                  color={rojo}
+                />
+                <Text style={styles.texto}>NO EXISTEN AGENTES EN TU ZONA</Text>
+                <Button
+                  onPress={() => {
+                    navigation.navigate("User");
+                  }}
+                  titleStyle={{ color: buttonColor }}
+                  buttonStyle={styles.boton}
+                  title="VOLVER"
+                />
+              </View>
+            </Modal>
           </View>
         )}
       </View>
-    </View>) :
-    (<Load/>)
+    </View>
+  ) : (
+    <Load />
   );
 };
 
@@ -254,6 +294,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     alignSelf: "center",
   },
+  texto: {
+    fontSize: 25,
+    textAlign: "center",
+    marginTop: 20,
+    marginBottom: 20,
+  },
   hr: {
     borderBottomColor: "#DDDDDD",
     borderBottomWidth: 1,
@@ -268,29 +314,40 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     width: "95%",
   },
-  noAgentes: {
+  containerM: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "red",
-    marginBottom: 5,
-    marginLeft: 10,
-    marginRight: 10,
-    borderRadius: 6,
   },
-  noAgentesText: {
-    height: 140,
-    color: "white",
-    textAlign: "center",
-    textAlignVertical: "center",
-    fontSize: 40,
+  button: {
+    backgroundColor: "lightblue",
+    padding: 12,
+    margin: 16,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    borderColor: "rgba(0, 0, 0, 0.1)",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 22,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    borderColor: "rgba(0, 0, 0, 0.1)",
+  },
+  bottomModal: {
+    justifyContent: "flex-end",
+    margin: 0,
+  },
+  boton: {
+    marginBottom: 10,
+    width: 150,
+    height: 40,
+    borderColor: buttonColor,
+    backgroundColor: "white",
+    borderWidth: 1,
+    borderRadius: 5,
   },
 });
 
-{
-  /* <View style={styles.noAgentes}>
-            <Text style={styles.noAgentesText}>
-              NO EXISTEN AGENTES EN TU ZONA
-            </Text>
-          </View> */
-}
