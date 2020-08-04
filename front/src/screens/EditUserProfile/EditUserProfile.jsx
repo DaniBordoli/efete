@@ -6,7 +6,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
 } from "react-native";
-
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -19,8 +19,13 @@ export default ({
   lastName,
   username,
   password,
-  mode
+  mode,
+  updateSecureTextEntry,
+  handleValuePassword,
+  handleIsData,
+  data
 }) => {
+  {console.log('Secure Entry!!!!!!!!', data.secureTextEntry)}
   return (
     <KeyboardAvoidingView behavior="height">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -84,20 +89,30 @@ export default ({
             <Text style={style.text}>Contraseña</Text>
             <View style={style.searchSection}>
               <TextInput
-                style={style.input}
-                onChangeText={(e) => handleChange(e, "password")}
-                name="password"
-                // defaultValue={password}
+                autoCapitalize="none"
+                secureTextEntry={data.secureTextEntry ? true : false}
+                style={mode ? style.input : style.inputDark}
+                // value={e}
+                onChangeText={(e) => {handleValuePassword(e, 'password')}}
                 required
               />
-              <TouchableOpacity
-                /* onPress={updateSecureTextEntry} */ style={{
-                  marginRight: 10,
-                  marginRight: 5,
-                }}
-              >
-                <MaterialCommunityIcons name="pencil" size={20} color="black" />
-              </TouchableOpacity>
+              <TouchableOpacity onPress={updateSecureTextEntry}>
+              {data.secureTextEntry ? (
+                <Icon
+                  style={ mode? style.eyeLock : style.eyeLockDark}
+                  name="eye-off"
+                  size={22}
+                  color={mode ? "#94AFB6" :'white'}
+                />
+              ) : (
+                <Icon
+                  style={ mode? style.eyeLock : style.eyeLockDark}
+                  name="eye"
+                  size={22}
+                  color={mode ? "#94AFB6" :'white'}
+                />
+              )}
+            </TouchableOpacity>
             </View>
           </View>
 

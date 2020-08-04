@@ -41,11 +41,31 @@ const userLogout = (req, res) => {
   res.sendStatus(200);
 };
 
-const editProfileUser = (req, res) => {
-  let id = req.body._id;
-  User.findByIdAndUpdate(id, req.body, { new: true }).then((userProfile) => {
-    res.status(200).send(userProfile);
-  });
+const editProfileUser = async (req, res) => {
+  // let id = req.body._id;
+  console.log('REQ.BODY.PASSWORD', req.body.password)
+  let user = await User.findOne({
+    _id : req.body._id
+  })
+  let newPassword = await user.hashPasswordUser(req.body.password)
+  console.log('NEW PASS!!!!!!', newPassword, 'USER!!!!!', user)
+  let updtatedUser =  await user.updateOne({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    // isVerified:
+    // dniFront: 
+    // dniBack: 
+    // dni: 
+    username: req.body.username,
+    password: newPassword
+    // profilePicture: 
+    // role: 
+    // validatedIdentity: 
+    // gender: 
+    // tcn: 
+
+  })
+  res.status(200).json(updtatedUser)
 };
 
 const userVerify = (req, res, next) => {

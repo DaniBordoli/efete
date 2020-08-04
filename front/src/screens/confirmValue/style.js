@@ -56,12 +56,12 @@ export const style = StyleSheet.create({
   volver: {
     padding: "4%",
     borderRadius: 3,
-    width: "37%",
+    width: "40%",
     marginTop: "15%",
     alignSelf: "center",
     borderWidth: 1,
     borderColor: "#00CC96",
-    marginRight: "3%",
+    marginRight: "1%",
   },
   textCancelar: {
     color: "#00CC96",
@@ -74,10 +74,10 @@ export const style = StyleSheet.create({
     backgroundColor: "#00CC96",
     padding: "4%",
     borderRadius: 3,
-    width: "37%",
+    width: "40%",
     marginTop: "15%",
     alignSelf: "center",
-    marginLeft: "3%",
+    marginLeft: "1%",
   },
   textConfirmar: {
     color: "white",
@@ -87,6 +87,7 @@ export const style = StyleSheet.create({
     textAlign: "center",
   },
   botonesCont: {
+    width: '100%',
     flexDirection: "row",
     justifyContent: "space-evenly",
   },
