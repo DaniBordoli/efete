@@ -28,7 +28,7 @@ const CreateAgentForm = ({
   address,
   cuil,
   notifyChange,
-  mode
+  isValid
 }) => {
   return (
     <View>
@@ -112,6 +112,7 @@ const CreateAgentForm = ({
       <OpenCamera navigation={navigation} view="CreateAgentForm" />
       <View>
         <TouchableOpacity
+          /* disabled={!isValid} */
           style={style.confirmar}
           title="Confirmar"
           onPress={() => {

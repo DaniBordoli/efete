@@ -6,6 +6,7 @@ import { generateToken } from "../../redux/store/actions/users";
 const ValidarIdentidadContainer = ({ navigation }) => {
   const dispatch = useDispatch();
   const view = "ValidateIdentity";
+  const mode = useSelector((state) => state.users.mode);
 
   useEffect(() => {
     dispatch(generateToken());

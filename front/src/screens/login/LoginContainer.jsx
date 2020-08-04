@@ -7,14 +7,12 @@ export default ({ navigation }) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.users.user);
-
-  const mode = useSelector(
-    (state) => state.users.mode
-  );
+  const mode = useSelector((state) => state.users.mode);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isData, setIsData] = useState(true);
   const [data, setData] = useState({ secureTextEntry: true });
+  const [notVerified, setNotVerified] = useState(false);
 
   const handleValueUsername = (username) => {
     setUsername(username);
@@ -52,6 +50,9 @@ export default ({ navigation }) => {
         if (data.user && data.user.isVerified && data.user.validatedIdentity) {
           navigation.navigate("User", { user: data.user._id });
         }
+        if (data.user && !data.user.isVerified) {
+          setNotVerified(true);
+        }
       }
     );
   };
@@ -59,6 +60,7 @@ export default ({ navigation }) => {
   const handleVerifyAccount = () => {
     dispatch(verifyEmail(user._id)).then(() => {
       navigation.navigate("Verificar");
+      setNotVerified(false);
     });
   };
 
@@ -77,6 +79,7 @@ export default ({ navigation }) => {
       updateSecureTextEntry={updateSecureTextEntry}
       data={data}
       mode={mode}
+      notVerified={notVerified}
     />
   );
 };

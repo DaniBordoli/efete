@@ -17,6 +17,10 @@ var userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  verifCode: {
+    type: Number,
+    default: 0,
+  },
   dniFront: {
     type: String,
     default: "https://i.imgur.com/Z0869Hm.jpg",
@@ -75,12 +79,14 @@ userSchema.pre("save", async function save(next) {
   }
 });
 
+userSchema.methods.hashPasswordUser = async (password) => {
+  const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
+  return await bcrypt.hash(password, salt);
+};
+
 userSchema.methods.validatePassword = async function validatePassword(data) {
   const result = await bcrypt.compare(data, this.password);
-  console.log(data, "DATA");
-  console.log(this.password, "PASSWORD");
-  console.log(result, "RESULTADO");
-  return result; // hardcodee true porque no me funcionaba sino
+  return result;
 };
 
 const User = mongoose.model("users", userSchema);

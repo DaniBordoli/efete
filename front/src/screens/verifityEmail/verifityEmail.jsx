@@ -1,51 +1,65 @@
-import React ,{useState} from "react";
-import {useSelector} from 'react-redux'
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import { View, Text, Linking } from "react-native";
-import {style} from './style'
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
+import { View, Text, Linking, TextInput } from "react-native";
+import { style } from "./style";
+import * as Font from "expo-font";
+import { AppLoading } from "expo";
 import { Button } from "react-native-elements";
-import { buttonColor } from "../../Common/constans";
+import { sendCode } from "../../redux/store/actions/users";
 
 const fetchFonts = () => {
   return Font.loadAsync({
-  'nunito': require('../../../assets/fonts/Nunito-Black.ttf')
+    nunito: require("../../../assets/fonts/Nunito-Black.ttf"),
   });
-  };
-
+};
 
 export default ({ navigation }) => {
-  const [dataload, setDataload]= useState(false)
+  const [dataload, setDataload] = useState(false);
+  const [code, setCode] = useState("");
+  const dispatch = useDispatch();
+  const mode = useSelector((state) => state.users.mode);
+  const user = useSelector((state) => state.users.user);
 
-  const mode = useSelector(
-    (state) => state.users.mode
-  );
+  const handleCode = (value) => {
+    setCode(value);
+  };
 
-  if(!dataload){
+  const handleSubmit = () => {
+    dispatch(sendCode(code, user._id)).then(() => {
+      navigation.navigate("successRegister");
+    });
+  };
+
+  if (!dataload) {
     return (
-      <AppLoading
-      startAsync={fetchFonts}
-      onFinish={()=> setDataload(true)}
-      />
-    )
+      <AppLoading startAsync={fetchFonts} onFinish={() => setDataload(true)} />
+    );
   }
 
   return (
     <View style={style.centrar}>
-      <Text style={style.text}>Efete</Text>
+      <Text style={style.text}>Efeté</Text>
       <Text style={style.text2}>¡Gracias por registrarte!</Text>
-      <Text style={style.text3}>Te enviaremos un Email para que confirmes tu correo.</Text>
-      <View style={{display:"flex",flexDirection:"row", justifyContent:'center' , marginTop:150}}>
-      <Text style={style.text4}>Para verificar tu Email</Text>
-      <Text style={style.input} onPress={() => Linking.openURL('https://mail.google.com/')}>Ingrese Aqui</Text> 
-      
+      <Text style={style.text3}>
+        Ingresá el código de verificación para confirmar tu correo.
+      </Text>
+      <View style={style.inputContainer}>
+        <TextInput
+          keyboardType="numeric"
+          style={style.input}
+          onChangeText={(text) => handleCode(text)}
+          value={code}
+        />
       </View>
-      <Button 
-      buttonStyle={{width:160, height:60, backgroundColor:buttonColor, marginTop:45}}
-      title='ACCEDER'
-      titleStyle={{color:'white', fontSize:20}}
-      onPress={() => navigation.navigate('Login')}>Acceder</Button> 
+      <Button
+        buttonStyle={style.buttonStyle}
+        title="ENVIAR"
+        titleStyle={style.titleStyle}
+        onPress={() => handleSubmit()}
+      >
+        <Text>CONFIRMAR</Text>
+      </Button>
     </View>
-  )
-}
+  );
+};

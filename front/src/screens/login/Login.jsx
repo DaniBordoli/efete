@@ -27,9 +27,9 @@ export default ({
   updateSecureTextEntry,
   data,
   mode,
+  notVerified,
 }) => {
   var height = Dimensions.get("screen").height; // window
-
   return (
     <View
       style={{ height: height, backgroundColor: mode ? fondoColor : "black" }}
@@ -102,7 +102,7 @@ export default ({
 
         {user.message ? (
           <Text>{user.message}</Text>
-        ) : user._id && !user.isVerified ? (
+        ) : user._id && notVerified ? (
           <View style={{ flexDirection: "row" }}>
             <Text style={style.alerta}>Tu cuenta no ha sido verificada.</Text>
             <Text

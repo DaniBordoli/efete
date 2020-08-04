@@ -64,11 +64,29 @@ export const register = (
 };
 
 export const editUser = (userData) => (dispatch) => {
+  console.log('QUE ES USER DATA', userData)
   return axios
     .patch(`http://${IP}:1337/api/users/editprofile`, userData)
-    .then((res) => dispatch(login_user(res.data)))
+    .then((res) => {
+      console.log("EDIT PROFILE", res.data);
+      dispatch(login_user(res.data));
+    })
     .catch((err) => console.log(err, "ERROR"));
 };
+
+export const userValidation = (userData) => (dispatch) => {
+  return axios
+    .patch(`http://${IP}:1337/api/users/userValidation`, userData)
+    .then((res) => {
+      dispatch(login_user(res.data));
+    })
+    .catch((err) => console.log(err, "ERROR"));
+};
+
+export const sendCode = (code, id) => (dispatch) =>
+  axios
+    .get(`http://${IP}:1337/api/users/verify?id=${id}&code=${code}`)
+    .then((res) => dispatch(login_user(res.data)));
 
 export const verifyEmail = (id) => (dispatch) =>
   axios.get(`http://${IP}:1337/api/users/sendVerificationEmail/${id}`);
@@ -137,7 +155,6 @@ export const fetchValidation = (id, tcn, token) => (dispatch) => {
       }
     )
     .then((res) => {
-      console.log(res.data, "RES DATA ACA");
       if (
         res.data.data.notificacion &&
         res.data.data.notificacion.status === "HIT"

@@ -27,6 +27,7 @@ export default ({
   handleGender,
   mode,
   gender,
+  isValid,
 }) => {
   var height = Dimensions.get("screen").height;
 
@@ -173,6 +174,7 @@ export default ({
             }}
           >
             <Button
+              disabled={!isValid}
               buttonStyle={style.botonIniciar}
               titleStyle={style.tituloIniciar}
               title="Registrarse"

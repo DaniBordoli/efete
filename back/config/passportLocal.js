@@ -15,7 +15,9 @@ passport.use(
         if (!user) {
           return done(null, false, { message: "Incorrect username." });
         }
+        console.log('USER en Passport', user)
         const passwordValidation = await user.validatePassword(password);
+        console.log('PASSWORD VALIDATION PASSPORT', passwordValidation)
         if (!passwordValidation) {
           return done(null, false, { message: "Incorrect password." });
         }

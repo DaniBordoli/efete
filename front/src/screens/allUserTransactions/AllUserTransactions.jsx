@@ -1,43 +1,63 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
-import { style } from "./style.js";
-import { Card, Button } from "react-native-elements";
+import { View, Text, Image, Link, FlatList, TouchableOpacity, ScrollView } from "react-native";
+import {style} from './style'
 import { buttonColor } from "../../Common/constans.js";
-
+import { Button } from "react-native-elements"
 export default ({ navigation, userTransactions, mode }) => {
   //Tiene sentido poner un ternario si no estoy buscando algo al back y la info la paso por props?
   return (
-    <View style={{ flex: 1, backgroundColor: "#F1F3F6" }}>
+    <View style={{height: '100%', backgroundColor: 'white'}}>
+    <ScrollView>
+    <View style={style.container}>
       {userTransactions ? (
-        <View style={{ flex: 1 }}>
-          <Text style={style.movimientos}>Movimientos</Text>
+        <View>
+          <Text style={style.movimientos}>MOVIMIENTOS</Text>  
+          <View style={style.cardsCont}>
+          <View style={style.hr}></View>
+
           <FlatList
             keyExtractor={(userTransactions) => userTransactions._id}
             data={userTransactions}
             renderItem={({ item }) => {
               return (
-                <View>
-                  <Card>
-                    <Text style={style.text}>Monto: {item.amount}</Text>
-                    <Text style={style.text}>
-                      Agente: {item.agent[0].name} - {item.agent[0].address}
-                    </Text>
+               <View style={style.contCards}> 
+                <View style={style.card}>
 
-                    <Button
-                      buttonStyle={style.ver}
-                      titleStyle={{ color: buttonColor }}
-                      title="VER TRANSACCION"
-                      onPress={() =>
-                        navigation.navigate("SingleUserTransaction", {
-                          id: item._id,
-                        })
-                      }
-                    />
-                  </Card>
+                  <View style={style.amountCont}>
+                  <Text style={style.amount}>${item.amount.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Text>
+                  </View>
+
+                  <View style={style.inCont}>
+                  <View style={style.agentCont}>
+                  <Text style={style.agent}>{item.agent[0].name}</Text>
+                  </View>
+
+                 <View style={style.addressCont}>
+                 <Text style={style.address}>{item.agent[0].address.split(',')[0]}</Text>
+                 </View>   
+
+
+                  <Text style={style.realizada}>EXTRACCIÓN REALIZADA</Text>
+          
                 </View>
+               </View>
+               <TouchableOpacity
+                style={style.verBtn}
+                onPress={() =>
+                  navigation.navigate("SingleUserTransaction", {
+                    id: item._id,
+                  })
+                }
+                >
+                <Text style={style.titleBtn}>VER TRANSACCIÓN</Text>  
+              </TouchableOpacity>
+              <View style={style.hr}></View>
+              </View>
               );
             }}
+            
           ></FlatList>
+        </View>
         </View>
       ) : (
         <View>
@@ -45,5 +65,8 @@ export default ({ navigation, userTransactions, mode }) => {
         </View>
       )}
     </View>
+  </ScrollView>
+  </View>
   );
 };
+

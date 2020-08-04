@@ -7,6 +7,7 @@ import { headerColorDark } from "../../Common/constans.js";
 export default ({ handleValue, navigation, mode, value }) => {
   const data = ['100', '200', '500', '1000', '2000'];
   return (
+  <ScrollView>
     <View style={{ flex: 1 , backgroundColor: mode? "#F1F3F6" : "black"}}>
       <Text style={style.monto}>Monto</Text>
       <Text style={mode ?style.valor : style.valorDark}>{`$ ${value}`}</Text>
@@ -66,5 +67,6 @@ export default ({ handleValue, navigation, mode, value }) => {
     />
   </View>
     </View>
+</ScrollView>
   );
 };

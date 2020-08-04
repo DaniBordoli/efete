@@ -54,8 +54,8 @@ const AddAccount = ({
         <Text style={style.text}>NUMERO DE CUENTA</Text>
         <View style={style.input2}>
           <TextInput
-          style={{height: 50,}}
-          maxLength={22}
+            style={{ height: 50 }}
+            maxLength={22}
             keyboardType="numeric"
             style={{ marginLeft: 7 }}
             placeholder="Ingresar cuenta de 22 digitos"
@@ -64,21 +64,18 @@ const AddAccount = ({
             value={accountNumber}
             onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}
           />
-          {isValid ?  <MaterialCommunityIcons
-                            name="check-circle"
-                            size={32}
-                            color= "green"
-                                
-                            style={{
-                              marginLeft: '43%',
-                              alignSelf:'center',
-                              
-                              
-                            }}
-                          />: null}
+          {isValid ? (
+            <MaterialCommunityIcons
+              name="check-circle"
+              size={32}
+              color="green"
+              style={{
+                marginLeft: "43%",
+                alignSelf: "center",
+              }}
+            />
+          ) : null}
         </View>
-
-        
       </View>
 
       <View
