@@ -25,6 +25,11 @@ var agentSchema = new Schema({
     type: String,
     default: "",
   },
+
+  isEliminated: {
+    type: Boolean,
+    default: false,
+  },
   user: [
     {
       type: Schema.Types.ObjectId,

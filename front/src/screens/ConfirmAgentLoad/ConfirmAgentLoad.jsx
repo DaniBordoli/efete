@@ -9,6 +9,7 @@ const ConfirmAgentLoad = ({ value , mode}) => {
     const navigation = useNavigation();
 
     return(
+  <ScrollView>
     <View style={style.container}>
       
       <View style={style.imageCont}>
@@ -37,10 +38,11 @@ const ConfirmAgentLoad = ({ value , mode}) => {
         navigation.navigate("Agent");
         }}
          >
-         <Text style={style.textConfirmar}>Volver a Agente</Text>  
+         <Text style={style.textConfirmar}>VOLVER A AGENTE</Text>  
         </TouchableOpacity>  
 
     </View>
+   </ScrollView>
     )
 }
 

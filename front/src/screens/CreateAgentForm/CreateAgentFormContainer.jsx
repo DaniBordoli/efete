@@ -31,6 +31,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   const [address, setAddress] = useState("");
   const [cuil, setCuil] = useState("");
   const [dailyAmount, setDailyAmount] = useState(0);
+  const [isValid, setIsValid] = useState(false);
 
   function handlerName(text) {
     setName(text);
@@ -102,6 +103,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
       cuil={cuil}
       mode={mode}
       notifyChange={(loc) => getCoordsFromName(loc)}
+      isValid={isValid}
     />
   );
 };

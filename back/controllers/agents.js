@@ -32,7 +32,6 @@ const changeDailyAmount = (req, res) => {
   });
 };
 const createAgent = (req, res) => {
-
   Agent.create(req.body)
     .then((agent) => {
       const agentCreated = agent;
@@ -53,44 +52,40 @@ const createAgent = (req, res) => {
 };
 
 const getAllUsers = (req, res) => {
-  Agent.find().then((agents) => {
+  Agent.find({ isEliminated: false }).then((agents) => {
     res.json(agents);
   });
 };
 const getAgent = (req, res) => {
   let id = req.params.id;
-  Agent.findOne({ _id:id }).then((agent) => {
+  Agent.findOne({ _id: id, isEliminated: false }).then((agent) => {
     res.status(200).json(agent);
   });
 };
 
-const findAllAgentsUser = (req,res) => {
-  Agent.find({user:req.params.id})
-    .populate('user')
-    .then((agents)=>{
+const findAllAgentsUser = (req, res) => {
+  Agent.find({ user: req.params.id, isEliminated: false })
+    .populate("user")
+    .then((agents) => {
       res.send(agents);
     })
-    .catch ((err)=>{
-      res.status(500).send(err)
-    })
+    .catch((err) => {
+      res.status(500).send(err);
+    });
 };
 
-const deleteAgent = (req,res) => {
-  Agent.deleteOne ({_id: req.params.id})
-  .then (()=>{
-    Agent.find ({user: req.params.userId})
-    .populate('user')
-    .then ((agents)=> {
-      res.send(agents);
-    })
-    .catch((err)=> {
-      res.status(500).send(err);
-    })
-  })
-}
-
-
-
+const deleteAgent = (req, res) => {
+  Agent.updateOne({ _id: req.params.id }, { isEliminated: true }).then(() => {
+    Agent.find({ user: req.params.userId, isEliminated: false })
+      .populate("user")
+      .then((agents) => {
+        res.send(agents);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  });
+};
 
 module.exports = {
   editProfileAgent,

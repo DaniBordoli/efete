@@ -11,6 +11,8 @@ const {
   userVerify,
   getAllUsers,
   setTcn,
+  deleteUser,
+  userValidation,
 } = require("../controllers/users");
 const { SendTransaction } = require("../controllers/nodemailer");
 
@@ -44,5 +46,9 @@ router.patch("/editprofile", editProfileUser);
 router.get("/", getAllUsers);
 
 router.patch("/validateIdentity", setTcn);
+
+router.patch("/userValidation", userValidation);
+
+router.patch("/:id/delete", deleteUser);
 
 module.exports = router;
