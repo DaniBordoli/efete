@@ -104,7 +104,7 @@ const Accounts = ({
                                   backgroundColor: rojo,
                                 }}
                                 onPress={() => {
-                                  handleMainDelete(item._id);
+                                  handleMainDelete(mainAccount._id);
                                 }}
                               >
                                 <Text style={style.textStyle}>Confirmar</Text>

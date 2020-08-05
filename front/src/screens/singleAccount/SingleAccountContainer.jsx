@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SingleAccount from "./SingleAccount";
 import {
@@ -24,6 +24,7 @@ export default ({ navigation, route }) => {
   }, []);
 
   const handleDelete = (accountId) => {
+    console.log("WHAT");
     account.mainAccount
       ? dispatch(deleteMainAccount(accountId))
       : dispatch(deleteAccounts(accountId, user._id));
