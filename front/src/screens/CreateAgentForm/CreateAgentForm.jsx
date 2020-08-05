@@ -3,21 +3,16 @@ import {
   View,
   TextInput,
   Text,
-  Button,
   Image,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView,
-  KeyboardAvoidingView,
 } from "react-native";
 import { style } from "./style";
-import storage from "../../firebase/index";
-import { MaterialIcons } from "@expo/vector-icons";
+
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import OpenCamera from "../camera/OpenCameraContainer";
 
 const CreateAgentForm = ({
-  handlerDailyAmount,
   handlerCuil,
   handlerAddress,
   handlerName,
