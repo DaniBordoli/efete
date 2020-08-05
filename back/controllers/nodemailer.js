@@ -19,7 +19,7 @@ const SendMail = function (user) {
     link = `http://${IP}:1337/api/users/verify?id=${user._id}`;
 
     var mailOptions = {
-      from: "facu.efete@gmail.com",
+      from: `${process.env.MAIL}`,
       to: `${user.username}`,
       subject: "Verificacion - " + code.toString(),
       text: "Se registro",
