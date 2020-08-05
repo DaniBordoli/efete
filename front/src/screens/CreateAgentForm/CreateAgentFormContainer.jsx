@@ -16,10 +16,13 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   const mode = useSelector((state) => state.users.mode);
 
   useEffect(() => {
-    route.params ? setFoto(route.params.uriFoto)
-    .then (()=> handleIsValid())
-    : ("No hay fotos")
-    
+    if(route.params) {
+      setFoto(route.params.uriFoto)
+      console.log(foto.length, 'FOTOOOOOOOO!')
+      handleIsValid()
+    }else{
+      ("No hay fotos")
+    }
   });
 
   const dispatch = useDispatch();
@@ -80,17 +83,6 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
     });
   };
 
-  const handleIsValid = () => {
-    if (
-      name.length > 0 &&
-      address.length > 0 &&
-      cuil.length > 0 &&
-      foto.length > 0
-    ) {
-      setIsValid(true);
-    }
-  };
-
   function handlerSubmit() {
     dispatch(createAgent(name, address, ubicacion, cuil, user._id))
       .then((data) => {
@@ -102,14 +94,15 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   }
 
   const handleIsValid = () => {
-    console.log("aca");
+    console.log('address!!!!!!!', address, 'name', name, 'cuil', cuil, 'foto', foto)
     if (
       name.length > 0 &&
-      ubicacion.length > 0 &&
+      address.length > 0 &&
       cuil.length > 0 &&
       foto.length > 0
     ) {
       setIsValid(true);
+      console.log('Entrav al set valid')
     }
   };
 
