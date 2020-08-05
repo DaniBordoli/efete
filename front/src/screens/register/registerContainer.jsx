@@ -56,8 +56,6 @@ export default ({ navigation }) => {
   }
 
   const handleIsValid = () => {
-    console.log(dni.length, "DNI");
-    console.log(gender.length, "GENDER");
     if (
       firstName.length > 0 &&
       lastName.length > 0 &&
@@ -66,7 +64,6 @@ export default ({ navigation }) => {
       username.length > 0 &&
       gender.length > 0
     ) {
-      console.log("ahora llegó");
       setIsValid(true);
     }
   };

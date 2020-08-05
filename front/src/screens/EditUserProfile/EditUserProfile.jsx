@@ -23,7 +23,8 @@ export default ({
   updateSecureTextEntry,
   handleValuePassword,
   handleIsData,
-  data
+  data,
+  
 }) => {
   {console.log('Secure Entry!!!!!!!!', data.secureTextEntry)}
   return (
@@ -44,7 +45,7 @@ export default ({
               <TouchableOpacity /* onPress={updateSecureTextEntry} */
                 style={{ marginRight: 10, marginRight: 5 }}
               >
-                <MaterialCommunityIcons name="pencil" size={20} color="black" />
+                <MaterialCommunityIcons name="pencil" size={20} color="grey" />
               </TouchableOpacity>
             </View>
 
@@ -63,7 +64,7 @@ export default ({
                   marginRight: 5,
                 }}
               >
-                <MaterialCommunityIcons name="pencil" size={20} color="black" />
+                <MaterialCommunityIcons name="pencil" size={20} color="grey" />
               </TouchableOpacity>
             </View>
 
@@ -82,7 +83,7 @@ export default ({
                   marginRight: 5,
                 }}
               >
-                <MaterialCommunityIcons name="pencil" size={20} color="black" />
+                <MaterialCommunityIcons name="pencil" size={20} color="grey" />
               </TouchableOpacity>
             </View>
 

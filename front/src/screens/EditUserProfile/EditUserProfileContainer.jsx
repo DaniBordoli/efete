@@ -18,6 +18,10 @@ export default () => {
   const [isData, setIsData] = useState(true);
   const [data, setData] = useState({ secureTextEntry: true });
 
+  
+  
+
+
   const updateSecureTextEntry = () => {
     setData({
       ...data,
@@ -31,19 +35,22 @@ export default () => {
     username.length > 0 && password.length > 0
       ? setIsData(false)
       : setIsData(true);
+      handleIsValid
   };
 
   const handleIsData = () => {
     username.length > 0 && password.length > 0
       ? setIsData(false)
       : setIsData(true);
+      handleIsValid
   };
 
 
-
+  
 
   function handleChange(e, name) {
     setUser({ ...user, [name]: e });
+    handleIsValid
   }
 
   function handleSubmit() {
@@ -77,6 +84,7 @@ console.log('USER!!!!!!', user)
       updateSecureTextEntry={updateSecureTextEntry}
       handleValuePassword={handleValuePassword}
       handleIsData={handleIsData}
+      
     />
   );
 };

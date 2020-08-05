@@ -49,6 +49,13 @@ export const style = StyleSheet.create({
     width: "50%",
     alignSelf: "center",
   },
+  confirmarDisabled: {
+    backgroundColor: "#E5E5E5",
+    borderRadius: 5,
+    marginTop: 30,
+    width: "50%",
+    alignSelf: "center",
+  },
   textConfirmar: {
     color: "#ffffff",
     fontSize: 18,
