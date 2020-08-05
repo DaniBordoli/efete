@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WaitingValidation from "./WaitingValidation";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchValidation } from "../../redux/store/actions/users";
+import { fetchValidation, setTcn } from "../../redux/store/actions/users";
 
 const WaitingValidationContainer = ({ navigation }) => {
   const user = useSelector((state) => state.users.user);
@@ -11,24 +11,27 @@ const WaitingValidationContainer = ({ navigation }) => {
   const dispatch = useDispatch();
 
   const validateIdentity = () => {
-    return dispatch(fetchValidation(user._id, tcn, token)).then(() =>
-      setLoading(true)
-    );
+    return dispatch(fetchValidation(user._id, tcn, token));
   };
-  const handleLoading = () => {
-    setLoading(false);
-  };
-  
+
   useEffect(() => {
-    tcn ? validateIdentity() : setLoading(false);
+    tcn
+      ? validateIdentity().then(() => {
+          setLoading(true);
+        })
+      : setLoading(false);
   }, [tcn]);
+
+  const handleTcn = () => {
+    dispatch(setTcn(null));
+  };
 
   return (
     <WaitingValidation
       navigation={navigation}
       loading={loading}
       user={user}
-      handleLoading={handleLoading}
+      handleTcn={handleTcn}
     />
   );
 };

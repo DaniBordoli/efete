@@ -4,7 +4,7 @@ import { style } from "./style";
 import { Load } from "../../Common/loading";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default ({ navigation, loading, user ,handleLoading}) => {
+export default ({ navigation, loading, user, handleTcn }) => {
   return (
     <View style={style.mainContainer}>
       <View style={style.imageContainer}>
@@ -66,7 +66,7 @@ export default ({ navigation, loading, user ,handleLoading}) => {
                   style={style.confirmar}
                   title="Validar Identidad"
                   onPress={() => {
-                     handleLoading()
+                    handleTcn();
                     navigation.navigate("ValidateIdentity");
                   }}
                 >

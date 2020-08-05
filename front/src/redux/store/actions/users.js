@@ -1,6 +1,7 @@
 import axios from "axios";
 import { IP } from "../../../../config";
 import { LOGIN_USER, MODE, TOKEN, TCN } from "../constants";
+import { RENAPER_USER, RENAPER_PASS } from "@env";
 
 export const login_user = (user) => {
   return {
@@ -64,11 +65,9 @@ export const register = (
 };
 
 export const editUser = (userData) => (dispatch) => {
-  console.log('QUE ES USER DATA', userData)
   return axios
     .patch(`http://${IP}:1337/api/users/editprofile`, userData)
     .then((res) => {
-      console.log("EDIT PROFILE", res.data);
       dispatch(login_user(res.data));
     })
     .catch((err) => console.log(err, "ERROR"));
@@ -101,7 +100,7 @@ export const generateToken = () => (dispatch) => {
     .post(
       " http://150.136.1.69:8011/CHUTROFINAL/API_ABIS/Autorizacion/token.php",
 
-      "username=plataforma5rostro&password=ghRSl3tb8Axwp4P",
+      `username=${RENAPER_USER}&password=${RENAPER_PASS}`,
 
       {
         headers: {
@@ -158,14 +157,16 @@ export const fetchValidation = (id, tcn, token) => (dispatch) => {
       if (
         res.data.data.notificacion &&
         res.data.data.notificacion.status === "HIT"
-      )
-        axios
+      ) {
+        return axios
           .patch(`http://${IP}:1337/api/users/validateIdentity`, {
             _id: id,
             validatedIdentity: true,
           })
           .then((res) => dispatch(login_user(res.data)));
-      else null;
+      } else {
+        null;
+      }
     });
 };
 

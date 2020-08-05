@@ -3,21 +3,17 @@ import {
   View,
   TextInput,
   Text,
-  Button,
   Image,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView,
-  KeyboardAvoidingView,
 } from "react-native";
 import { style } from "./style";
-import storage from "../../firebase/index";
-import { MaterialIcons } from "@expo/vector-icons";
+
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import OpenCamera from "../camera/OpenCameraContainer";
+import { GOOGLE_LOCATION_API_KEY } from "@env";
 
 const CreateAgentForm = ({
-  handlerDailyAmount,
   handlerCuil,
   handlerAddress,
   handlerName,
@@ -28,7 +24,7 @@ const CreateAgentForm = ({
   address,
   cuil,
   notifyChange,
-  isValid
+  isValid,
 }) => {
   return (
     <View>
@@ -79,7 +75,7 @@ const CreateAgentForm = ({
               notifyChange(detail.geometry.location);
               handlerAddress(data);
             }}
-            query={{ key: "AIzaSyBV-TT8w7N3TC9LDFGIQOk9BmN1iX10arg" }}
+            query={{ key: GOOGLE_LOCATION_API_KEY }}
             nearbyPlacesAPI="GooglePlacesSearch"
             debounce={200}
           />

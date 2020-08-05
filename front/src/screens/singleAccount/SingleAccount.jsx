@@ -55,7 +55,7 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                   flex: 1,
                   justifyContent: "flex-end",
                   alignItems: "center",
-                  marginBottom:'10%'
+                  marginBottom: "10%",
                 }}
               >
                 <Button
@@ -78,40 +78,40 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                       <Text style={style.modalText}>
                         Seguro desea ELIMINAR su negocio?
                       </Text>
-                      <View style={{flexDirection:"row-reverse"}}>
-                      <TouchableHighlight
-                        style={{
-                          ...style.openButton,
-                          backgroundColor: rojo,
-                        }}
-                        onPress={() => {
-                          handleDelete(account._id);
-                        }}
-                      >
-                        <Text style={style.textStyle}>Confirmar</Text>
-                      </TouchableHighlight>
-                      <TouchableHighlight
-                        style={{
-                          ...style.openButton,
-                          backgroundColor: 'white',
-                          borderWidth: 1,
-                          borderColor:buttonColor
-                        }}
-                        onPress={() => {
-                          setModalVisible(!modalVisible);
-                        }}
-                      >
-                        <Text style={{ ...style.textStyle, color:buttonColor }}>Cancelar</Text>
-                      </TouchableHighlight>
+                      <View style={{ flexDirection: "row-reverse" }}>
+                        <TouchableHighlight
+                          style={{
+                            ...style.openButton,
+                            backgroundColor: rojo,
+                          }}
+                          onPress={() => {
+                            handleDelete(account._id);
+                          }}
+                        >
+                          <Text style={style.textStyle}>Confirmar</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight
+                          style={{
+                            ...style.openButton,
+                            backgroundColor: "white",
+                            borderWidth: 1,
+                            borderColor: buttonColor,
+                          }}
+                          onPress={() => {
+                            setModalVisible(!modalVisible);
+                          }}
+                        >
+                          <Text
+                            style={{ ...style.textStyle, color: buttonColor }}
+                          >
+                            Cancelar
+                          </Text>
+                        </TouchableHighlight>
                       </View>
-                      
-
-
                     </View>
                   </View>
                 </Modal>
               </View>
-             
             </View>
           ) : null}
         </View>
