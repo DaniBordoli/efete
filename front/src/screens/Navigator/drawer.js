@@ -124,8 +124,9 @@ export default (props) => {
             )
           }
         />
+
         <DrawerItem
-          icon={bank}
+          icon={time}
           labelStyle={modee ? style.label : style.labelDark}
           label="Tiempo Ganado"
           onPress={() =>
@@ -133,7 +134,7 @@ export default (props) => {
           }
         />
         <DrawerItem
-          icon={edit}
+          icon={deleteUser}
           label="Eliminar cuenta"
           labelStyle={modee ? style.label : style.labelDark}
           onPress={() =>
@@ -249,3 +250,8 @@ const shop = () => <Entypo name="shop" size={25} color="#929292" />;
 const edit = () => (
   <MaterialCommunityIcons name="account-edit" size={25} color="#929292" />
 );
+const deleteUser = () => (
+  <MaterialIcons name="delete" size={25} color="#929292" />
+);
+
+const time = () => <Entypo name="back-in-time" size={25} color="#929292" />;
