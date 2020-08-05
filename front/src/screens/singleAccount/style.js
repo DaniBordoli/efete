@@ -82,30 +82,28 @@ export const style = StyleSheet.create({
   modalView: {
     margin: 20,
     backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
+    borderRadius: 10,
+    padding: 25,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
     elevation: 5
   },
   openButton: {
     backgroundColor: "#F194FF",
-    borderRadius: 20,
+    borderRadius: 5,
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    margin:10,
+    width:"40%"
   },
   textStyle: {
     color: "white",
-    fontWeight: "bold",
+    fontFamily:'regular',
     textAlign: "center",
+    fontSize:18
   },
   modalText: {
+    fontSize:22,
+    fontFamily:'nunito',
     marginBottom: 15,
     textAlign: "center"
   }

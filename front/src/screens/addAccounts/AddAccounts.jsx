@@ -7,6 +7,7 @@ import {
   ScrollView,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
+import { MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 import { style } from "./style.js";
 import { Button } from "react-native-elements";
 
@@ -51,16 +52,30 @@ const AddAccount = ({
         />
 
         <Text style={style.text}>NUMERO DE CUENTA</Text>
-        <TextInput
-          keyboardType="numeric"
-          style={style.input}
-          placeholder="Ingrese su número de cuenta"
-          autoCapitalize="none"
-          autoCorrect={false}
-          value={accountNumber}
-          onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}
-        />
-        {isValid ? null : <Text> La cuente debe tener 22 digitos</Text>}
+        <View style={style.input2}>
+          <TextInput
+            style={{ height: 50 }}
+            maxLength={22}
+            keyboardType="numeric"
+            style={{ marginLeft: 7 }}
+            placeholder="Ingresar cuenta de 22 digitos"
+            autoCapitalize="none"
+            autoCorrect={false}
+            value={accountNumber}
+            onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}
+          />
+          {isValid ? (
+            <MaterialCommunityIcons
+              name="check-circle"
+              size={32}
+              color="green"
+              style={{
+                marginLeft: "43%",
+                alignSelf: "center",
+              }}
+            />
+          ) : null}
+        </View>
       </View>
 
       <View

@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Modal,
-  TouchableHighlight,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { Button } from "react-native-elements";
 import { Load } from "../../Common/loading";
 import { style } from "./style";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Modal from "react-native-modal";
+import { buttonColor, rojo } from "../../Common/constans";
 
 const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -54,7 +50,14 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                 </TouchableOpacity>
               </View>
 
-              <View style={{ flex: 1, justifyContent: "center" }}>
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  marginBottom:'10%'
+                }}
+              >
                 <Button
                   buttonStyle={style.confirmar}
                   titleStyle={style.tituloConfirmar}
@@ -63,73 +66,26 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                     setModalVisible(true);
                   }}
                 />
-                
-                          <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={modalVisible}
-                            onRequestClose={() => {
-                              Alert.alert("Modal has been closed.");
-                            }}
-                          >
-                            <View style={style.centeredView}>
-                              <View style={style.modalView}>
-                                <Text style={style.modalText}>
-                                  Seguro desea ELIMINAR su negocio?
-                                </Text>
-
-                                <TouchableHighlight
-                                  style={{
-                                    ...style.openButton,
-                                    backgroundColor: "#00CC96",
-                                  }}
-                                  onPress={() => {
-                                    handleDelete(account._id);
-                                  }}
-                                >
-                                  <Text style={style.textStyle}>Confirmar</Text>
-                                </TouchableHighlight>
-                                <TouchableHighlight
-                                  style={{
-                                    ...style.openButton,
-                                    backgroundColor: "#DD1919",
-                                    marginTop: 10,
-                                  }}
-                                  onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                  }}
-                                >
-                                  <Text style={{ ...style.textStyle }}>
-                                    Cancelar
-                                  </Text>
-                                </TouchableHighlight>
-                              </View>
-                            </View>
-                          </Modal>
-                        
-              </View>
-              <View style={style.centeredView}>
                 <Modal
-                  animationType="slide"
-                  transparent={true}
-                  visible={modalVisible}
-                  onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                  }}
+                  isVisible={modalVisible}
+                  animationInTiming={800}
+                  animationOutTiming={1000}
+                  backdropTransitionInTiming={2000}
+                  backdropTransitionOutTiming={2000}
                 >
                   <View style={style.centeredView}>
                     <View style={style.modalView}>
                       <Text style={style.modalText}>
-                        Seguro desea ELIMINAR la cuenta?
+                        Seguro desea ELIMINAR su negocio?
                       </Text>
-
+                      <View style={{flexDirection:"row-reverse"}}>
                       <TouchableHighlight
                         style={{
                           ...style.openButton,
-                          backgroundColor: "#00CC96",
+                          backgroundColor: rojo,
                         }}
                         onPress={() => {
-                          handleDelete(item._id);
+                          handleDelete(account._id);
                         }}
                       >
                         <Text style={style.textStyle}>Confirmar</Text>
@@ -137,19 +93,25 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                       <TouchableHighlight
                         style={{
                           ...style.openButton,
-                          backgroundColor: "#DD1919",
-                          marginTop: 10,
+                          backgroundColor: 'white',
+                          borderWidth: 1,
+                          borderColor:buttonColor
                         }}
                         onPress={() => {
                           setModalVisible(!modalVisible);
                         }}
                       >
-                        <Text style={{ ...style.textStyle }}>Cancelar</Text>
+                        <Text style={{ ...style.textStyle, color:buttonColor }}>Cancelar</Text>
                       </TouchableHighlight>
+                      </View>
+                      
+
+
                     </View>
                   </View>
                 </Modal>
               </View>
+             
             </View>
           ) : null}
         </View>

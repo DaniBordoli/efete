@@ -10,8 +10,8 @@ const WaitingValidationContainer = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const validateIdentity = async () => {
-    await dispatch(fetchValidation(user._id, tcn, token));
+  const validateIdentity = () => {
+    return dispatch(fetchValidation(user._id, tcn, token));
   };
 
   useEffect(() => {
