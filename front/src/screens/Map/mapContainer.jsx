@@ -18,6 +18,7 @@ export default ({ route, navigation }) => {
   const [loading, setLoader] = useState(false);
   const mode = useSelector((state) => state.users.mode);
 
+  
   console.log(";;;;;;;;;;;;;;;;;;;;;;;AGENTES:::::::::::::", agentes);
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export default ({ route, navigation }) => {
       let location = await Location.getCurrentPositionAsync({
         enableHighAccuracy: true,
         distanceInterval: 1,
+        timeout:20000,
         timeInterval: 1000,
       });
 
@@ -55,7 +57,7 @@ export default ({ route, navigation }) => {
       agentes={agentes}
       ubicacion={region}
       notifyChange={(loc) => getCoordsFromName(loc)}
-      value={route.params.value}
+      value={2000}
       navigation={navigation}
       loading={loading}
     />
