@@ -108,8 +108,8 @@ const CreateAgentForm = ({
       <OpenCamera navigation={navigation} view="CreateAgentForm" />
       <View>
         <TouchableOpacity
-          // disabled={!isValid}
-          style={style.confirmar}
+          disabled={!isValid} 
+          style={isValid?style.confirmar:style.confirmarDisabled}
           title="Confirmar"
           onPress={() => {
             handlerSubmit();

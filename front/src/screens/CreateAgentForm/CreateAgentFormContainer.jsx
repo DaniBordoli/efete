@@ -16,9 +16,10 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   const mode = useSelector((state) => state.users.mode);
 
   useEffect(() => {
-    route.params
-      ? (setFoto(route.params.uriFoto), handleIsValid())
-      : "No hay fotos";
+    route.params ? setFoto(route.params.uriFoto)
+    .then (()=> handleIsValid())
+    : ("No hay fotos")
+    
   });
 
   const dispatch = useDispatch();
@@ -76,6 +77,17 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
         );
       });
     });
+  };
+
+  const handleIsValid = () => {
+    if (
+      name.length > 0 &&
+      address.length > 0 &&
+      cuil.length > 0 &&
+      foto.length > 0
+    ) {
+      setIsValid(true);
+    }
   };
 
   function handlerSubmit() {
