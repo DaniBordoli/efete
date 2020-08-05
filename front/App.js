@@ -15,12 +15,12 @@ const fetchFonts = () => {
   return Font.loadAsync({
     'nunito-bold': require("./assets/fonts/Nunito-Black.ttf"),
     'nunito': require("./assets/fonts/Nunito-Bold.ttf"),
-    
     'delgado': require("./assets/fonts/OpenSans-Light.ttf"),
     'regular': require("./assets/fonts/OpenSans-Regular.ttf"),
     'sans': require("./assets/fonts/IBMPlexSans-Regular.ttf"),
     'sans-bold': require("./assets/fonts/IBMPlexSans-Bold.ttf"),
     'lato': require("./assets/fonts/Lato-Regular.ttf"),
+    'Roboto_medium': require("./assets/fonts/Roboto-Medium.ttf"),
   });
 };
 console.disableYellowBox = true
