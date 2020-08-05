@@ -10,6 +10,7 @@ import {
   SET_TRANSACTION,
   FETCH_AGENT_TRANSACTIONS,
 } from "../constants";
+import { BINDPASS, BINDUSER, ACCOUNT_ID, BANK_ID, VIEW_ID } from "@env";
 
 export const fetch_transactions = (transactions) => {
   return {
@@ -88,56 +89,64 @@ export const updateAmountAgent = (value, id) => (dispatch) => {
 
 export const createTransaction = (transaction) => (dispatch) =>
   axios
-    .post(
-      "https://sandbox.bind.com.ar/v1/banks/322/accounts/21-1-99999-4-6/owner/transaction-request-types/DEBIN/transaction-requests",
-
-      {
-        to: {
-          cbu: transaction.originAccountCbu,
-        },
-        value: {
-          currency: "ARS",
-          amount: transaction.amount + 50,
-        },
-        concept: "EXP",
-        expiration: 23,
-      },
-      {
-        headers: {
-          Authorization:
-            "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTY0NjU1MTUzMzIsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjQ5NDMxNX0.g1wv2Yr3TJ0ozGgVFHHuygoRT0yMJlO7ocFYoj_GmEiiDrsj-PkYPMeoPh2r7NG9yrL4RGQl_5cpFvrjl3uFqQ",
-        },
-      }
-    )
-    .then(() => {
-      axios.post(
-        "https://sandbox.bind.com.ar/v1/banks/322/accounts/21-1-99999-4-6/owner/transaction-request-types/TRANSFER/transaction-requests",
-
-        {
-          to: {
-            cbu: transaction.cbu,
-          },
-          value: {
-            currency: "ARS",
-            amount: transaction.amount + 25,
-          },
-          description: "Transfer de prueba",
-          concept: "VAR",
-          emails: ["facunovaroh@gmail.com"],
-        },
-        {
-          headers: {
-            Authorization:
-              "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTY0NjU1MTUzMzIsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjQ5NDMxNX0.g1wv2Yr3TJ0ozGgVFHHuygoRT0yMJlO7ocFYoj_GmEiiDrsj-PkYPMeoPh2r7NG9yrL4RGQl_5cpFvrjl3uFqQ",
-          },
-        }
-      );
+    .post("https://sandbox.bind.com.ar/v1/login/jwt", {
+      username: BINDUSER,
+      password: BINDPASS,
     })
+    .then((res) => {
+      const token = "JWT " + res.data.token;
+      console.log(token, "TOKEN");
 
-    .then(() => {
       return axios
-        .post(`http://${IP}:1337/api/transactions`, transaction)
-        .then((res) => dispatch(newTransaction(res.data)));
+        .post(
+          `https://sandbox.bind.com.ar/v1/banks/${BANK_ID}/accounts/${ACCOUNT_ID}/${VIEW_ID}/transaction-request-types/DEBIN/transaction-requests`,
+
+          {
+            to: {
+              cbu: transaction.originAccountCbu,
+            },
+            value: {
+              currency: "ARS",
+              amount: transaction.amount + 50,
+            },
+            concept: "EXP",
+            expiration: 23,
+          },
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
+        .then(() => {
+          axios.post(
+            `https://sandbox.bind.com.ar/v1/banks/${BANK_ID}/accounts/${ACCOUNT_ID}/${VIEW_ID}/transaction-request-types/TRANSFER/transaction-requests`,
+
+            {
+              to: {
+                cbu: transaction.cbu,
+              },
+              value: {
+                currency: "ARS",
+                amount: transaction.amount + 25,
+              },
+              description: "Transfer de prueba",
+              concept: "VAR",
+              emails: ["facunovaroh@gmail.com"],
+            },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+        })
+
+        .then(() => {
+          return axios
+            .post(`http://${IP}:1337/api/transactions`, transaction)
+            .then((res) => dispatch(newTransaction(res.data)));
+        });
     });
 
 export const getAgentTransactions = (id) => (dispatch) => {

@@ -11,7 +11,7 @@ export default ({ navigation }) => {
   const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("M");
 
   const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
@@ -56,8 +56,6 @@ export default ({ navigation }) => {
   }
 
   const handleIsValid = () => {
-    console.log(dni.length, "DNI");
-    console.log(gender.length, "GENDER");
     if (
       firstName.length > 0 &&
       lastName.length > 0 &&
@@ -66,7 +64,6 @@ export default ({ navigation }) => {
       username.length > 0 &&
       gender.length > 0
     ) {
-      console.log("ahora llegó");
       setIsValid(true);
     }
   };
@@ -88,6 +85,7 @@ export default ({ navigation }) => {
       user={user}
       handleGender={handleGender}
       mode={mode}
+      gender={gender}
       isValid={isValid}
     />
   );

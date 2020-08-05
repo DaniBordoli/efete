@@ -23,7 +23,7 @@ const get_user_single_account = (account) => {
 
 const get_user_main_account = (account) => {
   return {
-    type:  SET_MAIN_ACCOUNT,
+    type: SET_MAIN_ACCOUNT,
     account,
   };
 };
@@ -75,13 +75,15 @@ export const fetchUserSingleAccount = (id) => (dispatch) =>
     .then((res) => dispatch(get_user_single_account(res.data)));
 
 export const deleteAccounts = (id, userId) => (dispatch) =>
-  axios.delete(`http://${IP}:1337/api/accounts/${id}/${userId}`).then((res) => {
-    dispatch(get_user_single_account({}));
-    dispatch(get_user_accounts(res.data));
-  });
+  axios
+    .patch(`http://${IP}:1337/api/accounts/${id}/${userId}/delete`)
+    .then((res) => {
+      dispatch(get_user_single_account({}));
+      dispatch(get_user_accounts(res.data));
+    });
 
-  export const deleteMainAccount = (id) => (dispatch) =>
-  axios.delete(`http://${IP}:1337/api/accounts/main/${id}`).then((res) => {
+export const deleteMainAccount = (id) => (dispatch) =>
+  axios.patch(`http://${IP}:1337/api/accounts/main/${id}`).then((res) => {
     //dispatch(get_user_single_account({}));
     dispatch(get_user_main_account({}));
   });

@@ -119,4 +119,5 @@ export const style = StyleSheet.create({
     fontWeight: "bold",
     paddingLeft: 10,
   },
+  
 });
