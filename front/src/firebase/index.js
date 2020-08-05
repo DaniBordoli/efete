@@ -1,15 +1,25 @@
 import firebase from "firebase/app";
 import "firebase/storage";
+import {
+  FIREBASE_API_KEY,
+  AUTHDOMAIN,
+  DATABASE_URL,
+  PROJECT_ID,
+  STORAGE_BUCKET,
+  MESSAGING_SENDER_ID,
+  APP_ID,
+  MEASUREMENT_ID,
+} from "@env";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyBWzvdmhVkJF1Y0muHpJJeKUKaFNZn9_HQ",
-  authDomain: "efete-db5f7.firebaseapp.com",
-  databaseURL: "https://efete-db5f7.firebaseio.com",
-  projectId: "efete-db5f7",
-  storageBucket: "efete-db5f7.appspot.com",
-  messagingSenderId: "501735424301",
-  appId: "1:501735424301:web:73d421995f614c45a4d3a4",
-  measurementId: "G-BES4DSQ591",
+  apiKey: FIREBASE_API_KEY,
+  authDomain: AUTHDOMAIN,
+  databaseURL: DATABASE_URL,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID,
+  appId: APP_ID,
+  measurementId: MEASUREMENT_ID,
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

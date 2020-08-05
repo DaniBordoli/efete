@@ -51,7 +51,7 @@ const SendTransaction = function (transaction) {
   });
 
   var mailOptions = {
-    from: "facu.efete@gmail.com",
+    from: `${process.env.MAIL}`,
     to: transaction.user[0].username,
     subject: `Transacción - ${transaction._id}`,
     text: "Se registro",
