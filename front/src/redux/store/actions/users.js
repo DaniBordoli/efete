@@ -64,11 +64,9 @@ export const register = (
 };
 
 export const editUser = (userData) => (dispatch) => {
-  console.log('QUE ES USER DATA', userData)
   return axios
     .patch(`http://${IP}:1337/api/users/editprofile`, userData)
     .then((res) => {
-      console.log("EDIT PROFILE", res.data);
       dispatch(login_user(res.data));
     })
     .catch((err) => console.log(err, "ERROR"));
@@ -155,7 +153,6 @@ export const fetchValidation = (id, tcn, token) => (dispatch) => {
       }
     )
     .then((res) => {
-      console.log(res.data, "RES DATA ACA");
       if (
         res.data.data.notificacion &&
         res.data.data.notificacion.status === "HIT"
