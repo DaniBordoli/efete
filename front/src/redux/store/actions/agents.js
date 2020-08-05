@@ -46,6 +46,7 @@ const get_user_agents = (agents) => {
 };
 
 export const editAgent = (agentData) => (dispatch) => {
+  console.log(agentData, "AGENT ACA DATA");
   return axios
     .patch(`http://${IP}:1337/api/agents/editprofile`, agentData)
     .then((res) => {

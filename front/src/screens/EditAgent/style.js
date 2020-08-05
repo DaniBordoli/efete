@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { buttonColor, verdeTexto, inputDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
@@ -72,22 +72,26 @@ export const style = StyleSheet.create({
     borderRadius: 3,
   },
   image: {
-    marginTop: "5%",
-    width: 150,
-    height: 125,
+    marginTop: "2%",
+    width: Dimensions.get("window").width / 3,
+    height: Dimensions.get("window").height / 9,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: "black",
     shadowColor: "#000",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   imageDark: {
-    marginTop: "5%",
-    width: 200,
-    height: 150,
+    marginTop: "2%",
+    width: Dimensions.get("window").width / 3,
+    height: Dimensions.get("window").height / 9,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: "white",
     shadowColor: "#000",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   textOpenCamera: {
     marginBottom: "2%",

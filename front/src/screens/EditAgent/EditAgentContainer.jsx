@@ -18,15 +18,13 @@ export default ({ navigation, route }) => {
 
   const [agent, setAgent] = useState(agentInfo);
 
-  const [ubicacion, setUbicacion] = useState({});
+  const [ubicacion, setUbicacion] = useState(agent.ubicacion);
   const getCoordsFromName = (loc) => {
-    console.log("HANDLER UBICATION", loc);
     setUbicacion({ latitude: loc.lat, longitude: loc.lng });
   };
 
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState(agent.address);
   function handlerAddress(text) {
-    console.log("HANDLER ANDRESS", text.description);
     setAddress(text.description);
   }
 
@@ -73,7 +71,7 @@ export default ({ navigation, route }) => {
   };
 
   function handleSubmit() {
-    if (agent.name.length > 0 && agent.address.length > 0) {
+    if (agent.name.length > 0 && address.length > 0) {
       if (route.params) {
         uploadImage(route.params.uriFoto);
       } else {

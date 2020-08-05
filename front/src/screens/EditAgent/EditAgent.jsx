@@ -30,7 +30,7 @@ export default ({
   mode,
 }) => {
   return (
-    <ScrollView style={{ backgroundColor: mode ? fondoColor : "black" }}>
+    <View style={{ backgroundColor: mode ? fondoColor : "black" }}>
       <Text style={style.containerTitle}>Datos de tu Negocio</Text>
       <View style={style.container}>
         <Text
@@ -75,7 +75,7 @@ export default ({
               },
             }}
             enablePoweredByContainer={false}
-            placeholder="Editar Ubicacion"
+            placeholder={address}
             returnKeyType={"search"}
             listViewDisplayed="auto"
             fetchDetails={true}
@@ -122,7 +122,6 @@ export default ({
           style={{
             flexDirection: "row",
             alignSelf: "center",
-            marginLeft: "10%",
           }}
         >
           <Image
@@ -150,6 +149,6 @@ export default ({
           <Text style={style.textConfirmar}>GUARDAR CAMBIOS</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
 };
