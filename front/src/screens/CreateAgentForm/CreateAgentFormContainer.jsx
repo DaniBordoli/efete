@@ -12,13 +12,13 @@ import _ from "lodash";
 const CreateAgentFormContainer = ({ navigation, route }) => {
   const [foto, setFoto] = useState("");
   const [ubicacion, setUbicacion] = useState({});
-  
-  const mode = useSelector(
-    (state) => state.users.mode
-  );
+
+  const mode = useSelector((state) => state.users.mode);
 
   useEffect(() => {
-    route.params ? setFoto(route.params.uriFoto) : "No hay fotos";
+    route.params
+      ? (setFoto(route.params.uriFoto), handleIsValid())
+      : "No hay fotos";
   });
 
   const dispatch = useDispatch();
@@ -26,26 +26,25 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   const user = useSelector((state) => state.users.user);
   const getCoordsFromName = (loc) => {
     setUbicacion({ latitude: loc.lat, longitude: loc.lng });
+    handleIsValid();
   };
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [cuil, setCuil] = useState("");
-  const [dailyAmount, setDailyAmount] = useState(0);
   const [isValid, setIsValid] = useState(false);
 
   function handlerName(text) {
     setName(text);
+    handleIsValid();
   }
   function handlerAddress(text) {
     setAddress(text.description);
+    handleIsValid();
   }
 
   function handlerCuil(text) {
     setCuil(text);
-  }
-
-  function handlerDailyAmount(text) {
-    setDailyAmount(Number(text));
+    handleIsValid();
   }
 
   uploadImage = async (uri, agentId) => {
@@ -80,7 +79,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   };
 
   function handlerSubmit() {
-    dispatch(createAgent(name, address, ubicacion, cuil, dailyAmount, user._id))
+    dispatch(createAgent(name, address, ubicacion, cuil, user._id))
       .then((data) => {
         uploadImage(foto, data.newStore.id);
       })
@@ -89,12 +88,23 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
       });
   }
 
+  const handleIsValid = () => {
+    console.log("aca");
+    if (
+      name.length > 0 &&
+      ubicacion.length > 0 &&
+      cuil.length > 0 &&
+      foto.length > 0
+    ) {
+      setIsValid(true);
+    }
+  };
+
   return (
     <CreateAgentForm
       handlerName={handlerName}
       handlerAddress={handlerAddress}
       handlerCuil={handlerCuil}
-      handlerDailyAmount={handlerDailyAmount}
       handlerSubmit={handlerSubmit}
       navigation={navigation}
       fotos={foto}

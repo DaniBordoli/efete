@@ -63,52 +63,7 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                     setModalVisible(true);
                   }}
                 />
-                
-                          <Modal
-                            animationType="slide"
-                            transparent={true}
-                            visible={modalVisible}
-                            onRequestClose={() => {
-                              Alert.alert("Modal has been closed.");
-                            }}
-                          >
-                            <View style={style.centeredView}>
-                              <View style={style.modalView}>
-                                <Text style={style.modalText}>
-                                  Seguro desea ELIMINAR su negocio?
-                                </Text>
 
-                                <TouchableHighlight
-                                  style={{
-                                    ...style.openButton,
-                                    backgroundColor: "#00CC96",
-                                  }}
-                                  onPress={() => {
-                                    handleDelete(account._id);
-                                  }}
-                                >
-                                  <Text style={style.textStyle}>Confirmar</Text>
-                                </TouchableHighlight>
-                                <TouchableHighlight
-                                  style={{
-                                    ...style.openButton,
-                                    backgroundColor: "#DD1919",
-                                    marginTop: 10,
-                                  }}
-                                  onPress={() => {
-                                    setModalVisible(!modalVisible);
-                                  }}
-                                >
-                                  <Text style={{ ...style.textStyle }}>
-                                    Cancelar
-                                  </Text>
-                                </TouchableHighlight>
-                              </View>
-                            </View>
-                          </Modal>
-                        
-              </View>
-              <View style={style.centeredView}>
                 <Modal
                   animationType="slide"
                   transparent={true}
@@ -120,7 +75,7 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                   <View style={style.centeredView}>
                     <View style={style.modalView}>
                       <Text style={style.modalText}>
-                        Seguro desea ELIMINAR la cuenta?
+                        Seguro desea ELIMINAR su negocio?
                       </Text>
 
                       <TouchableHighlight
@@ -129,7 +84,7 @@ const Accounts = ({ account, handleDelete, loading, handleMainAccount }) => {
                           backgroundColor: "#00CC96",
                         }}
                         onPress={() => {
-                          handleDelete(item._id);
+                          handleDelete(account._id);
                         }}
                       >
                         <Text style={style.textStyle}>Confirmar</Text>

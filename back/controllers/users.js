@@ -1,4 +1,4 @@
-const { User, Agent } = require("../models/index");
+const { User, Agent, Account } = require("../models/index");
 const { SendMail } = require("../controllers/nodemailer");
 const { findById } = require("../models/users");
 
@@ -102,12 +102,14 @@ const setTcn = (req, res) => {
 
 const deleteUser = (req, res) => {
   User.updateOne({ _id: req.params.id }, { isEliminated: true }).then(() => {
-    Agent.updateMany({ user: req.params.id }, { isEliminated: true }).then(
-      () => {
+    Agent.updateMany({ user: req.params.id }, { isEliminated: true })
+      .then(() => {
+        Account.updateMany({ user: req.params.id }, { isEliminated: true });
+      })
+      .then(() => {
         console.log("USUARIO ELIMINADO");
         res.sendStatus(200);
-      }
-    );
+      });
   });
 };
 

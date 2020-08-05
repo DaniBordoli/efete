@@ -1,9 +1,12 @@
 const AccountsModel = require("../models/accounts");
 
-
 const AccountsController = {
   findMainAccount(req, res) {
-    AccountsModel.findOne({ user: req.params.userId, mainAccount: true })
+    AccountsModel.findOne({
+      user: req.params.userId,
+      mainAccount: true,
+      isEliminated: false,
+    })
       .populate("nameEntity")
       .populate("user")
       .then((account) => {
@@ -15,7 +18,7 @@ const AccountsController = {
   },
 
   findAll(req, res) {
-    AccountsModel.find({ user: req.params.id })
+    AccountsModel.find({ user: req.params.id, isEliminated: false })
       .populate("nameEntity")
       .populate("user")
       .then((accounts) => {
@@ -26,8 +29,8 @@ const AccountsController = {
       });
   },
   createAccount(req, res) {
-    console.log("REQBODY",req.body)
-    AccountsModel.find({ user: req.body.user })
+    console.log("REQBODY", req.body);
+    AccountsModel.find({ user: req.body.user, isEliminated: false })
       .then((accounts) => {
         if (accounts.length === 0) {
           AccountsModel.create({
@@ -37,7 +40,10 @@ const AccountsController = {
             user: req.body.user,
             mainAccount: true,
           }).then(() => {
-            return AccountsModel.find({ user: req.body.user })
+            return AccountsModel.find({
+              user: req.body.user,
+              isEliminated: false,
+            })
               .populate("nameEntity")
               .populate("user")
               .then((accounts) => {
@@ -46,7 +52,10 @@ const AccountsController = {
           });
         } else {
           AccountsModel.create(req.body).then(() => {
-            return AccountsModel.find({ user: req.body.user })
+            return AccountsModel.find({
+              user: req.body.user,
+              isEliminated: false,
+            })
               .populate("nameEntity")
               .populate("user")
               .then((accounts) => {
@@ -62,8 +71,12 @@ const AccountsController = {
   },
 
   deleteById(req, res) {
-    AccountsModel.deleteOne({ _id: req.params.id }).then(() => {
-      AccountsModel.find({ user: req.params.userId })
+    console.log(req.params, "REQPARAMS");
+    AccountsModel.updateOne(
+      { _id: req.params.id },
+      { isEliminated: true }
+    ).then(() => {
+      AccountsModel.find({ user: req.params.userId, isEliminated: false })
         .populate("nameEntity")
         .populate("user")
         .then((accounts) => {
@@ -75,7 +88,7 @@ const AccountsController = {
     });
   },
   findById(req, res) {
-    AccountsModel.findById(req.params.id)
+    AccountsModel.findOne({ _id: req.params.id, isEliminated: false })
       .populate("nameEntity")
       .populate("user")
       .then((accounts) => {
@@ -93,7 +106,10 @@ const AccountsController = {
     ).then(() => {
       AccountsModel.updateOne({ _id: req.params.id }, { mainAccount: true })
         .then(() => {
-          return AccountsModel.find({ user: req.params.userId })
+          return AccountsModel.find({
+            user: req.params.userId,
+            isEliminated: false,
+          })
             .populate("nameEntity")
             .populate("user")
             .then((accounts) => {
@@ -107,15 +123,13 @@ const AccountsController = {
   },
 
   deleteMainAccount(req, res) {
-    console.log("PARAMETRO:",req.params.id)
-    AccountsModel.deleteOne({ _id: req.params.id })
-        .then(() => {
-          res.sendStatus(200);
-        })
-        .catch((err) => {
-          res.status(500).send(err);
-        });
-    
+    AccountsModel.updateOne({ _id: req.params.id }, { isEliminated: true })
+      .then(() => {
+        res.sendStatus(200);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
   },
 };
 
