@@ -4,7 +4,7 @@ import { style } from "./style";
 import { Load } from "../../Common/loading";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default ({ navigation }) => {
+export default ({ navigation, userTransactions }) => {
   return (
     <View style={style.mainContainer}>
       <View style={style.imageContainer}>
@@ -33,11 +33,12 @@ export default ({ navigation }) => {
 
  */}
             <View style={style.hr}></View>
-            <Text style={style.title}>1200</Text>
+            <Text style={style.title}>{userTransactions * 20}</Text>
             <View style={style.hr}></View>
 
             <Text style={style.text1}>
-              Ya te ahorraste 1200 minutos en filas de cajeros
+              Ya te ahorraste {userTransactions * 20} minutos en filas de
+              cajeros
             </Text>
           </View>
         </View>

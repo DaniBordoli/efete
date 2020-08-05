@@ -72,15 +72,6 @@ export default (props) => {
         />
 
         <DrawerItem
-          icon={bank}
-          labelStyle={modee ? style.label : style.labelDark}
-          label="Tiempo Ganado"
-          onPress={() =>
-            props.navigation.navigate("Root", { screen: "TimeGained" }, props)
-          }
-        />
-
-        <DrawerItem
           icon={shop}
           labelStyle={modee ? style.label : style.labelDark}
           label="Mis Negocios"
@@ -131,6 +122,14 @@ export default (props) => {
               { screen: "EditUserProfile" },
               props
             )
+          }
+        />
+        <DrawerItem
+          icon={bank}
+          labelStyle={modee ? style.label : style.labelDark}
+          label="Tiempo Ganado"
+          onPress={() =>
+            props.navigation.navigate("Root", { screen: "TimeGained" }, props)
           }
         />
         <DrawerItem
