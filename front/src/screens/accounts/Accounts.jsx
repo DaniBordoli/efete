@@ -14,7 +14,6 @@ import { Load } from "../../Common/loading";
 import Modal from "react-native-modal";
 import { rojo, buttonColor } from "../../Common/constans";
 
-
 const Accounts = ({
   accountsUser,
   loading,
@@ -22,9 +21,8 @@ const Accounts = ({
   navigation,
   mainAccount,
   handleMainDelete,
-  mode
+  mode,
 }) => {
-  console.log(mainAccount, "MAIN");
   const [modalVisible, setModalVisible] = useState(false);
   const [modal2Visible, setModal2Visible] = useState(false);
   return (
@@ -34,7 +32,7 @@ const Accounts = ({
           <View style={{ flex: 1 }}>
             <Text style={style.asociadas}> CUENTA PRINCIPAL</Text>
             {mainAccount._id ? (
-              <View style={{  height:120}}>
+              <View style={{ height: 120 }}>
                 <TouchableOpacity
                   style={style.parentOnly}
                   onPress={() =>
@@ -50,24 +48,32 @@ const Accounts = ({
                     />
                   </View>
 
-                  <View style={{ alignContent: "center" , flex:6 }}>
+                  <View style={{ alignContent: "center", flex: 6 }}>
                     <View style={{ flexDirection: "row", marginBottom: 5 }}>
                       <Text style={style.negrita}>Entidad:</Text>
-                      <Text style={style.tex}>{mainAccount.nameEntity[0].nameEntity.length > 20 ? `${mainAccount.nameEntity[0].nameEntity.substr(0,18)}...` : mainAccount.nameEntity[0].nameEntity}</Text>
+                      <Text style={style.tex}>
+                        {mainAccount.nameEntity[0].nameEntity.length > 20
+                          ? `${mainAccount.nameEntity[0].nameEntity.substr(
+                              0,
+                              18
+                            )}...`
+                          : mainAccount.nameEntity[0].nameEntity}
+                      </Text>
                     </View>
                     <View style={{ flexDirection: "row" }}>
                       <Text style={style.negrita}>Cuenta:</Text>
-                      <Text style={style.tex}> {mainAccount.accountNumber.substr(0,16)}...</Text>
+                      <Text style={style.tex}>
+                        {" "}
+                        {mainAccount.accountNumber.substr(0, 16)}...
+                      </Text>
                     </View>
                   </View>
 
                   <View
                     style={{
-                      
                       flex: 1,
                       flexDirection: "row",
-                      justifyContent: "flex-end"
-                      
+                      justifyContent: "flex-end",
                     }}
                   >
                     <TouchableOpacity
@@ -89,35 +95,40 @@ const Accounts = ({
                         <View style={style.centeredView}>
                           <View style={style.modalView}>
                             <Text style={style.modalText}>
-                            Seguro desea ELIMINAR su negocio?
+                              Seguro desea ELIMINAR su negocio?
                             </Text>
-                            <View style={{flexDirection:"row-reverse"}}>
-                            <TouchableHighlight
-                              style={{
-                                ...style.openButton,
-                                backgroundColor: rojo,
-                              }}
-                              onPress={() => {
-                                handleMainDelete(item._id);
-                              }}
-                            >
-                              <Text style={style.textStyle}>Confirmar</Text>
-                            </TouchableHighlight>
-                            <TouchableHighlight
-                              style={{
-                                ...style.openButton,
-                                backgroundColor: 'white',
-                                borderWidth: 1,
-                                borderColor:buttonColor
-                              }}
-                              onPress={() => {
-                                setModal2Visible(!modal2Visible);
-                              }}
-                            >
-                              <Text style={{ ...style.textStyle , color:buttonColor }}>
-                                Cancelar
-                              </Text>
-                            </TouchableHighlight>
+                            <View style={{ flexDirection: "row-reverse" }}>
+                              <TouchableHighlight
+                                style={{
+                                  ...style.openButton,
+                                  backgroundColor: rojo,
+                                }}
+                                onPress={() => {
+                                  handleMainDelete(mainAccount._id);
+                                }}
+                              >
+                                <Text style={style.textStyle}>Confirmar</Text>
+                              </TouchableHighlight>
+                              <TouchableHighlight
+                                style={{
+                                  ...style.openButton,
+                                  backgroundColor: "white",
+                                  borderWidth: 1,
+                                  borderColor: buttonColor,
+                                }}
+                                onPress={() => {
+                                  setModal2Visible(!modal2Visible);
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    ...style.textStyle,
+                                    color: buttonColor,
+                                  }}
+                                >
+                                  Cancelar
+                                </Text>
+                              </TouchableHighlight>
                             </View>
                           </View>
                         </View>
@@ -129,7 +140,6 @@ const Accounts = ({
             ) : (
               <View>
                 <Text style={{ textAlign: "center" }}>
-                
                   Seleccionar una cuenta principal
                 </Text>
               </View>
@@ -164,7 +174,7 @@ const Accounts = ({
                           />
                         </View>
 
-                        <View style={{ alignContent: "center" , flex:6 }}>
+                        <View style={{ alignContent: "center", flex: 6 }}>
                           <View
                             style={{
                               flexDirection: "row",
@@ -173,21 +183,31 @@ const Accounts = ({
                             }}
                           >
                             <Text style={style.negrita}>Entidad:</Text>
-                            <Text style={style.tex}>{item.nameEntity[0].nameEntity.length > 20 ? `${item.nameEntity[0].nameEntity.substr(0,18)}...` : item.nameEntity[0].nameEntity }</Text>
+                            <Text style={style.tex}>
+                              {item.nameEntity[0].nameEntity.length > 20
+                                ? `${item.nameEntity[0].nameEntity.substr(
+                                    0,
+                                    18
+                                  )}...`
+                                : item.nameEntity[0].nameEntity}
+                            </Text>
                           </View>
                           <View style={{ flexDirection: "row" }}>
                             <Text style={style.negrita}>Cuenta:</Text>
-                            <Text style={style.tex}>{item.accountNumber.toLocaleString().substr(0,16)}...</Text>
+                            <Text style={style.tex}>
+                              {item.accountNumber
+                                .toLocaleString()
+                                .substr(0, 16)}
+                              ...
+                            </Text>
                           </View>
                         </View>
 
                         <View
                           style={{
-                            
                             flex: 1,
                             flexDirection: "row",
-                            justifyContent: "flex-end"
-                          
+                            justifyContent: "flex-end",
                           }}
                         >
                           <TouchableOpacity
@@ -215,39 +235,44 @@ const Accounts = ({
                                   <Text style={style.modalText}>
                                     Seguro desea ELIMINAR la cuenta?
                                   </Text>
-                                  <View style={{flexDirection:"row-reverse"}}>
-
-                                  <TouchableHighlight
-                                    style={{
-                                      ...style.openButton,
-                                      backgroundColor: rojo,
-                                    }}
-                                    onPress={() => {
-                                      handleDelete(item._id);
-                                    }}
+                                  <View
+                                    style={{ flexDirection: "row-reverse" }}
                                   >
-                                    <Text style={style.textStyle}>
-                                      Confirmar
-                                    </Text>
-                                  </TouchableHighlight>
-                                  <TouchableHighlight
-                                    style={{
-                                      ...style.openButton,
-                                      backgroundColor: 'white',
-                                      borderWidth: 1,
-                                      borderColor:buttonColor
-                                    }}
-                                    onPress={() => {
-                                      setModalVisible(!modalVisible);
-                                    }}
-                                  >
-                                    <Text style={{ ...style.textStyle , color:buttonColor}}>
-                                      Cancelar
-                                    </Text>
-                                  </TouchableHighlight>
+                                    <TouchableHighlight
+                                      style={{
+                                        ...style.openButton,
+                                        backgroundColor: rojo,
+                                      }}
+                                      onPress={() => {
+                                        handleDelete(item._id);
+                                      }}
+                                    >
+                                      <Text style={style.textStyle}>
+                                        Confirmar
+                                      </Text>
+                                    </TouchableHighlight>
+                                    <TouchableHighlight
+                                      style={{
+                                        ...style.openButton,
+                                        backgroundColor: "white",
+                                        borderWidth: 1,
+                                        borderColor: buttonColor,
+                                      }}
+                                      onPress={() => {
+                                        setModalVisible(!modalVisible);
+                                      }}
+                                    >
+                                      <Text
+                                        style={{
+                                          ...style.textStyle,
+                                          color: buttonColor,
+                                        }}
+                                      >
+                                        Cancelar
+                                      </Text>
+                                    </TouchableHighlight>
+                                  </View>
                                 </View>
-                                </View>
-
                               </View>
                             </Modal>
                           </View>

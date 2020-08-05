@@ -1,4 +1,4 @@
-const { User, Agent } = require("../models/index");
+const { User, Agent, Account } = require("../models/index");
 const { SendMail } = require("../controllers/nodemailer");
 const { findById } = require("../models/users");
 
@@ -42,33 +42,34 @@ const userLogout = (req, res) => {
 };
 
 const editProfileUser = async (req, res) => {
-  console.log('REQ.BODY.PASSWORD', req.body.password)
-  try{
-  let user = await User.findOne({
-    _id : req.body._id
-  })
-  if(req.body.password){
-    let newPassword = await user.hashPasswordUser(req.body.password)
-    console.log('NEW PASS!!!!!!', newPassword, 'USER!!!!!', user)
-    let updtatedUser =  await user.updateOne({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      username: req.body.username,
-      password: newPassword
-    })  
-    res.status(200).json(updtatedUser)
-  }else{
-    let updtatedUser =  await user.updateOne({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      username: req.body.username,
-    })  
-    res.status(200).json(updtatedUser)
+  console.log("REQ.BODY", req.body);
+  try {
+    let user = await User.findOne({
+      _id: req.body._id,
+    });
+    if (req.body.password) {
+      let newPassword = await user.hashPasswordUser(req.body.password);
+      console.log("NEW PASS!!!!!!", newPassword, "USER!!!!!", user);
+      await user.updateOne({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        password: newPassword,
+      })
+    } else {
+      await user.updateOne({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+      })
+    }
+    return User.findById(req.body._id).then((user)=>{
+      res.send(user)
+    })
+  } catch (err) {
+    console.log(err);
   }
-   }catch(err){
-    console.log(err)
-  }
-}
+};
 
 const userValidation = (req, res) => {
   console.log(req.body, "REQ BODY");
@@ -104,14 +105,25 @@ const setTcn = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-  User.updateOne({ _id: req.params.id }, { isEliminated: true }).then(() => {
-    Agent.updateMany({ user: req.params.id }, { isEliminated: true }).then(
-      () => {
-        console.log("USUARIO ELIMINADO");
-        res.sendStatus(200);
-      }
-    );
-  });
+  console.log(req.params.id, "REQPARAMS");
+  User.updateOne({ _id: req.params.id }, { isEliminated: true })
+
+    .then(() => {
+      return Agent.updateMany(
+        { user: req.params.id },
+        { $set: { isEliminated: true } }
+      );
+    })
+    .then(() => {
+      return Account.updateMany(
+        { user: req.params.id },
+        { $set: { isEliminated: true } }
+      );
+    })
+    .then(() => {
+      console.log("USUARIO ELIMINADO");
+      res.sendStatus(200);
+    });
 };
 
 module.exports = {

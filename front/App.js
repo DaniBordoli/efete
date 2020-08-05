@@ -7,6 +7,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerMenu from "./src/screens/Navigator/drawer";
 import Root from "./src/screens/Navigator/stack";
 import { NavigationContainer, DarkTheme } from "@react-navigation/native";
+import {YellowBox} from 'react-native';
+
 
 
 const fetchFonts = () => {
@@ -21,7 +23,7 @@ const fetchFonts = () => {
     'Roboto_medium': require("./assets/fonts/Roboto-Medium.ttf"),
   });
 };
-
+console.disableYellowBox = true
 const Drawer = createDrawerNavigator();
 
 export default () => {

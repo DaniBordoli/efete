@@ -1,10 +1,20 @@
 import firebase from "firebase/app";
 import "firebase/storage";
+import {
+  FIREBASE_API_KEY,
+  AUTHDOMAIN,
+  DATABASE_URL,
+  PROJECT_ID,
+  STORAGE_BUCKET,
+  MESSAGING_SENDER_ID,
+  APP_ID,
+  MEASUREMENT_ID,
+} from "@env";
 
 var firebaseConfig = {
-  apiKey: "AIzaSyBWzvdmhVkJF1Y0muHpJJeKUKaFNZn9_HQ",
+  apiKey: FIREBASE_API_KEY,
   authDomain: "efete-db5f7.firebaseapp.com",
-  databaseURL: "https://efete-db5f7.firebaseio.com",
+  databaseURL: "https://efete-db5f7.firebaseio.com/",
   projectId: "efete-db5f7",
   storageBucket: "efete-db5f7.appspot.com",
   messagingSenderId: "501735424301",

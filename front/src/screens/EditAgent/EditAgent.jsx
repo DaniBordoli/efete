@@ -14,6 +14,7 @@ import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import OpenCamera from "../camera/OpenCameraContainer.jsx";
 import { fondoColor, inputDark, headerColor } from "../../Common/constans.js";
+import { GOOGLE_LOCATION_API_KEY } from "@env";
 
 export default ({
   handleSubmit,
@@ -29,7 +30,13 @@ export default ({
   mode,
 }) => {
   return (
-    <ScrollView style={{ backgroundColor: mode ? fondoColor : "black" }}>
+    <ScrollView
+      keyboardShouldPersistTaps="always"
+      style={{
+        ...style.mainContainer,
+        backgroundColor: mode ? fondoColor : "black",
+      }}
+    >
       <Text style={style.containerTitle}>Datos de tu Negocio</Text>
       <View style={style.container}>
         <Text
@@ -74,7 +81,7 @@ export default ({
               },
             }}
             enablePoweredByContainer={false}
-            placeholder="Editar Ubicacion"
+            placeholder={address}
             returnKeyType={"search"}
             listViewDisplayed="auto"
             fetchDetails={true}
@@ -82,7 +89,7 @@ export default ({
               notifyChange(detail.geometry.location);
               handlerAddress(data);
             }}
-            query={{ key: "AIzaSyBV-TT8w7N3TC9LDFGIQOk9BmN1iX10arg" }}
+            query={{ key: GOOGLE_LOCATION_API_KEY }}
             nearbyPlacesAPI="GooglePlacesSearch"
             debounce={200}
           />
@@ -112,18 +119,15 @@ export default ({
             style={mode ? style.input : style.inputDark}
             defaultValue={cuil}
             required
+            keyboardType="numeric"
           />
         </View>
       </View>
 
+      <Text style={style.textOpenCamera}>Subir foto</Text>
+
       {image !== "" ? (
-        <View
-          style={{
-            flexDirection: "row",
-            alignSelf: "center",
-            marginLeft: "10%",
-          }}
-        >
+        <View>
           <Image
             style={mode ? style.image : style.imageDark}
             source={{ uri: image }}
@@ -135,12 +139,11 @@ export default ({
         </View>
       )}
 
-      <Text style={style.textOpenCamera}>Subir foto</Text>
-
       <OpenCamera view={view} navigation={navigation} />
       <View style={{ alignItems: "center" }}>
         <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
       </View>
+
       <View>
         <TouchableOpacity
           style={style.confirmar}

@@ -46,6 +46,7 @@ const get_user_agents = (agents) => {
 };
 
 export const editAgent = (agentData) => (dispatch) => {
+  console.log(agentData, "AGENT ACA DATA");
   return axios
     .patch(`http://${IP}:1337/api/agents/editprofile`, agentData)
     .then((res) => {
@@ -68,7 +69,7 @@ export const createAgent = (
   address,
   ubicacion,
   cuil,
-  dailyAmount,
+
   user
 ) => (dispatch) => {
   return axios
@@ -77,7 +78,6 @@ export const createAgent = (
       address: address,
       ubicacion: ubicacion,
       cuil: cuil,
-      dailyAmount: dailyAmount,
       user: user,
     })
     .then((res) => {
@@ -88,7 +88,6 @@ export const createAgent = (
           name: name,
           address: address,
           cuil: cuil,
-          dailyAmount: dailyAmount,
           user: user,
         })
       );
@@ -98,7 +97,6 @@ export const createAgent = (
           address: address,
           ubicacion: ubicacion,
           cuil: cuil,
-          dailyAmount: dailyAmount,
           user: user,
           id: res.data.agentCreated._id,
         })

@@ -3,21 +3,18 @@ import {
   View,
   TextInput,
   Text,
-  Button,
   Image,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView,
-  KeyboardAvoidingView,
 } from "react-native";
+import { YellowBox } from 'react-native';
 import { style } from "./style";
-import storage from "../../firebase/index";
-import { MaterialIcons } from "@expo/vector-icons";
+
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import OpenCamera from "../camera/OpenCameraContainer";
+import { GOOGLE_LOCATION_API_KEY } from "@env";
 
 const CreateAgentForm = ({
-  handlerDailyAmount,
   handlerCuil,
   handlerAddress,
   handlerName,
@@ -28,16 +25,19 @@ const CreateAgentForm = ({
   address,
   cuil,
   notifyChange,
-  isValid
+  isValid,
 }) => {
   return (
-    <View>
+
+    <ScrollView
+    keyboardShouldPersistTaps="always"
+    style={style.mainContainer}
+    >
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
       <View style={style.container}>
         <Text
           style={{
             alignSelf: "flex-start",
-            marginLeft: 10,
             marginBottom: 10,
             color: "#424242",
           }}
@@ -56,7 +56,7 @@ const CreateAgentForm = ({
           <GooglePlacesAutocomplete
             styles={{
               textInputContainer: {
-                width: "95%",
+                width: "100%",
                 alignSelf: "center",
                 elevation: 3,
                 backgroundColor: "white",
@@ -79,7 +79,7 @@ const CreateAgentForm = ({
               notifyChange(detail.geometry.location);
               handlerAddress(data);
             }}
-            query={{ key: "AIzaSyBV-TT8w7N3TC9LDFGIQOk9BmN1iX10arg" }}
+            query={{ key: GOOGLE_LOCATION_API_KEY }}
             nearbyPlacesAPI="GooglePlacesSearch"
             debounce={200}
           />
@@ -112,8 +112,8 @@ const CreateAgentForm = ({
       <OpenCamera navigation={navigation} view="CreateAgentForm" />
       <View>
         <TouchableOpacity
-          /* disabled={!isValid} */
-          style={style.confirmar}
+          disabled={!isValid} 
+          style={isValid?style.confirmar:style.confirmarDisabled}
           title="Confirmar"
           onPress={() => {
             handlerSubmit();
@@ -128,7 +128,7 @@ const CreateAgentForm = ({
           <Text style={style.textConfirmar}>CONFIRMAR</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
