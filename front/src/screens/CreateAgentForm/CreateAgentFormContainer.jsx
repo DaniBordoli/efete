@@ -37,6 +37,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
     setName(text);
   }
   function handlerAddress(text) {
+    YellowBox.ignoreWarnings(['VirtualizedLists should never be nested']);
     setAddress(text.description);
   }
 

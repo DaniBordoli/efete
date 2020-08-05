@@ -10,6 +10,7 @@ import {
   SafeAreaView,
   KeyboardAvoidingView,
 } from "react-native";
+import { YellowBox } from 'react-native';
 import { style } from "./style";
 import storage from "../../firebase/index";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -31,13 +32,16 @@ const CreateAgentForm = ({
   isValid
 }) => {
   return (
-    <ScrollView>
+
+    <ScrollView
+    keyboardShouldPersistTaps="always"
+    style={style.mainContainer}
+    >
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
       <View style={style.container}>
         <Text
           style={{
             alignSelf: "flex-start",
-            marginLeft: 10,
             marginBottom: 10,
             color: "#424242",
           }}
@@ -56,7 +60,7 @@ const CreateAgentForm = ({
           <GooglePlacesAutocomplete
             styles={{
               textInputContainer: {
-                width: "95%",
+                width: "100%",
                 alignSelf: "center",
                 elevation: 3,
                 backgroundColor: "white",
@@ -112,7 +116,7 @@ const CreateAgentForm = ({
       <OpenCamera navigation={navigation} view="CreateAgentForm" />
       <View>
         <TouchableOpacity
-          disabled={!isValid}
+          // disabled={!isValid}
           style={style.confirmar}
           title="Confirmar"
           onPress={() => {

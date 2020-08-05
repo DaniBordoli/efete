@@ -2,50 +2,52 @@ import { StyleSheet, Dimensions } from "react-native";
 import { headerColor, buttonColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
+  mainContainer:{
+  backgroundColor: '#FDFDFF',
+  height: '100%',
+  },
   container: {
     alignItems: "center",
-    backgroundColor: "#FAFBFF",
-
-    paddingBottom: 5,
-    paddingTop: 20,
-    marginLeft: 15,
-    marginRight: 15,
     borderRadius: 10,
-    width: "90%",
+    width: "80%",
     alignSelf: "center",
+    marginRight: '10%',
+    marginLeft: '10%',
+    marginBottom: '5%',
+    marginTop: '5%',
+    borderColor: '#CCCFFF',
+    borderWidth: 0.5
   },
   containerTitle: {
     color: "#6F76E4",
     fontSize: 22,
     fontFamily: "nunito",
-    margin: 20,
     textAlign: "center",
     textTransform: "uppercase",
+    marginTop: '12%',
+    marginBottom: '5%'
+
   },
   title: {
-    marginBottom: 10,
     color: "#424242",
+    marginBottom: '3%'
   },
   input: {
     backgroundColor: "#ffffff",
-    width: 350,
-    padding: 5,
-    marginBottom: 25,
+    padding: '2%',
+    marginBottom: '10%',
     elevation: 2,
     height: 40,
     shadowRadius: 4.0,
     shadowOpacity: 0.25,
     borderRadius: 3,
-  },
-  input2: {
-    width: "100%",
-    backgroundColor: "#FAFBFF",
-    borderRadius: 3,
+    width: 300,
   },
   confirmar: {
     backgroundColor: "#00CC96",
     borderRadius: 5,
-    marginTop: 30,
+    marginTop: '10%',
+    marginBottom: '5%',
     width: "50%",
     alignSelf: "center",
   },
@@ -74,9 +76,9 @@ export const style = StyleSheet.create({
     fontSize: 10,
   },
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 20,
+    width: 200,
+    height: 150,
+    borderRadius: 12,
     marginTop: 30,
     alignSelf: "center",
   },

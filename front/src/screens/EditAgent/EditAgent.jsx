@@ -29,7 +29,10 @@ export default ({
   mode,
 }) => {
   return (
-    <ScrollView style={{ backgroundColor: mode ? fondoColor : "black" }}>
+    <ScrollView 
+    keyboardShouldPersistTaps="always"
+    style={style.mainContainer}
+    >
       <Text style={style.containerTitle}>Datos de tu Negocio</Text>
       <View style={style.container}>
         <Text
@@ -112,17 +115,15 @@ export default ({
             style={mode ? style.input : style.inputDark}
             defaultValue={cuil}
             required
+            keyboardType="numeric"
           />
         </View>
       </View>
 
+      <Text style={style.textOpenCamera}>Subir foto</Text>
+
       {image !== "" ? (
         <View
-          style={{
-            flexDirection: "row",
-            alignSelf: "center",
-            marginLeft: "10%",
-          }}
         >
           <Image
             style={mode ? style.image : style.imageDark}
@@ -135,12 +136,11 @@ export default ({
         </View>
       )}
 
-      <Text style={style.textOpenCamera}>Subir foto</Text>
-
       <OpenCamera view={view} navigation={navigation} />
       <View style={{ alignItems: "center" }}>
         <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
       </View>
+      
       <View>
         <TouchableOpacity
           style={style.confirmar}
