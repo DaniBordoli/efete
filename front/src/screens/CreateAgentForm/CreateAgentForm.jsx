@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import { YellowBox } from 'react-native';
 import { style } from "./style";
 
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -27,13 +28,16 @@ const CreateAgentForm = ({
   isValid,
 }) => {
   return (
-    <View>
+
+    <ScrollView
+    keyboardShouldPersistTaps="always"
+    style={style.mainContainer}
+    >
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
       <View style={style.container}>
         <Text
           style={{
             alignSelf: "flex-start",
-            marginLeft: 10,
             marginBottom: 10,
             color: "#424242",
           }}
@@ -52,7 +56,7 @@ const CreateAgentForm = ({
           <GooglePlacesAutocomplete
             styles={{
               textInputContainer: {
-                width: "95%",
+                width: "100%",
                 alignSelf: "center",
                 elevation: 3,
                 backgroundColor: "white",
@@ -124,7 +128,7 @@ const CreateAgentForm = ({
           <Text style={style.textConfirmar}>CONFIRMAR</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
