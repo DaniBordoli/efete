@@ -155,17 +155,20 @@ export const fetchValidation = (id, tcn, token) => (dispatch) => {
       }
     )
     .then((res) => {
+      console.log(res.data, "RES DATA ACA");
       if (
         res.data.data.notificacion &&
         res.data.data.notificacion.status === "HIT"
-      )
-        axios
+      ) {
+        return axios
           .patch(`http://${IP}:1337/api/users/validateIdentity`, {
             _id: id,
             validatedIdentity: true,
           })
           .then((res) => dispatch(login_user(res.data)));
-      else null;
+      } else {
+        null;
+      }
     });
 };
 
