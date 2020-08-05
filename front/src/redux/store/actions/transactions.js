@@ -10,7 +10,7 @@ import {
   SET_TRANSACTION,
   FETCH_AGENT_TRANSACTIONS,
 } from "../constants";
-import { BINDPASS, BINDUSER } from "@env";
+import { BINDPASS, BINDUSER, ACCOUNT_ID, BANK_ID, VIEW_ID } from "@env";
 
 export const fetch_transactions = (transactions) => {
   return {
@@ -93,60 +93,61 @@ export const createTransaction = (transaction) => (dispatch) =>
       username: BINDUSER,
       password: BINDPASS,
     })
-    .then((res) => console.log(res.data, "TOKEN BIND ACA"));
+    .then((res) => {
+      const token = "JWT " + res.data.token;
+      console.log(token, "TOKEN");
 
-// axios
-//   .post(
-//     "https://sandbox.bind.com.ar/v1/banks/322/accounts/21-1-99999-4-6/owner/transaction-request-types/DEBIN/transaction-requests",
+      return axios
+        .post(
+          `https://sandbox.bind.com.ar/v1/banks/${BANK_ID}/accounts/${ACCOUNT_ID}/${VIEW_ID}/transaction-request-types/DEBIN/transaction-requests`,
 
-//     {
-//       to: {
-//         cbu: transaction.originAccountCbu,
-//       },
-//       value: {
-//         currency: "ARS",
-//         amount: transaction.amount + 50,
-//       },
-//       concept: "EXP",
-//       expiration: 23,
-//     },
-//     {
-//       headers: {
-//         Authorization:
-//           "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTY1NTA4OTQwNTcsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjU3OTY5NH0.U74pdPhT1Lzpf71FnoZLhp1yMxcVK5cQvXhsAKYL4u3dKSRXeZi7zunN4YW2gDINL-F_RQh9T7x2nB0EnzB1PQ",
-//       },
-//     }
-//   )
-//   .then(() => {
-//     axios.post(
-//       "https://sandbox.bind.com.ar/v1/banks/322/accounts/21-1-99999-4-6/owner/transaction-request-types/TRANSFER/transaction-requests",
+          {
+            to: {
+              cbu: transaction.originAccountCbu,
+            },
+            value: {
+              currency: "ARS",
+              amount: transaction.amount + 50,
+            },
+            concept: "EXP",
+            expiration: 23,
+          },
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
+        .then(() => {
+          axios.post(
+            `https://sandbox.bind.com.ar/v1/banks/${BANK_ID}/accounts/${ACCOUNT_ID}/${VIEW_ID}/transaction-request-types/TRANSFER/transaction-requests`,
 
-//       {
-//         to: {
-//           cbu: transaction.cbu,
-//         },
-//         value: {
-//           currency: "ARS",
-//           amount: transaction.amount + 25,
-//         },
-//         description: "Transfer de prueba",
-//         concept: "VAR",
-//         emails: ["facunovaroh@gmail.com"],
-//       },
-//       {
-//         headers: {
-//           Authorization:
-//             "JWT eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIra0d3ckdBb1lpR2RyVjVYSU5aYnBFQ255dU9FSHExb090N2RvdVVTckNrPSIsImNyZWF0ZWQiOjE1OTY1NTA4OTQwNTcsIm5hbWUiOiJGYWN1bmRvIE5vdmFybyBIdWV5byIsImV4cCI6MTU5NjU3OTY5NH0.U74pdPhT1Lzpf71FnoZLhp1yMxcVK5cQvXhsAKYL4u3dKSRXeZi7zunN4YW2gDINL-F_RQh9T7x2nB0EnzB1PQ",
-//         },
-//       }
-//     );
-//   })
+            {
+              to: {
+                cbu: transaction.cbu,
+              },
+              value: {
+                currency: "ARS",
+                amount: transaction.amount + 25,
+              },
+              description: "Transfer de prueba",
+              concept: "VAR",
+              emails: ["facunovaroh@gmail.com"],
+            },
+            {
+              headers: {
+                Authorization: token,
+              },
+            }
+          );
+        })
 
-//   .then(() => {
-//     return axios
-//       .post(`http://${IP}:1337/api/transactions`, transaction)
-//       .then((res) => dispatch(newTransaction(res.data)));
-//   });
+        .then(() => {
+          return axios
+            .post(`http://${IP}:1337/api/transactions`, transaction)
+            .then((res) => dispatch(newTransaction(res.data)));
+        });
+    });
 
 export const getAgentTransactions = (id) => (dispatch) => {
   return axios

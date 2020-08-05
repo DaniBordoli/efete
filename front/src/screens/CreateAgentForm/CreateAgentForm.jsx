@@ -11,6 +11,7 @@ import { style } from "./style";
 
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import OpenCamera from "../camera/OpenCameraContainer";
+import { GOOGLE_LOCATION_API_KEY } from "@env";
 
 const CreateAgentForm = ({
   handlerCuil,
@@ -74,7 +75,7 @@ const CreateAgentForm = ({
               notifyChange(detail.geometry.location);
               handlerAddress(data);
             }}
-            query={{ key: "AIzaSyBV-TT8w7N3TC9LDFGIQOk9BmN1iX10arg" }}
+            query={{ key: GOOGLE_LOCATION_API_KEY }}
             nearbyPlacesAPI="GooglePlacesSearch"
             debounce={200}
           />
