@@ -86,23 +86,16 @@ export const style = StyleSheet.create({
     marginTop: 22
   },
   modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
+    backgroundColor: 'white',
+    padding: 22,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
   },
   openButton: {
     marginTop:15,
-    width:160,
+    width:"75%",
     backgroundColor: headerColor,
     borderRadius: 5,
     padding: 10,

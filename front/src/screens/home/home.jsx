@@ -7,7 +7,7 @@ export default class Example extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.containerM}>
         {/* {this._renderButton('Default modal', () =>
           this.setState({ visibleModal: 1 })
         )}
