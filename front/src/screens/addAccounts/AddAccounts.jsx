@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
   KeyboardAvoidingView,
+  ScrollView
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
@@ -25,6 +26,8 @@ const AddAccount = ({
 }) => {
 
   return (
+    
+  <ScrollView>
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
       <View style={{ flex: 7 }}>
         <Text style={style.textoo}>Agregar cuenta</Text>
@@ -100,6 +103,7 @@ const AddAccount = ({
         />
       </View>
     </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
