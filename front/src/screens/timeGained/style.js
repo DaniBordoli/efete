@@ -16,53 +16,46 @@ export const style = StyleSheet.create({
   },
   title: {
     color: "#6F76E4",
-    fontSize: 22,
+    fontSize: 25,
     fontFamily: "nunito",
     margin: "3%",
     textAlign: "center",
     textTransform: "uppercase",
   },
-  icon: {
-    width: 150,
-    height: 150,
-    marginTop: "4%",
-    marginBottom: "6%",
-    alignSelf: "center",
-  },
-  text: {
+
+  title2: {
+    color: "#6F76E4",
+    fontSize: 20,
     fontFamily: "nunito",
-    fontSize: 30,
-    marginTop: "3%",
+    margin: "15%",
+    textAlign: "center",
     textTransform: "uppercase",
   },
+  titleNumber: {
+    color: "#6F76E4",
+    fontSize: 45,
+    fontFamily: "nunito",
+    margin: "3%",
+    textAlign: "center",
+    textTransform: "uppercase",
+  },
+
   text1: {
-    fontSize: 15,
+    fontSize: 20,
     marginTop: "3%",
     marginLeft: "10%",
     marginRight: "10%",
     fontFamily: "nunito",
     textAlign: "center",
   },
-  text2: {
-    fontSize: 50,
-    marginTop: "3%",
-    fontFamily: "nunito",
-    color: "#00CC96",
-  },
+
   hr: {
     width: "80%",
     borderTopColor: "#808080",
     borderTopWidth: 1,
     alignSelf: "center",
   },
-  volver: {
-    padding: "1%",
-    borderRadius: 5,
-    marginTop: "15%",
-    marginRight: "1%",
-    borderWidth: 1,
-    borderColor: "#00CC96",
-  },
+
   textCancelar: {
     color: "#00CC96",
     fontSize: 20,
@@ -71,27 +64,5 @@ export const style = StyleSheet.create({
     paddingBottom: "3%",
     paddingTop: "2%",
     fontFamily: "nunito",
-  },
-  confirmar: {
-    backgroundColor: "#00CC96",
-    padding: "1%",
-    borderRadius: 5,
-    marginTop: "10%",
-    width: 250,
-    alignSelf: "center",
-  },
-  textConfirmar: {
-    color: "white",
-    fontSize: 20,
-    paddingLeft: "8%",
-    paddingRight: "8%",
-    paddingBottom: "3%",
-    paddingTop: "2%",
-    fontFamily: "nunito",
-    alignSelf: "center",
-  },
-  botonesCont: {
-    flexDirection: "row",
-    justifyContent: "space-between",
   },
 });
