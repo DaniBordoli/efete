@@ -46,7 +46,7 @@ export default ({ navigation }) => {
       </Text>
       <View style={style.inputContainer}>
         <TextInput
-          //keyboardType="numeric"
+          keyboardType="numeric"
           style={style.input}
           onChangeText={(text) => handleCode(text)}
           value={code}

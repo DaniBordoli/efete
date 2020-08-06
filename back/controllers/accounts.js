@@ -2,7 +2,7 @@ const AccountsModel = require("../models/accounts");
 
 const AccountsController = {
   findMainAccount(req, res) {
-    AccountsModel.findOne({
+    return AccountsModel.findOne({
       user: req.params.userId,
       mainAccount: true,
       isEliminated: false,
@@ -10,7 +10,8 @@ const AccountsController = {
       .populate("nameEntity")
       .populate("user")
       .then((account) => {
-        res.send(account);
+        if (account) res.send(account);
+        else res.send({});
       })
       .catch((err) => {
         res.status(500).send(err);

@@ -11,32 +11,41 @@ export default ({ navigation }) => {
   const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [gender, setGender] = useState("M");
+  const [gender, setGender] = useState("");
+  const [validFirst, setValidFirst] = useState(true);
+  const [validLast, setValidLast] = useState(true);
+  const [validDni, setValidDni] = useState(true);
+  const [validPass, setValidPass] = useState(true);
+  const [validUser, setValidUser] = useState(true);
+  const [validGender, setValidGender] = useState(true);
 
   const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
 
-  const [isValid, setIsValid] = useState(false);
-
   function usernameChange(text) {
     setUsername(text);
-    handleIsValid();
+    text.length > 0 ? setValidUser(false) : setValidUser(true);
   }
   function firstNameChange(text) {
     setFirstName(text);
-    handleIsValid();
+    text.length > 0 ? setValidFirst(false) : setValidFirst(true);
   }
   function lastNameChange(text) {
     setLastName(text);
-    handleIsValid();
+    text.length > 0 ? setValidLast(false) : setValidLast(true);
   }
   function dniChange(text) {
     setDni(text);
-    handleIsValid();
+    text.length > 0 ? setValidDni(false) : setValidDni(true);
   }
   function passwordChange(text) {
     setPassword(text);
-    handleIsValid();
+    text.length > 0 ? setValidPass(false) : setValidPass(true);
+  }
+
+  function handleGender(sexo) {
+    setGender(sexo);
+    sexo.length > 0 ? setValidGender(false) : setValidGender(true);
   }
 
   function handleSubmit() {
@@ -55,24 +64,6 @@ export default ({ navigation }) => {
     });
   }
 
-  const handleIsValid = () => {
-    if (
-      firstName.length > 0 &&
-      lastName.length > 0 &&
-      dni.length > 0 &&
-      password.length > 0 &&
-      username.length > 0 &&
-      gender.length > 0
-    ) {
-      setIsValid(true);
-    }
-  };
-
-  function handleGender(sexo) {
-    console.log(sexo, "SEXO");
-    setGender(sexo);
-  }
-
   return (
     <Register
       usernameChange={usernameChange}
@@ -86,7 +77,13 @@ export default ({ navigation }) => {
       handleGender={handleGender}
       mode={mode}
       gender={gender}
-      isValid={isValid}
+      validDni={validDni}
+      validFirst={validFirst}
+      validGender={validGender}
+      validLast={validLast}
+      validPass={validPass}
+      validUser={validUser}
+      validGender={validGender}
     />
   );
 };

@@ -36,9 +36,12 @@ const get_banks = (banks) => {
 };
 
 export const fetchMainAccount = (userId) => (dispatch) => {
-  axios
+  return axios
     .get(`http://${IP}:1337/api/accounts/main/${userId}`)
-    .then((res) => dispatch(get_user_main_account(res.data)));
+    .then((res) => {
+      console.log("RES DATA ACCOUNTS", res.data);
+      dispatch(get_user_main_account(res.data));
+    });
 };
 
 export const setMainAccount = (id, userId) => (dispatch) => {

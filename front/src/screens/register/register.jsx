@@ -27,7 +27,12 @@ export default ({
   handleGender,
   mode,
   gender,
-  isValid,
+  validDni,
+  validFirst,
+  validGender,
+  validLast,
+  validPass,
+  validUser,
 }) => {
   var height = Dimensions.get("screen").height;
 
@@ -101,11 +106,14 @@ export default ({
                   style={{ height: 50, width: 170 }}
                   onValueChange={(item) => handleGender(item)}
                   selectedValue={gender}
-                  
                 >
-                  <Picker.Item value="" label="Indicar genero" color="#b6b6b6" />
-                  <Picker.Item label="Femenino" value="F"   />
-                  <Picker.Item label="Masculino" value="M"  />
+                  <Picker.Item
+                    value=""
+                    label="Indicar genero"
+                    color="#b6b6b6"
+                  />
+                  <Picker.Item label="Femenino" value="F" />
+                  <Picker.Item label="Masculino" value="M" />
                 </Picker>
               </View>
             </View>
@@ -174,7 +182,14 @@ export default ({
             }}
           >
             <Button
-              disabled={!isValid}
+              disabled={
+                validUser ||
+                validLast ||
+                validPass ||
+                validGender ||
+                validDni ||
+                validFirst
+              }
               buttonStyle={style.botonIniciar}
               titleStyle={style.tituloIniciar}
               title="Registrarse"
