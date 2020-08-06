@@ -72,16 +72,18 @@ export const style = StyleSheet.create({
     textAlign: "center",
   },
   confirmar: {
-    backgroundColor: buttonColor,
+    backgroundColor: 'white',
     padding: "4%",
     borderRadius: 3,
     width: "40%",
     marginTop: "15%",
     alignSelf: "center",
+    borderWidth: 1,
+    borderColor: buttonColor
     
   },
   textConfirmar: {
-    color: "white",
+    color: buttonColor,
     fontSize: 20,
     width: "100%",
     fontFamily: "nunito",

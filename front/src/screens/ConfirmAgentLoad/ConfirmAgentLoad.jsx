@@ -9,7 +9,7 @@ const ConfirmAgentLoad = ({ value , mode}) => {
     const navigation = useNavigation();
 
     return(
-  
+      <ScrollView>
     <View style={style.container}>
       
       <View style={style.imageCont}>
@@ -42,6 +42,7 @@ const ConfirmAgentLoad = ({ value , mode}) => {
         </TouchableOpacity>  
 
     </View>
+  </ScrollView>
    
     )
 }
