@@ -10,5 +10,11 @@ export default ({ navigation, route }) => {
   );
   const transaction = route.params.transaction;
 
-  return <TransactionOk mode={mode} navigation={navigation} transaction={transaction} />;
+  return( 
+  <TransactionOk 
+  mode={mode} 
+  navigation={navigation} 
+  transaction={transaction} 
+  />
+  );
 };

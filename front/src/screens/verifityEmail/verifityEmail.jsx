@@ -51,7 +51,7 @@ export default ({ navigation }) => {
       </Text>
       <View style={style.inputContainer}>
         <TextInput
-        maxLength={6}
+          maxLength={6}
           keyboardType="numeric"
           style={style.input}
           onChangeText={(text) => handleCode(text)}

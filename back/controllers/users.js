@@ -5,6 +5,7 @@ const { findById } = require("../models/users");
 const userRegister = (req, res, next) => {
   User.findOne({ dni: req.body.dni })
     .then((user) => {
+      console.log(user, "USER");
       if (user)
         res.send({ messageDni: "Ya hay un usuario registrado con este DNI." });
       if (!user) {
