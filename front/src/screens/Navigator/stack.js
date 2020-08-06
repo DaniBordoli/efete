@@ -46,6 +46,7 @@ export default ({ navigation }) => {
   const header = mode ? myHeader : myHeaderDark;
 
   const mode = useSelector((state) => state.users.mode);
+  const user = useSelector((state) => state.users.user)
 
   return (
     <Stack.Navigator initialRouteName="Login">
@@ -117,7 +118,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ headerShown: false }}
+        options={{headerShown: false }}
       />
 
       <Stack.Screen
@@ -153,7 +154,8 @@ export default ({ navigation }) => {
               style={{ marginRight: 10, color: "white" }}
               size={26}
               color="white"
-              onPress={() => navigation.navigate("EditUserProfile")}
+              onPress={() => navigation.navigate("EditUserProfile")
+            }
             />
           ),
           headerLeft: () => (
@@ -171,7 +173,7 @@ export default ({ navigation }) => {
           },
 
           headerTitleAlign: "center",
-          title: "Perfil usuario",
+          title:`Hola ${user.firstName}`
         }}
       />
       <Stack.Screen

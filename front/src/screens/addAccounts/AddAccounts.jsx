@@ -23,6 +23,7 @@ const AddAccount = ({
   mode,
   message
 }) => {
+
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
       <View style={{ flex: 7 }}>
@@ -61,8 +62,9 @@ const AddAccount = ({
             style={{ marginLeft: 7 }}
             placeholder="Ingresar cuenta de 22 digitos"
             autoCapitalize="none"
+            isspecialcharacter={true}
             autoCorrect={false}
-            value={accountNumber}
+            value={accountNumber.replace('-', '')}
             onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}
           />
           {isValid ? (
