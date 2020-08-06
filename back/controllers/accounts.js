@@ -2,7 +2,7 @@ const AccountsModel = require("../models/accounts");
 
 const AccountsController = {
   findMainAccount(req, res) {
-    AccountsModel.findOne({
+    return AccountsModel.findOne({
       user: req.params.userId,
       mainAccount: true,
       isEliminated: false,
@@ -12,9 +12,6 @@ const AccountsController = {
       .then((account) => {
         if (account) res.send(account);
         else res.send({});
-      })
-      .catch((err) => {
-        res.status(500).send(err);
       })
       .catch((err) => {
         res.status(500).send(err);
@@ -33,48 +30,55 @@ const AccountsController = {
       });
   },
   createAccount(req, res) {
-    
-    AccountsModel.findOne({accountNumber:req.body.accountNumber , isEliminated: false})
-    .then((account)=> {
-      if (account){
-        res.send({ messageAccount: "Ya hay una cuenta registrada con este número." });
-      } else {
-        AccountsModel.find({ user: req.body.user, isEliminated: false })
-      .then((accounts) => {
-        if (accounts.length === 0) {
-          return AccountsModel.create({
-            nameEntity: req.body.nameEntity,
-            accountNumber: req.body.accountNumber,
-            cbu_cvu: req.body.cbu_cvu,
-            user: req.body.user,
-            mainAccount: true,
-          }).then(() => {
-            return AccountsModel.find({
-              user: req.body.user,
-              isEliminated: false,
-            })
-              .populate("nameEntity")
-              .populate("user")
-              .then((accounts) => {
-                res.status(201).send(accounts);
-              });
+    AccountsModel.findOne({
+      accountNumber: req.body.accountNumber,
+      isEliminated: false,
+    })
+      .then((account) => {
+        if (account) {
+          res.send({
+            messageAccount: "Ya hay una cuenta registrada con este número.",
           });
         } else {
-          AccountsModel.create(req.body).then(() => {
-            return AccountsModel.find({
-              user: req.body.user,
-              isEliminated: false,
-            })
-              .populate("nameEntity")
-              .populate("user")
-              .then((accounts) => {
-                res.status(201).send(accounts);
-              });
-          });
+          AccountsModel.find({ user: req.body.user, isEliminated: false }).then(
+            (accounts) => {
+              if (accounts.length === 0) {
+                return AccountsModel.create({
+                  nameEntity: req.body.nameEntity,
+                  accountNumber: req.body.accountNumber,
+                  cbu_cvu: req.body.cbu_cvu,
+                  user: req.body.user,
+                  mainAccount: true,
+                }).then(() => {
+                  return AccountsModel.find({
+                    user: req.body.user,
+                    isEliminated: false,
+                  })
+                    .populate("nameEntity")
+                    .populate("user")
+                    .then((accounts) => {
+                      res.status(201).send(accounts);
+                    });
+                });
+              } else {
+                AccountsModel.create(req.body).then(() => {
+                  return AccountsModel.find({
+                    user: req.body.user,
+                    isEliminated: false,
+                  })
+                    .populate("nameEntity")
+                    .populate("user")
+                    .then((accounts) => {
+                      res.status(201).send(accounts);
+                    });
+                });
+              }
+            }
+          );
         }
-      })}
-    }).catch((err) => {
-        console.log("ERRROR", err)
+      })
+      .catch((err) => {
+        console.log("ERRROR", err);
         res.status(500).send(err);
       });
   },
@@ -143,4 +147,3 @@ const AccountsController = {
 };
 
 module.exports = AccountsController;
-

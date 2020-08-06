@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { headerColor, buttonColor, buttonDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
@@ -25,7 +25,7 @@ export const style = StyleSheet.create({
     width: "35%",
     alignSelf: "center",
     borderColor: "white",
-    color:'white'
+    color: "white",
   },
 
   confirmar: {
@@ -42,43 +42,53 @@ export const style = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
   },
-  contBotones : {
-    marginTop:100,
-  flexDirection: 'row-reverse',
-  justifyContent:'space-evenly',
-
-
-},
-cancelar: {
-  width: 160,
-  height: 55,
-  backgroundColor: 'white',
-  marginTop: 10,
-  alignSelf: "center",
-  borderWidth: 1,
-  borderColor: buttonColor
-},
-tituloCancelar:{
-  fontSize: 18,
-  textAlign: "center",
-  textTransform: "uppercase",
-  color: buttonColor,
-  fontWeight: "bold",
-},
-cancelarDark: {
-  width: 160,
-  height: 55,
-  backgroundColor: buttonDark,
-  marginTop: 10,
-  alignSelf: "center",
-  borderWidth: 1,
-  borderColor: headerColor
-},
-tituloCancelarDark:{
-  fontSize: 18,
-  textAlign: "center",
-  textTransform: "uppercase",
-  color: headerColor,
-  fontWeight: "bold",
-},
+  contBotones: {
+    marginTop: 100,
+    flexDirection: "row-reverse",
+    justifyContent: "space-evenly",
+  },
+  cancelar: {
+    width: 160,
+    height: 55,
+    backgroundColor: "white",
+    marginTop: 10,
+    alignSelf: "center",
+    borderWidth: 1,
+    borderColor: buttonColor,
+  },
+  tituloCancelar: {
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    color: buttonColor,
+    fontWeight: "bold",
+  },
+  cancelarDark: {
+    width: 160,
+    height: 55,
+    backgroundColor: buttonDark,
+    marginTop: 10,
+    alignSelf: "center",
+    borderWidth: 1,
+    borderColor: headerColor,
+  },
+  tituloCancelarDark: {
+    fontSize: 18,
+    textAlign: "center",
+    textTransform: "uppercase",
+    color: headerColor,
+    fontWeight: "bold",
+  },
+  alert: {
+    textAlign: "center",
+    backgroundColor: "#ff9966",
+    width: Dimensions.get("window").width / 1.3,
+    paddingTop: "2%",
+    paddingBottom: "2%",
+    color: "white",
+    borderRadius: 20,
+    fontWeight: "bold",
+    marginTop: "2%",
+    alignSelf: "center",
+  },
 });
