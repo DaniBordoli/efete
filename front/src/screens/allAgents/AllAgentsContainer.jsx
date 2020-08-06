@@ -40,7 +40,6 @@ export default ({navigation}) => {
           loading={loading}
           handleDelete={handleDelete}
           mode={mode}
-          
         />
     );
 }

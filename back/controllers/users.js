@@ -85,7 +85,8 @@ const editUserTransactions = (req, res) => {
 
 const userValidation = (req, res) => {
   console.log(req.body, "REQ BODY");
-  User.updateOne({ _id: req.body._id }, req.body).then(() => {
+  User.updateOne({ _id: req.body._id }, req.body).then((data) => {
+    
     return User.findById(req.body._id).then((user) => {
       console.log(user, "USER");
       res.send(user);
