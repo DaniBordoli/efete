@@ -11,7 +11,7 @@ export default ({ navigation }) => {
   const [dni, setDni] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [gender, setGender] = useState("M");
+  const [gender, setGender] = useState("");
 
   const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
