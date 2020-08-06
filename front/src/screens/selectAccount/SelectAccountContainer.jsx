@@ -5,26 +5,26 @@ import {
   createTransaction,
   getUserTransactions,
 } from "../../redux/store/actions/transactions";
-import { changeDailyAmount , fetchAgent} from "../../redux/store/actions/agents";
+import {
+  changeDailyAmount,
+  fetchAgent,
+} from "../../redux/store/actions/agents";
+import { editUserTransactions } from "../../redux/store/actions/users";
 import SelectAccount from "./SelectAccount";
-
 
 export default ({ navigation, route }) => {
   const dispatch = useDispatch();
 
-  const mode = useSelector(
-    (state) => state.users.mode
-  );
+  const mode = useSelector((state) => state.users.mode);
   useEffect(() => {
-    
     dispatch(fetchUserAccounts(user._id)).then(() => {
       setLoading(true);
     });
   }, []);
 
-  useEffect(()=>{
-    dispatch(fetchAgent(route.params.agentId))
-  },[])
+  useEffect(() => {
+    dispatch(fetchAgent(route.params.agentId));
+  }, []);
 
   const userAccounts = useSelector((state) => state.accounts.accounts);
   const user = useSelector((state) => state.users.user);
@@ -32,7 +32,6 @@ export default ({ navigation, route }) => {
 
   const [selectedAccount, setSelectedAccount] = useState({});
   const [loading, setLoading] = useState(false);
-
   const handleAccount = (account) => {
     setSelectedAccount(account);
   };
@@ -47,8 +46,16 @@ export default ({ navigation, route }) => {
         destinationAccount: route.params.destinationAccount,
         cbu: route.params.cbu,
         originAccountCbu: selectedAccount.accountNumber,
-      }))
+      })
+    )
       .then((res) => {
+        const newTransaction = user.transactionsMade + 1;
+        dispatch(
+          editUserTransactions({
+            _id: user._id,
+            transactionsMade: newTransaction,
+          })
+        );
         navigation.navigate("TransactionOk", { transaction: res.transaction });
       })
       .then(() => {
@@ -78,7 +85,7 @@ export default ({ navigation, route }) => {
       agenteScanner={route.params.agentId}
       agenteMapa={route.params.agenteMap}
       agent={agent}
-      
+
       // handleAgentDailyAmount={handleAgentDailyAmount}
     />
   );

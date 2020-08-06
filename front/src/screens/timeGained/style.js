@@ -1,5 +1,4 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { buttonColor, violetaOscuro, headerColor} from '../../Common/constans'
 
 export const style = StyleSheet.create({
   mainContainer: {
@@ -28,19 +27,20 @@ export const style = StyleSheet.create({
     height: 150,
     marginTop: "4%",
     marginBottom: "6%",
+    alignSelf: "center",
   },
   text: {
-    fontFamily: "nunito-bold",
+    fontFamily: "nunito",
     fontSize: 30,
     marginTop: "3%",
     textTransform: "uppercase",
   },
   text1: {
-    fontSize: 20,
+    fontSize: 15,
     marginTop: "3%",
     marginLeft: "10%",
     marginRight: "10%",
-    fontFamily: "regular",
+    fontFamily: "nunito",
     textAlign: "center",
   },
   text2: {
@@ -53,43 +53,45 @@ export const style = StyleSheet.create({
     width: "80%",
     borderTopColor: "#808080",
     borderTopWidth: 1,
+    alignSelf: "center",
   },
   volver: {
-    padding: "4%",
-    borderRadius: 3,
-    width: "40%",
+    padding: "1%",
+    borderRadius: 5,
     marginTop: "15%",
-    alignSelf: "center",
-    
-   
-    
+    marginRight: "1%",
+    borderWidth: 1,
+    borderColor: "#00CC96",
   },
   textCancelar: {
-    color: violetaOscuro,
+    color: "#00CC96",
     fontSize: 20,
-    width: "100%",
+    paddingLeft: "8%",
+    paddingRight: "8%",
+    paddingBottom: "3%",
+    paddingTop: "2%",
     fontFamily: "nunito",
-    textAlign: "center",
   },
   confirmar: {
-    backgroundColor: buttonColor,
-    padding: "4%",
-    borderRadius: 3,
-    width: "40%",
-    marginTop: "15%",
+    backgroundColor: "#00CC96",
+    padding: "1%",
+    borderRadius: 5,
+    marginTop: "10%",
+    width: 250,
     alignSelf: "center",
-    
   },
   textConfirmar: {
     color: "white",
     fontSize: 20,
-    width: "100%",
+    paddingLeft: "8%",
+    paddingRight: "8%",
+    paddingBottom: "3%",
+    paddingTop: "2%",
     fontFamily: "nunito",
-    textAlign: "center",
+    alignSelf: "center",
   },
   botonesCont: {
-    width: '100%',
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "space-between",
   },
 });

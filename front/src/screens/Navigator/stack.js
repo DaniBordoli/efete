@@ -38,6 +38,7 @@ import confirmValueContainer from "../confirmValue/confirmValuecontainer";
 import ValidarIdentidadContainer from "../validarIdentidad/ValidarIdentidadContainer";
 import WaitingValidationContainer from "../waitingValidation/WaitingValidationContainer";
 import DeleteProfileContainer from "../deleteProfile/DeleteprofileContainer";
+import TimeGainedContainer from "../timeGained/TimeGainedContainer";
 
 const Stack = createStackNavigator();
 
@@ -45,9 +46,11 @@ export default ({ navigation }) => {
   const header = mode ? myHeader : myHeaderDark;
 
   const mode = useSelector((state) => state.users.mode);
+  const user = useSelector((state) => state.users.user);
+  const agent = useSelector((state) => state.agents.agent);
 
   return (
-    <Stack.Navigator initialRouteName="Login" >
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
@@ -170,7 +173,7 @@ export default ({ navigation }) => {
           },
 
           headerTitleAlign: "center",
-          title: "Perfil usuario",
+          title: `Hola, ${user.firstName}`,
         }}
       />
       <Stack.Screen
@@ -182,6 +185,17 @@ export default ({ navigation }) => {
             backgroundColor: mode ? headerColor : headerColorDark,
           },
           title: "Ver transacción",
+        }}
+      />
+      <Stack.Screen
+        name="TimeGained"
+        component={TimeGainedContainer}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Tiempo ganado",
         }}
       />
 
@@ -326,10 +340,11 @@ export default ({ navigation }) => {
           },
 
           headerTitleAlign: "center",
-          title: "Perfil agente",
+          title: `${agent.name}`,
         }}
         component={AgentHomeContainer}
       />
+
       <Stack.Screen
         name="AllAgentTransactions"
         component={AllAgentTransactionsContainer}
@@ -389,6 +404,15 @@ export default ({ navigation }) => {
           headerStyle: {
             backgroundColor: mode ? headerColor : headerColorDark,
           },
+          headerLeft: () => (
+            <MaterialIcons
+              name="arrow-back"
+              size={24}
+              color="white"
+              style={{ marginLeft: 10, color: "white" }}
+              onPress={() => navigation.navigate("User")}
+            />
+          ),
           title: "Mis Cuentas",
         }}
       />

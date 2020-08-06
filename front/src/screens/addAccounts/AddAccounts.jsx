@@ -1,15 +1,10 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  KeyboardAvoidingView,
-  ScrollView,
-} from "react-native";
+import { View, Text, TextInput, KeyboardAvoidingView } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 import { style } from "./style.js";
 import { Button } from "react-native-elements";
+import { Alert } from "react-native";
 
 const AddAccount = ({
   banks,
@@ -21,6 +16,10 @@ const AddAccount = ({
   isValid,
   accountNumber,
   mode,
+  message,
+  resetMessage,
+  validCbu,
+  validBank,
 }) => {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
@@ -60,8 +59,9 @@ const AddAccount = ({
             style={{ marginLeft: 7 }}
             placeholder="Ingresar cuenta de 22 digitos"
             autoCapitalize="none"
+            isspecialcharacter={true}
             autoCorrect={false}
-            value={accountNumber}
+            value={accountNumber.replace("-", "")}
             onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}
           />
           {isValid ? (
@@ -85,14 +85,21 @@ const AddAccount = ({
           flex: 1,
         }}
       >
+        {message.length > 0
+          ? Alert.alert(
+              "Oops!",
+              `${message}`,
+              [{ text: "OK", onPress: () => resetMessage() }],
+              { cancelable: false }
+            )
+          : null}
         <Button
-          disabled={!isValid}
+          disabled={!isValid || validCbu || validBank}
           buttonStyle={style.botonConfirmar}
           titleStyle={style.tituloConfirmar}
           title="Confirmar"
           onPress={() => {
             handleSubmit();
-            navigation.navigate("Accounts");
           }}
         />
       </View>

@@ -5,6 +5,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Dimensions,
+  ScrollView
 } from "react-native";
 import { ButtonPrimary, Texto } from "../../Common/buttons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
@@ -31,6 +32,7 @@ export default ({
 }) => {
   var height = Dimensions.get("screen").height; // window
   return (
+    <ScrollView>
     <View
       style={{ height: height, backgroundColor: mode ? fondoColor : "black" }}
     >
@@ -185,5 +187,6 @@ export default ({
         ></Button>
       </View>
     </View>
+  </ScrollView>
   );
 };

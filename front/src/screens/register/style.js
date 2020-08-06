@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+import {violetaOscuro} from '../../Common/constans'
 export const style = StyleSheet.create({
   inp: {
     borderWidth: 1,
@@ -22,13 +22,13 @@ export const style = StyleSheet.create({
     color: "#6F76E4",
     textAlign: "center",
     fontFamily: "nunito-bold",
-    marginTop: 50,
+    marginTop: '10%',
   },
   registrarse: {
     fontSize: 24,
     color: "#6F76E4",
     textAlign: "center",
-    marginTop: 50,
+    marginTop: '10%',
     fontFamily: "nunito",
   },
   inputContainer: {
@@ -73,7 +73,7 @@ export const style = StyleSheet.create({
     height: 48,
   },
   tituloRegister: {
-    color: "#404CB3",
+    color: violetaOscuro,
     textTransform: "uppercase",
     fontFamily: "nunito",
   },
@@ -94,8 +94,8 @@ export const style = StyleSheet.create({
     flex: 1,
     paddingTop: 10,
     paddingRight: 10,
-    paddingBottom: 10,
     paddingLeft: 0,
+    marginBottom: '3%',
     backgroundColor: "#fff",
     color: "#424242",
   },
@@ -113,11 +113,12 @@ export const style = StyleSheet.create({
     justifyContent: "center",
   },
   alerta: {
+    alignSelf: 'center',
     fontSize: 15,
-    color: "#DDDDDD",
+    color: "#FF7575",
     fontStyle: "italic",
     fontWeight: "bold",
-    paddingLeft: 10,
+    marginBottom: '2%'
   },
   
 });
