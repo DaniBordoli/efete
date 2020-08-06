@@ -173,7 +173,7 @@ export default ({ navigation }) => {
           },
 
           headerTitleAlign: "center",
-          title:`Hola ${user.firstName}`
+          title:`Hola, ${user.firstName}`
         }}
       />
       <Stack.Screen
