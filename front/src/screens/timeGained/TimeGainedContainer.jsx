@@ -5,7 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 const TimeGainedContainer = ({ navigation }) => {
   const user = useSelector((state) => state.users.user);
 
-  return <TimeGained userTransactions={user.transactionsMade} />;
+  return (
+    <TimeGained
+      navigation={navigation}
+      userTransactions={user.transactionsMade}
+    />
+  );
 };
 
 export default TimeGainedContainer;
