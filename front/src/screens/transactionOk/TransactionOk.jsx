@@ -6,11 +6,20 @@ import { colors, Button } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { buttonColor } from "../../Common/constans";
 
-export default ({ navigation, transaction ,mode}) => {
-  console.log("Transacciones1", transaction);
+export default ({ 
+  navigation, 
+  transaction, 
+  mode}) => {
   return (
-    <ScrollView>
-    <View>
+  <ScrollView>
+    <View style={style.mainContainer}>
+     <View style={style.imageContainer}>
+          <Image
+            source={require("../../../assets/iconos/arriba.png")}
+            style={style.image}
+          />
+      </View>
+      
       <TouchableOpacity
         style={style.clearIcon}
         onPress={() => {
@@ -22,25 +31,39 @@ export default ({ navigation, transaction ,mode}) => {
           size={35}
           color={buttonColor}
         />
-      </TouchableOpacity>
-      <View style={style.okIcon}>
-        <Image source={require("../../../assets/iconos/ok.png")} />
-      </View>
-      <View style={style.transactionContainer}>
-        <Text style={style.titulo}>Transacción Realizada</Text>
-        <Text style={style.subTitle}>Monto:</Text>
-        <Text style={style.content}>${transaction.amount}</Text>
-        <Text style={style.subTitle}>Cuenta:</Text>
-        <Text style={style.content}>
-          {transaction.originAccount[0].accountNumber}
-        </Text>
+     </TouchableOpacity>
+
+     <Text style={style.titulo}>TRANSACCIÓN REALIZADA</Text>
+
+         <View style={style.icon}>
+        <Image source={require("../../../assets/icon.png")} />
+        </View>
+
+        <View style={style.hr}></View>
+        
+
+        {/* <Text style={style.text}>Kisosko San Juan</Text> */}
+        <Text style={style.text}>{transaction.agent[0].name}</Text>
+       
+        {/* <Text style={style.text1}>Av San Juan 2705</Text> */}
+        <Text style={style.text1}>{transaction.agent[0].address}</Text>
+
+        {/* <Text style={style.content}>Banco Santander</Text> */}
+        
         <Text style={style.content}>
           {transaction.originAccount[0].nameEntity[0].nameEntity}
         </Text>
-        <Text style={style.subTitle}>Dónde:</Text>
-        <Text style={style.content}>{transaction.agent[0].name}</Text>
-        <Text style={style.content}>{transaction.agent[0].address}</Text>
-      </View>
+
+       {/* <Text style={style.text3}>9890990000898767652432</Text> */}
+        <Text style={style.text3}>
+          {transaction.originAccount[0].accountNumber}
+        </Text>
+        
+        {/* <Text style={style.text2}>2.000</Text> */}
+        <Text style={style.text2}>${transaction.amount.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")}</Text>
+
+        <View style={style.hr}></View>
+
       <View>
         <Button
           buttonStyle={style.confirmar}

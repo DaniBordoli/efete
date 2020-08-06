@@ -30,7 +30,7 @@ router.get("/verify", function (req, res) {
         });
       } else {
         console.log("email is not verified");
-        res.sendStatus(401);
+        res.send({errorMessage: "Codigo incorrecto"});
       }
     }
   );

@@ -46,7 +46,8 @@ export default ({ navigation }) => {
   const header = mode ? myHeader : myHeaderDark;
 
   const mode = useSelector((state) => state.users.mode);
-  const user = useSelector((state) => state.users.user)
+  const user = useSelector((state) => state.users.user);
+  const agent = useSelector((state) => state.agents.agent);
 
   return (
     <Stack.Navigator initialRouteName="Login">
@@ -118,7 +119,7 @@ export default ({ navigation }) => {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{headerShown: false }}
+        options={{ headerShown: false }}
       />
 
       <Stack.Screen
@@ -154,8 +155,7 @@ export default ({ navigation }) => {
               style={{ marginRight: 10, color: "white" }}
               size={26}
               color="white"
-              onPress={() => navigation.navigate("EditUserProfile")
-            }
+              onPress={() => navigation.navigate("EditUserProfile")}
             />
           ),
           headerLeft: () => (
@@ -173,7 +173,7 @@ export default ({ navigation }) => {
           },
 
           headerTitleAlign: "center",
-          title:`Hola ${user.firstName}`
+          title: `Hola, ${user.firstName}`,
         }}
       />
       <Stack.Screen
@@ -340,10 +340,11 @@ export default ({ navigation }) => {
           },
 
           headerTitleAlign: "center",
-          title: "Perfil agente",
+          title: "Perfil Agente",
         }}
         component={AgentHomeContainer}
       />
+
       <Stack.Screen
         name="AllAgentTransactions"
         component={AllAgentTransactionsContainer}
@@ -402,11 +403,15 @@ export default ({ navigation }) => {
           ...myHeader,
           headerStyle: {
             backgroundColor: mode ? headerColor : headerColorDark,
-          }, headerLeft: () => (
-            <MaterialIcons name="arrow-back" size={24} color="white" 
-            style={{ marginLeft: 10, color: "white" }}
-            
-            onPress={() => navigation.navigate("User")}/>
+          },
+          headerLeft: () => (
+            <MaterialIcons
+              name="arrow-back"
+              size={24}
+              color="white"
+              style={{ marginLeft: 10, color: "white" }}
+              onPress={() => navigation.navigate("User")}
+            />
           ),
           title: "Mis Cuentas",
         }}
