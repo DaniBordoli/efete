@@ -54,10 +54,8 @@ export default () => {
   }
 
   function handleSubmit() {
-console.log('USER!!!!!!', user)
     if (user.username.length > 0) {
       dispatch(editUser(user));
-      console.log("Entreee Loco user", user)
       Alert.alert(
         "Datos actualizados",
         "Tus datos se actualiazaron correctamente",

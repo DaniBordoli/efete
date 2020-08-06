@@ -42,14 +42,12 @@ const userLogout = (req, res) => {
 };
 
 const editProfileUser = async (req, res) => {
-  console.log("REQ.BODY", req.body);
   try {
     let user = await User.findOne({
       _id: req.body._id,
     });
     if (req.body.password) {
-      let newPassword = await user.hashPasswordUser(req.body.password);
-      console.log("NEW PASS!!!!!!", newPassword, "USER!!!!!", user);
+      let newPassword = await user.hashPasswordUser(req.body.password)
       await user.updateOne({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
