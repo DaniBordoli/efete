@@ -48,7 +48,7 @@ const editProfileUser = async (req, res) => {
       _id: req.body._id,
     });
     if (req.body.password) {
-      let newPassword = await user.hashPasswordUser(req.body.password)
+      let newPassword = await user.hashPasswordUser(req.body.password);
       await user.updateOne({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -84,11 +84,8 @@ const editUserTransactions = (req, res) => {
 };
 
 const userValidation = (req, res) => {
-  console.log(req.body, "REQ BODY");
   User.updateOne({ _id: req.body._id }, req.body).then((data) => {
-    
     return User.findById(req.body._id).then((user) => {
-      console.log(user, "USER");
       res.send(user);
     });
   });

@@ -29,3 +29,4 @@ export const GET_USER_AGENTS = "GET_USER_AGENTS";
 //VLIDATION
 export const TOKEN = "TOKEN";
 export const TCN = "TCN";
+export const ERROR_VERIFICATION = "ERROR_VERIFICATION";

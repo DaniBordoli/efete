@@ -15,7 +15,7 @@ export default () => {
     firstName: userInfo.firstName,
     lastName: userInfo.lastName,
     username: userInfo.username,
-    password: userInfo.password,
+    password: "",
     _id: userInfo._id,
   });
   const [isData, setIsData] = useState(true);
