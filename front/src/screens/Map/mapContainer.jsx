@@ -19,10 +19,8 @@ export default ({ route, navigation }) => {
   const mode = useSelector((state) => state.users.mode);
 
   const agentesConMonto = agentes.filter(
-    (agente) => agente.dailyAmount > route.params.value
+    (agente) => agente.dailyAmount >= route.params.value
   );
-
-  console.log(";;;;;;;;;;;;;;;;;;;;;;;AGENTES:::::::::::::", agentes);
 
   useEffect(() => {
     (async () => {
