@@ -79,7 +79,7 @@ export default (props) => {
             props.navigation.navigate("Root", { screen: "AllAgents" }, props)
           }
         />
-
+{/* 
         {userRole === "agent" ? (
           <DrawerItem
             icon={agent}
@@ -102,14 +102,14 @@ export default (props) => {
               )
             }
           />
-        )}
+        )} Se elimino para evitar conflicto y por proligodad*/}
 
         <DrawerItem
           icon={info}
           label="Acerca de la App"
           labelStyle={modee ? style.label : style.labelDark}
           onPress={() =>
-            props.navigation.navigate("Root", { screen: "ScannerQR" }, props)
+            props.navigation.navigate() //Deberia llevar a una descripción de la app!
           }
         />
         <DrawerItem

@@ -8,16 +8,15 @@ export const style = StyleSheet.create({
     },
   container: {
     alignItems: "center",
+    borderRadius: 10,
+    width: "80%",
+    alignSelf: "center",
     marginRight: '10%',
     marginLeft: '10%',
     marginBottom: '5%',
     marginTop: '5%',
-    borderRadius: 10,
-    width: "90%",
-    padding: '5%',
-    alignSelf: "center",
     borderColor: '#CCCFFF',
-    borderWidth: 0.5
+    borderWidth: 0.5,
   },
   containerTitle: {
     color: "#6F76E4",
@@ -47,15 +46,10 @@ export const style = StyleSheet.create({
     marginLeft: "2%",
     //fontFamily: "sans-serif",
   },
-  searchSection: {
-    flex: 1,
-    width: "80%",
-    backgroundColor: "red",
-  },
   input: {
     backgroundColor: "#ffffff",
     width: 300,
-    padding: '2%',
+    padding: '5%',
     marginBottom: '10%',
     elevation: 2,
     height: 40,

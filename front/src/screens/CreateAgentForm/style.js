@@ -16,7 +16,8 @@ export const style = StyleSheet.create({
     marginBottom: '5%',
     marginTop: '5%',
     borderColor: '#CCCFFF',
-    borderWidth: 0.5
+    borderWidth: 0.5,
+    padding: '5%',
   },
   containerTitle: {
     color: "#6F76E4",
@@ -41,7 +42,7 @@ export const style = StyleSheet.create({
     shadowRadius: 4.0,
     shadowOpacity: 0.25,
     borderRadius: 3,
-    width: 300,
+    width: 280,
   },
   confirmar: {
     backgroundColor: "#00CC96",
@@ -57,6 +58,7 @@ export const style = StyleSheet.create({
     marginTop: 30,
     width: "50%",
     alignSelf: "center",
+    marginBottom: '5%'
   },
   textConfirmar: {
     color: "#ffffff",

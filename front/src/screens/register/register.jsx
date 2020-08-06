@@ -33,7 +33,7 @@ export default ({
 
   return (
     <ScrollView>
-      <View style={{ height: height }}>
+      <View style={{ height: '90%' }}>
         <View style={{ height: height * 0.9 }}>
           <Text style={style.titulo}>Efeté</Text>
           <Text style={style.registrarse}>Registrarte</Text>
@@ -171,6 +171,7 @@ export default ({
             style={{
               flexDirection: "row-reverse",
               justifyContent: "center",
+              marginTop: '2%'
             }}
           >
             <Button
