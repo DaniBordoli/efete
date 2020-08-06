@@ -18,16 +18,20 @@ export default ({ navigation }) => {
   const [dataload, setDataload] = useState(false);
   const [code, setCode] = useState("");
   const dispatch = useDispatch();
+  const [valid, setValid]= useState(true)
   const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
 
   const handleCode = (value) => {
-    setCode(value);
+    if(value.length < 6) setValid(true)
+    else setValid(false)
+    setCode(value)
   };
 
   const handleSubmit = () => {
-    dispatch(sendCode(code, user._id)).then(() => {
-      navigation.navigate("successRegister");
+    dispatch(sendCode(code, user._id)).then((data) => {
+      console.log("DAAATAAAA:::", data)
+      if(data.user._id)navigation.navigate("successRegister")
     });
   };
 
@@ -38,6 +42,7 @@ export default ({ navigation }) => {
   }
 
   return (
+    
     <View style={style.centrar}>
       <Text style={style.text}>Efeté</Text>
       <Text style={style.text2}>¡Gracias por registrarte!</Text>
@@ -46,20 +51,30 @@ export default ({ navigation }) => {
       </Text>
       <View style={style.inputContainer}>
         <TextInput
-          //keyboardType="numeric"
+        maxLength={6}
+          keyboardType="numeric"
           style={style.input}
           onChangeText={(text) => handleCode(text)}
           value={code}
+          
         />
       </View>
+      {
+        user.errorMessage? <Text>{user.errorMessage}</Text> : null
+      }
+
       <Button
         buttonStyle={style.buttonStyle}
         title="ENVIAR"
         titleStyle={style.titleStyle}
         onPress={() => handleSubmit()}
+        disabled={valid}
       >
-        <Text>CONFIRMAR</Text>
       </Button>
+
+      
     </View>
+
+    
   );
 };
