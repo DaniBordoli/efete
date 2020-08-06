@@ -27,7 +27,7 @@ export default ({
     <KeyboardAvoidingView behavior="height">
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={style.container}>
-          <Text style={style.movimientos}>Datos Personales</Text>
+          <Text style={style.movimientos}>EDITAR TU PERFIL</Text>
           <View style={{ margin: 20 }}>
             <Text style={style.text}>Nombre</Text>
             <View style={style.searchSection}>
@@ -38,9 +38,7 @@ export default ({
                 defaultValue={firstName}
                 required
               />
-              <TouchableOpacity style={{ marginRight: 10, marginRight: 5 }}>
-                <MaterialCommunityIcons name="pencil" size={20} color="grey" />
-              </TouchableOpacity>
+        
             </View>
 
             <Text style={style.text}>Apellido</Text>
@@ -52,14 +50,7 @@ export default ({
                 defaultValue={lastName}
                 required
               />
-              <TouchableOpacity
-                style={{
-                  marginRight: 10,
-                  marginRight: 5,
-                }}
-              >
-                <MaterialCommunityIcons name="pencil" size={20} color="grey" />
-              </TouchableOpacity>
+              
             </View>
 
             <Text style={style.text}>Correo electrónico</Text>
@@ -71,14 +62,7 @@ export default ({
                 defaultValue={username}
                 required
               />
-              <TouchableOpacity
-                style={{
-                  marginRight: 10,
-                  marginRight: 5,
-                }}
-              >
-                <MaterialCommunityIcons name="pencil" size={20} color="grey" />
-              </TouchableOpacity>
+              
             </View>
 
             <Text style={style.text}>Contraseña</Text>

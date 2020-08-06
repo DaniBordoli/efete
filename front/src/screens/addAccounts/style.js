@@ -3,6 +3,7 @@ import { headerColor, buttonColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   botonConfirmar: {
+    marginTop:'20%',
     backgroundColor: "#00CC96",
     width: 167,
     height: 48,

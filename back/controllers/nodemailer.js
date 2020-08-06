@@ -219,7 +219,7 @@ const SendTransaction = function (transaction) {
                   ">
       
                   <h3 style="color: #6f76e4;
-      text-transform: uppercase; text-align: start; margin-left: 10px;">Resumen de la transacción</h3>
+      text-transform: uppercase; text-align: start;">Resumen de la transacción</h3>
       
                       <p style="color: #888;
       font-size: 15px;    font-weight: 600;
