@@ -72,4 +72,10 @@ export const style = StyleSheet.create({
   image: {
     width: "100%",
   },
+  errorMessage: {
+    marginTop: "5%",
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#DD1919",
+  },
 });

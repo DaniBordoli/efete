@@ -18,8 +18,9 @@ export default ({ route, navigation }) => {
   const [loading, setLoader] = useState(false);
   const mode = useSelector((state) => state.users.mode);
 
-  
-  console.log(";;;;;;;;;;;;;;;;;;;;;;;AGENTES:::::::::::::", agentes);
+  const agentesConMonto = agentes.filter(
+    (agente) => agente.dailyAmount >= route.params.value
+  );
 
   useEffect(() => {
     (async () => {
@@ -31,7 +32,7 @@ export default ({ route, navigation }) => {
       let location = await Location.getCurrentPositionAsync({
         enableHighAccuracy: true,
         distanceInterval: 1,
-        timeout:20000,
+        timeout: 20000,
         timeInterval: 1000,
       });
 
@@ -54,10 +55,10 @@ export default ({ route, navigation }) => {
     <Map
       mode={mode}
       markers={markers}
-      agentes={agentes}
+      agentes={agentesConMonto}
       ubicacion={region}
       notifyChange={(loc) => getCoordsFromName(loc)}
-      value={2000}
+      value={route.params.value}
       navigation={navigation}
       loading={loading}
     />

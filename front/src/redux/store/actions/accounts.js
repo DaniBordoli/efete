@@ -46,11 +46,13 @@ const error_message = (error) => {
 export const fetchMainAccount = (userId) => (dispatch) => {
   return axios
     .get(`http://${IP}:1337/api/accounts/main/${userId}`)
-    .then((res) => {
-      console.log("RES DATA ACCOUNTS", res.data);
-      dispatch(get_user_main_account(res.data));
-    });
-};
+    .then((res) => {dispatch(get_user_main_account(res.data));
+    })};
+
+export const fetchUserAccounts = (id) => (dispatch) =>
+  axios
+    .get(`http://${IP}:1337/api/accounts/${id}`)
+    .then((res) => dispatch(get_user_accounts(res.data)));
 
 export const setMainAccount = (id, userId) => (dispatch) => {
   axios
@@ -84,10 +86,6 @@ export const fetchBanks = () => (dispatch) =>
     .then((res) => dispatch(get_banks(res.data)))
     .catch((err) => console.log(err, "ERROR"));
 
-export const fetchUserAccounts = (id) => (dispatch) =>
-  axios
-    .get(`http://${IP}:1337/api/accounts/${id}`)
-    .then((res) => dispatch(get_user_accounts(res.data)));
 
 export const fetchUserSingleAccount = (id) => (dispatch) =>
   axios

@@ -16,7 +16,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   useEffect(() => {
     if (route.params) {
       setFoto(route.params.uriFoto);
-      handleIsValid();
+      setValidUri(true);
     } else {
       ("No hay fotos");
     }
@@ -27,29 +27,35 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   const user = useSelector((state) => state.users.user);
   const getCoordsFromName = (loc) => {
     setUbicacion({ latitude: loc.lat, longitude: loc.lng });
-    handleIsValid();
+    console.log(loc.lat, "LATITUDE");
+    loc.lat ? setValidUbicacion(true) : setValidUbicacion(false);
   };
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [cuil, setCuil] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [validName, setValidName] = useState(false);
+  const [validAdress, setValidAdress] = useState(false);
+  const [validCuil, setValidCuil] = useState(false);
+  const [validUri, setValidUri] = useState(false);
+  const [validUbicacion, setValidUbicacion] = useState(false);
 
   function handlerName(text) {
     setName(text);
-    handleIsValid();
+    text.length > 0 ? setValidName(true) : setValidName(false);
   }
   function handlerAddress(text) {
+    console.log(text.description, "ADDRESS");
     YellowBox.ignoreWarnings(["VirtualizedLists should never be nested"]);
     setAddress(text.description);
-    handleIsValid();
+    text.description.length > 0 ? setValidAdress(true) : setValidAdress(false);
   }
 
   function handlerCuil(text) {
     setCuil(text);
-    handleIsValid();
+    text.length > 0 ? setValidCuil(true) : setValidCuil(false);
   }
 
-  uploadImage = async (uri, agentId) => {
+  const uploadImage = async (uri, agentId) => {
     const response = await fetch(uri);
     const blob = await response.blob();
 
@@ -88,17 +94,6 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
       });
   }
 
-  const handleIsValid = () => {
-    if (
-      name.length > 0 &&
-      address.length > 0 &&
-      cuil.length > 0 &&
-      foto.length > 0
-    ) {
-      setIsValid(true);
-    }
-  };
-
   return (
     <CreateAgentForm
       handlerName={handlerName}
@@ -112,7 +107,11 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
       cuil={cuil}
       mode={mode}
       notifyChange={(loc) => getCoordsFromName(loc)}
-      isValid={isValid}
+      validName={validName}
+      validAdress={validAdress}
+      validCuil={validCuil}
+      validUri={validUri}
+      validUbicacion={validUbicacion}
     />
   );
 };

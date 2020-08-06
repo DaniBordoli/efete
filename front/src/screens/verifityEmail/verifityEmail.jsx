@@ -18,20 +18,23 @@ export default ({ navigation }) => {
   const [dataload, setDataload] = useState(false);
   const [code, setCode] = useState("");
   const dispatch = useDispatch();
-  const [valid, setValid]= useState(true)
+  const [valid, setValid] = useState(true);
   const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
+  const errorVerification = useSelector(
+    (state) => state.users.errorVerification
+  );
 
   const handleCode = (value) => {
-    if(value.length < 6) setValid(true)
-    else setValid(false)
-    setCode(value)
+    if (value.length < 6) setValid(true);
+    else setValid(false);
+    setCode(value);
   };
 
   const handleSubmit = () => {
     dispatch(sendCode(code, user._id)).then((data) => {
-      console.log("DAAATAAAA:::", data)
-      if(data.user._id)navigation.navigate("successRegister")
+      console.log(data, "DATA");
+      if (data.user) navigation.navigate("successRegister");
     });
   };
 
@@ -42,7 +45,6 @@ export default ({ navigation }) => {
   }
 
   return (
-    
     <View style={style.centrar}>
       <Text style={style.text}>Efeté</Text>
       <Text style={style.text2}>¡Gracias por registrarte!</Text>
@@ -56,12 +58,11 @@ export default ({ navigation }) => {
           style={style.input}
           onChangeText={(text) => handleCode(text)}
           value={code}
-          
         />
       </View>
-      {
-        user.errorMessage? <Text>{user.errorMessage}</Text> : null
-      }
+      {errorVerification.errorMessage ? (
+        <Text style={style.errorMessage}>{errorVerification.errorMessage}</Text>
+      ) : null}
 
       <Button
         buttonStyle={style.buttonStyle}
@@ -69,12 +70,7 @@ export default ({ navigation }) => {
         titleStyle={style.titleStyle}
         onPress={() => handleSubmit()}
         disabled={valid}
-      >
-      </Button>
-
-      
+      ></Button>
     </View>
-
-    
   );
 };

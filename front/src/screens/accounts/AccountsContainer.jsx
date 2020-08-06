@@ -21,7 +21,6 @@ export default ({ navigation }) => {
   useEffect(() => {
     dispatch(fetchUserAccounts(user._id))
       .then(() => {
-        console.log("DISPATCH");
         dispatch(fetchMainAccount(user._id));
       })
       .then(() => {
