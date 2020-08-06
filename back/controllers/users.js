@@ -5,6 +5,7 @@ const { findById } = require("../models/users");
 const userRegister = (req, res, next) => {
   User.findOne({ dni: req.body.dni })
     .then((user) => {
+      console.log(user, "USER");
       if (user)
         res.send({ messageDni: "Ya hay un usuario registrado con este DNI." });
       if (!user) {
@@ -84,7 +85,8 @@ const editUserTransactions = (req, res) => {
 
 const userValidation = (req, res) => {
   console.log(req.body, "REQ BODY");
-  User.updateOne({ _id: req.body._id }, req.body).then(() => {
+  User.updateOne({ _id: req.body._id }, req.body).then((data) => {
+    
     return User.findById(req.body._id).then((user) => {
       console.log(user, "USER");
       res.send(user);

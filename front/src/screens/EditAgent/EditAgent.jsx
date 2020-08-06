@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   SafeAreaView,
+  Dimensions,
 } from "react-native";
 import { style } from "./style.js";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
@@ -54,7 +55,7 @@ export default ({
           style={{
             backgroundColor: mode ? "white" : inputDark,
             color: mode ? "black" : "white",
-            width: "95%",
+            width: Dimensions.get("window").width / 1.3,
             flexDirection: "row",
             marginBottom: 25,
             borderRadius: 5,
@@ -69,6 +70,7 @@ export default ({
                 elevation: 3,
                 backgroundColor: mode ? "white" : inputDark,
                 borderRadius: 5,
+                height: 50,
               },
               textInput: {
                 color: mode ? "black" : "white",
@@ -123,8 +125,6 @@ export default ({
           />
         </View>
       </View>
-
-      <Text style={style.textOpenCamera}>Subir foto</Text>
 
       {image !== "" ? (
         <View>

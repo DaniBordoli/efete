@@ -77,11 +77,11 @@ export const style = StyleSheet.create({
     borderRadius: 3,
     width: "40%",
     marginTop: "15%",
-    alignSelf: "center",
+    alignSelf: "center"
     
   },
   textConfirmar: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
     width: "100%",
     fontFamily: "nunito",
