@@ -4,7 +4,7 @@ import {
   Text,
   TextInput,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
@@ -22,87 +22,97 @@ const AddAccount = ({
   isValid,
   accountNumber,
   mode,
-  message
+  message,
+  resetMessage,
+  validCbu,
+  validBank,
 }) => {
-
   return (
-    
-  <ScrollView>
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
-      <View style={{ flex: 7 }}>
-        <Text style={style.textoo}>Agregar cuenta</Text>
+    <ScrollView>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
+        <View style={{ flex: 7 }}>
+          <Text style={style.textoo}>Agregar cuenta</Text>
 
-        <DropDownPicker
-          labelStyle={{ fontSize: 14, color: "#6F76E4" }}
-          items={banks.map((item) => ({
-            label: `${item.nameEntity}`,
-            value: item._id,
-          }))}
-          defaultIndex={1}
-          placeholder="Seleccione su Entidad Bancaria"
-          containerStyle={style.dropdown}
-          onChangeItem={(item) => handleBank(item.value)}
-        />
-
-        <DropDownPicker
-          labelStyle={{ fontSize: 14, color: "#6F76E4" }}
-          items={[
-            { label: "CBU", value: "CBU" },
-            { label: "CVU", value: "CVU" },
-            { label: "Selecciona tipo de cuenta", value: "", selected: true },
-          ]}
-          defaultIndex={0}
-          containerStyle={style.dropdown}
-          onChangeItem={(item) => handleCbu(item.value)}
-        />
-
-        <Text style={style.text}>NUMERO DE CUENTA</Text>
-        <View style={style.input2}>
-          <TextInput
-            style={{ height: 50 }}
-            maxLength={22}
-            keyboardType="numeric"
-            style={{ marginLeft: 7 }}
-            placeholder="Ingresar cuenta de 22 digitos"
-            autoCapitalize="none"
-            isspecialcharacter={true}
-            autoCorrect={false}
-            value={accountNumber.replace('-', '')}
-            onChangeText={(accountNumber) => handleAccountNumber(accountNumber)}
+          <DropDownPicker
+            labelStyle={{ fontSize: 14, color: "#6F76E4" }}
+            items={banks.map((item) => ({
+              label: `${item.nameEntity}`,
+              value: item._id,
+            }))}
+            defaultIndex={1}
+            placeholder="Seleccione su Entidad Bancaria"
+            containerStyle={style.dropdown}
+            onChangeItem={(item) => handleBank(item.value)}
           />
-          {isValid ? (
-            <MaterialCommunityIcons
-              name="check-circle"
-              size={32}
-              color="green"
-              style={{
-                marginLeft: "43%",
-                alignSelf: "center",
-              }}
-            />
-          ) : null}
-        </View>
-      </View>
 
-      <View
-        style={{
-          flexDirection: "row-reverse",
-          justifyContent: "center",
-          flex: 1,
-        }}
-      >
-        {message.length>0? Alert.alert(message):null}
-        <Button
-          disabled={!isValid}
-          buttonStyle={style.botonConfirmar}
-          titleStyle={style.tituloConfirmar}
-          title="Confirmar"
-          onPress={() => {
-            handleSubmit()
+          <DropDownPicker
+            labelStyle={{ fontSize: 14, color: "#6F76E4" }}
+            items={[
+              { label: "CBU", value: "CBU" },
+              { label: "CVU", value: "CVU" },
+              { label: "Selecciona tipo de cuenta", value: "", selected: true },
+            ]}
+            defaultIndex={0}
+            containerStyle={style.dropdown}
+            onChangeItem={(item) => handleCbu(item.value)}
+          />
+
+          <Text style={style.text}>NUMERO DE CUENTA</Text>
+          <View style={style.input2}>
+            <TextInput
+              style={{ height: 50 }}
+              maxLength={22}
+              keyboardType="numeric"
+              style={{ marginLeft: 7 }}
+              placeholder="Ingresar cuenta de 22 digitos"
+              autoCapitalize="none"
+              isspecialcharacter={true}
+              autoCorrect={false}
+              value={accountNumber.replace("-", "")}
+              onChangeText={(accountNumber) =>
+                handleAccountNumber(accountNumber)
+              }
+            />
+            {isValid ? (
+              <MaterialCommunityIcons
+                name="check-circle"
+                size={32}
+                color="green"
+                style={{
+                  marginLeft: "43%",
+                  alignSelf: "center",
+                }}
+              />
+            ) : null}
+          </View>
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row-reverse",
+            justifyContent: "center",
+            flex: 1,
           }}
-        />
-      </View>
-    </KeyboardAvoidingView>
+        >
+          {message.length > 0
+            ? Alert.alert(
+                "Oops!",
+                `${message}`,
+                [{ text: "OK", onPress: () => resetMessage() }],
+                { cancelable: false }
+              )
+            : null}
+          <Button
+            disabled={!isValid || validCbu || validBank}
+            buttonStyle={style.botonConfirmar}
+            titleStyle={style.tituloConfirmar}
+            title="Confirmar"
+            onPress={() => {
+              handleSubmit();
+            }}
+          />
+        </View>
+      </KeyboardAvoidingView>
     </ScrollView>
   );
 };

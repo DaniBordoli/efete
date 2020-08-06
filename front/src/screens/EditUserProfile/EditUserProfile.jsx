@@ -18,15 +18,11 @@ export default ({
   firstName,
   lastName,
   username,
-  password,
   mode,
   updateSecureTextEntry,
-  handleValuePassword,
-  handleIsData,
   data,
-  
+  isData,
 }) => {
-  {console.log('Secure Entry!!!!!!!!', data.secureTextEntry)}
   return (
     <KeyboardAvoidingView behavior="height">
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -42,9 +38,7 @@ export default ({
                 defaultValue={firstName}
                 required
               />
-              <TouchableOpacity /* onPress={updateSecureTextEntry} */
-                style={{ marginRight: 10, marginRight: 5 }}
-              >
+              <TouchableOpacity style={{ marginRight: 10, marginRight: 5 }}>
                 <MaterialCommunityIcons name="pencil" size={20} color="grey" />
               </TouchableOpacity>
             </View>
@@ -59,7 +53,7 @@ export default ({
                 required
               />
               <TouchableOpacity
-                /* onPress={updateSecureTextEntry} */ style={{
+                style={{
                   marginRight: 10,
                   marginRight: 5,
                 }}
@@ -78,7 +72,7 @@ export default ({
                 required
               />
               <TouchableOpacity
-                /* onPress={updateSecureTextEntry} */ style={{
+                style={{
                   marginRight: 10,
                   marginRight: 5,
                 }}
@@ -93,32 +87,34 @@ export default ({
                 autoCapitalize="none"
                 secureTextEntry={data.secureTextEntry ? true : false}
                 style={mode ? style.input : style.inputDark}
-                // value={e}
-                onChangeText={(e) => {handleValuePassword(e, 'password')}}
+                onChangeText={(e) => {
+                  handleChange(e, "password");
+                }}
                 required
               />
               <TouchableOpacity onPress={updateSecureTextEntry}>
-              {data.secureTextEntry ? (
-                <Icon
-                  style={ mode? style.eyeLock : style.eyeLockDark}
-                  name="eye-off"
-                  size={22}
-                  color={mode ? "#94AFB6" :'white'}
-                />
-              ) : (
-                <Icon
-                  style={ mode? style.eyeLock : style.eyeLockDark}
-                  name="eye"
-                  size={22}
-                  color={mode ? "#94AFB6" :'white'}
-                />
-              )}
-            </TouchableOpacity>
+                {data.secureTextEntry ? (
+                  <Icon
+                    style={mode ? style.eyeLock : style.eyeLockDark}
+                    name="eye-off"
+                    size={22}
+                    color={mode ? "#94AFB6" : "white"}
+                  />
+                ) : (
+                  <Icon
+                    style={mode ? style.eyeLock : style.eyeLockDark}
+                    name="eye"
+                    size={22}
+                    color={mode ? "#94AFB6" : "white"}
+                  />
+                )}
+              </TouchableOpacity>
             </View>
           </View>
 
           <View>
             <Button
+              disabled={isData}
               buttonStyle={style.boton}
               titleStyle={{
                 color: "#ffffff",
