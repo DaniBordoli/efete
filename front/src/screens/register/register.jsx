@@ -5,15 +5,12 @@ import {
   Text,
   ScrollView,
   Dimensions,
-  CheckBox,
   Picker,
 } from "react-native";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import DropDownPicker from "react-native-dropdown-picker";
 
 import { style } from "./style.js";
-import { grisClaro } from "../../Common/constans.js";
 
 export default ({
   firstNameChange,
@@ -33,7 +30,7 @@ export default ({
 
   return (
     <ScrollView>
-      <View style={{ height: height }}>
+      <View style={{ height: '90%' }}>
         <View style={{ height: height * 0.9 }}>
           <Text style={style.titulo}>Efeté</Text>
           <Text style={style.registrarse}>Registrarte</Text>
@@ -171,6 +168,7 @@ export default ({
             style={{
               flexDirection: "row-reverse",
               justifyContent: "center",
+              marginTop: '2%'
             }}
           >
             <Button

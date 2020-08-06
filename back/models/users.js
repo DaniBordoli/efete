@@ -66,6 +66,10 @@ var userSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  transactionsMade: {
+    type: Number,
+    default: 0,
+  },
 });
 
 userSchema.pre("save", async function save(next) {

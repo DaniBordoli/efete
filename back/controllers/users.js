@@ -53,20 +53,33 @@ const editProfileUser = async (req, res) => {
         lastName: req.body.lastName,
         username: req.body.username,
         password: newPassword,
-      })
+      });
     } else {
       await user.updateOne({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         username: req.body.username,
-      })
+      });
     }
-    return User.findById(req.body._id).then((user)=>{
-      res.send(user)
-    })
+    return User.findById(req.body._id).then((user) => {
+      res.send(user);
+    });
   } catch (err) {
     console.log(err);
   }
+};
+
+const editUserTransactions = (req, res) => {
+  User.updateOne(
+    { _id: req.body._id },
+    { transactionsMade: req.body.transactionsMade }
+  )
+    .then(() => {
+      return User.findById(req.body._id).then((user) => {
+        res.send(user);
+      });
+    })
+    .catch((err) => res.status(400).send(err));
 };
 
 const userValidation = (req, res) => {
@@ -134,4 +147,5 @@ module.exports = {
   setTcn,
   deleteUser,
   userValidation,
+  editUserTransactions,
 };

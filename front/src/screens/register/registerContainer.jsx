@@ -69,7 +69,6 @@ export default ({ navigation }) => {
   };
 
   function handleGender(sexo) {
-    console.log(sexo, "SEXO");
     setGender(sexo);
   }
 

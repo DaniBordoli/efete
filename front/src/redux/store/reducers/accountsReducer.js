@@ -4,6 +4,7 @@ import {
   GET_USER_SINGLE_ACCOUNT,
   FETCH_BANKS,
   SET_MAIN_ACCOUNT,
+  ERROR_ACCOUNT,
 } from "../constants";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   accounts: [],
   banks: [],
   mainAccount: {},
+  errorAccount: {},
 };
 
 export default (state = initialState, action) => {
@@ -24,8 +26,9 @@ export default (state = initialState, action) => {
     case FETCH_BANKS:
       return { ...state, banks: action.banks };
     case SET_MAIN_ACCOUNT:
-      return { ...state, mainAccount: action.account };
-    
+      return { ...state, mainAccount: action.account };c
+    case ERROR_ACCOUNT:
+     return { ...state, errorAccount: action.error}
 
     default:
       return state;

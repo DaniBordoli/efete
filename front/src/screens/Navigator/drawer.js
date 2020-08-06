@@ -79,7 +79,7 @@ export default (props) => {
             props.navigation.navigate("Root", { screen: "AllAgents" }, props)
           }
         />
-
+{/* 
         {userRole === "agent" ? (
           <DrawerItem
             icon={agent}
@@ -102,14 +102,14 @@ export default (props) => {
               )
             }
           />
-        )}
+        )} Se elimino para evitar conflicto y por proligodad*/}
 
         <DrawerItem
           icon={info}
           label="Acerca de la App"
           labelStyle={modee ? style.label : style.labelDark}
           onPress={() =>
-            props.navigation.navigate("Root", { screen: "ScannerQR" }, props)
+            props.navigation.navigate() //Deberia llevar a una descripción de la app!
           }
         />
         <DrawerItem
@@ -124,8 +124,17 @@ export default (props) => {
             )
           }
         />
+
         <DrawerItem
-          icon={edit}
+          icon={time}
+          labelStyle={modee ? style.label : style.labelDark}
+          label="Tiempo Ganado"
+          onPress={() =>
+            props.navigation.navigate("Root", { screen: "TimeGained" }, props)
+          }
+        />
+        <DrawerItem
+          icon={deleteUser}
           label="Eliminar cuenta"
           labelStyle={modee ? style.label : style.labelDark}
           onPress={() =>
@@ -241,3 +250,8 @@ const shop = () => <Entypo name="shop" size={25} color="#929292" />;
 const edit = () => (
   <MaterialCommunityIcons name="account-edit" size={25} color="#929292" />
 );
+const deleteUser = () => (
+  <MaterialIcons name="delete" size={25} color="#929292" />
+);
+
+const time = () => <Entypo name="back-in-time" size={25} color="#929292" />;
