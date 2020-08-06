@@ -5,11 +5,12 @@ export const style = StyleSheet.create({
   buttonsContainer: {
     flex: 1,
     flexDirection: "row",
-    marginTop: "5%",
+    // marginTop: "5%",
     justifyContent: "space-around",
     width: Dimensions.get("window").width / 2,
     marginLeft: "auto",
     marginRight: "auto",
+    marginBottom: "20%",
   },
   button: {
     alignItems: "center",

@@ -29,11 +29,14 @@ const AccountsController = {
       });
   },
   createAccount(req, res) {
-    console.log("REQBODY", req.body);
-    AccountsModel.find({ user: req.body.user, isEliminated: false })
+    AccountsModel.findOne({cbu_cvu: req.body.cbu_cvu})
+    .then((account)=> {
+      if (account._id){
+        res.send({ messageAccount: "Ya hay una cuenta registrada con este número." });
+      } else {AccountsModel.find({ user: req.body.user, isEliminated: false })
       .then((accounts) => {
         if (accounts.length === 0) {
-          AccountsModel.create({
+          return AccountsModel.create({
             nameEntity: req.body.nameEntity,
             accountNumber: req.body.accountNumber,
             cbu_cvu: req.body.cbu_cvu,
@@ -63,7 +66,9 @@ const AccountsController = {
               });
           });
         }
-      })
+      })}
+    })
+    
 
       .catch((err) => {
         res.status(500).send(err);
@@ -134,3 +139,4 @@ const AccountsController = {
 };
 
 module.exports = AccountsController;
+

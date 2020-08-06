@@ -4,6 +4,7 @@ import {
   GET_USER_SINGLE_ACCOUNT,
   FETCH_BANKS,
   SET_MAIN_ACCOUNT,
+  ERROR_ACCOUNT
 } from "../constants";
 import { IP } from "../../../../config";
 
@@ -35,6 +36,13 @@ const get_banks = (banks) => {
   };
 };
 
+const error_message = (error) => {
+  return {
+    type: ERROR_ACCOUNT,
+    error
+  }
+}
+
 export const fetchMainAccount = (userId) => (dispatch) => {
   axios
     .get(`http://${IP}:1337/api/accounts/main/${userId}`)
@@ -55,7 +63,14 @@ export const addAccounts = (name, cbu, accountNumber, user) => (dispatch) => {
       accountNumber: accountNumber,
       user: user,
     })
-    .then((res) => dispatch(get_user_accounts(res.data)));
+    .then((res) => 
+    {if (res.data.length>0){
+      return dispatch(get_user_accounts(res.data))
+    } else {
+      return dispatch(error_message(res.data))
+    }
+  }
+    );
 };
 
 export const fetchBanks = () => (dispatch) =>

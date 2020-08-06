@@ -30,9 +30,12 @@ export default ({
   mode,
 }) => {
   return (
-    <ScrollView 
-    keyboardShouldPersistTaps="always"
-    style={style.mainContainer}
+    <ScrollView
+      keyboardShouldPersistTaps="always"
+      style={{
+        ...style.mainContainer,
+        backgroundColor: mode ? fondoColor : "black",
+      }}
     >
       <Text style={style.containerTitle}>Datos de tu Negocio</Text>
       <View style={style.container}>
@@ -78,7 +81,7 @@ export default ({
               },
             }}
             enablePoweredByContainer={false}
-            placeholder="Editar Ubicacion"
+            placeholder={address}
             returnKeyType={"search"}
             listViewDisplayed="auto"
             fetchDetails={true}
@@ -124,8 +127,7 @@ export default ({
       <Text style={style.textOpenCamera}>Subir foto</Text>
 
       {image !== "" ? (
-        <View
-        >
+        <View>
           <Image
             style={mode ? style.image : style.imageDark}
             source={{ uri: image }}
@@ -141,7 +143,7 @@ export default ({
       <View style={{ alignItems: "center" }}>
         <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
       </View>
-      
+
       <View>
         <TouchableOpacity
           style={style.confirmar}

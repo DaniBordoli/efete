@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Text,
-  View,
-  Button,
-  Image,
-  TouchableOpacity,
-  Modal,
-} from "react-native";
+import { Text, View, Image, TouchableOpacity, Modal } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { style } from "./style";
 import { AntDesign } from "@expo/vector-icons";

@@ -38,6 +38,7 @@ import confirmValueContainer from "../confirmValue/confirmValuecontainer";
 import ValidarIdentidadContainer from "../validarIdentidad/ValidarIdentidadContainer";
 import WaitingValidationContainer from "../waitingValidation/WaitingValidationContainer";
 import DeleteProfileContainer from "../deleteProfile/DeleteprofileContainer";
+import TimeGainedContainer from "../timeGained/TimeGainedContainer";
 
 const Stack = createStackNavigator();
 
@@ -48,7 +49,7 @@ export default ({ navigation }) => {
   const user = useSelector((state) => state.users.user)
 
   return (
-    <Stack.Navigator initialRouteName="Login" >
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="QRgenerator"
         component={GeneratorQR}
@@ -184,6 +185,17 @@ export default ({ navigation }) => {
             backgroundColor: mode ? headerColor : headerColorDark,
           },
           title: "Ver transacción",
+        }}
+      />
+      <Stack.Screen
+        name="TimeGained"
+        component={TimeGainedContainer}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Tiempo ganado",
         }}
       />
 

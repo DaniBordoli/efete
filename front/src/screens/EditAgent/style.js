@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { buttonColor, verdeTexto, inputDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
-  mainContainer:{
-    backgroundColor: '#FDFDFF',
-    height: '100%',
-    },
+  mainContainer: {
+    backgroundColor: "#FDFDFF",
+    height: "100%",
+  },
   container: {
     alignItems: "center",
     borderRadius: 10,
@@ -24,12 +24,12 @@ export const style = StyleSheet.create({
     fontFamily: "nunito",
     textAlign: "center",
     textTransform: "uppercase",
-    marginTop: '12%',
-    marginBottom: '5%'
+    marginTop: "12%",
+    marginBottom: "5%",
   },
   title: {
     color: "#424242",
-    marginBottom: '3%'
+    marginBottom: "3%",
   },
   titleDark: {
     alignSelf: "flex-start",
@@ -70,28 +70,29 @@ export const style = StyleSheet.create({
     borderRadius: 3,
   },
   image: {
-    width: 200,
-    height: 150,
+    width: Dimensions.get("window").width / 3,
+    height: Dimensions.get("window").height / 9,
     borderRadius: 12,
     alignSelf: "center",
-    marginBottom: '1%',
+    marginBottom: "1%",
     borderWidth: 1,
-    borderColor: 'black'
+    borderColor: "black",
   },
   imageDark: {
-    marginTop: "5%",
-    width: 200,
-    height: 150,
+    width: Dimensions.get("window").width / 3,
+    height: Dimensions.get("window").height / 9,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: "white",
     shadowColor: "#000",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   textOpenCamera: {
     color: "#A4A4A4",
     fontSize: 15,
     textAlign: "center",
-    marginBottom: '1%',
+    marginBottom: "1%",
   },
   textMaxsize: {
     margin: "2%",
@@ -102,8 +103,8 @@ export const style = StyleSheet.create({
   confirmar: {
     backgroundColor: "#00CC96",
     borderRadius: 5,
-    marginTop: '10%',
-    marginBottom: '5%',
+    marginTop: "10%",
+    marginBottom: "5%",
     width: "70%",
     alignSelf: "center",
   },

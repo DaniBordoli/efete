@@ -35,14 +35,14 @@ export default () => {
     username.length > 0 && password.length > 0
       ? setIsData(false)
       : setIsData(true);
-      handleIsValid
+      /* handleIsValid */
   };
 
   const handleIsData = () => {
     username.length > 0 && password.length > 0
       ? setIsData(false)
       : setIsData(true);
-      handleIsValid
+      /* handleIsValid */
   };
 
 
@@ -50,7 +50,7 @@ export default () => {
 
   function handleChange(e, name) {
     setUser({ ...user, [name]: e });
-    handleIsValid
+    /* handleIsValid */
   }
 
   function handleSubmit() {

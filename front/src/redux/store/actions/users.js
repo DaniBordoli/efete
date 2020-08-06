@@ -73,6 +73,15 @@ export const editUser = (userData) => (dispatch) => {
     .catch((err) => console.log(err, "ERROR"));
 };
 
+export const editUserTransactions = (userData) => (dispatch) => {
+  return axios
+    .patch(`http://${IP}:1337/api/users/transactionsmade`, userData)
+    .then((res) => {
+      dispatch(login_user(res.data));
+    })
+    .catch((err) => console.log(err, "ERROR"));
+};
+
 export const userValidation = (userData) => (dispatch) => {
   return axios
     .patch(`http://${IP}:1337/api/users/userValidation`, userData)

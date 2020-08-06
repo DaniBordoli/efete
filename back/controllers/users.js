@@ -42,7 +42,7 @@ const userLogout = (req, res) => {
 };
 
 const editProfileUser = async (req, res) => {
-  console.log("REQ.BODY.PASSWORD", req.body.password);
+  console.log("REQ.BODY", req.body);
   try {
     let user = await User.findOne({
       _id: req.body._id,
@@ -50,24 +50,38 @@ const editProfileUser = async (req, res) => {
     if (req.body.password) {
       let newPassword = await user.hashPasswordUser(req.body.password);
       console.log("NEW PASS!!!!!!", newPassword, "USER!!!!!", user);
-      let updtatedUser = await user.updateOne({
+      await user.updateOne({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         username: req.body.username,
         password: newPassword,
       });
-      res.status(200).json(updtatedUser);
     } else {
-      let updtatedUser = await user.updateOne({
+      await user.updateOne({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         username: req.body.username,
       });
-      res.status(200).json(updtatedUser);
     }
+    return User.findById(req.body._id).then((user) => {
+      res.send(user);
+    });
   } catch (err) {
     console.log(err);
   }
+};
+
+const editUserTransactions = (req, res) => {
+  User.updateOne(
+    { _id: req.body._id },
+    { transactionsMade: req.body.transactionsMade }
+  )
+    .then(() => {
+      return User.findById(req.body._id).then((user) => {
+        res.send(user);
+      });
+    })
+    .catch((err) => res.status(400).send(err));
 };
 
 const userValidation = (req, res) => {
@@ -135,4 +149,5 @@ module.exports = {
   setTcn,
   deleteUser,
   userValidation,
+  editUserTransactions,
 };
