@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { buttonColor, violetaOscuro, headerColor} from '../../Common/constans'
 
 export const style = StyleSheet.create({
   mainContainer: {
@@ -29,7 +30,7 @@ export const style = StyleSheet.create({
     marginBottom: "6%",
   },
   text: {
-    fontFamily: "nunito",
+    fontFamily: "nunito-bold",
     fontSize: 30,
     marginTop: "3%",
     textTransform: "uppercase",
@@ -39,7 +40,7 @@ export const style = StyleSheet.create({
     marginTop: "3%",
     marginLeft: "10%",
     marginRight: "10%",
-    fontFamily: "nunito",
+    fontFamily: "regular",
     textAlign: "center",
   },
   text2: {
@@ -59,25 +60,25 @@ export const style = StyleSheet.create({
     width: "40%",
     marginTop: "15%",
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: "#00CC96",
-    marginRight: "1%",
+    
+   
+    
   },
   textCancelar: {
-    color: "#00CC96",
+    color: violetaOscuro,
     fontSize: 20,
     width: "100%",
     fontFamily: "nunito",
     textAlign: "center",
   },
   confirmar: {
-    backgroundColor: "#00CC96",
+    backgroundColor: buttonColor,
     padding: "4%",
     borderRadius: 3,
     width: "40%",
     marginTop: "15%",
     alignSelf: "center",
-    marginLeft: "1%",
+    
   },
   textConfirmar: {
     color: "white",
@@ -89,6 +90,6 @@ export const style = StyleSheet.create({
   botonesCont: {
     width: '100%',
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
   },
 });

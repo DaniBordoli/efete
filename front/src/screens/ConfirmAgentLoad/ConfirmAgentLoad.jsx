@@ -9,7 +9,7 @@ const ConfirmAgentLoad = ({ value , mode}) => {
     const navigation = useNavigation();
 
     return(
-  <ScrollView>
+  
     <View style={style.container}>
       
       <View style={style.imageCont}>
@@ -26,7 +26,7 @@ const ConfirmAgentLoad = ({ value , mode}) => {
 
          <View style={style.hr}></View>
           
-          <Text style={style.text}>Felicitaciones has realizado una recarga de </Text> 
+          <Text style={style.text}>Felicitaciones has realizado una recarga de: </Text> 
          <Text style={style.valor}>${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Text>          
 
          <View style={style.hr}></View>
@@ -42,7 +42,7 @@ const ConfirmAgentLoad = ({ value , mode}) => {
         </TouchableOpacity>  
 
     </View>
-   </ScrollView>
+   
     )
 }
 

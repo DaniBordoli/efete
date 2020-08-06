@@ -7,6 +7,8 @@ export const verdeTexto="#3D6670"
 export const grisClaro="#e6e3e3"
 export const azulClaro="#F4F9FE"
 export const rojo="#DD1919"
+export const violetaOscuro="#404CB3"
+export const verdeConfirmar="#00CC96"
 
 
 
