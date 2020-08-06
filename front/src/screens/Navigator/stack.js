@@ -340,7 +340,7 @@ export default ({ navigation }) => {
           },
 
           headerTitleAlign: "center",
-          title: `${agent.name}`,
+          title: "Perfil Agente",
         }}
         component={AgentHomeContainer}
       />

@@ -17,6 +17,7 @@ export default ({
       {uriFoto ? (
         <View style={style.modalContainer}>
           <Modal animationType="slide" transparent={true} visible={modal}>
+            
             <View style={style.modal}>
               <Image source={{ uri: uriFoto }} style={style.image} />
 
@@ -28,21 +29,30 @@ export default ({
                   >
                     <Entypo
                       name="circle-with-cross"
-                      size={50}
+                      size={60}
                       color="#DD1919"
                     />
                   </TouchableOpacity>
                 </View>
                 <View>
-                  <TouchableOpacity onPress={() => handleConfirm()}>
-                    <AntDesign name="checkcircleo" size={50} color="#00CC96" />
+                  <TouchableOpacity 
+                  onPress={() => handleConfirm()}
+                  title="Aceptar"
+                  >
+                    <AntDesign 
+                    style={style.confirm}
+                    name="checkcircleo" 
+                    size={50}  
+                    />
                   </TouchableOpacity>
                 </View>
               </View>
+
             </View>
           </Modal>
         </View>
       ) : (
+        
         <View style={style.buttonsContainer}>
           <View style={style.button}>
             <TouchableOpacity onPress={() => openGallery()}>
@@ -57,6 +67,7 @@ export default ({
             </TouchableOpacity>
           </View>
         </View>
+      
       )}
     </View>
   );

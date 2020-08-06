@@ -7,8 +7,6 @@ import { Alert } from "react-native";
 import { YellowBox } from "react-native";
 import _ from "lodash";
 
-/* import uuid from "react-native-uuid"; */
-
 const CreateAgentFormContainer = ({ navigation, route }) => {
   const [foto, setFoto] = useState("");
   const [ubicacion, setUbicacion] = useState({});
@@ -16,12 +14,11 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   const mode = useSelector((state) => state.users.mode);
 
   useEffect(() => {
-    if(route.params) {
-      setFoto(route.params.uriFoto)
-      console.log(foto.length, 'FOTOOOOOOOO!')
-      handleIsValid()
-    }else{
-      ("No hay fotos")
+    if (route.params) {
+      setFoto(route.params.uriFoto);
+      handleIsValid();
+    } else {
+      ("No hay fotos");
     }
   });
 
@@ -42,7 +39,7 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
     handleIsValid();
   }
   function handlerAddress(text) {
-    YellowBox.ignoreWarnings(['VirtualizedLists should never be nested']);
+    YellowBox.ignoreWarnings(["VirtualizedLists should never be nested"]);
     setAddress(text.description);
     handleIsValid();
   }
@@ -56,14 +53,12 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
     const response = await fetch(uri);
     const blob = await response.blob();
 
-    /* let fotoUUID = uuid.v4(); */
-
     var ref = firebase
       .storage()
       .ref()
       .child("images/" + user._id + "-" + address);
 
-    YellowBox.ignoreWarnings(["Setting a timer"]); //esto evita un warning por el await
+    YellowBox.ignoreWarnings(["Setting a timer"]);
     const _console = _.clone(console);
     console.warn = (message) => {
       if (message.indexOf("Setting a timer") <= -1) {
@@ -94,7 +89,6 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
   }
 
   const handleIsValid = () => {
-    console.log('address!!!!!!!', address, 'name', name, 'cuil', cuil, 'foto', foto)
     if (
       name.length > 0 &&
       address.length > 0 &&
@@ -102,7 +96,6 @@ const CreateAgentFormContainer = ({ navigation, route }) => {
       foto.length > 0
     ) {
       setIsValid(true);
-      console.log('Entrav al set valid')
     }
   };
 
