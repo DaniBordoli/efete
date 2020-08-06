@@ -14,17 +14,16 @@ export default ({ navigation }) => {
   );
   const [bankId, setBankId] = useState("");
   const handleBank = (id) => {
-    console.log("id", id);
     setBankId(id);
   };
 
   const [cbu, setCbu] = useState("");
   const handleCbu = (cbu) => {
-    console.log("CBU",cbu)
     setCbu(cbu);
   };
 
   const [isValid, setIsValid] = useState(false);
+  const [message, setMessage] = useState("");
 
 
   const [accountNumber, setAccountNumber] = useState('');
@@ -33,7 +32,7 @@ export default ({ navigation }) => {
     accountNumber.length == 22
     ? setIsValid(true)
     : setIsValid(false);
-    
+  
   };
 
   
@@ -43,7 +42,18 @@ export default ({ navigation }) => {
 
   const handleSubmit = () => {
     dispatch(addAccounts(bankId, cbu, accountNumber, user._id))
-    .then(()=>dispatch(fetchMainAccount(user._id)))
+    .then((data)=>
+    {
+      console.log("DATA ERRO",data)
+      if(data.accounts){
+      console.log("ESTo NO LLEGA")
+      dispatch(fetchMainAccount(user._id))
+      navigation.navigate("Accounts");
+    }
+    if (data.error){
+      setMessage(data.error.messageAccount)
+    }
+    })
     
   };
 
@@ -61,6 +71,7 @@ export default ({ navigation }) => {
       accountNumber={accountNumber}
       isValid={isValid}
       mode={mode}
+      message={message}
     />
   );
 };

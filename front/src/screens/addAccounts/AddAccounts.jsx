@@ -4,12 +4,12 @@ import {
   Text,
   TextInput,
   KeyboardAvoidingView,
-  ScrollView,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { MaterialCommunityIcons, Octicons } from "@expo/vector-icons";
 import { style } from "./style.js";
 import { Button } from "react-native-elements";
+import { Alert } from "react-native";
 
 const AddAccount = ({
   banks,
@@ -21,6 +21,7 @@ const AddAccount = ({
   isValid,
   accountNumber,
   mode,
+  message
 }) => {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior="height">
@@ -85,14 +86,14 @@ const AddAccount = ({
           flex: 1,
         }}
       >
+        {message.length>0? Alert.alert(message):null}
         <Button
           disabled={!isValid}
           buttonStyle={style.botonConfirmar}
           titleStyle={style.tituloConfirmar}
           title="Confirmar"
           onPress={() => {
-            handleSubmit();
-            navigation.navigate("Accounts");
+            handleSubmit()
           }}
         />
       </View>
