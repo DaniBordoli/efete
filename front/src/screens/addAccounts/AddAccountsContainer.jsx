@@ -44,7 +44,7 @@ export default ({ navigation }) => {
     dispatch(addAccounts(bankId, cbu, accountNumber, user._id))
     .then((data)=>
     {
-      console.log("DATA ERRO",data)
+      console.log("DATA ERROrrr;;;;;;;;;S",data)
       if(data.accounts){
       console.log("ESTo NO LLEGA")
       dispatch(fetchMainAccount(user._id))

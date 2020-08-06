@@ -5,15 +5,12 @@ import {
   Text,
   ScrollView,
   Dimensions,
-  CheckBox,
   Picker,
 } from "react-native";
 import { Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import DropDownPicker from "react-native-dropdown-picker";
 
 import { style } from "./style.js";
-import { grisClaro } from "../../Common/constans.js";
 
 export default ({
   firstNameChange,

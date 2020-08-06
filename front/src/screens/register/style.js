@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+import {violetaOscuro} from '../../Common/constans'
 export const style = StyleSheet.create({
   inp: {
     borderWidth: 1,
@@ -73,7 +73,7 @@ export const style = StyleSheet.create({
     height: 48,
   },
   tituloRegister: {
-    color: "#404CB3",
+    color: violetaOscuro,
     textTransform: "uppercase",
     fontFamily: "nunito",
   },

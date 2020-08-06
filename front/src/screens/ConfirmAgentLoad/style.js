@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { headerColor, buttonColor } from "../../Common/constans";
+import { headerColor, buttonColor, fondoColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({    
 mainContainer : {
@@ -16,7 +16,7 @@ image : {
 container : {
 flex:1,
 alignItems: "center",
-backgroundColor: 'white',
+backgroundColor: fondoColor
 },
 
 title : {
@@ -35,11 +35,11 @@ icon : {
 },
 text : {
   fontSize: 20,
-  fontWeight: 'bold',
   textAlign: 'center',
   marginTop: 15,
   width: '80%',
-  color: '#303030'
+  color: '#303030',
+  fontFamily:'regular'
 },
 valor : {
    fontSize: 50,
@@ -48,17 +48,17 @@ valor : {
    color: '#00CC96' 
 },
 volver : {
-    backgroundColor: "#00CC96",
+    backgroundColor: buttonColor,
     padding: '1%',
     borderRadius: 5,
     marginTop: "15%", 
     marginBottom: '5%'
 },
 textConfirmar : {
-    color: "#ffffff",
-    fontSize: 15,
-    paddingLeft: '10%',
-    paddingRight: "10%",
+    color: 'white',
+    fontSize: 20,
+    paddingLeft: '5%',
+    paddingRight: "5%",
     paddingBottom: "3%",
     paddingTop: '3%',
     fontFamily: "nunito" 

@@ -44,7 +44,7 @@ const error_message = (error) => {
 }
 
 export const fetchMainAccount = (userId) => (dispatch) => {
-  axios
+  return axios
     .get(`http://${IP}:1337/api/accounts/main/${userId}`)
     .then((res) => dispatch(get_user_main_account(res.data)));
 };
@@ -64,7 +64,9 @@ export const addAccounts = (name, cbu, accountNumber, user) => (dispatch) => {
       user: user,
     })
     .then((res) => 
-    {if (res.data.length>0){
+    {
+      console.log("REEEES:" , res)
+      if (res.data.length>0){
       return dispatch(get_user_accounts(res.data))
     } else {
       return dispatch(error_message(res.data))

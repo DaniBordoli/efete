@@ -402,7 +402,12 @@ export default ({ navigation }) => {
           ...myHeader,
           headerStyle: {
             backgroundColor: mode ? headerColor : headerColorDark,
-          },
+          }, headerLeft: () => (
+            <MaterialIcons name="arrow-back" size={24} color="white" 
+            style={{ marginLeft: 10, color: "white" }}
+            
+            onPress={() => navigation.navigate("User")}/>
+          ),
           title: "Mis Cuentas",
         }}
       />

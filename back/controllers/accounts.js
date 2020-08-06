@@ -10,7 +10,11 @@ const AccountsController = {
       .populate("nameEntity")
       .populate("user")
       .then((account) => {
-        res.send(account);
+        if (account) res.send(account);
+        else res.send({});
+      })
+      .catch((err) => {
+        res.status(500).send(err);
       })
       .catch((err) => {
         res.status(500).send(err);
@@ -29,11 +33,13 @@ const AccountsController = {
       });
   },
   createAccount(req, res) {
-    AccountsModel.findOne({cbu_cvu: req.body.cbu_cvu})
+    
+    AccountsModel.findOne({accountNumber:req.body.accountNumber , isEliminated: false})
     .then((account)=> {
-      if (account._id){
+      if (account){
         res.send({ messageAccount: "Ya hay una cuenta registrada con este número." });
-      } else {AccountsModel.find({ user: req.body.user, isEliminated: false })
+      } else {
+        AccountsModel.find({ user: req.body.user, isEliminated: false })
       .then((accounts) => {
         if (accounts.length === 0) {
           return AccountsModel.create({
@@ -67,10 +73,8 @@ const AccountsController = {
           });
         }
       })}
-    })
-    
-
-      .catch((err) => {
+    }).catch((err) => {
+        console.log("ERRROR", err)
         res.status(500).send(err);
       });
   },

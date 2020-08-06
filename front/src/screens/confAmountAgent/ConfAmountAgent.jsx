@@ -15,7 +15,7 @@ const ConfAmountAgent = ({
 
 
    return(
-    <ScrollView>
+    <ScrollView >
     <View style={{ flex: 1 , backgroundColor:mode ? '#F1F3F6' : 'black'}}>
          <Text style={style.monto}>Monto</Text>
          <Text style={mode ?style.valor : style.valorDark}>{`$ ${value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}`}</Text>
