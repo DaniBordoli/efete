@@ -3,9 +3,9 @@ import { headerColor, buttonColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   buttonsContainer: {
-    flex: 1,
+    flex: 2,
     flexDirection: "row",
-    // marginTop: "5%",
+    marginTop: "1%",
     justifyContent: "space-around",
     width: Dimensions.get("window").width / 2,
     marginLeft: "auto",
@@ -51,4 +51,8 @@ export const style = StyleSheet.create({
     alignItems: "center",
     marginTop: 22,
   },
+  confirm:{
+    marginTop: '2%',
+    color: "#00CC96"
+  }
 });
