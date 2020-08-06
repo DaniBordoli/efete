@@ -88,7 +88,7 @@ export default ({
                   : -58.642081,
               }}
 
-              title="Efete"
+              title={agente.name}
               
 
             >

@@ -18,16 +18,23 @@ export default ({ navigation }) => {
   const [dataload, setDataload] = useState(false);
   const [code, setCode] = useState("");
   const dispatch = useDispatch();
+  const [valid, setValid] = useState(true);
   const mode = useSelector((state) => state.users.mode);
   const user = useSelector((state) => state.users.user);
+  const errorVerification = useSelector(
+    (state) => state.users.errorVerification
+  );
 
   const handleCode = (value) => {
+    if (value.length < 6) setValid(true);
+    else setValid(false);
     setCode(value);
   };
 
   const handleSubmit = () => {
-    dispatch(sendCode(code, user._id)).then(() => {
-      navigation.navigate("successRegister");
+    dispatch(sendCode(code, user._id)).then((data) => {
+      console.log(data, "DATA");
+      if (data.user) navigation.navigate("successRegister");
     });
   };
 
@@ -46,20 +53,24 @@ export default ({ navigation }) => {
       </Text>
       <View style={style.inputContainer}>
         <TextInput
+          maxLength={6}
           keyboardType="numeric"
           style={style.input}
           onChangeText={(text) => handleCode(text)}
           value={code}
         />
       </View>
+      {errorVerification.errorMessage ? (
+        <Text style={style.errorMessage}>{errorVerification.errorMessage}</Text>
+      ) : null}
+
       <Button
         buttonStyle={style.buttonStyle}
         title="ENVIAR"
         titleStyle={style.titleStyle}
         onPress={() => handleSubmit()}
-      >
-        <Text>CONFIRMAR</Text>
-      </Button>
+        disabled={valid}
+      ></Button>
     </View>
   );
 };

@@ -6,7 +6,6 @@ import { BarCodeScanner } from "expo-barcode-scanner";
 import { buttonColor, headerColor, fondoColor } from "../../Common/constans";
 import { RotationGestureHandler } from "react-native-gesture-handler";
 
-
 export default ({ navigation, route }) => {
   const dispatch = useDispatch();
   const [hasPermission, setHasPermission] = useState(null);
@@ -23,9 +22,6 @@ export default ({ navigation, route }) => {
     })();
     animateLine();
   }, []);
-  
-
-  
 
   const agente = useSelector((state) => state.agents.agent);
 
@@ -45,16 +41,15 @@ export default ({ navigation, route }) => {
   };
 
   const handleBarCodeScanned = ({ type, data }) => {
-    console.log(data,':::::::::::::::::::DESTINO')
     const [agentId, destinationAccount, cbu] = data.split(",");
-    
-    setScanned(true)
+
+    setScanned(true);
     navigation.navigate("SelectAccount", {
       agentId: agentId,
       value: route.params.value,
       destinationAccount: destinationAccount,
       cbu: cbu,
-      agenteMap:route.params.agenteMap
+      agenteMap: route.params.agenteMap,
     });
   };
 
