@@ -1,6 +1,6 @@
 import axios from "axios";
 import { IP } from "../../../../config";
-import { LOGIN_USER, MODE, TOKEN, TCN } from "../constants";
+import { LOGIN_USER, MODE, TOKEN, TCN, ERROR_VERIFICATION } from "../constants";
 import { RENAPER_USER, RENAPER_PASS } from "@env";
 
 export const login_user = (user) => {
@@ -28,6 +28,13 @@ export const mode = (mode) => {
   return {
     type: MODE,
     mode,
+  };
+};
+
+const errorVerification = (error) => {
+  return {
+    type: ERROR_VERIFICATION,
+    error,
   };
 };
 
@@ -94,7 +101,11 @@ export const userValidation = (userData) => (dispatch) => {
 export const sendCode = (code, id) => (dispatch) =>
   axios
     .get(`http://${IP}:1337/api/users/verify?id=${id}&code=${code}`)
-    .then((res) => dispatch(login_user(res.data)));
+    .then((res) => {
+      console.log(res.data, "RES DATA");
+      if (res.data._id) return dispatch(login_user(res.data));
+      else return dispatch(errorVerification(res.data));
+    });
 
 export const verifyEmail = (id) => (dispatch) =>
   axios.get(`http://${IP}:1337/api/users/sendVerificationEmail/${id}`);
