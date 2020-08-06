@@ -24,8 +24,7 @@ export const style = StyleSheet.create({
       borderColor: "#B8B7FF"
     },
     cajas : {
-       padding: '3%',
-       margin: '3%',
+      marginBottom: '10%',
        alignItems: "center",
     },
     mainTitle : {
@@ -33,7 +32,8 @@ export const style = StyleSheet.create({
       fontFamily: "nunito-bold",  
       fontSize: 20,    
       textTransform: "uppercase",
-      marginBottom: '5%'
+      marginBottom: '10%',
+      marginTop: '5%'
     },
     title : {
       color: "#6F76E4",  
@@ -43,9 +43,9 @@ export const style = StyleSheet.create({
       marginBottom: '3%'
     },
     description: {
-       fontFamily: "nunito",  
+        fontFamily: "regular",  
         backgroundColor: "#FFFFFF",
-        color: verdeTexto,
+        color: 'black',
         padding: '2%',
         fontSize: 18,
         width: '80%',
@@ -74,5 +74,7 @@ export const style = StyleSheet.create({
       width: "100%",
       fontFamily: "nunito",
       textAlign: "center",
+      paddingLeft: '10%' ,
+      paddingRight: '10%'
     },
 })
