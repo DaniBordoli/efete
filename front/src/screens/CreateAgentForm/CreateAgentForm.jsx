@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import { YellowBox } from 'react-native';
+import { YellowBox } from "react-native";
 import { style } from "./style";
 
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
@@ -25,14 +25,14 @@ const CreateAgentForm = ({
   address,
   cuil,
   notifyChange,
-  isValid,
+  validUri,
+  validCuil,
+  validAdress,
+  validName,
+  validUbicacion,
 }) => {
   return (
-
-    <ScrollView
-    keyboardShouldPersistTaps="always"
-    style={style.mainContainer}
-    >
+    <ScrollView keyboardShouldPersistTaps="always" style={style.mainContainer}>
       <Text style={style.containerTitle}>Agregar Establecimiento</Text>
       <View style={style.container}>
         <Text
@@ -112,8 +112,20 @@ const CreateAgentForm = ({
       <OpenCamera navigation={navigation} view="CreateAgentForm" />
       <View>
         <TouchableOpacity
-          disabled={!isValid} 
-          style={isValid?style.confirmar:style.confirmarDisabled}
+          disabled={
+            !(
+              validName &&
+              validAdress &&
+              validCuil &&
+              validUri &&
+              validUbicacion
+            )
+          }
+          style={
+            validName && validAdress && validCuil && validUri && validUbicacion
+              ? style.confirmar
+              : style.confirmarDisabled
+          }
           title="Confirmar"
           onPress={() => {
             handlerSubmit();

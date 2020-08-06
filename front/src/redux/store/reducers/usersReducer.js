@@ -1,10 +1,11 @@
-import { LOGIN_USER, MODE, TOKEN, TCN } from "../constants";
+import { LOGIN_USER, MODE, TOKEN, TCN, ERROR_VERIFICATION } from "../constants";
 
 const initialState = {
   user: {},
   mode: true, // true
   token: "",
   tcn: null,
+  errorVerification: {},
 };
 
 export default (state = initialState, action) => {
@@ -17,6 +18,9 @@ export default (state = initialState, action) => {
       return { ...state, token: action.token };
     case TCN:
       return { ...state, tcn: action.tcn };
+    case ERROR_VERIFICATION:
+      return { ...state, errorVerification: action.error };
+
     default:
       return state;
   }
