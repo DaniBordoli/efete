@@ -4,7 +4,7 @@ import { style } from "./style";
 // import { useTheme } from '@react-native/navigation'
 import { colors, Button } from "react-native-elements";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { buttonColor } from "../../Common/constans";
+import { buttonColor, violetaOscuro } from "../../Common/constans";
 
 export default ({ 
   navigation, 
@@ -20,29 +20,18 @@ export default ({
           />
       </View>
       
-      <TouchableOpacity
-        style={style.clearIcon}
-        onPress={() => {
-          navigation.navigate("User");
-        }}
-      >
-        <MaterialCommunityIcons
-          name="close-circle-outline"
-          size={35}
-          color={buttonColor}
-        />
-     </TouchableOpacity>
+     
 
      <Text style={style.titulo}>TRANSACCIÓN REALIZADA</Text>
 
-         <View style={style.icon}>
-        <Image source={require("../../../assets/icon.png")} />
+         <View >
+        <Image  source={require("../../../assets/icon.png")} />
         </View>
 
         <View style={style.hr}></View>
         
 
-        {/* <Text style={style.text}>Kisosko San Juan</Text> */}
+       {/*  <Text style={style.text}>Kisosko San Juan</Text> */}
         <Text style={style.text}>{transaction.agent[0].name}</Text>
        
         {/* <Text style={style.text1}>Av San Juan 2705</Text> */}
@@ -73,6 +62,14 @@ export default ({
             console.log("se apreta");
           }}
         />
+         <TouchableOpacity
+        style={style.clearIcon}
+        onPress={() => {
+          navigation.navigate("User");
+        }}
+      >
+        <Text style={{color:violetaOscuro , fontSize:20,fontWeight:'bold'}}>Cancelar</Text>
+     </TouchableOpacity>
       </View>
     </View>
   </ScrollView>

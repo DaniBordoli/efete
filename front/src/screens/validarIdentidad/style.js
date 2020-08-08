@@ -2,6 +2,7 @@ import { StyleSheet, Dimensions } from "react-native";
 
 export const style = StyleSheet.create({
   mainContainer: {
+    
     flex: 1,
     alignItems: "center",
     width: "100%",
@@ -21,6 +22,7 @@ export const style = StyleSheet.create({
     margin: "3%",
     textAlign: "center",
     textTransform: "uppercase",
+    marginTop:"20%"
   },
   icon: {
     width: 150,
@@ -49,6 +51,7 @@ export const style = StyleSheet.create({
     color: "#00CC96",
   },
   hr: {
+    marginTop:'5%',
     width: "80%",
     borderTopColor: "#808080",
     borderTopWidth: 1,
@@ -87,6 +90,7 @@ export const style = StyleSheet.create({
     fontFamily: "nunito",
   },
   botonesCont: {
+    marginTop:"10%",
     flexDirection: "row",
     justifyContent: "space-between",
   },

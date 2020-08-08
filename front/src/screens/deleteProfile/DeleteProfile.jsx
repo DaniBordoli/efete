@@ -36,7 +36,7 @@ export default ({ navigation, handleSubmit }) => {
                 <Text style={style.textStyle}>Confirmar</Text>
               </TouchableHighlight>
               <TouchableHighlight
-                style={{
+                 style={{
                   ...style.openButton,
                   backgroundColor: "white",
                   borderWidth: 1,

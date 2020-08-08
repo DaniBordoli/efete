@@ -97,9 +97,11 @@ export const style = StyleSheet.create({
   },
   openButton: {
     backgroundColor: "#F194FF",
-    borderRadius: 20,
+    borderRadius: 5,
     padding: 10,
     elevation: 2,
+    margin:10,
+    width:"40%"
   },
   textStyle: {
     color: "white",

@@ -32,9 +32,9 @@ export default ({ navigation, route }) => {
   };
 
   const handleMainAccount = (accountId) => {
-    dispatch(setMainAccount(accountId, user._id));
-    dispatch(fetchMainAccount(user._id));
-    navigation.navigate("Accounts");
+    dispatch(setMainAccount(accountId, user._id))
+      .then(() => dispatch(fetchMainAccount(user._id)))
+      .then(() => navigation.navigate("Accounts"));
   };
 
   return (
