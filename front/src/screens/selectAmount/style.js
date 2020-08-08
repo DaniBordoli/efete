@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { headerColor, buttonColor, lilaDark, headerColorDark, buttonDark } from "../../Common/constans";
+import { headerColor, buttonColor, lilaDark, headerColorDark, buttonDark, fondoColor, violetaOscuro } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   monto: {
@@ -113,34 +113,32 @@ export const style = StyleSheet.create({
  },
  contBotones : {
    flexDirection: 'row-reverse',
-   justifyContent: "space-evenly",
+   justifyContent: "center",
 
 
  },
  cancelar: {
   width: 160,
   height: 55,
-  backgroundColor: 'white',
+  backgroundColor: fondoColor,
   marginTop: 10,
   alignSelf: "center",
-  borderWidth: 1,
-  borderColor: buttonColor
+  
 },
 
 cancelarDark: {
   width: 160,
   height: 55,
-  backgroundColor: buttonDark,
+  backgroundColor: 'black',
   marginTop: 10,
   alignSelf: "center",
-  borderWidth: 1,
-  borderColor: headerColor
+  
 },
 tituloCancelar:{
   fontSize: 18,
   textAlign: "center",
   textTransform: "uppercase",
-  color: buttonColor,
+  color: violetaOscuro,
   fontWeight: "bold",
 },
 tituloCancelarDark:{

@@ -16,7 +16,7 @@ export default ({
     <View>
       {uriFoto ? (
         <View style={style.modalContainer}>
-          <Modal animationType="slide" transparent={true} visible={modal}>
+          <Modal animationType="slide" transparent={true} visible={modal} style={{flex:1}}>
             
             <View style={style.modal}>
               <Image source={{ uri: uriFoto }} style={style.image} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
-import { headerColor, buttonColor, fondoColor, buttonDark } from "../../Common/constans";
+import { headerColor, buttonColor, fondoColor, buttonDark, violetaOscuro } from "../../Common/constans";
 import { Button } from "react-native-elements";
 
 const OtherAmountAgent = ({
@@ -115,29 +115,26 @@ const style = StyleSheet.create({
     backgroundColor: "white",
     marginTop: 10,
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: buttonColor,
   },
   tituloCancelar: {
     fontSize: 18,
     textAlign: "center",
     textTransform: "uppercase",
-    color: buttonColor,
+    color: violetaOscuro,
     fontWeight: "bold",
   },
   contBotones: {
     marginTop: 100,
     flexDirection: "row-reverse",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
   },
   cancelarDark: {
     width: 160,
     height: 55,
-    backgroundColor: buttonDark,
+    backgroundColor: 'black',
     marginTop: 10,
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: headerColor
+    
   },
   tituloCancelarDark:{
     fontSize: 18,

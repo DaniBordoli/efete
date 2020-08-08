@@ -447,6 +447,7 @@ export default ({ navigation }) => {
           headerStyle: {
             backgroundColor: mode ? headerColor : headerColorDark,
           },
+          headerShown: false,
           title: "Validar identidad",
         }}
       />

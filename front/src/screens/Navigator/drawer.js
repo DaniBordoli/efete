@@ -79,39 +79,6 @@ export default (props) => {
             props.navigation.navigate("Root", { screen: "AllAgents" }, props)
           }
         />
-{/* 
-        {userRole === "agent" ? (
-          <DrawerItem
-            icon={agent}
-            labelStyle={modee ? style.label : style.labelDark}
-            label="Perfil agente"
-            onPress={() =>
-              props.navigation.navigate("Root", { screen: "Agent" }, props)
-            }
-          />
-        ) : (
-          <DrawerItem
-            icon={agent}
-            labelStyle={modee ? style.label : style.labelDark}
-            label="Convertite en Agente"
-            onPress={() =>
-              props.navigation.navigate(
-                "Root",
-                { screen: "CreateAgentForm" },
-                props
-              )
-            }
-          />
-        )} Se elimino para evitar conflicto y por proligodad*/}
-
-        <DrawerItem
-          icon={info}
-          label="Acerca de la App"
-          labelStyle={modee ? style.label : style.labelDark}
-          onPress={() =>
-            props.navigation.navigate() //Deberia llevar a una descripción de la app!
-          }
-        />
         <DrawerItem
           icon={edit}
           label="Datos Personales"

@@ -12,11 +12,11 @@ export const style = StyleSheet.create({
   clearIcon: {
     marginTop: '2%',
     marginRight: '3%',
-    alignSelf: "flex-end",
+    alignSelf:'center'
   },
   titulo: {
     color: "#6F76E4",
-    fontSize: 22,
+    fontSize: 26,
     fontFamily: "nunito",
     margin: "3%",
     textAlign: "center",
@@ -31,7 +31,7 @@ export const style = StyleSheet.create({
   },
   text: {
     fontFamily: "nunito-bold",
-    fontSize: 30,
+    fontSize: 26,
     marginTop: "4%",
     textTransform: "uppercase",
   },
@@ -69,9 +69,9 @@ export const style = StyleSheet.create({
     padding: "4%",
     borderRadius: 3,
     width: "100%",
-    marginTop: "15%",
+    marginTop: "10%",
     alignSelf: "center",
-    marginBottom: '5%'
+    marginBottom: '2%'
   },
   tituloConfirmar: {
     fontSize: 18,

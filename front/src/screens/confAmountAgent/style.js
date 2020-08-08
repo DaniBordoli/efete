@@ -5,6 +5,8 @@ import {
   headerColorDark,
   lilaDark,
   buttonDark,
+  fondoColor,
+  violetaOscuro,
 } from "../../Common/constans";
 
 export const style = StyleSheet.create({
@@ -103,32 +105,30 @@ export const style = StyleSheet.create({
   },
   contBotones: {
     flexDirection: "row-reverse",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
   },
   cancelar: {
     width: 160,
     height: 55,
-    backgroundColor: "white",
+    backgroundColor: fondoColor,
     marginTop: 10,
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: buttonColor,
+    
   },
 
   cancelarDark: {
     width: 160,
     height: 55,
-    backgroundColor: buttonDark,
     marginTop: 10,
     alignSelf: "center",
-    borderWidth: 1,
-    borderColor: headerColor,
+    backgroundColor:"black"
+    
   },
   tituloCancelar: {
     fontSize: 18,
     textAlign: "center",
     textTransform: "uppercase",
-    color: buttonColor,
+    color: violetaOscuro,
     fontWeight: "bold",
   },
   tituloCancelarDark: {

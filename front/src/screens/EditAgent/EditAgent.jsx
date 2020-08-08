@@ -38,12 +38,12 @@ export default ({
         backgroundColor: mode ? fondoColor : "black",
       }}
     >
-      <Text style={style.containerTitle}>Datos de tu Negocio</Text>
+      <Text style={style.containerTitle}>EDITAR TU NEGOCIO</Text>
       <View style={style.container}>
         <Text
           style={{
             alignSelf: "flex-start",
-            marginLeft: 10,
+            marginLeft: "8%",
             marginBottom: 10,
             fontSize: 15,
             color: mode ? "#424242" : "white",
@@ -57,7 +57,7 @@ export default ({
             color: mode ? "black" : "white",
             width: Dimensions.get("window").width / 1.3,
             flexDirection: "row",
-            marginBottom: 25,
+            marginBottom: 35,
             borderRadius: 5,
           }}
         >
@@ -140,9 +140,7 @@ export default ({
       )}
 
       <OpenCamera view={view} navigation={navigation} />
-      <View style={{ alignItems: "center" }}>
-        <Text style={style.textMaxsize}>Subir imagenes - Max 300 Kb</Text>
-      </View>
+      
 
       <View>
         <TouchableOpacity

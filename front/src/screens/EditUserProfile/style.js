@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { headerColor, verdeTexto } from "../../Common/constans";
+import { headerColor, verdeTexto, inputDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   container: {
@@ -11,10 +11,7 @@ export const style = StyleSheet.create({
   text: {
     textAlign: "left",
     color: "black",
-    fontSize: 14,
-    textTransform: "uppercase",
-    fontFamily: "sans",
-    fontWeight: "bold",
+
     marginTop: '6%',
     marginBottom: '2%',
     marginLeft: '1%'
@@ -28,7 +25,7 @@ export const style = StyleSheet.create({
   },
 
   movimientos: {
-    fontSize: 30,
+    fontSize: 25,
     marginTop: '5%',
     marginBottom: '7%',
     textAlign: "center",
@@ -42,13 +39,13 @@ export const style = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderRadius:8,
+    borderRadius:3,
     marginTop:5,
     elevation:2,
   },
 
   input: {
-    borderRadius:8,
+    borderRadius:3,
     fontSize: 18,
     flex: 1,
     padding: '4%',
@@ -64,5 +61,21 @@ export const style = StyleSheet.create({
     height:43,
     alignSelf:'center',
     justifyContent:'center',
+  },
+  eyeLock: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    marginRight: 15,
+  },
+  eyeLockDark: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: inputDark,
+    borderRadius: 10,
+    marginRight: 15,
   },
 });

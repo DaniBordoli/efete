@@ -104,7 +104,8 @@ const Accounts = ({
                                   backgroundColor: rojo,
                                 }}
                                 onPress={() => {
-                                  handleMainDelete(mainAccount._id);
+                                  handleMainDelete(mainAccount._id)
+                                  setModal2Visible(false);
                                 }}
                               >
                                 <Text style={style.textStyle}>Confirmar</Text>
@@ -117,7 +118,7 @@ const Accounts = ({
                                   borderColor: buttonColor,
                                 }}
                                 onPress={() => {
-                                  setModal2Visible(!modal2Visible);
+                                  setModal2Visible(false);
                                 }}
                               >
                                 <Text

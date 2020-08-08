@@ -46,8 +46,7 @@ const error_message = (error) => {
 export const fetchMainAccount = (userId) => (dispatch) => {
   return axios
     .get(`http://${IP}:1337/api/accounts/main/${userId}`)
-    .then((res) => {dispatch(get_user_main_account(res.data));
-    })};
+    .then((res) => dispatch(get_user_main_account(res.data)))};
 
 export const fetchUserAccounts = (id) => (dispatch) =>
   axios
@@ -55,7 +54,7 @@ export const fetchUserAccounts = (id) => (dispatch) =>
     .then((res) => dispatch(get_user_accounts(res.data)));
 
 export const setMainAccount = (id, userId) => (dispatch) => {
-  axios
+ return axios
     .patch(`http://${IP}:1337/api/accounts/${id}/${userId}`)
     .then((res) => dispatch(get_user_accounts(res.data)));
 };
