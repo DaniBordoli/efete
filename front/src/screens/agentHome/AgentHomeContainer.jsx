@@ -5,18 +5,15 @@ import { getAgentTransactions } from "../../redux/store/actions/transactions";
 import AgentHome from "./AgentHome";
 import { fetchAgent } from "../../redux/store/actions/agents";
 import moment from "moment/min/moment-with-locales";
-import esLocale from 'moment/locale/es'
+import esLocale from "moment/locale/es";
 
-
-
-export default ({ navigation,route }) => {
-  console.log("ROUTE",route.params)
-  
+export default ({ navigation, route }) => {
   const dispatch = useDispatch();
 
   const mode = useSelector((state) => state.users.mode);
   const [loading, setLoading] = useState(false);
   const [time, setTime] = useState("");
+  const access = route.params.access ? route.params.access : false;
 
   const agentTransactions = useSelector(
     (state) => state.transactions.agentTransactions
@@ -27,8 +24,8 @@ export default ({ navigation,route }) => {
 
   useEffect(() => {
     var date = moment();
-    var fecha = date.locale('es', esLocale).format("dddd MM-MMMM");
-    
+    var fecha = date.locale("es", esLocale).format("dddd MM-MMMM");
+
     setTime(fecha);
   });
 
@@ -48,6 +45,7 @@ export default ({ navigation,route }) => {
       loading={loading}
       time={time}
       agent={agent}
+      access={access}
     />
   );
 };
