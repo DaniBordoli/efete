@@ -14,7 +14,14 @@ import { Load } from "../../Common/loading";
 import { fondoColor, buttonColor, rojo } from "../../Common/constans";
 import Modal from "react-native-modal";
 
-const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
+const AllAgents = ({
+  agentsUser,
+  loading,
+  navigation,
+  handleDelete,
+  mode,
+  sharedAgentsUser,
+}) => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={{ flex: 1, backgroundColor: mode ? fondoColor : "black" }}>
@@ -147,6 +154,140 @@ const AllAgents = ({ agentsUser, loading, navigation, handleDelete, mode }) => {
                           </Modal>
                         </View>
                       </View>
+                    </TouchableOpacity>
+                  </View>
+                );
+              }}
+            />
+            <FlatList
+              style={{ marginBottom: 10 }}
+              showsVerticalScrollIndicator={false}
+              keyExtractor={(agent) => agent._id}
+              data={sharedAgentsUser}
+              renderItem={({ item }) => {
+                return (
+                  <View style={{ flex: 1 }}>
+                    <TouchableOpacity
+                      style={mode ? style.parent : style.parentDark}
+                      onPress={() =>
+                        navigation.navigate("Agent", {
+                          agent: item.agent[0],
+                          access: item.access,
+                        })
+                      }
+                    >
+                      <View style={style.negocio}>
+                        <Image
+                          source={
+                            mode
+                              ? require("../../../assets/iconos/negocio.png")
+                              : require("../../../assets/iconos/negocios.png")
+                          }
+                          style={{ width: 50, height: 50 }}
+                        />
+                      </View>
+
+                      <View style={{ alignContent: "center", flex: 5 }}>
+                        <View style={{ flexDirection: "row", marginBottom: 5 }}>
+                          <Text
+                            style={mode ? style.negrita : style.negritaDark}
+                          >
+                            Nombre:
+                          </Text>
+                          <Text style={mode ? style.tex : style.texDark}>
+                            {item.agent[0].name.length > 18
+                              ? `${item.agent[0].name.substr(0, 18)}...`
+                              : item.agent[0].name}
+                          </Text>
+                        </View>
+                        <View style={{ flexDirection: "row" }}>
+                          <Text
+                            style={mode ? style.negrita : style.negritaDark}
+                          >
+                            Dirección:
+                          </Text>
+                          <Text style={mode ? style.tex : style.texDark}>
+                            {item.agent[0].address.substr(0, 20)}...
+                          </Text>
+                        </View>
+                      </View>
+                      {item.access === "owner" ? (
+                        <View
+                          style={{
+                            flex: 1,
+                            flexDirection: "row",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <TouchableOpacity
+                            onPress={() => {
+                              setModalVisible(true);
+                            }}
+                          >
+                            <AntDesign
+                              name="delete"
+                              size={25}
+                              color={mode ? "#454141" : "white"}
+                            />
+                          </TouchableOpacity>
+
+                          <View style={style.centeredView}>
+                            <Modal
+                              isVisible={modalVisible}
+                              animationInTiming={700}
+                              animationOutTiming={900}
+                              backdropTransitionInTiming={2000}
+                              backdropTransitionOutTiming={2000}
+                            >
+                              <View style={style.centeredView}>
+                                <View style={style.modalView}>
+                                  <Text style={style.modalText}>
+                                    Seguro desea ELIMINAR su negocio?
+                                  </Text>
+                                  <View
+                                    style={{ flexDirection: "row-reverse" }}
+                                  >
+                                    <TouchableHighlight
+                                      style={{
+                                        ...style.openButton,
+                                        backgroundColor: rojo,
+                                      }}
+                                      onPress={() => {
+                                        handleDelete(item.agent[0]._id);
+                                        setModalVisible(false);
+                                      }}
+                                    >
+                                      <Text style={style.textStyle}>
+                                        Confirmar
+                                      </Text>
+                                    </TouchableHighlight>
+                                    <TouchableHighlight
+                                      style={{
+                                        ...style.openButton,
+                                        backgroundColor: "white",
+                                        borderWidth: 1,
+                                        borderColor: buttonColor,
+                                      }}
+                                      onPress={() => {
+                                        setModalVisible(!modalVisible);
+                                      }}
+                                    >
+                                      <Text
+                                        style={{
+                                          ...style.textStyle,
+                                          color: buttonColor,
+                                        }}
+                                      >
+                                        Cancelar
+                                      </Text>
+                                    </TouchableHighlight>
+                                  </View>
+                                </View>
+                              </View>
+                            </Modal>
+                          </View>
+                        </View>
+                      ) : null}
                     </TouchableOpacity>
                   </View>
                 );

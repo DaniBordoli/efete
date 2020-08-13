@@ -1,11 +1,9 @@
-const { User, Agent, Account } = require("../models/index");
+const { User, Agent, Account, SharedAgent } = require("../models/index");
 const { SendMail } = require("../controllers/nodemailer");
-const { findById } = require("../models/users");
 
 const userRegister = (req, res, next) => {
   User.findOne({ dni: req.body.dni })
     .then((user) => {
-      console.log(user, "USER");
       if (user)
         res.send({ messageDni: "Ya hay un usuario registrado con este DNI." });
       if (!user) {
@@ -16,10 +14,25 @@ const userRegister = (req, res, next) => {
             });
           if (!user) {
             return User.create(req.body)
-              .then((user) => {
+              .then(() => {
+                console.log("Entra acá");
+                return SharedAgent.findOne({
+                  username: req.body.username,
+                }).then((user) => {
+                  if (user) {
+                    return User.findOne({ username: user.username }).then(
+                      (user) => {
+                        return user.updateOne({ role: "agent" });
+                      }
+                    );
+                  }
+                });
+              })
+              .then(() => {
                 return User.findOne({ username: req.body.username });
               })
               .then((user) => {
+                console.log(user, "USER!!!!");
                 SendMail(user);
                 res.send(user);
               });

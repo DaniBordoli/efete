@@ -8,19 +8,22 @@ import { fetchMainAccount } from "../../redux/store/actions/accounts";
 import { AntDesign } from "@expo/vector-icons";
 import { Load } from "../../Common/loading";
 
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const mode = useSelector((state) => state.users.mode);
   useEffect(() => {
-    //dispatch(fetchAgent());
-    dispatch(fetchMainAccount(userId)).then(() => {
-      setLoading(true);
-    });
+    route.params.access
+      ? dispatch(fetchMainAccount(route.params.agent.user[0])).then(() => {
+          setLoading(true);
+        })
+      : dispatch(fetchMainAccount(userId)).then(() => {
+          setLoading(true);
+        });
   }, []);
 
   const userId = useSelector((state) => state.users.user._id);
-  const agentId = useSelector((state) => state.agents.agent._id);
+  const agentId = route.params.agent._id;
   const mainAccount = useSelector((state) => state.accounts.mainAccount);
 
   return loading ? (

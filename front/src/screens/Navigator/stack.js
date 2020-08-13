@@ -39,6 +39,9 @@ import ValidarIdentidadContainer from "../validarIdentidad/ValidarIdentidadConta
 import WaitingValidationContainer from "../waitingValidation/WaitingValidationContainer";
 import DeleteProfileContainer from "../deleteProfile/DeleteprofileContainer";
 import TimeGainedContainer from "../timeGained/TimeGainedContainer";
+import ShareAgentsContainer from "../shareAgents/ShareAgentsContainer";
+import ConfigurationAgentContainer from "../configurationAgent/ConfigurationAgentContainer";
+import SharedUsersContainer from "../sharedUsers/SharedUsersContainer";
 
 const Stack = createStackNavigator();
 
@@ -456,6 +459,39 @@ export default ({ navigation }) => {
         name="WaitingValidation"
         component={WaitingValidationContainer}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ShareAgent"
+        component={ShareAgentsContainer}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Compartir Comercio",
+        }}
+      />
+      <Stack.Screen
+        name="ConfigurationAgent"
+        component={ConfigurationAgentContainer}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Configuración de Agente",
+        }}
+      />
+      <Stack.Screen
+        name="SharedUsers"
+        component={SharedUsersContainer}
+        options={{
+          ...myHeader,
+          headerStyle: {
+            backgroundColor: mode ? headerColor : headerColorDark,
+          },
+          title: "Usuarios con Acceso",
+        }}
       />
     </Stack.Navigator>
   );
