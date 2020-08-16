@@ -12,7 +12,7 @@ const OtherAmountContainer = ({ navigation }) => {
   const mode = useSelector(
     (state) => state.users.mode
   );
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState("")
 
   const handlerValue = (value) =>{
     setValue(value)
