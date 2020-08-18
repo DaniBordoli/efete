@@ -44,10 +44,10 @@ export const style = StyleSheet.create({
     alignSelf: "center",
     height: 80,
   },
-  contenedor:{
+  contenedor: {
     elevation: 3,
-    marginBottom:20,
-    marginTop:10
+    marginBottom: 20,
+    marginTop: 10,
   },
   confirmar: {
     width: 160,
@@ -66,13 +66,13 @@ export const style = StyleSheet.create({
   cancelar: {
     width: 160,
     height: 55,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginTop: 10,
     alignSelf: "center",
     borderWidth: 1,
-    borderColor: buttonColor
+    borderColor: buttonColor,
   },
-  tituloCancelar:{
+  tituloCancelar: {
     fontSize: 18,
     textAlign: "center",
     textTransform: "uppercase",
@@ -83,39 +83,38 @@ export const style = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 22,
   },
   modalView: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     padding: 22,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 10,
-    borderColor: 'rgba(0, 0, 0, 0.1)',
+    borderColor: "rgba(0, 0, 0, 0.1)",
   },
   openButton: {
-    marginTop:15,
-    width:"75%",
+    marginTop: 15,
+    width: "75%",
     backgroundColor: headerColor,
     borderRadius: 5,
     padding: 10,
-    elevation: 2
+    elevation: 2,
   },
   textStyle: {
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
-    fontSize:18
+    fontSize: 18,
   },
   modalText: {
-  
     textAlign: "center",
-    fontSize:20
+    fontSize: 20,
   },
-  negrita:{
-    fontSize:22,
-    fontFamily:'nunito-bold', 
+  negrita: {
+    fontSize: 22,
+    fontFamily: "nunito-bold",
     marginBottom: 15,
-    textAlign:'center'
-  }
+    textAlign: "center",
+  },
 });
