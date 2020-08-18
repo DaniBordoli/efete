@@ -2,17 +2,18 @@ import { StyleSheet, Dimensions } from "react-native";
 import { headerColor, buttonColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
-  mainContainer:{
+  mainContainer: {
     flex: 1,
     alignItems: "center",
-    justifyContent: 'center',
+    justifyContent: "center",
     width: "100%",
     height: "100%",
+    backgroundColor: "white",
   },
   clearIcon: {
-    marginTop: '2%',
-    marginRight: '3%',
-    alignSelf:'center'
+    marginTop: "2%",
+    marginRight: "3%",
+    alignSelf: "center",
   },
   titulo: {
     color: "#6F76E4",
@@ -27,7 +28,7 @@ export const style = StyleSheet.create({
     height: 150,
     marginTop: "4%",
     marginBottom: "15%",
-    alignItems: 'center'
+    alignItems: "center",
   },
   text: {
     fontFamily: "nunito-bold",
@@ -39,7 +40,7 @@ export const style = StyleSheet.create({
     fontSize: 20,
     marginLeft: "10%",
     marginRight: "10%",
-    marginBottom: '2%',
+    marginBottom: "2%",
     fontFamily: "nunito",
     textAlign: "center",
   },
@@ -48,7 +49,7 @@ export const style = StyleSheet.create({
     marginTop: "3%",
     fontFamily: "nunito",
     color: "#00CC96",
-    marginBottom: "1%"
+    marginBottom: "1%",
   },
   text3: {
     fontSize: 20,
@@ -61,7 +62,7 @@ export const style = StyleSheet.create({
     marginTop: "5%",
     fontWeight: "bold",
     fontFamily: "nunito-bold",
-    textAlign:'center',
+    textAlign: "center",
     textTransform: "uppercase",
   },
   confirmar: {
@@ -71,18 +72,27 @@ export const style = StyleSheet.create({
     width: "100%",
     marginTop: "10%",
     alignSelf: "center",
-    marginBottom: '2%'
+    marginBottom: "2%",
   },
   tituloConfirmar: {
     fontSize: 18,
     textAlign: "center",
     textTransform: "uppercase",
     color: "white",
-
   },
   hr: {
     width: "80%",
     borderTopColor: "#808080",
     borderTopWidth: 1,
-  }
+  },
+  popUp: {
+    marginTop: "1%",
+    alignSelf: "center",
+    backgroundColor: "#6F76E4",
+    borderRadius: 20,
+    padding: "3%",
+  },
+  popUpText: {
+    color: "white",
+  },
 });
