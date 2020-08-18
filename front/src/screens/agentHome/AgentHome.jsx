@@ -4,13 +4,26 @@ import { style } from "./style";
 import * as Animatable from "react-native-animatable";
 import { Button } from "react-native-elements";
 import { Load } from "../../Common/loading";
-import { MaterialIcons } from '@expo/vector-icons'; 
+import { MaterialIcons } from "@expo/vector-icons";
 
-import { lilaDark, verdeDark, buttonDark, textButtonDark, headerColorDark } from "../../Common/constans.js";
-export default ({ agentTransactions, navigation, loading, time, agent,mode }) => {
-  console.log("AGENT", agent)
+import {
+  lilaDark,
+  verdeDark,
+  buttonDark,
+  textButtonDark,
+  headerColorDark,
+} from "../../Common/constans.js";
+export default ({
+  agentTransactions,
+  navigation,
+  loading,
+  time,
+  agent,
+  mode,
+  access,
+}) => {
   return (
-    <View style={{ flex: 1,  backgroundColor:mode?'#F1F3F6' : 'black'  }}>
+    <View style={{ flex: 1, backgroundColor: mode ? "#F1F3F6" : "black" }}>
       {loading ? (
         <View style={{ flex: 1, alignItems: "center" }}>
           <View
@@ -25,63 +38,99 @@ export default ({ agentTransactions, navigation, loading, time, agent,mode }) =>
             <TouchableOpacity
               style={mode ? style.agente : style.agenteDark}
               activeOpacity={0.5}
-              onPress={() => {navigation.navigate("User")}}
+              onPress={() => {
+                navigation.navigate("User");
+              }}
             >
               <Image
-                source={ mode ? require("../../../assets/iconos/usuario.png") : 
-                require("../../../assets/iconos/userDark.png")}
+                source={
+                  mode
+                    ? require("../../../assets/iconos/usuario.png")
+                    : require("../../../assets/iconos/userDark.png")
+                }
                 style={style.imageIconStyle}
               />
-              <Text style={mode? style.text  : style.textDark}>Perfil Usuario</Text>
+              <Text style={mode ? style.text : style.textDark}>
+                Perfil Usuario
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               style={mode ? style.agente : style.agenteDark}
               activeOpacity={0.5}
-              onPress={() =>{ navigation.navigate("QRgenerator")}}
+              onPress={() => {
+                navigation.navigate("QRgenerator", {
+                  access: access,
+                  agent: agent,
+                });
+              }}
             >
               <Image
-                source={ mode ? require("../../../assets/iconos/QR.png") :
-                require("../../../assets/iconos/QRDark.png")}
+                source={
+                  mode
+                    ? require("../../../assets/iconos/QR.png")
+                    : require("../../../assets/iconos/QRDark.png")
+                }
                 style={style.imageIconStyle}
               />
-              <Text style={mode? style.text  : style.textDark}>Cobrar con Qr</Text>
+              <Text style={mode ? style.text : style.textDark}>
+                Cobrar con Qr
+              </Text>
             </TouchableOpacity>
+            {!access || access === "owner" ? (
+              <TouchableOpacity
+                style={mode ? style.agente : style.agenteDark}
+                activeOpacity={0.5}
+                onPress={() => {
+                  navigation.navigate("ConfigurationAgent", {
+                    agent: agent._id,
+                  });
+                }}
+              >
+                <Image
+                  source={
+                    mode
+                      ? require("../../../assets/iconos/negocio.png")
+                      : require("../../../assets/iconos/negocioDark.png")
+                  }
+                  style={style.imageIconStyle}
+                />
+                <Text style={mode ? style.text : style.textDark}>
+                  Tu Negocio
+                </Text>
+              </TouchableOpacity>
+            ) : null}
 
             <TouchableOpacity
               style={mode ? style.agente : style.agenteDark}
               activeOpacity={0.5}
-              onPress={() => {navigation.navigate("EditAgentProfile")}}
+              onPress={() => {
+                navigation.navigate("ConfAmountAgent");
+              }}
             >
               <Image
-                source={ mode ? require("../../../assets/iconos/negocio.png"):
-                require("../../../assets/iconos/negocioDark.png")
-              }
+                source={
+                  mode
+                    ? require("../../../assets/iconos/calculadora.png")
+                    : require("../../../assets/iconos/costosDark.png")
+                }
                 style={style.imageIconStyle}
               />
-              <Text style={mode? style.text  : style.textDark}>Tu Negocio</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={mode ? style.agente : style.agenteDark}
-              activeOpacity={0.5}
-              onPress={() => { navigation.navigate("ConfAmountAgent") }}
-            >
-              <Image
-                source={mode ? require("../../../assets/iconos/calculadora.png"):
-                require("../../../assets/iconos/costosDark.png")
-              }
-                style={style.imageIconStyle}
-              />
-              <Text style={mode? style.text  : style.textDark}>Modificar monto</Text>
+              <Text style={mode ? style.text : style.textDark}>
+                Modificar monto
+              </Text>
             </TouchableOpacity>
           </View>
 
           <Animatable.View
             animation="fadeInUpBig"
-            style={mode? style.movimientosContainer : style.movimientosContainerDark}
+            style={
+              mode ? style.movimientosContainer : style.movimientosContainerDark
+            }
           >
-            <Text style={ mode ? style.movimientos : style.movimientosDark}>Movimientos</Text>
+            <Text style={mode ? style.movimientos : style.movimientosDark}>
+              Movimientos
+            </Text>
             <Text style={style.time}>{time.toUpperCase()}</Text>
             <View style={style.hr} />
             <View
@@ -104,7 +153,13 @@ export default ({ agentTransactions, navigation, loading, time, agent,mode }) =>
                 >
                   Monto restante:&nbsp;
                 </Text>
-                <Text style={{ fontSize: 17, alignSelf: "center", color:mode? 'black' : 'white' }}>
+                <Text
+                  style={{
+                    fontSize: 17,
+                    alignSelf: "center",
+                    color: mode ? "black" : "white",
+                  }}
+                >
                   ${agent.dailyAmount}
                 </Text>
               </View>
@@ -114,11 +169,11 @@ export default ({ agentTransactions, navigation, loading, time, agent,mode }) =>
                     buttonStyle={{
                       backgroundColor: mode ? "white" : headerColorDark,
                       borderWidth: 1,
-                      borderColor: mode? "#6f76e4" : lilaDark,
+                      borderColor: mode ? "#6f76e4" : lilaDark,
                       marginRight: 25,
                       width: 90,
                     }}
-                    titleStyle={{ color: mode? "#6f76e4" : lilaDark}}
+                    titleStyle={{ color: mode ? "#6f76e4" : lilaDark }}
                     title="Ver todo"
                     onPress={() =>
                       navigation.navigate("AllAgentTransactions", {
@@ -137,46 +192,89 @@ export default ({ agentTransactions, navigation, loading, time, agent,mode }) =>
                 data={agentTransactions}
                 renderItem={({ item }) => {
                   return (
-                    <View style={{ height: 100, alignSelf:'center', width:'90%', marginTop:17}}>
-
+                    <View
+                      style={{
+                        height: 100,
+                        alignSelf: "center",
+                        width: "90%",
+                        marginTop: 17,
+                      }}
+                    >
                       <TouchableOpacity
-                        style={ mode? style.single : style.singleDark}
+                        style={mode ? style.single : style.singleDark}
                         onPress={() =>
                           navigation.navigate("SingleAgentTransaction", {
                             item,
                           })
                         }
                       >
-
                         <View style={style.contenido}>
-                        <Text style={ mode ? style.textoContenido : style.textoContenidoDark}>
-                            Banco:{item.originAccount[0].nameEntity[0].nameEntity.substr(0,15)}
-                            {console.log("ITEEEEEEEEM",item)}
+                          <Text
+                            style={
+                              mode
+                                ? style.textoContenido
+                                : style.textoContenidoDark
+                            }
+                          >
+                            Banco:
+                            {item.originAccount[0].nameEntity[0].nameEntity.substr(
+                              0,
+                              15
+                            )}
+                            {console.log("ITEEEEEEEEM", item)}
                           </Text>
-                          <Text style={ mode ? style.textoContenido : style.textoContenidoDark}>
-                            Cuenta:{item.originAccount[0].accountNumber.substr(0,10)}
+                          <Text
+                            style={
+                              mode
+                                ? style.textoContenido
+                                : style.textoContenidoDark
+                            }
+                          >
+                            Cuenta:
+                            {item.originAccount[0].accountNumber.substr(0, 10)}
                           </Text>
 
-                        <Text style={ mode ? style.textoContenido : style.textoContenidoDark}>Agente: {item.agent[0].name}</Text>
-                        <Text style={{fontFamily:'regular',fontSize:13,color:mode? '#94AFB6' : verdeDark}}>Extracción realizada</Text>
-                      </View>
-                        
-
+                          <Text
+                            style={
+                              mode
+                                ? style.textoContenido
+                                : style.textoContenidoDark
+                            }
+                          >
+                            Agente: {item.agent[0].name}
+                          </Text>
+                          <Text
+                            style={{
+                              fontFamily: "regular",
+                              fontSize: 13,
+                              color: mode ? "#94AFB6" : verdeDark,
+                            }}
+                          >
+                            Extracción realizada
+                          </Text>
+                        </View>
 
                         <View style={style.monto}>
-                      <Text style={mode ? style.montoTexto : style.montoTextoDark}>${item.amount}</Text>
-                      </View>
-
+                          <Text
+                            style={
+                              mode ? style.montoTexto : style.montoTextoDark
+                            }
+                          >
+                            ${item.amount}
+                          </Text>
+                        </View>
 
                         <View style={style.entrar}>
-                      <MaterialIcons name="keyboard-arrow-right" size={40} color="#94AFB6"/>
-                      </View>
-
-                        
+                          <MaterialIcons
+                            name="keyboard-arrow-right"
+                            size={40}
+                            color="#94AFB6"
+                          />
+                        </View>
                       </TouchableOpacity>
-        {/* <View style={style.hr} />*/}                    
-                      </View>
-                  )
+                      {/* <View style={style.hr} />*/}
+                    </View>
+                  );
                 }}
               ></FlatList>
             ) : (

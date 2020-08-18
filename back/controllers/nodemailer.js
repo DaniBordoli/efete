@@ -310,4 +310,155 @@ const SendTransaction = function (transaction) {
   });
 };
 
-module.exports = { SendMail, SendTransaction };
+const SendSharedAgent = function (sharedAgent) {
+  var transporter = nodemailer.createTransport({
+    secure: false,
+    service: "gmail",
+    auth: {
+      user: process.env.MAIL,
+      pass: process.env.PASS,
+    },
+    tls: { rejectUnauthorized: false },
+  });
+
+  var mailOptions = {
+    from: `${process.env.MAIL}`,
+    to: sharedAgent.username,
+    subject: `Tienes un nuevo Acceso`,
+    text: "Se registro",
+    html: `<body style="background-color:#fafafa;    margin: -1px;
+      ">
+      
+          <div style="margin: 0;
+          padding: 0 0 20px 0;
+          width: 100%;
+          background-color: #f8f8f8ec;
+          
+      
+          ">
+      
+      
+      
+              <div style="border-collapse: collapse!important;
+          font-family: Roboto,-apple-system,BlinkMacSystemFont,'Segoe UI',Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 1.3;
+          margin: 0;
+          padding: 0;
+          text-align: left;
+          vertical-align: top;
+          
+          ">
+      
+      
+                  <div style="background-color: rgb(245, 245, 245); width: 100%;">
+                      <img style="clear: both;
+      display: block;
+      max-width: 100%;
+      outline: 0;
+      margin: 0 auto;
+      text-decoration: none;
+      width: auto;" src="https://firebasestorage.googleapis.com/v0/b/efete-db5f7.appspot.com/o/logo3.png?alt=media&token=185490cc-419f-4812-be97-20ceaa90a027"
+                          alt="">
+                      <img style="width: 18%; height: 18%;    padding-top: 8%;
+      
+         display: block;
+         margin: 0 auto;
+         
+         " src="https://freeiconshop.com/wp-content/uploads/edd/checkmark-flat.png" alt="">
+                      <p style="
+      font-size: 22px;
+      font-weight: 500;
+      text-align: center;
+      color:#555cc7;">${sharedAgent.agent[0].user[0].firstName} ${sharedAgent.agent[0].user[0].lastName} Te dio acceso a su Comercio</p> <br>
+                  </div>
+      
+      
+      
+                  <div style="background-color: rgb(245, 245, 245);padding: 20px;     margin-top: 30px;
+                  ">
+      
+                  <h3 style="color: #6f76e4;
+      text-transform: uppercase; text-align: start;">Datos de Acceso:</h3>
+      
+                      <p style="color: #888;
+      font-size: 15px;    font-weight: 600;
+      
+      ">Nombre del Comercio:</p>
+                      <p style="color:#6f76e4 ;font-size: 17px;margin-top: -10px;">${sharedAgent.agent[0].name}</p>
+      
+      
+      
+                      <p style="color: #888;
+      font-size: 15px;    font-weight: 600;
+      
+      ">Dirección:</p>
+                      <p style="color:#6f76e4 ;font-size: 17px;margin-top: -10px; width: 100%;"> >${sharedAgent.agent[0].address}
+                      </p>
+
+
+                      <p style="color: #888;
+                      font-size: 15px;    font-weight: 600;
+                      
+                      ">Nivel de Acceso:</p>
+                                      <p style="color:#6f76e4 ;font-size: 17px;margin-top: -10px; width: 100%;">${sharedAgent.access}
+                                      </p>
+                      
+      
+      
+      
+                      <p style="color: #888;
+      font-size: 15px ;   font-weight: 600;
+      
+      ">Número de Comprobante:</p>
+                      <p style="color:#6f76e4 ;font-size: 17px;margin-top: -10px;width: 100%;    margin-bottom: 40px;
+
+      ">${sharedAgent._id}
+                      </p>
+                      <hr>
+                  </div>
+      
+      
+      
+      
+      
+      
+              </div>
+              <div style="
+         
+         color: #aaa;
+         font-family: Arial,Helvetica,sans-serif;
+         font-size: .8rem;
+         font-weight: 400;
+         line-height: 1.35;
+         margin: 0;
+         margin-bottom: 10px;
+         padding-top: 20px;
+         text-align: center;">
+         <p style=" margin:5px ;text-align: center;">NOTA: Favor no responder este mensaje que ha sido generado automáticamente desde TuRecibo. Esta comunicación (incluidos sus anexos) contiene información confidencial, dirigida exclusivamente a su destinatario, quien deberá resguardar la confidencialidad. Queda prohibido la divulgación, modificación, reproducción o uso de la información aquí contenida por cualquier otra persona que no sea su destinatario.</p>
+        
+      
+      Este mensaje se envió a traves de efete@gmail.com.
+      Política de privacidad  |  Hacer ajustes en la configuración  | Ayuda |  Castillo 1332, C1414 CABA - Buenos Aires, Argentina.
+      Copyright © 2020-2020
+      Una empresa de Efete, n.o de registro: 4366729
+      content-es@efete.com 
+      
+              </div>
+      
+          </div>
+      
+      </body>`,
+  };
+
+  transporter.sendMail(mailOptions, function (error) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email enviado");
+    }
+  });
+};
+
+module.exports = { SendMail, SendTransaction, SendSharedAgent };
