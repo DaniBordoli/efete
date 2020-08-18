@@ -21,7 +21,7 @@ export default ({ navigation, route }) => {
         setShowPopUp(true);
         setTimeout(() => {
           setShowPopUp(false);
-        }, 3000);
+        }, 2000);
       });
   };
 

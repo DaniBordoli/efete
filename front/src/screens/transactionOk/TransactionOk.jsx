@@ -34,7 +34,7 @@ export default ({
 
           <View style={style.hr}></View>
 
-          {/*  <Text style={style.text}>Kisosko San Juan</Text> */}
+          {/* <Text style={style.text}>Kisosko San Juan</Text> */}
           <Text style={style.text}>{transaction.agent[0].name}</Text>
 
           {/* <Text style={style.text1}>Av San Juan 2705</Text> */}
@@ -61,6 +61,14 @@ export default ({
 
           <View style={style.hr}></View>
 
+          {showPopUp ? (
+            <View style={style.popUp}>
+              <Text style={style.popUpText}>
+                ¡Se ha guardado el comprobante en tu galería!
+              </Text>
+            </View>
+          ) : null}
+
           <View>
             <Button
               buttonStyle={style.confirmar}
@@ -70,9 +78,7 @@ export default ({
                 takeScreenshot();
               }}
             />
-            {showPopUp ? (
-              <Text>Se ha guardado el comprobante en tu galería</Text>
-            ) : null}
+
             <TouchableOpacity
               style={style.clearIcon}
               onPress={() => {

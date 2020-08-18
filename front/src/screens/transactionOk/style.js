@@ -85,4 +85,14 @@ export const style = StyleSheet.create({
     borderTopColor: "#808080",
     borderTopWidth: 1,
   },
+  popUp: {
+    marginTop: "1%",
+    alignSelf: "center",
+    backgroundColor: "#6F76E4",
+    borderRadius: 20,
+    padding: "3%",
+  },
+  popUpText: {
+    color: "white",
+  },
 });
