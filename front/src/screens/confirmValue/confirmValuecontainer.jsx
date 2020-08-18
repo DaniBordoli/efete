@@ -3,10 +3,7 @@ import { useSelector } from "react-redux";
 import ConfirmValue from "./confirmValue";
 
 const confirmValueContainer = ({ navigation, route }) => {
-  
-  const mode = useSelector(
-    (state) => state.users.mode
-  );
+  const mode = useSelector((state) => state.users.mode);
   const agentes = useSelector((state) => state.agents.agents[0]);
 
   return (

@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import MapView, { Marker } from "react-native-maps";
-import { StyleSheet, Text, View, Dimensions, Linking, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Linking,
+  Image,
+} from "react-native";
 import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import Carousel from "react-native-snap-carousel";
 import {
@@ -14,8 +21,6 @@ import { Load } from "../../Common/loading";
 import { mapStyle } from "./mapDark";
 import Modal from "react-native-modal";
 
-
-
 export default ({
   ubicacion,
   agentes,
@@ -26,7 +31,6 @@ export default ({
   loading,
 }) => {
   const [index, setIndex] = useState(null);
-  console.log(":::::::::::::::::::::::::::::::::INDEEEX: ", index);
 
   const onCarouselItemChange = (index) => {
     let location = agentes[index];
@@ -42,7 +46,6 @@ export default ({
     markers[index].showCallout();
   };
 
-  
   const onMarkerPressed = (location, index) => {
     this._map.animateToRegion({
       latitude: location.ubicacion.latitude,
@@ -57,7 +60,7 @@ export default ({
   return loading ? (
     <View style={styles.container}>
       <MapView
-      rad
+        rad
         customMapStyle={mode ? null : mapStyle}
         showsMyLocationButton={true}
         ref={(map) => (this._map = map)}
@@ -87,17 +90,13 @@ export default ({
                   ? agente.ubicacion.longitude
                   : -58.642081,
               }}
-
               title={agente.name}
-              
-
             >
               {/* <View style={{justifyContent:'center', alignItems:'center' , paddingBottom:1}}>
               <Text style={{ fontFamily:'nunito-bold', color:headerColor, fontSize:17}}>Efete</Text>
               <Image style={{width:34, height:46 }}source={require("../../../assets/iconos/marker.png")}></Image>
               
               </View> */}
-              
             </Marker>
           ))}
       </MapView>
@@ -118,7 +117,6 @@ export default ({
                   ]
             }
             renderItem={({ item }) => {
-              console.log(":::::::::::::::::::::::::::::::::ITEEEM: ", item);
               return (
                 <View
                   style={mode ? styles.cardContainer : styles.cardContainerDark}
@@ -363,4 +361,3 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 });
-

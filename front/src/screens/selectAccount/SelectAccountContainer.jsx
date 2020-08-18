@@ -17,13 +17,13 @@ export default ({ navigation, route }) => {
 
   const mode = useSelector((state) => state.users.mode);
   useEffect(() => {
-    dispatch(fetchUserAccounts(user._id)).then(() => {
-      setLoading(true);
-    });
-  }, []);
-
-  useEffect(() => {
-    dispatch(fetchAgent(route.params.agentId));
+    dispatch(fetchUserAccounts(user._id))
+      .then(() => {
+        dispatch(fetchAgent(route.params.agentId));
+      })
+      .then(() => {
+        setLoading(true);
+      });
   }, []);
 
   const userAccounts = useSelector((state) => state.accounts.accounts);
@@ -32,10 +32,14 @@ export default ({ navigation, route }) => {
 
   const [selectedAccount, setSelectedAccount] = useState({});
   const [loading, setLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(true);
   const handleAccount = (account) => {
     setSelectedAccount(account);
   };
-  //Esta hardocdeado el id del agente porque no tenemos el mapa para la selección. Una vez que se tenga el mapa, se pasa e ldato por route.params.
+
+  const handleModal = () => {
+    setModalVisible(false);
+  };
   const handleSubmit = () => {
     dispatch(
       createTransaction({
@@ -85,6 +89,11 @@ export default ({ navigation, route }) => {
       agenteScanner={route.params.agentId}
       agenteMapa={route.params.agenteMap}
       agent={agent}
+      modalVisible={modalVisible}
+      handleModal={handleModal}
+      cbu={route.params.cbu}
+      destinationAccount={route.params.destinationAccount}
+      agenteUbicacion={route.params.agenteMap.ubicacion}
 
       // handleAgentDailyAmount={handleAgentDailyAmount}
     />
