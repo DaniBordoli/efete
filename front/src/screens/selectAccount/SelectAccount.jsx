@@ -1,6 +1,12 @@
 import React from "react";
-import { View, Text, FlatList, TouchableHighlight } from "react-native";
-import Modal from 'react-native-modal';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableHighlight,
+  Linking,
+} from "react-native";
+import Modal from "react-native-modal";
 import { style } from "./style";
 import { Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -16,21 +22,71 @@ export default ({
   loading,
   selectedAccount,
   navigation,
-  mode,
   agenteScanner,
   agenteMapa,
   agent,
+  modalVisible,
+  handleModal,
+  agenteUbicacion,
 
   // handleAgentDailyAmount,
 }) => {
-  const val = agenteMapa != agenteScanner ? false : true;
-
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       {loading ? (
-        <View style={{ flex: 1 }}>
-          {val ? (
-            <View style={{ flex: 6 }}>
+        <View>
+          {agenteMapa._id != agenteScanner &&
+          agent.dailyAmount < transactionValue ? (
+            //Si el qr escaneado es distinto al Qr elegido en el mapa y no hay plata en el local
+
+            <View>
+              <Modal
+                isVisible={modalVisible}
+                animationInTiming={500}
+                animationOutTiming={500}
+                backdropTransitionInTiming={500}
+                backdropTransitionOutTiming={500}
+              >
+                <View style={style.centeredView}>
+                  <View style={style.modalView}>
+                    <Octicons
+                      name="stop"
+                      size={70}
+                      color={rojo}
+                      style={{ marginBottom: 20 }}
+                    />
+                    <Text style={style.modalText}>
+                      Este no es el local que elegiste.
+                    </Text>
+
+                    <View>
+                      <Text style={style.modalText}>
+                        No hay plata disponible en este local
+                      </Text>
+
+                      <TouchableHighlight
+                        style={{ ...style.openButton }}
+                        onPress={() => {
+                          handleModal();
+                          Linking.openURL(
+                            `https://www.google.com/maps/dir/?api=1&travelmode=driving&dir_action=navigate&destination=${agenteUbicacion.latitude}, ${agenteUbicacion.longitude}`
+                          );
+                          navigation.navigate("confirmValue", {
+                            value: transactionValue,
+                            item: agenteMapa,
+                          });
+                        }}
+                      >
+                        <Text style={style.textStyle}>Ir a tu local</Text>
+                      </TouchableHighlight>
+                    </View>
+                  </View>
+                </View>
+              </Modal>
+            </View>
+          ) : (
+            //Si el qr escaneado es igual al Qr elegido en el mapa o es distinto pero tiene plata disponible
+            <View>
               <Text style={style.titulo}>Monto Disponible</Text>
               <Text style={style.monto}>{`$ ${transactionValue}`}</Text>
               <FlatList
@@ -48,7 +104,7 @@ export default ({
                         colors={["#83898E", "#B2BBC3", "#FFFFFF"]}
                         style={style.accountContainer}
                       >
-                        <View style={{ flex: 1 }}>
+                        <View>
                           <MaterialCommunityIcons
                             name="bank"
                             size={30}
@@ -57,7 +113,7 @@ export default ({
                           />
                         </View>
 
-                        <View style={{ flex: 3 }}>
+                        <View>
                           <Text style={style.account}>
                             {item.nameEntity[0].nameEntity.length > 20
                               ? item.nameEntity[0].nameEntity.substr(0, 16) +
@@ -70,7 +126,7 @@ export default ({
                           </Text>
                         </View>
 
-                        <View style={{ flex: 1 }}>
+                        <View>
                           <MaterialCommunityIcons
                             name="check-circle"
                             size={32}
@@ -91,71 +147,33 @@ export default ({
                   );
                 }}
               />
-            </View>
-          ) : (
-            <View style={{ flex: 6 , backgroundColor: fondoColor}}>
-              <Modal
-              isVisible={true}
-              animationInTiming={2000}
-              animationOutTiming={2000}
-              backdropTransitionInTiming={2000}
-              backdropTransitionOutTiming={2000}>
-               
-                <View style={style.centeredView}>
-                  <View style={style.modalView}>
-                    <Octicons
-                      name="stop"
-                      size={70}
-                      color={rojo}
-                      style={{ marginBottom: 20 }}
-                    />
-                    <Text style={style.modalText}>
-                      Tu plata no está acá, te espera en:
-                    </Text>
-                    <Text style={style.negrita}>{agent.name}</Text>
-                    <Text style={style.modalText}>Con direccion en:</Text>
-                    <Text style={style.negrita}>{agent.address}</Text>
-                    <TouchableHighlight
-                      style={{ ...style.openButton }}
-                      onPress={() => {
-                        navigation.navigate("Map");
-                      }}
-                    >
-                      <Text style={style.textStyle}>Buscar en el Mapa</Text>
-                    </TouchableHighlight>
-                  </View>
-                </View>
-              </Modal>
+
+              <View
+                style={{
+                  flexDirection: "row-reverse",
+                  justifyContent: "space-evenly",
+                  alignContent: "center",
+                }}
+              >
+                <Button
+                  disabled={!selectedAccount._id}
+                  buttonStyle={style.confirmar}
+                  titleStyle={style.tituloConfirmar}
+                  title="Realizar Transacción"
+                  onPress={() => {
+                    handleSubmit();
+                    /* navigation.navigate("Accounts"); */
+                  }}
+                />
+                <Button
+                  buttonStyle={style.cancelar}
+                  titleStyle={style.tituloCancelar}
+                  title="Agregar cuenta"
+                  onPress={() => navigation.navigate("AddAccounts")}
+                />
+              </View>
             </View>
           )}
-          {val ? (
-            <View
-              style={{
-                flexDirection: "row-reverse",
-                justifyContent: "space-evenly",
-                alignContent: "center",
-
-                flex: 1,
-              }}
-            >
-              <Button
-                disabled={!selectedAccount._id}
-                buttonStyle={style.confirmar}
-                titleStyle={style.tituloConfirmar}
-                title="Realizar Transacción"
-                onPress={() => {
-                  handleSubmit();
-                  /* navigation.navigate("Accounts"); */
-                }}
-              />
-              <Button
-                buttonStyle={style.cancelar}
-                titleStyle={style.tituloCancelar}
-                title="Agregar cuenta"
-                onPress={() => navigation.navigate("AddAccounts")}
-              />
-            </View>
-          ) : null}
         </View>
       ) : (
         <Load />
