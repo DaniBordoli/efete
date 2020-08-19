@@ -90,11 +90,12 @@ export const style = StyleSheet.create({
     marginLeft: "auto",
     marginRight: "auto",
   },
-  textOpenCamera: {
+  OpenCamera: {
     color: "#A4A4A4",
-    fontSize: 15,
+    fontSize: 30,
     textAlign: "center",
     marginBottom: "1%",
+    padding:"1%"
   },
   textMaxsize: {
     margin: "2%",
@@ -106,9 +107,10 @@ export const style = StyleSheet.create({
     backgroundColor: "#00CC96",
     borderRadius: 5,
     marginBottom: "5%",
-    width: "50%",
+    marginTop: "5%",
+    width: "70%",
     alignSelf: "center",
-    padding:10
+    padding:'2%'
   },
   textConfirmar: {
     color: "#ffffff",
