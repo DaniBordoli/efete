@@ -66,7 +66,7 @@ export default ({
 
                       {agenteMapa ? (
                         <TouchableHighlight
-                          style={{ ...style.openButton }}
+                          style={{ ...style.openButton, alignSelf: "center" }}
                           onPress={() => {
                             handleModal();
                             Linking.openURL(
@@ -81,7 +81,7 @@ export default ({
                           <Text style={style.textStyle}>Ir a tu local</Text>
                         </TouchableHighlight>
                       ) : (
-                        <View>
+                        <View style={{ alignItems: "center" }}>
                           <TouchableHighlight
                             style={{ ...style.openButton }}
                             onPress={() => {
@@ -96,13 +96,13 @@ export default ({
                             </Text>
                           </TouchableHighlight>
                           <TouchableHighlight
-                            style={{ ...style.openButton }}
+                            style={style.cancelButton}
                             onPress={() => {
                               handleModal();
                               navigation.navigate("User");
                             }}
                           >
-                            <Text style={style.textStyle}>Cancelar</Text>
+                            <Text style={style.cancelTextStyle}>Cancelar</Text>
                           </TouchableHighlight>
                         </View>
                       )}

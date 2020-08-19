@@ -3,7 +3,7 @@ import { headerColor, buttonColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
   botonConfirmar: {
-    marginTop:'20%',
+    marginTop: "20%",
     backgroundColor: "#00CC96",
     width: 167,
     height: 48,
@@ -18,27 +18,25 @@ export const style = StyleSheet.create({
     fontSize: 14,
     marginLeft: 15,
     marginRight: 15,
-    borderRadius:4,
+    borderRadius: 4,
     height: 50,
     backgroundColor: "white",
     color: "#424242",
-    borderWidth:0.5,
-    borderColor:'#c8c8c8',
-    justifyContent:'center'
-
+    borderWidth: 0.5,
+    borderColor: "#c8c8c8",
+    justifyContent: "center",
   },
   input2: {
     fontSize: 14,
     marginLeft: 15,
     marginRight: 15,
-    borderRadius:4,
+    borderRadius: 4,
     height: 50,
     backgroundColor: "white",
     color: "#424242",
-    borderWidth:0.5,
-    borderColor:'#c8c8c8',
-    flexDirection:'row'
-
+    borderWidth: 0.5,
+    borderColor: "#c8c8c8",
+    flexDirection: "row",
   },
   text: {
     textAlign: "center",
@@ -46,10 +44,10 @@ export const style = StyleSheet.create({
     margin: 20,
     color: "#6F76E4",
     fontWeight: "bold",
-    marginTop:30,
+    marginTop: 30,
   },
   dropdown: {
-    marginTop:50,
+    marginTop: 50,
     marginLeft: 15,
     marginRight: 15,
     height: 50,
@@ -60,12 +58,18 @@ export const style = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 10,
   },
-  
+
   textoo: {
     textAlign: "center",
-    marginTop:20,
+    marginTop: 20,
     fontSize: 30,
     fontFamily: "nunito",
     color: `${headerColor}`,
+  },
+  textInfo: {
+    fontStyle: "italic",
+    fontWeight: "bold",
+    margin: "3%",
+    alignSelf: "center",
   },
 });

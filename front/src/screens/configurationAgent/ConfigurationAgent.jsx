@@ -1,7 +1,12 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { style } from "./style.js";
-import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import {
+  FontAwesome,
+  MaterialIcons,
+  Feather,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 
 export default ({ mode, navigation, agent }) => {
   return (
@@ -13,25 +18,16 @@ export default ({ mode, navigation, agent }) => {
           justifyContent: "space-evenly",
         }}
       >
-        <View
-          style={{
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "10%",
-          }}
-        >
+        <View style={style.twoButtonCont}>
           <TouchableOpacity
             style={mode ? style.agente : style.agenteDark}
             activeOpacity={0.5}
             onPress={() => navigation.navigate("EditAgentProfile")}
           >
-            <Image
-              source={
-                mode
-                  ? require("../../../assets/iconos/extraccion.png")
-                  : require("../../../assets/iconos/extraccionDark.png")
-              }
+            <MaterialCommunityIcons
+              name="circle-edit-outline"
+              size={67}
+              color="#6F76E4"
               style={style.imageIconStyle}
             />
             <Text style={mode ? style.text : style.textDark}>
@@ -43,12 +39,10 @@ export default ({ mode, navigation, agent }) => {
             activeOpacity={0.5}
             onPress={() => navigation.navigate("ShareAgent", { agent: agent })}
           >
-            <Image
-              source={
-                mode
-                  ? require("../../../assets/iconos/extraccion.png")
-                  : require("../../../assets/iconos/extraccionDark.png")
-              }
+            <Feather
+              name="plus-circle"
+              size={67}
+              color="#6F76E4"
               style={style.imageIconStyle}
             />
             <Text style={mode ? style.text : style.textDark}>
@@ -56,14 +50,7 @@ export default ({ mode, navigation, agent }) => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "10%",
-          }}
-        >
+        <View style={style.twoButtonCont}>
           <TouchableOpacity
             style={mode ? style.agente : style.agenteDark}
             activeOpacity={0.5}
@@ -81,9 +68,13 @@ export default ({ mode, navigation, agent }) => {
           <TouchableOpacity
             style={mode ? style.agente : style.agenteDark}
             activeOpacity={0.5}
-            onPress={() => navigation.navigate("SharedUsers", { agent: agent })}
+            onPress={() =>
+              navigation.navigate("AgentHistory", {
+                agent: agent,
+              })
+            }
           >
-            <FontAwesome5
+            <MaterialIcons
               name="history"
               size={67}
               color="#6F76E4"

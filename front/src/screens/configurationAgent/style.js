@@ -54,6 +54,11 @@ export const style = StyleSheet.create({
   },
   imageIconStyle: {
     padding: 5,
-    resizeMode: "stretch",
+  },
+  twoButtonCont: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "10%",
   },
 });

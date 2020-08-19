@@ -2,32 +2,44 @@ import { StyleSheet, Dimensions } from "react-native";
 import { headerColor, buttonColor } from "../../Common/constans";
 
 export const style = StyleSheet.create({
+  mainContainer:{
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   buttonsContainer: {
     flex: 2,
     flexDirection: "row",
     marginTop: "1%",
     justifyContent: "space-around",
-    width: Dimensions.get("window").width / 2,
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginBottom: "20%",
+    width: '70%',
   },
   button: {
     alignItems: "center",
-    width: Dimensions.get("window").width / 5,
+    width: 90,
+    height: 90,
+    justifyContent: 'center',
+    alignContent: 'center',
     borderColor: "#6F76E4",
     borderWidth: 1,
     borderRadius: 4,
-    height: 80,
+    padding: '1%',
+    margin: '1%'
+    
+  },
+  textBtn:{
+     fontSize: 15,
+     margin:'3%',
+     alignSelf: 'center'
   },
   modal: {
     marginTop: "auto",
     marginBottom: "auto",
-    marginLeft: Dimensions.get("window").width / 8,
-    marginRight: Dimensions.get("window").width / 8,
+    marginLeft: "5%",
+    marginRight: "5%",
+    height: '60%',
     backgroundColor: "white",
     borderRadius: 10,
-    padding: 35,
+    padding: '7%',
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -37,19 +49,19 @@ export const style = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    height: Dimensions.get("window").height / 2.5,
-  },
-  image: {
-    height: Dimensions.get("window").height / 4,
-    width: Dimensions.get("window").width / 2,
-    backgroundColor: "white",
-    borderRadius: 10,
+    // height: Dimensions.get("window").height / 2.5,
   },
   modalContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: '4%',
+  },
+  image: {
+    height: '90%',
+    width: '90%',
+    backgroundColor: "white",
+    borderRadius: 10,
   },
   confirm:{
     marginTop: '2%',

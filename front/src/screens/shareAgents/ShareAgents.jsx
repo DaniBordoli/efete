@@ -31,8 +31,8 @@ const ShareAgents = ({
             labelStyle={{ fontSize: 14, color: "#6F76E4" }}
             items={[
               { label: "Selecciona tipo de Acceso", value: "", selected: true },
-              { label: "owner", value: "owner" },
-              { label: "employee", value: "employee" },
+              { label: "Dueño", value: "owner" },
+              { label: "Empleado", value: "employee" },
             ]}
             defaultIndex={0}
             containerStyle={style.dropdown}
@@ -68,13 +68,13 @@ const ShareAgents = ({
         </View>
         <View>
           {access === "owner" ? (
-            <Text>
+            <Text style={style.textInfo}>
               El usuario podrá editar los datos del comercio, dar acceso a otros
               usuarios y hasta eliminar el comercio
             </Text>
           ) : access === "employee" ? (
-            <Text>
-              El usuario solo podrá Modificar el monto diario para operar, pero
+            <Text style={style.textInfo}>
+              El usuario solo podrá modificar el monto diario para operar, pero
               no podrá editar los datos del comercio ni dar accesos a otros
               usuarios.
             </Text>

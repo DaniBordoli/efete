@@ -139,7 +139,11 @@ export default ({
         </View>
       )}
 
-      <OpenCamera view={view} navigation={navigation} />
+      <OpenCamera 
+      style={style.OpenCamera}
+      view={view} 
+      navigation={navigation} 
+      />
       
 
       <View>

@@ -13,11 +13,14 @@ export default ({
   modal,
 }) => {
   return (
-    <View>
+    <View style={style.mainContainer}>
       {uriFoto ? (
         <View style={style.modalContainer}>
-          <Modal animationType="slide" transparent={true} visible={modal} style={{flex:1}}>
-            
+          <Modal 
+          animationType="slide" 
+          transparent={true} 
+          visible={modal} 
+          style={{flex:1}}>
             <View style={style.modal}>
               <Image source={{ uri: uriFoto }} style={style.image} />
 
@@ -29,7 +32,7 @@ export default ({
                   >
                     <Entypo
                       name="circle-with-cross"
-                      size={60}
+                      size={45}
                       color="#DD1919"
                     />
                   </TouchableOpacity>
@@ -42,7 +45,7 @@ export default ({
                     <AntDesign 
                     style={style.confirm}
                     name="checkcircleo" 
-                    size={50}  
+                    size={45}  
                     />
                   </TouchableOpacity>
                 </View>
@@ -56,14 +59,14 @@ export default ({
         <View style={style.buttonsContainer}>
           <View style={style.button}>
             <TouchableOpacity onPress={() => openGallery()}>
-              <Entypo name="image" size={50} color="#6F76E4" />
-              <Text>Galería</Text>
+              <Entypo name="image" size={50} color="#6F76E4" style={{alignSelf: 'center'}} />
+              <Text style={style.textBtn}>Galería</Text>
             </TouchableOpacity>
           </View>
           <View style={style.button}>
             <TouchableOpacity onPress={() => takePicture()}>
-              <Entypo name="camera" size={50} color="#6F76E4" />
-              <Text>Cámara</Text>
+              <Entypo name="camera" size={50} color="#6F76E4" style={{alignSelf: 'center'}} />
+              <Text style={style.textBtn}>Cámara</Text>
             </TouchableOpacity>
           </View>
         </View>
