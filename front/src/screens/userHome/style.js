@@ -2,18 +2,50 @@ import { StyleSheet } from "react-native";
 import { headerColor, buttonDark, textButtonDark, cardDark, headerColorDark, movimientosDark } from "../../Common/constans";
 
 export const style = StyleSheet.create({
+  mainContainer:{ 
+    flex: 1, 
+    alignItems: "center" 
+  },
+  container: {
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      height: '50%',
+      width: '90%',
+      // borderWidth: 1,
+      // borderColor: 'red'
+  },
+  agente: {
+    width: '45%',
+    height:'45%',
+    backgroundColor: "white",
+    margin: '2%',
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 6,
+    shadowColor: "#000",
+    // borderWidth: 1,
+    // borderColor: 'blue',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 8.0,
+    elevation: 5,
+  },
   movimientos: {
     fontSize: 30,
-    marginTop: 15,
-    marginBottom: 5,
+    marginTop: '2%',
+    marginBottom: '2%',
     textAlign: "center",
     fontFamily: "nunito",
     color: `${headerColor}`,
   },
   movimientosDark: {
     fontSize: 30,
-    marginTop: 15,
-    marginBottom: 5,
+    marginTop: '2%',
+    marginBottom: '2%',
     textAlign: "center",
     fontFamily: "nunito",
     color: movimientosDark,
@@ -49,28 +81,11 @@ export const style = StyleSheet.create({
     shadowRadius: 8.0,
     elevation: 5,
   },
-  agente: {
-    width: 164,
-    height: 140,
-    backgroundColor: "white",
-    margin: 13,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 6,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 8.0,
-    elevation: 5,
-  },
   agenteDark: {
-    width: 164,
-    height: 140,
+    width: 150,
+    height:140,
     backgroundColor: buttonDark,
-    margin: 13,
+    margin: '2%',
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 6,
@@ -85,9 +100,9 @@ export const style = StyleSheet.create({
   },
   imageIconStyle: {
     padding: 10,
-    height: 67,
+    height: 65,
 
-    width: 67,
+    width: 65,
     resizeMode: "stretch",
   },
   text: {
@@ -96,7 +111,7 @@ export const style = StyleSheet.create({
     fontSize: 14,
     textTransform: "uppercase",
     //fontFamily: "sans-serif",
-    marginTop: 13,
+    marginTop: '2%',
   },
   textDark: {
     textAlign: "center",
@@ -104,7 +119,7 @@ export const style = StyleSheet.create({
     fontSize: 14,
     textTransform: "uppercase",
     //fontFamily: "sans-serif",
-    marginTop: 13,
+    marginTop: '2%',
   },
   hr: {
     borderBottomColor: "#DDDDDD",
@@ -112,36 +127,36 @@ export const style = StyleSheet.create({
     display: "flex",
     alignSelf: "center",
     width: "100%",
-    marginBottom: 5,
-    marginTop: 5,
+    marginBottom: '1%',
+    marginTop: '1%',
   },
   time: {
     color: "#A8C3EC",
     fontSize: 17,
     textAlign: "center",
-    marginBottom: 15,
+    marginBottom: '2%',
   },
   single: {
     backgroundColor: "#F4F9FE" /* #629bcaa6 */,
     flexDirection: "row",
-    height: 90,
+    height: '10%',
     alignItems: "center",
     justifyContent: "space-between",
     borderRadius: 10,
     flex: 1,
     elevation:2,
-    marginBottom:5
+    marginBottom:'1%'
   },
   singleDark: {
     backgroundColor: cardDark /* #629bcaa6 */,
     flexDirection: "row",
-    height: 90,
+    height: '10%',
     alignItems: "center",
     justifyContent: "space-between",
     borderRadius: 10,
     flex: 1,
     elevation:2,
-    marginBottom:5
+    marginBottom:'1%'
   },
   contenido: {
     flex: 3,

@@ -25,15 +25,9 @@ export default ({
   return (
     <View style={{ flex: 1, backgroundColor: mode ? "#F1F3F6" : "black" }}>
       {loading ? (
-        <View style={{ flex: 1, alignItems: "center" }}>
+        <View style={style.mainContainer}>
           <View
-            style={{
-              flex: 1,
-              flexDirection: "row",
-              flexWrap: "wrap",
-              alignContent: "center",
-              justifyContent: "center",
-            }}
+            style={style.container}
           >
             <TouchableOpacity
               style={mode ? style.agente : style.agenteDark}
