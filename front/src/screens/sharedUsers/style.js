@@ -1,5 +1,11 @@
-import { StyleSheet } from "react-native";
-import { buttonColor, verdeTexto, cardDark, lilaDark, azulDark } from "../../Common/constans";
+import { StyleSheet, Dimensions } from "react-native";
+import {
+  buttonColor,
+  verdeTexto,
+  cardDark,
+  lilaDark,
+  azulDark,
+} from "../../Common/constans";
 
 export const style = StyleSheet.create({
   botonAgregar: {
@@ -23,7 +29,6 @@ export const style = StyleSheet.create({
     marginTop: 30,
     marginBottom: 15,
     fontFamily: "nunito",
-   
   },
   hr: {
     borderBottomColor: "#DDDDDD",
@@ -33,7 +38,6 @@ export const style = StyleSheet.create({
     width: 370,
   },
   parent: {
-    flex: 1,
     backgroundColor: "white",
     borderRadius: 12,
     alignSelf: "center",
@@ -48,7 +52,6 @@ export const style = StyleSheet.create({
     marginBottom: 10,
   },
   parentDark: {
-    flex: 1,
     backgroundColor: cardDark,
     borderRadius: 12,
     alignSelf: "center",
@@ -85,29 +88,24 @@ export const style = StyleSheet.create({
     fontWeight: "bold",
     marginRight: 5,
     fontSize: 17,
-    color:lilaDark
+    color: lilaDark,
   },
-
 
   negocio: {
-    flex:1.7,
-    alignItems:'center'
-  
-    
+    alignItems: "center",
   },
-  tex: {
+  text: {
     color: verdeTexto,
     fontSize: 17,
   },
-  texDark: {
+  textDark: {
     color: azulDark,
     fontSize: 17,
   },
   centeredView: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 22,
   },
   modalView: {
     margin: 20,
@@ -115,26 +113,61 @@ export const style = StyleSheet.create({
     borderRadius: 10,
     padding: 25,
     alignItems: "center",
-    elevation: 5
+    elevation: 5,
   },
   openButton: {
     backgroundColor: "#F194FF",
     borderRadius: 5,
     padding: 10,
     elevation: 2,
-    margin:10,
-    width:"40%"
+    margin: 10,
+    width: "40%",
   },
   textStyle: {
     color: "white",
-    fontFamily:'regular',
+    fontFamily: "regular",
     textAlign: "center",
-    fontSize:18
+    fontSize: 18,
   },
   modalText: {
-    fontSize:22,
-    fontFamily:'nunito',
+    fontSize: 22,
+    fontFamily: "nunito",
     marginBottom: 15,
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
+  sharedUserContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: Dimensions.get("window").width / 1.1,
+    height: Dimensions.get("window").height / 10,
+    backgroundColor: "white",
+    padding: "3%",
+    alignSelf: "center",
+    borderRadius: 20,
+    shadowOpacity: 0.25,
+    shadowRadius: 8.0,
+    elevation: 5,
+  },
+  iconsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginLeft: "10%",
+  },
+  icon: {
+    margin: "2%",
+  },
+  buttonShare: {
+    width: Dimensions.get("window").width / 1.8,
+    height: Dimensions.get("window").height / 14,
+    backgroundColor: buttonColor,
+    borderRadius: 10,
+    alignSelf: "center",
+    padding: "5%",
+  },
+  textButtonShare: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+    alignSelf: "center",
+  },
 });

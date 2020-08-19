@@ -117,4 +117,20 @@ export const style = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center",
   },
+  cancelButton: {
+    marginTop: 15,
+    width: "75%",
+    backgroundColor: "white",
+    borderRadius: 5,
+    padding: 10,
+    elevation: 2,
+    borderColor: buttonColor,
+    borderWidth: 1,
+  },
+  cancelTextStyle: {
+    color: buttonColor,
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 18,
+  },
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { headerColor, headerColorDark } from "../../Common/constans";
-import { Feather, MaterialIcons } from "@expo/vector-icons";
+import { Feather, MaterialIcons, Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../home/home";
 import userHomeContainer from "../userHome/userHomeContainer";
@@ -78,6 +78,15 @@ export default ({ navigation }) => {
         name="Map"
         component={Map}
         options={{
+          headerLeft: () => (
+            <Ionicons
+              style={{ marginLeft: 10 }}
+              name="md-arrow-round-back"
+              size={26}
+              color="white"
+              onPress={() => navigation.navigate("SelectAmount", { map: true })}
+            />
+          ),
           ...myHeader,
           headerStyle: {
             backgroundColor: mode ? headerColor : headerColorDark,

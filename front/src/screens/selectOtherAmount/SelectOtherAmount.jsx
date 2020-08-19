@@ -5,7 +5,7 @@ import { Button } from "react-native-elements";
 import { style } from "./style.js";
 import { fondoColor } from "../../Common/constans.js";
 
-export default ({ handleValue, navigation, value, mode, alert }) => {
+export default ({ handleValue, navigation, value, mode, alert, map }) => {
   return (
     <View style={{ flex: 1, backgroundColor: mode ? fondoColor : "black" }}>
       <Text style={style.monto}>Monto</Text>
@@ -40,7 +40,12 @@ export default ({ handleValue, navigation, value, mode, alert }) => {
             titleStyle={style.tituloConfirmar}
             title="Confirmar"
             onPress={() => {
-              navigation.navigate("Map", { value: value }); // Deberia llevar a una vista de confirmación
+              map
+                ? navigation.navigate("Map", { value: value })
+                : navigation.navigate("ScannerQR", {
+                    value: value,
+                    agenteMap: false,
+                  });
             }}
           />
         )}
@@ -50,7 +55,7 @@ export default ({ handleValue, navigation, value, mode, alert }) => {
           titleStyle={mode ? style.tituloCancelar : style.tituloCancelarDark}
           title="Cancelar"
           onPress={() => {
-            navigation.navigate("User"); //Cancelar devuelve al home
+            navigation.navigate("User");
           }}
         />
       </View>

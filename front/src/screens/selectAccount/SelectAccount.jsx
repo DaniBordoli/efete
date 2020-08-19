@@ -35,10 +35,8 @@ export default ({
     <View>
       {loading ? (
         <View>
-          {agenteMapa._id != agenteScanner &&
+          {(!agenteMapa || agenteMapa._id != agenteScanner) &&
           agent.dailyAmount < transactionValue ? (
-            //Si el qr escaneado es distinto al Qr elegido en el mapa y no hay plata en el local
-
             <View>
               <Modal
                 isVisible={modalVisible}
@@ -55,30 +53,59 @@ export default ({
                       color={rojo}
                       style={{ marginBottom: 20 }}
                     />
-                    <Text style={style.modalText}>
-                      Este no es el local que elegiste.
-                    </Text>
+                    {agenteMapa ? (
+                      <Text style={style.modalText}>
+                        Este no es el local que elegiste.
+                      </Text>
+                    ) : null}
 
                     <View>
                       <Text style={style.modalText}>
                         No hay plata disponible en este local
                       </Text>
 
-                      <TouchableHighlight
-                        style={{ ...style.openButton }}
-                        onPress={() => {
-                          handleModal();
-                          Linking.openURL(
-                            `https://www.google.com/maps/dir/?api=1&travelmode=driving&dir_action=navigate&destination=${agenteUbicacion.latitude}, ${agenteUbicacion.longitude}`
-                          );
-                          navigation.navigate("confirmValue", {
-                            value: transactionValue,
-                            item: agenteMapa,
-                          });
-                        }}
-                      >
-                        <Text style={style.textStyle}>Ir a tu local</Text>
-                      </TouchableHighlight>
+                      {agenteMapa ? (
+                        <TouchableHighlight
+                          style={{ ...style.openButton, alignSelf: "center" }}
+                          onPress={() => {
+                            handleModal();
+                            Linking.openURL(
+                              `https://www.google.com/maps/dir/?api=1&travelmode=driving&dir_action=navigate&destination=${agenteUbicacion.latitude}, ${agenteUbicacion.longitude}`
+                            );
+                            navigation.navigate("confirmValue", {
+                              value: transactionValue,
+                              item: agenteMapa,
+                            });
+                          }}
+                        >
+                          <Text style={style.textStyle}>Ir a tu local</Text>
+                        </TouchableHighlight>
+                      ) : (
+                        <View style={{ alignItems: "center" }}>
+                          <TouchableHighlight
+                            style={{ ...style.openButton }}
+                            onPress={() => {
+                              handleModal();
+                              navigation.navigate("Map", {
+                                value: transactionValue,
+                              });
+                            }}
+                          >
+                            <Text style={style.textStyle}>
+                              Buscar otro comercio
+                            </Text>
+                          </TouchableHighlight>
+                          <TouchableHighlight
+                            style={style.cancelButton}
+                            onPress={() => {
+                              handleModal();
+                              navigation.navigate("User");
+                            }}
+                          >
+                            <Text style={style.cancelTextStyle}>Cancelar</Text>
+                          </TouchableHighlight>
+                        </View>
+                      )}
                     </View>
                   </View>
                 </View>

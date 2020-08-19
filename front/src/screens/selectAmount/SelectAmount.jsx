@@ -42,7 +42,9 @@ export default ({ handleValue, navigation, mode, value, map }) => {
               mode ? style.otroMontoTitulo : style.otroMontoTituloDark
             }
             title="Seleccionar otro monto"
-            onPress={() => navigation.navigate("SelectOtherAmount")}
+            onPress={() =>
+              navigation.navigate("SelectOtherAmount", { map: map })
+            }
           />
         </View>
 
@@ -62,7 +64,10 @@ export default ({ handleValue, navigation, mode, value, map }) => {
               onPress={() => {
                 map
                   ? navigation.navigate("Map", { value: value })
-                  : navigation.navigate("ScannerQR", { value: value });
+                  : navigation.navigate("ScannerQR", {
+                      value: value,
+                      agenteMap: false,
+                    });
               }}
             />
           )}
