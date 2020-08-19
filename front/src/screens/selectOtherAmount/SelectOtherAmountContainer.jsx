@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import SelectOtherAmount from "./SelectOtherAmount";
 import { useSelector } from "react-redux";
 
-import { View } from "react-native";
-import { fondoColor } from "../../Common/constans";
-
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
   const [value, setValue] = useState("");
   const [alert, setAlert] = useState(false);
 
@@ -23,6 +20,7 @@ export default ({ navigation }) => {
       value={value}
       mode={mode}
       alert={alert}
+      map={route.params.map}
     />
   );
 };

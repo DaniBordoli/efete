@@ -19,6 +19,7 @@ const ShareAgents = ({
   validUsername,
   validAccess,
   username,
+  access,
 }) => {
   return (
     <ScrollView>
@@ -71,13 +72,13 @@ const ShareAgents = ({
               El usuario podrá editar los datos del comercio, dar acceso a otros
               usuarios y hasta eliminar el comercio
             </Text>
-          ) : (
+          ) : access === "employee" ? (
             <Text>
               El usuario solo podrá Modificar el monto diario para operar, pero
               no podrá editar los datos del comercio ni dar accesos a otros
               usuarios.
             </Text>
-          )}
+          ) : null}
         </View>
 
         <View
